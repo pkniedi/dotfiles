@@ -10,5 +10,4 @@ fi
 which $application &>/dev/null || exit 1
 currws=$(i3-msg -t get_workspaces  | jq '.[] | select(.focused==true).name'  | cut -d"\"" -f2)
 ((onemore = $currws+1))
-i3-msg workspace $onemore
-$application &
+i3-msg workspace $onemore, exec $application &

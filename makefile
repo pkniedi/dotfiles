@@ -12,7 +12,6 @@ zsh:
 utils:
 	which xclip &>/dev/null || sudo pacman -S xclip
 	which curl &>/dev/null || sudo pacman -S curl
-	which git &>/dev/null || sudo pacman -S git
 	fc-list | grep -i "Hack Nerd Font"  || sudo pacman -S ttf-hack-nerd
 
 
@@ -44,7 +43,7 @@ cp-dirs:
 	cp -r $(PWD)/zsh $(CONFIG_HOME) 
 	cp $(PWD)/zsh/zshenv $(HOME)/.zshenv
 	cp -r $(PWD)/nvim $(CONFIG_HOME) 
-	cp -r $(PWD)/bin $(HOME)/bin 
+	cp -r $(PWD)/bin $(HOME)
 	cp -r $(PWD)/i3 $(CONFIG_HOME) 
 	cp -r $(PWD)/polybar $(CONFIG_HOME) 
 	cp -r $(PWD)/nvim $(CONFIG_HOME) 
@@ -54,7 +53,7 @@ cp-dirs:
 
 
 reload-config:
-	i3-msg restart
+	i3-msg restart &>/dev/null
 	touch $(CONFIG_HOME)/alacritty/alacritty.toml
 
 starship:

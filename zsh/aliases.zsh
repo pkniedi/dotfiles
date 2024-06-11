@@ -89,4 +89,3 @@ alias o="xdg-open"
 alias ltm="latexmk -pdf -outdir=output -pvc main.tex"
 alias hfzf="history | fzf"
 alias ll='linky'
-alias wd ="wd -c $HOME/dotfiles/zsh/warprc"

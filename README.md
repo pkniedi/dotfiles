@@ -26,4 +26,4 @@ make sync
 # TODO
 
 -   oh-my-zsh setup -> check if it gets installed properly.
--   
+-   point wd to this dir
