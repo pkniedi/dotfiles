@@ -1,0 +1,125 @@
+# https://itsfoss.com/i3-customization/ 
+# https://i3wm.org/docs/userguide.html
+
+set $mod Mod4
+font pango: Hack Nerd Font 11
+focus_on_window_activation none
+no_focus [window_role="pop-up"]
+
+# ============================= declarations =============================  
+set $zsh-bin-dir $HOME/bin/zsh-scripts
+set $config-dir $HOME/.config
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+# =============================== execs  ================================= 
+# ON startup
+# exec -> only once at i3 startup
+
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+exec --no-startup-id picom -b
+exec --no-startup-id feh --bg-fill $HOME/wallpapers/random/rice-terrace-landscape-wallpaper.jpg
+exec --no-startup-id firefox
+# exec --no-startup-id keepassxc
+exec --no-startup-id $HOME/.config/polybar/launch.sh
+
+exec_always xset r rate 200 50
+
+
+
+set $refresh_i3status killall -SIGUSR1 i3status
+
+default_orientation horizontal
+workspace_layout stacking
+title_align left
+
+default_border pixel 0
+default_floating_border pixel 0
+gaps inner 7
+gaps outer 3
+smart_gaps off
+hide_edge_borders smart
+for_window [window_role="^floating$"] floating enable
+for_window [class="Alacritty"] sticky enable
+show_marks yes
+
+
+
+
+
+
+# ================================ bindings ======================================= 
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+
+floating_modifier $mod
+
+bindsym $mod+t exec polybar-msg cmd toggle
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec ~/bin/i3appendws
+bindsym $mod+Shift+q kill
+bindsym $mod+space exec "rofi -show drun"
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus left
+bindsym $mod+h focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+b split h
+bindsym $mod+Shift+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+a focus parent
+bindsym $mod+Shift+s exec scrot $HOME/screenshots/%T-screenshot.png
+bindsym $mod+r reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+m  exec kitty 
+# bindsym $mod+Shift+space floating toggle 
+bindsym $mod+u workspace prev
+bindsym $mod+i workspace next
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+
+# ================== options ======================
+
+workspace_auto_back_and_forth no
+
+include $HOME/.config/i3/modes.i3config
+include $HOME/.config/i3/colors.i3config
+include $HOME/.config/i3/scratchpath.i3config

@@ -1,0 +1,120 @@
+########## MODE layout ##########
+
+bindsym $mod+Shift+l mode $mode-layout
+set $mode-layout LAYOUT
+mode "$mode-layout" {
+    bindsym s layout stacking
+    bindsym t layout toggle split
+    bindsym Shift+h move left
+    bindsym Shift+j move down
+    bindsym Shift+k move up
+    bindsym Shift+l move right
+    bindsym $mod+Shift+h move left
+    bindsym $mod+Shift+j move down
+    bindsym $mod+Shift+k move up
+    bindsym $mod+Shift+l move right
+    bindsym j focus down
+    bindsym k focus up
+    bindsym l focus left
+    bindsym h focus right
+    bindsym $mod+j focus down
+    bindsym $mod+k focus up
+    bindsym $mod+l focus left
+    bindsym $mod+h focus right
+    bindsym Left move left
+    bindsym Down move down
+    bindsym Up move up
+    bindsym Right move right
+    bindsym b split h
+    bindsym v split v
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Shift+Escape mode "default"
+    bindsym $mod+Shift+Return mode "default"
+}
+
+########## MODE browser shortcuts ##########
+bindsym $mod+b mode $mode-browser
+set $mode-browser BROWSER
+
+mode "$mode-browser" {
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym t workspace number $ws1,exec firefox --new-tab "https://duckduckgo.com/",mode "default"
+# Searches the web for the term currently in clipboard
+    bindsym w workspace number $ws1,exec zsh -c "firefox --new-tab $(xclip -o -selection clipboard)",mode "default"
+    bindsym n workspace number $ws1,exec firefox --new-window,mode "default"
+}
+
+####### MODE System #########
+
+set $Locker i3lock-fancy && sleep 1
+set $mode-system SYSTEM
+
+bindsym $mod+Shift+e exec zsh -c "{pgrep &>/dev/null vlc && i3-nagbar -m 'vlc running'} || i3-msg mode SYSTEM"
+mode "$mode-system" {
+    bindsym i mode $mode-system-info
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $mode-system-info  SYSTEM (l)ock (e)xit (s)uspend (h)ibernate (r)eboot (Shift+s) shutdown
+mode "$mode-system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+########## MODE scratchpad ##########
+
+set $mode-scratchpad SCRATCHPAD
+
+bindsym $mod+minus mode $mode-scratchpad, scratchpad show
+bindsym $mod+Tab mode $mode-scratchpad, scratchpad show
+
+mode "$mode-scratchpad" {
+    bindsym d exec alacritty --class dropdown , mode "default"
+    bindsym l exec alacritty --class linky-popup, mode "default"
+    bindsym Shift+space exec alacritty --class linky-popup, mode "default"
+    bindsym Return scratchpad show, mode "default"
+    bindsym Escape  scratchpad show, mode "default" 
+    bindsym $mod+minus scratchpad show, scratchpad show 
+    bindsym $mod+Tab scratchpad show, scratchpad show 
+    bindsym a scratchpad show, mode "default"
+    bindsym b scratchpad show, mode "default"
+    bindsym c scratchpad show, mode "default"
+    bindsym d scratchpad show, mode "default"
+    bindsym e scratchpad show, mode "default"
+    bindsym f scratchpad show, mode "default"
+    bindsym g scratchpad show, mode "default"
+    bindsym h scratchpad show, mode "default"
+    bindsym i scratchpad show, mode "default"
+    bindsym j scratchpad show, mode "default"
+    bindsym k scratchpad show, mode "default"
+    bindsym l scratchpad show, mode "default"
+    bindsym m scratchpad show, mode "default"
+    bindsym n scratchpad show, mode "default"
+    bindsym o scratchpad show, mode "default"
+    bindsym p scratchpad show, mode "default"
+    bindsym q scratchpad show, mode "default"
+    bindsym r scratchpad show, mode "default"
+    bindsym s scratchpad show, mode "default"
+    bindsym t scratchpad show, mode "default"
+    bindsym u scratchpad show, mode "default"
+    bindsym v scratchpad show, mode "default"
+    bindsym w scratchpad show, mode "default"
+    bindsym x scratchpad show, mode "default"
+    bindsym y scratchpad show, mode "default"
+    bindsym z scratchpad show, mode "default"
+}

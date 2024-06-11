@@ -1,0 +1,30 @@
+#!/usr/bin/env zsh
+
+if [[ ! -d /mnt/BROTHER ]]; then
+    printf "Mount device first"
+    exit 1
+fi
+
+usb_dir=/mnt/BROTHER
+backup_date=$(date +%d-%m-%y)
+mkdir -p $usb_dir/home
+
+echo "Starting backup..."
+# sudo tar -vPczf /tmp/home-$backup_date.tar.gz /home/jaron
+if [ $? -eq 0 ]; then
+echo "Home backup succeeded."
+else
+echo "Home backup failed."
+fi
+
+cp /tmp/home-$backup_date.tar.gz $usb_dir
+if [ $? -eq 0 ]; then
+echo "home transfer succeeded."
+else
+echo "home transfer failed."
+fi
+sudo rm /tmp/*$backup_date.tar.gz
+echo "Backup is done."
+
+mkdir -p $usb_dir/packages
+tar -cjf $usb_dir/packages/pacman_database.tar.bz2 /var/lib/pacman/local

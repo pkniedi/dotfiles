@@ -1,0 +1,26 @@
+snippet vmap "map in visual mode" A
+vim.keymap.set('v', [[$1]], [[$2]], ${3:opts})
+endsnippet
+
+snippet nmap "map in normal mode" A
+vim.keymap.set('n', [[$1]], [[$2]], ${3:opts})
+endsnippet
+
+snippet gitp "add link for github page" iA
+-- github repository: `xclip -o`
+endsnippet
+
+snippet todo "add new TODO: <<??>> (since: Tue 26.09 16:11)"
+-- TODO: $1 (since: `date +%a` `date +%d.%m` `date +%H:%M`)
+$0
+endsnippet
+
+snippet fix "add new FIX: <<??>> (since: Tue 26.09 16:12)"
+-- FIX: $1 (since: `date +%a` `date +%d.%m` `date +%H:%M`)
+$0
+endsnippet
+
+snippet note "add new NOTE: <<??>> (since: Tue 26.09 16:12)"
+-- NOTE: $1 (since: `date +%a` `date +%d.%m` `date +%H:%M`)
+$0
+endsnippet

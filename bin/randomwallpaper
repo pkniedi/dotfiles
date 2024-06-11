@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+while ( true );do
+    feh --bg-fill --random  /home/jaron/wallpapers/random
+    sleep 1800
+done

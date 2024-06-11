@@ -1,0 +1,21 @@
+# Make it easier to create new snippets
+snippet snip "A snippet for writing Ultisnips snippets" bA
+`!p snip.rv = "snippet"` ${1:trigger} "${2:Description}" ${3:options}
+$4
+`!p snip.rv = "endsnippet"`
+$0
+endsnippet
+
+
+snippet be "begin end latex block" i
+\begin{$1}
+$0
+\end{$1}
+endsnippet
+
+snippet psnip "Paster from xclip" iA
+`!p snip.rv = "snippet"` $1 "${2:Description}" $3
+`xclip -o`$0
+`!p snip.rv = "endsnippet"`
+endsnippet
+

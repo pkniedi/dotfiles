@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+
+file=$1
+if [ ! -f $file ];then
+    echo no such file
+    exit 1
+fi
+
+pgrep firefox 1>/dev/null || {firefox;msleep 500}
+
+urls=$(grep -o "http[^ ^)(]*" $file)
+
+
+
+array=(${=urls})
+for i ("$array[@]");do
+    # echo suf=$(echo $i | rev | cut -d. -f1 | rev )
+    # if [[ $suf == "mp4" ]];then
+    #     vlc $i &/dev/null &
+    # fi
+    echo $i
+    firefox "$i" 
+done
+exit 0

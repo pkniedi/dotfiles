@@ -1,0 +1,11 @@
+global !p
+
+endglobal
+
+snippet link "[link](file/URL)" i
+[$1](./$2)$0
+endsnippet
+
+snippet url "[link](file/URL)" i
+[$1](`xclip -o`)$0
+endsnippet

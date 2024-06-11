@@ -1,0 +1,41 @@
+bindsym $mod+d     [instance="^dropdown$"]   scratchpad show
+bindsym $mod+n     [instance="^notes$"]   scratchpad show
+bindsym $mod+Shift+space     [instance="^linky-popup$"]   scratchpad show
+
+for_window [instance="^notes$"] \
+    floating enable, border none, \
+    resize set 90 ppt 90 ppt, \
+    move position 70 30, \
+    sticky enable, \
+    move scratchpad 
+
+
+# WARN: utility requires this setup
+for_window [instance="^linky-popup$"] \
+    floating enable, border none, \
+    resize set 60 ppt 30 ppt, \
+    move position 330 100, \
+    sticky enable, \
+    move scratchpad 
+
+for_window [instance="^dropdown$"] \
+    floating enable, border none, \
+    resize set 90 ppt 90 ppt, \
+    move position 70 30, \
+    sticky enable, \
+    move scratchpad 
+
+exec --no-startup-id alacritty --class dropdown
+exec --no-startup-id  alacritty --class linky-popup
+exec --no-startup-id alacritty --working-directory=$HOME/notes/zettelkasten --class notes
+
+# bindsym $mod+Shift+t scratchpad
+
+bindsym $mod+Shift+minus  floating enable, border none, \
+                          resize set 90 ppt 90 ppt, \
+                          move position 70 30, \
+                          sticky enable \
+                          move scratchpad 
+
+
+bindsym $mod+0  scratchpad show

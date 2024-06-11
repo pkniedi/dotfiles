@@ -1,0 +1,21 @@
+#! /usr/bin/env zsh
+
+if [ $# -ne 1 ]; then
+    echo "Usage: hotspot d(isconnect) or c(onnect)"
+    exit 1
+fi
+if [ $1 = "c" ] || [ $1 = "connect" ]; then
+    rfkill unblock wifi
+    nmcli radio wifi on
+    echo "nmcli radio wifi on"
+    echo "wifi unblocked"
+    sleep 4.5
+    nmcli device wifi connect Mike\'s\ Handy
+fi
+if [ $1 = "d" ] || [ $1 = "disconnect" ]; then
+    nmcli connection down Mike\'s\ Handy
+    nmcli radio wifi off
+    rfkill block wifi
+    echo "nmcli radio wifi off"
+    echo "wifi blocked"
+fi
