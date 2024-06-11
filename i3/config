@@ -1,6 +1,33 @@
 # https://itsfoss.com/i3-customization/ 
 # https://i3wm.org/docs/userguide.html
 
+
+# border  background text indicator
+client.focused $bluegrad5 $bluegrad5 $whitegrad1 $whitegrad1 
+client.unfocused $black $black $fggrad5 $black
+client.focused_inactive $black $black $bluegrad5  $black
+client.urgent  $transparent $transparent $text $black
+
+
+
+
+
+
+# =============================== execs  ================================= 
+# ON startup
+# exec -> only once at i3 startup
+
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+exec --no-startup-id picom -b
+exec --no-startup-id feh --bg-fill $HOME/wallpapers/random/rice-terrace-landscape-wallpaper.jpg
+exec --no-startup-id firefox
+# exec --no-startup-id keepassxc
+exec --no-startup-id $HOME/.config/polybar/launch.sh &>/dev/null
+
+exec_always xset r rate 200 50
+
 set $mod Mod4
 font pango: Hack Nerd Font 11
 focus_on_window_activation none
@@ -20,21 +47,52 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 
-# =============================== execs  ================================= 
-# ON startup
-# exec -> only once at i3 startup
 
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
-exec --no-startup-id picom -b
-exec --no-startup-id feh --bg-fill $HOME/wallpapers/random/rice-terrace-landscape-wallpaper.jpg
-exec --no-startup-id firefox
-# exec --no-startup-id keepassxc
-exec --no-startup-id $HOME/.config/polybar/launch.sh
+# ============================= colors =============================  
+set $background  #1e2127
+set $black  #1e2127
+set $red  #e06c75
+set $green  #98c379
+set $yellow  #d19a66
+set $blue  #61afef
+set $magenta  #c678dd
+set $cyan  #56b6c2
+set $white  #abb2bf
+set $transparent #00000000
 
-exec_always xset r rate 200 50
+set $bluegrad1 #61afef
+set $bluegrad2 #59a1dc
+set $bluegrad3 #5093c9
+set $bluegrad4 #4885b7
+set $bluegrad5 #4077a5
+set $bluegrad6 #386a94
+set $bluegrad7 #305d82
+set $bluegrad8 #295071
+set $bluegrad9 #214461
+set $bluegrad10 #1a3851
 
+set $whitegrad1 #ffffff
+set $whitegrad2 #f8f6f6
+set $whitegrad3 #f0ecef
+set $whitegrad4 #e8e3e7
+set $whitegrad5 #dfdae0
+set $whitegrad6 #d6d2da
+set $whitegrad7 #ccc9d3
+set $whitegrad8 #c2c1cd
+set $whitegrad9 #b7bac6
+set $whitegrad10 #abb2bf
+
+set $foreground  #abb2bf
+set $fggrad1 #abb2bf
+set $fggrad2 #9ca3af
+set $fggrad3 #8e949f
+set $fggrad4 #80868f
+set $fggrad5 #727780
+set $fggrad6 #646971
+set $fggrad7 #575c62
+set $fggrad8 #4a4e54
+set $fggrad9 #3e4246
+set $fggrad10 #323539
 
 
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -51,6 +109,7 @@ smart_gaps off
 hide_edge_borders smart
 for_window [window_role="^floating$"] floating enable
 for_window [class="Alacritty"] sticky enable
+for_window [class="Kitty"] sticky enable
 show_marks yes
 
 
@@ -65,7 +124,7 @@ show_marks yes
 floating_modifier $mod
 
 bindsym $mod+t exec polybar-msg cmd toggle
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec ~/bin/i3appendws
 bindsym $mod+Shift+q kill
 bindsym $mod+space exec "rofi -show drun"
@@ -120,6 +179,168 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 workspace_auto_back_and_forth no
 
-include $HOME/.config/i3/modes.i3config
-include $HOME/.config/i3/colors.i3config
-include $HOME/.config/i3/scratchpath.i3config
+
+
+########## MODE layout ##########
+
+bindsym $mod+Shift+l mode $mode-layout
+set $mode-layout LAYOUT
+mode "$mode-layout" {
+    bindsym s layout stacking
+    bindsym t layout toggle split
+    bindsym Shift+h move left
+    bindsym Shift+j move down
+    bindsym Shift+k move up
+    bindsym Shift+l move right
+    bindsym $mod+Shift+h move left
+    bindsym $mod+Shift+j move down
+    bindsym $mod+Shift+k move up
+    bindsym $mod+Shift+l move right
+    bindsym j focus down
+    bindsym k focus up
+    bindsym l focus left
+    bindsym h focus right
+    bindsym $mod+j focus down
+    bindsym $mod+k focus up
+    bindsym $mod+l focus left
+    bindsym $mod+h focus right
+    bindsym Left move left
+    bindsym Down move down
+    bindsym Up move up
+    bindsym Right move right
+    bindsym b split h
+    bindsym v split v
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Shift+Escape mode "default"
+    bindsym $mod+Shift+Return mode "default"
+}
+
+########## MODE browser shortcuts ##########
+bindsym $mod+b mode $mode-browser
+set $mode-browser BROWSER
+
+mode "$mode-browser" {
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym t workspace number $ws1,exec firefox --new-tab "https://duckduckgo.com/",mode "default"
+# Searches the web for the term currently in clipboard
+    bindsym w workspace number $ws1,exec zsh -c "firefox --new-tab $(xclip -o -selection clipboard)",mode "default"
+    bindsym n workspace number $ws1,exec firefox --new-window,mode "default"
+}
+
+####### MODE System #########
+
+set $Locker i3lock-fancy && sleep 1
+set $mode-system SYSTEM
+
+bindsym $mod+Shift+e exec zsh -c "{pgrep &>/dev/null vlc && i3-nagbar -m 'vlc running'} || i3-msg mode SYSTEM"
+mode "$mode-system" {
+    bindsym i mode $mode-system-info
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $mode-system-info  SYSTEM (l)ock (e)xit (s)uspend (h)ibernate (r)eboot (Shift+s) shutdown
+mode "$mode-system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+########## MODE scratchpad ##########
+
+set $mode-scratchpad SCRATCHPAD
+
+bindsym $mod+minus mode $mode-scratchpad, scratchpad show
+bindsym $mod+Tab mode $mode-scratchpad, scratchpad show
+
+mode "$mode-scratchpad" {
+    bindsym d exec alacritty --class dropdown , mode "default"
+    bindsym l exec alacritty --class linky-popup, mode "default"
+    bindsym Shift+space exec alacritty --class linky-popup, mode "default"
+    bindsym Return scratchpad show, mode "default"
+    bindsym Escape  scratchpad show, mode "default" 
+    bindsym $mod+minus scratchpad show, scratchpad show 
+    bindsym $mod+Tab scratchpad show, scratchpad show 
+    bindsym a scratchpad show, mode "default"
+    bindsym b scratchpad show, mode "default"
+    bindsym c scratchpad show, mode "default"
+    bindsym d scratchpad show, mode "default"
+    bindsym e scratchpad show, mode "default"
+    bindsym f scratchpad show, mode "default"
+    bindsym g scratchpad show, mode "default"
+    bindsym h scratchpad show, mode "default"
+    bindsym i scratchpad show, mode "default"
+    bindsym j scratchpad show, mode "default"
+    bindsym k scratchpad show, mode "default"
+    bindsym l scratchpad show, mode "default"
+    bindsym m scratchpad show, mode "default"
+    bindsym n scratchpad show, mode "default"
+    bindsym o scratchpad show, mode "default"
+    bindsym p scratchpad show, mode "default"
+    bindsym q scratchpad show, mode "default"
+    bindsym r scratchpad show, mode "default"
+    bindsym s scratchpad show, mode "default"
+    bindsym t scratchpad show, mode "default"
+    bindsym u scratchpad show, mode "default"
+    bindsym v scratchpad show, mode "default"
+    bindsym w scratchpad show, mode "default"
+    bindsym x scratchpad show, mode "default"
+    bindsym y scratchpad show, mode "default"
+    bindsym z scratchpad show, mode "default"
+}
+
+# ===================== scratchpad ========================
+bindsym $mod+d     [instance="^dropdown$"]   scratchpad show
+bindsym $mod+n     [instance="^notes$"]   scratchpad show
+bindsym $mod+Shift+space     [instance="^linky-popup$"]   scratchpad show
+
+for_window [instance="^notes$"] \
+    floating enable, border none, \
+    resize set 90 ppt 90 ppt, \
+    move position 70 30, \
+    sticky enable, \
+    move scratchpad 
+
+
+# WARN: utility requires this setup
+for_window [instance="^linky-popup$"] \
+    floating enable, border none, \
+    resize set 60 ppt 30 ppt, \
+    move position 330 100, \
+    sticky enable, \
+    move scratchpad 
+
+for_window [instance="^dropdown$"] \
+    floating enable, border none, \
+    resize set 90 ppt 90 ppt, \
+    move position 70 30, \
+    sticky enable, \
+    move scratchpad 
+
+exec --no-startup-id alacritty --class dropdown
+exec --no-startup-id  alacritty --class linky-popup
+exec --no-startup-id alacritty --working-directory=$HOME/notes/zettelkasten --class notes
+
+# bindsym $mod+Shift+t scratchpad
+
+bindsym $mod+Shift+minus  floating enable, border none, \
+                          resize set 90 ppt 90 ppt, \
+                          move position 70 30, \
+                          sticky enable \
+                          move scratchpad 
+
+
+bindsym $mod+0  scratchpad show
