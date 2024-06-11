@@ -7,7 +7,6 @@ fancy-ctrl-z
 sudo
 copybuffer
 copyfile
-# zsh-interactive-cd
 copypath
 colored-man-pages
 web-search
