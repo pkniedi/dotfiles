@@ -1,12 +1,13 @@
 CONFIG_HOME:=$(HOME)/.config
 
-.PHONY: install i3 polybar nvim sync starship alacritty
+.PHONY: install i3 polybar nvim sync starship alacritty utils md cp-dirs
 
 install: utils i3 polybar nvim starship zsh kitty alacritty
 
 zsh:
 	which zsh &>/dev/null || sudo pacman -S zsh zsh-completions
-	sudo chsh -s $$(which zsh)
+	sudo chsh -s $$(which zsh) 
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 utils:
 	which xclip &>/dev/null || sudo pacman -S xclip
@@ -23,7 +24,21 @@ kitty:
 	which kitty &>/dev/null || sudo pacman -S kitty
 
 
-sync: cp-dirs reload-config
+sync: md cp-dirs reload-config
+
+
+md:
+	mkdir -p $(CONFIG_HOME)/zsh 
+	mkdir -p $(CONFIG_HOME)/nvim 
+	mkdir -p $(CONFIG_HOME)/bin
+	mkdir -p $(CONFIG_HOME)/i3 
+	mkdir -p $(CONFIG_HOME)/polybar 
+	mkdir -p $(CONFIG_HOME)/nvim 
+	mkdir -p $(CONFIG_HOME)/starship 
+	mkdir -p $(CONFIG_HOME)/alacritty 
+	mkdir -p $(CONFIG_HOME)/kitty 
+
+
 
 cp-dirs:
 	cp -r $(PWD)/zsh $(CONFIG_HOME) 
@@ -48,8 +63,7 @@ starship:
 i3:
 	which i3 &>/dev/null || sudo pacman -S i3-wm
 
-
-polybar: sync
+polybar:
 	which polybar &>/dev/null || sudo pacman -S polybar
 
 nvim:

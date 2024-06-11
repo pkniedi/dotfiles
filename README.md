@@ -12,14 +12,18 @@ Configs for:
 
 
 # install
-run
+run the following command to install everything. This is not tested yet.
 ```sh
 make install
 ```
 
 # Sync all config files
-run 
+Run the following command to copy the changed config files to the '.config' directory.
 ```sh
 make sync
 ```
 
+# TODO
+
+-   oh-my-zsh setup -> check if it gets installed properly.
+-   

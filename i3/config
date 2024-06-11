@@ -21,7 +21,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b
-exec --no-startup-id feh --bg-fill $HOME/wallpapers/random/rice-terrace-landscape-wallpaper.jpg
+exec --no-startup-id "feh --bg-fill $HOME/wallpapers/random/rice-terrace-landscape-wallpaper.jpg || echo Failed to set wallpaper"
 exec --no-startup-id firefox
 # exec --no-startup-id keepassxc
 exec --no-startup-id $HOME/.config/polybar/launch.sh &>/dev/null
@@ -267,9 +267,9 @@ bindsym $mod+minus mode $mode-scratchpad, scratchpad show
 bindsym $mod+Tab mode $mode-scratchpad, scratchpad show
 
 mode "$mode-scratchpad" {
-    bindsym d exec alacritty --class dropdown , mode "default"
-    bindsym l exec alacritty --class linky-popup, mode "default"
-    bindsym Shift+space exec alacritty --class linky-popup, mode "default"
+    bindsym d exec kitty --class dropdown , mode "default"
+    bindsym l exec kitty --class linky-popup, mode "default"
+    bindsym Shift+space exec kitty --class linky-popup, mode "default"
     bindsym Return scratchpad show, mode "default"
     bindsym Escape  scratchpad show, mode "default" 
     bindsym $mod+minus scratchpad show, scratchpad show 
@@ -330,9 +330,9 @@ for_window [instance="^dropdown$"] \
     sticky enable, \
     move scratchpad 
 
-exec --no-startup-id alacritty --class dropdown
-exec --no-startup-id  alacritty --class linky-popup
-exec --no-startup-id alacritty --working-directory=$HOME/notes/zettelkasten --class notes
+exec --no-startup-id kitty --class dropdown
+exec --no-startup-id  kitty --class linky-popup
+exec --no-startup-id kitty --working-directory=$HOME/notes/zettelkasten --class notes
 
 # bindsym $mod+Shift+t scratchpad
 
