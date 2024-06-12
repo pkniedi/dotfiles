@@ -145,7 +145,10 @@ require("lazy").setup({
 	"https://github.com/mhartington/formatter.nvim",
 	"m4xshen/autoclose.nvim",
 	"numToStr/Comment.nvim",
-	{ "nvim-telescope/telescope-fzf-native.nvim", built = "make" },
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	},
 	{ "tzachar/fuzzy.nvim", dependencies = "nvim-telescope/telescope-fzf-native.nvim" },
 
 	"vijaymarupudi/nvim-fzf",
@@ -254,7 +257,6 @@ require("lazy").setup({
 	"/norcalli/nvim-colorizer.lua",
 	"brenoprata10/nvim-highlight-colors",
 	"mbbill/undotree",
-	"/lewis6991/gitsigns.nvim",
 	{
 		"hedyhli/outline.nvim",
 		config = function()

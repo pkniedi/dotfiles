@@ -1,9 +1,25 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
 
-require("nvim-treesitter.configs").setup({
+local ts = require("nvim-treesitter.configs")
+ts.setup({
+	-- A list of parser names, or "all" (the five listed parsers should always be installed)
+	ensure_installed = { "c", "vim", "vimdoc", "query", "lua", "java", "python" },
+
+	-- List of parsers to ignore installing (or "all")
+	ignore_install = { "javascript" },
+
+	modules = { "" },
+
+	-- Automatically install missing parsers when entering buffer
+	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+	auto_install = true,
+
+	-- Install parsers synchronously (only applied to `ensure_installed`)
+	--
+	sync_install = false,
 	highlight = {
 		enable = true,
-		disable = { "latex", "md" },
+		-- disable = { "tex", "md" },
 		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = true,
 	},
