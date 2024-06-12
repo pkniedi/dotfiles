@@ -3,9 +3,17 @@ local fn = vim.fn
 local handlers = require("url-open.modules.handlers")
 local option_module = require("url-open.modules.options")
 
+
 local M = {}
 
 -- Changed the behaviour of open_url plugin slighty to open vlc commands in notes.
+
+M.is_valid_filepath = function()
+	local line_number = vim.api.nvim_win_get_cursor(0)[1]
+	local line_content = vim.api.nvim_buf_get_lines(0, line_number - 1, line_number, false)[1]
+	print(line_content)
+	return vim.fn.filereadable(line_content) == 1
+end
 
 M.open_mp4 = function(s)
 	local from, to = string.find(s, "http[s]*://[%S]*%.mp4")
@@ -44,9 +52,10 @@ end
 
 M.my_open_url = function()
 	local curr_line = vim.api.nvim_get_current_line()
-
 	if M.open_vlc_special(curr_line) then
 		print("VLC")
+	elseif M.is_valid_filepath() then
+        print("hello there")
 	elseif M.open_mp4(curr_line) then
 		print("MP4")
 	else

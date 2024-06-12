@@ -50,7 +50,7 @@ alias texc='latexmk -pdf -synctex=1 -output-directory=../output'
 alias nvconf='wd nvim;nv'
 alias conzsh='nv ~/.config/zsh/.zshrc'
 alias addsnip='cd ~/.config/nvim/Ultisnips; nv'
-alias lt='latexmk -pdf -outdir=output -pvc '
+alias lt='latexmk -pdf -outdir=output -pvc --shell-escape'
 alias lts='latexmk -pdf -silent -outdir=output -pvc '
 alias echopath="echo '\$PATH: \n'; sed 's/:/  \n  /g' <<<$PATH"
 alias annihilate="rm -rf"

@@ -77,6 +77,7 @@ vim.diagnostic.config({ signcolumn = true })
 
 vim.cmd("set cindent")
 vim.cmd("set undofile")
+vim.cmd("EnableWhitespace")
 
 vim.g.netrw_nogx = 1 -- disable netrw gx
 vim.o.foldcolumn = "1"

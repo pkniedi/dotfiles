@@ -56,7 +56,6 @@ vim.keymap.set("n", [[<leader>nw]], [[:set nowrap<CR>]], opts)
 -- vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
 vim.keymap.set("i", [[<C-p>]], [[<C-r>]], opts)
--- vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>")
 vim.keymap.set("n", [[gx]], function()
 	user_functions.my_open_url()
 end)
@@ -73,6 +72,7 @@ vim.keymap.set("n", [[<leader>bd]], [[:bd<CR>]], opts)
 vim.keymap.set("n", [[<leader>bn]], [[:bn<CR>]], opts)
 vim.keymap.set("n", [[<leader>bp]], [[:bp<CR>]], opts)
 vim.keymap.set("n", [[<leader>ou]], [[:!openurls %<CR>]], opts)
+vim.keymap.set('n', [[<CR>]], [[gf]], opts)
 
 -- visual
 vim.keymap.set("v", "p", '"_dP')

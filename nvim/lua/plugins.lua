@@ -160,6 +160,7 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
+	"sindrets/diffview.nvim",
 	-- https://github.com/romgrk/barbar.nvim
 	{
 		"romgrk/barbar.nvim",
@@ -275,4 +276,6 @@ require("lazy").setup({
 		---@param opts cn.ConfigSchema
 		opts = { [[ your custom config here ]] },
 	},
+	"ntpeters/vim-better-whitespace",
+	"mg979/vim-visual-multi",
 })

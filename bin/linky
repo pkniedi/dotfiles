@@ -9,6 +9,7 @@ echo "Usage:
 remove:		linky (r)emove
 add:		linky add aliases \"alternative aliases/description\"
 open:		linky 
+eval:	    repl
 "
 
 exit 1
@@ -24,7 +25,6 @@ function main () {
                                              | sed -e 's/^.*\(http.*\)/\1/') \
                                              
 if  ! xdg-open &>/dev/null $url;then
-     echo Aborted
      exit 1
 fi
 return 0
@@ -42,8 +42,6 @@ case $# in
         main
         i3-msg &>/dev/null workspace number 1
         exit 0
-        # main || exit 1
-        # exit 0
         ;;
     1)
         if [[ $1 == "r" || $1 == "rem" ]]; then

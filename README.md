@@ -10,9 +10,11 @@ Configs for:
 -   zsh + oh-my-zsh
 -   bin
 
+Note: does not check for dependencies of scripts etc, only loads config files.
 
-# install
-run the following command to install everything. This is not tested yet.
+
+# Installation
+run the following command to install everything.
 ```sh
 make install
 ```

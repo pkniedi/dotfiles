@@ -95,7 +95,7 @@ msleep 300
 i3-msg move container right
 i3-msg focus left
 
-alacritty --working-directory $HOME/notes/$subject/notes &
+kitty --directory $HOME/notes/$subject/notes &
 # automatically go to stopped sigh
 
 grep "STOPPED" *.tex 2>/dev/null
