@@ -2,11 +2,11 @@
 
 My current nvim config.
 
-Use the following to try out the current config:
-```zsh
-nvim -u path/to/init.lua
-
-```
+<!-- Use the following to try out the current config: -->
+<!-- ```zsh -->
+<!-- nvim -u path/to/init.lua -->
+<!---->
+<!-- ``` -->
 
 [test](./test.md)
 

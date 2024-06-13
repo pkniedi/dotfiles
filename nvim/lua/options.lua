@@ -26,7 +26,6 @@ vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entere
 vim.opt.expandtab = true -- enable tab characters
 vim.opt.lazyredraw = true --  Do not redraw screen in the middle of a macro. Makes them complete faster.
 
-vim.g.vimtex_view_method = "skim"
 local signs = {
 	Error = "",
 	Warn = "",
@@ -39,45 +38,14 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
--- local set_hl = vim.api.nvim_set_hl -- Like vimscript 'highlight / hi'.
--- local ns_id = 0 -- Global highlight. (Namespace)
-
--- Diagnostic
-
--- set_hl(ns_id, "DiagnosticWarn",                     { fg = "#somecolor", bg = "#someothercolor", italic = false })
--- set_hl(ns_id, "DiagnosticVirtualTextWarn",          { fg = "#somecolor", bg = "#someothercolor", italic = false })
--- set_hl(ns_id, "DiagnosticError",                    { fg = "#somecolor", bg = "#someothercolor", italic = false })
--- set_hl(ns_id, "DiagnosticVirtualTextError",         { fg = "#somecolor", bg = "#someothercolor", italic = false })
--- set_hl(ns_id, "DiagnosticInfo",                     { fg = "#somecolor", bg = "#someothercolor", italic = false })
--- set_hl(ns_id, "DiagnosticHint",                     { fg = "#somecolor", bg = "#someothercolor", italic = false })
-
--- set_hl(ns_id, "DiagnosticVirtualTextWarn", { italic = true })
--- set_hl(ns_id, "DiagnosticError", { italic = true })
--- set_hl(ns_id, "DiagnosticVirtualTextError", { italic = true })
--- set_hl(ns_id, "DiagnosticInfo", { italic = true })
--- set_hl(ns_id, "DiagnosticHint", { italic = true })
--- set_hl(ns_id, "DiagnosticWarn", { fg = "#e86671", italic = true })
-
 vim.cmd.colorscheme(vars.colorscheme)
--- Diagnostic Underline
--- set_hl(ns_id, "DiagnosticUnderlineError", { undercurl = true })
--- set_hl(ns_id, "DiagnosticUnderlineWarn", { undercurl = true })
--- set_hl(ns_id, "DiagnosticUnderlineInfo", { undercurl = true })
--- set_hl(ns_id, "DiagnosticUnderlineHint", { undercurl = true })
 
 vim.g.undodir = "~/.config/nvim/undo"
 vim.g.undolevels = 1000
-
 vim.diagnostic.config({ signcolumn = true })
-
--- vim.cmd("set signcolumn=yes")
--- vim.cmd("highlight LspDiagnosticsUnderlineError guifg=RED guibg=RED gui=undercurl cterm=undercurl")
--- set signcolumn=yes
---
 
 vim.cmd("set cindent")
 vim.cmd("set undofile")
-vim.cmd("EnableWhitespace")
 
 vim.g.netrw_nogx = 1 -- disable netrw gx
 vim.o.foldcolumn = "1"
@@ -121,7 +89,7 @@ vim.filetype.add({
 	extension = {
 		i3config = "i3config",
 	},
-    -- filename = {
-    --     ["i3config.snippets"] = "i3config"
-    -- }
+	-- filename = {
+	--     ["i3config.snippets"] = "i3config"
+	-- }
 })

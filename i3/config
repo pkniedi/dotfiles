@@ -1,9 +1,9 @@
-# https://itsfoss.com/i3-customization/ 
+# https://itsfoss.com/i3-customization/
 # https://i3wm.org/docs/userguide.html
 
 
 # border  background text indicator
-client.focused $bluegrad5 $bluegrad5 $whitegrad1 $whitegrad1 
+client.focused $bluegrad5 $bluegrad5 $whitegrad1 $whitegrad1
 client.unfocused $black $black $fggrad5 $black
 client.focused_inactive $black $black $bluegrad5  $black
 client.urgent  $transparent $transparent $text $black
@@ -12,8 +12,7 @@ client.urgent  $transparent $transparent $text $black
 
 
 
-
-# =============================== execs  ================================= 
+# =============================== execs  =================================
 # ON startup
 # exec -> only once at i3 startup
 
@@ -33,7 +32,7 @@ font pango: Hack Nerd Font 11
 focus_on_window_activation none
 no_focus [window_role="pop-up"]
 
-# ============================= declarations =============================  
+# ============================= declarations =============================
 set $zsh-bin-dir $HOME/bin/zsh-scripts
 set $config-dir $HOME/.config
 
@@ -48,7 +47,7 @@ set $ws8 "8"
 set $ws9 "9"
 
 
-# ============================= colors =============================  
+# ============================= colors =============================
 set $background  #1e2127
 set $black  #1e2127
 set $red  #e06c75
@@ -117,7 +116,7 @@ show_marks yes
 
 
 
-# ================================ bindings ======================================= 
+# ================================ bindings =======================================
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 
@@ -147,8 +146,8 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+s exec scrot $HOME/screenshots/%T-screenshot.png
 bindsym $mod+r reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+m  exec kitty 
-# bindsym $mod+Shift+space floating toggle 
+bindsym $mod+Shift+m  exec kitty
+# bindsym $mod+Shift+space floating toggle
 bindsym $mod+u workspace prev
 bindsym $mod+i workspace next
 bindsym $mod+1 workspace number $ws1
@@ -266,14 +265,15 @@ set $mode-scratchpad SCRATCHPAD
 bindsym $mod+minus mode $mode-scratchpad, scratchpad show
 bindsym $mod+Tab mode $mode-scratchpad, scratchpad show
 
+
 mode "$mode-scratchpad" {
     bindsym d exec kitty --class dropdown , mode "default"
     bindsym l exec kitty --class linky-popup, mode "default"
     bindsym Shift+space exec kitty --class linky-popup, mode "default"
     bindsym Return scratchpad show, mode "default"
-    bindsym Escape  scratchpad show, mode "default" 
-    bindsym $mod+minus scratchpad show, scratchpad show 
-    bindsym $mod+Tab scratchpad show, scratchpad show 
+    bindsym Escape  scratchpad show, mode "default"
+    bindsym $mod+minus scratchpad show, scratchpad show
+    bindsym $mod+Tab scratchpad show, scratchpad show
     bindsym a scratchpad show, mode "default"
     bindsym b scratchpad show, mode "default"
     bindsym c scratchpad show, mode "default"
@@ -303,8 +303,10 @@ mode "$mode-scratchpad" {
 }
 
 # ===================== scratchpad ========================
+
 bindsym $mod+d     [instance="^dropdown$"]   scratchpad show
 bindsym $mod+n     [instance="^notes$"]   scratchpad show
+bindsym $mod+c     [instance="^calendar$"]   scratchpad show
 bindsym $mod+Shift+space     [instance="^linky-popup$"]   scratchpad show
 
 for_window [instance="^notes$"] \
@@ -312,7 +314,7 @@ for_window [instance="^notes$"] \
     resize set 90 ppt 90 ppt, \
     move position 70 30, \
     sticky enable, \
-    move scratchpad 
+    move scratchpad
 
 
 # WARN: utility requires this setup
@@ -321,18 +323,28 @@ for_window [instance="^linky-popup$"] \
     resize set 60 ppt 30 ppt, \
     move position 330 100, \
     sticky enable, \
-    move scratchpad 
+    move scratchpad
 
 for_window [instance="^dropdown$"] \
     floating enable, border none, \
     resize set 90 ppt 90 ppt, \
     move position 70 30, \
     sticky enable, \
-    move scratchpad 
+    move scratchpad
+
+
+for_window [instance="^calendar$"] \
+    floating enable, border none, \
+    resize set 90 ppt 90 ppt, \
+    move position 70 30, \
+    sticky enable, \
+    move scratchpad
 
 exec --no-startup-id kitty --class dropdown
 exec --no-startup-id  kitty --class linky-popup
 exec --no-startup-id kitty --working-directory=$HOME/notes/zettelkasten --class notes
+exec --no-startup-id  kitty --class calendar
+
 
 # bindsym $mod+Shift+t scratchpad
 
@@ -340,7 +352,13 @@ bindsym $mod+Shift+minus  floating enable, border none, \
                           resize set 90 ppt 90 ppt, \
                           move position 70 30, \
                           sticky enable \
-                          move scratchpad 
+                          move scratchpad
 
 
 bindsym $mod+0  scratchpad show
+
+for_window [instance="^info$"] \
+    floating enable \
+
+
+bindsym $mod+Shift+t exec i3-nagbar '-m "HEllo there"' --class info

@@ -278,6 +278,6 @@ require("lazy").setup({
 		---@param opts cn.ConfigSchema
 		opts = { [[ your custom config here ]] },
 	},
-	"ntpeters/vim-better-whitespace",
+	-- "ntpeters/vim-better-whitespace",
 	"mg979/vim-visual-multi",
 })

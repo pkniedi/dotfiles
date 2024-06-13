@@ -64,20 +64,13 @@ fi
 
 # Finishes all child processes and restores the prompt. If there is s git repo present, asks to enter a commit message
 function finishnotes(){
-if [ -d .git ]; then
-    printf "Want to commit changes? [y/N] "
-    read input
-    echo $input
-    if [[ $input == "y" ]]; then
-        printf "enter commit message: "
-        read message
-        git add --all
-        git commit --all -m $message
-    fi
-fi
 pkill -P $$
 cd $HOME
 clear
+}
+
+tester(){
+    echo in the test function
 }
 
 function takenotes(){
@@ -90,12 +83,15 @@ subject=$(pwd | cut -d/ -f5)
 
 cd notes
 # latexmk -pdf -outdir=output -pvc main.tex  &>/dev/null & 
-zathura -P 0 output/main.pdf &>/dev/null &
+msleep 300
+
+kitty --directory $HOME/notes/$subject/notes --hold latexmk -pdf -outdir=output -pvc --shell-escape main.tex &
 msleep 300
 i3-msg move container right
+zathura -P 0 output/main.pdf &>/dev/null &
+msleep 300
 i3-msg focus left
 
-kitty --directory $HOME/notes/$subject/notes &
 # automatically go to stopped sigh
 
 grep "STOPPED" *.tex 2>/dev/null
