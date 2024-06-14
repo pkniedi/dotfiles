@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-# Creates compressed archive files of dirs specified in DIRS_TO_BACKUP.
+# Creates compressed archive files of dirs specified in DIRS_TO_BACKUP array.
 #
-# Runs as a crontab job according to:
+# Runs as a CRON job according to:
 # 0 15 * * * zsh ~/bin/bckup
 # 10 15 */3 * * zsh ~/bin/bckup r
 # that is, makes  backups and cleans tmp file every 3 days at 15:10.
