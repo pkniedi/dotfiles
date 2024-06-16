@@ -72,7 +72,6 @@ vim.keymap.set("n", [[<leader>bd]], [[:bd<CR>]], opts)
 vim.keymap.set("n", [[<leader>bn]], [[:bn<CR>]], opts)
 vim.keymap.set("n", [[<leader>bp]], [[:bp<CR>]], opts)
 vim.keymap.set("n", [[<leader>ou]], [[:!openurls %<CR>]], opts)
-vim.keymap.set('n', [[<CR>]], [[gf]], opts)
 
 -- visual
 vim.keymap.set("v", "p", '"_dP')
@@ -110,10 +109,15 @@ vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true })
 
 vim.keymap.set("n", [[<localleader>t]], function()
 	user_functions.my_open_url()
-end, {desc = "Hello there"})
+end, { desc = "Hello there" })
 
 vim.keymap.set("n", [[<leader>gn]], function()
 	print(vim.api.nvim_buf_get_name(0))
 end, opts)
 
-vim.keymap.set('n', [[<leader>e]], [[:!./%<CR>]], {desc = "Execute current file."})
+vim.keymap.set("n", [[<leader>ee]], [[:!./%<CR>]], { desc = "Execute current file." })
+vim.keymap.set("n", [[<leader>ea]], [[:!./% ]], { desc = "Execute current file with arguments." })
+vim.keymap.set("n", [[<leader>gw]], [[:r! getwiki ]], opts)
+vim.keymap.set("n", [[<CR>]], function()
+	user_functions.my_open_url()
+end, opts)

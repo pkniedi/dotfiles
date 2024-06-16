@@ -1,7 +1,6 @@
 local vim = vim
 local vars = require("variables")
 
-vim.api.nvim_create_user_command("Test", 'echo "It works!"', {})
 vim.api.nvim_create_user_command("SubR", ":%s/\\([,. ]\\)R\\([,. ]\\)/\\1$\\\\mathcal{R}$\\2/g", {})
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
@@ -10,6 +9,10 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 		vim.o.wrap = false
 	end,
 })
+
+vim.api.nvim_create_user_command("Tester", function()
+	print("HEllo")
+end, {})
 
 vim.api.nvim_create_autocmd({ "BufAdd" }, {
 	pattern = "*",

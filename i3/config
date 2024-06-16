@@ -29,7 +29,7 @@ exec_always xset r rate 200 50
 
 set $mod Mod4
 font pango: Hack Nerd Font 11
-focus_on_window_activation none
+focus_on_window_activation focus
 no_focus [window_role="pop-up"]
 
 # ============================= declarations =============================
