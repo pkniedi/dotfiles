@@ -160,11 +160,14 @@ cd res
 [ -f lectures.md ] && nvim lectures.md
 }
 
+
 function openDefs() {
 typeset -a def=("${(f)"$(<defaults)"}")
-
 for lec in "${def[@]}";do
-    # echo $lec newline
-    zathura &>/dev/null $lec &
+    # Check if line is not commented out.
+    echo $lec | grep -E "^[^#][^ ].*"
+    if [[ $? == 0 ]]; then
+         zathura &>/dev/null $lec &
+    fi
 done
 }

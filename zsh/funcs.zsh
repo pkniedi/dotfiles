@@ -2,25 +2,6 @@ function _testerrino() {
 echo Successful hello there
 }
 
-# TODO:  (since: Wed Jun  5 11:53:22 CEST 2024) 
-
-# function newZettel(){
-#
-# [! -d $HOME/notes/zettelkasten  ] && md -p $HOME/notes/zettelkasten
-# cd ~/notes/zettelkasten
-# if [ $# -ne 1 ];then
-#     printf "Enter name:"
-#     read input
-#     name=$input
-# else
-#     name=$1
-# fi
-# echo "#
-# TODO
-# "
-# }
-
-
 
 function openAllURLs() {
     [ ! -f urls ] && return 1
@@ -108,5 +89,4 @@ function tglcolo (){
         sed -i "s|alabaster|onedark|" ~/.config/alacritty/colorscheme.toml
     fi
     touch ~/.config/alacritty/alacritty.toml
-
 }
