@@ -18,16 +18,17 @@ touch $LAST_BCKUP
 
 last_update=$(cat $BACKUPS/.last-backup)
 
-if [[ $(date +'%d%m') == $(cat $LAST_BCKUP) ]]; then
+# Can force backup with f
+if [[ $(date +'%d%m') == $(cat $LAST_BCKUP) && $1 != 'f' ]]; then
     echo Already did update today
     exit 0
 fi
-
 
 DIRS_TO_BACKUP=(
 $HOME/notes
 $HOME/dotfiles
 $HOME/projects
+$HOME/Documents/templates
 )
 
 printf "$(date +'%a %b %m %H:%M:%S'): starting backup...\n"  | tee -a $BACKUP_LOG
