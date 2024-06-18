@@ -12,5 +12,5 @@ if len(args) < 2:
 res = wiki.search(args[1])[0]
 
 print(
-    "% URLS: " + wiki.page(res).url + "\n\n" +
-    wiki.summary(res,sentences=10))
+    "% URLS:\n" + wiki.page(res).url + "\n\n" +
+    wiki.summary(res,sentences=7))

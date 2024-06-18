@@ -10,7 +10,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	end,
 })
 
--- Makes # <s> the devault comment for urls files
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = "urls",
 	callback = function()
@@ -18,8 +17,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufAdd" }, {
+vim.api.nvim_create_autocmd({ "BufAdd","BufWinEnter" }, {
 	pattern = "*",
 	command = "BufferOrderByBufferNumber",
 })
+
 vim.cmd(" augroup pandoc_syntax au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc augroup END ")

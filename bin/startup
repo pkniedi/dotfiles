@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-
 # Workspace 2
 i3-msg workspace number 2
 msleep 250

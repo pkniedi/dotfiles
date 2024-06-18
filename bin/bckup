@@ -38,7 +38,7 @@ for dir in "$DIRS_TO_BACKUP[@]";do
     cd ..
     if [[ -f $THIS_BACKUP_DIR/$name.tar.xz ]];then
         mv $THIS_BACKUP_DIR/$name.tar.xz $BACKUPS_TMP
-        printf "$(date +'%a %b %m %H:%M:%S'): moving $name.tar.xz to .tmp"
+        printf "$(date +'%a %b %m %H:%M:%S'): moving $name.tar.xz to .tmp\n"
     fi
 
     # use xz with best compression

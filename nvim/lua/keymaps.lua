@@ -121,3 +121,6 @@ vim.keymap.set("n", [[<leader>gw]], [[:r! getwiki ]], opts)
 vim.keymap.set("n", [[<CR>]], function()
 	user_functions.my_open_url()
 end, opts)
+
+vim.keymap.set("n", [[<localleader>mm]], [[:!make<CR>]], { desc = "run make" })
+vim.keymap.set("n", [[<localleader>ma]], [[:!make]], { desc = "run make <arg>" })
