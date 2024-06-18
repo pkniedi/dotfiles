@@ -2,13 +2,10 @@
 
 # Creates compressed archive files of dirs specified in DIRS_TO_BACKUP array.
 #
-# Runs as a CRON job according to:
+# Runs as a cron job according to:
 # 0 * * * * zsh ~/bin/bckup
-# 10 15 */3 * * zsh ~/bin/bckup r
-# that is, makes  backups and empties tmp file every 3 days at 15:10.
+# that is, attempts to make daily backup every hour.
 
-
-# Dirs
 BACKUPS=$HOME/backups
 THIS_BACKUP_DIR=$BACKUPS/week-$(date +%W)
 BACKUPS_TMP=$BACKUPS/.bck
@@ -26,10 +23,6 @@ if [[ $(date +'%d%m') == $(cat $LAST_BCKUP) ]]; then
     exit 0
 fi
 
-# For crontab
-if [[ $1 -eq 'r' ]];then
-    rm $BACKUPS_TMP/* && echo "$(date +'%a %b %m %H:%M:%S'): cleaned .bck dir" >> $BACKUP_LOG
-fi
 
 DIRS_TO_BACKUP=(
 $HOME/notes
@@ -49,10 +42,11 @@ for dir in "$DIRS_TO_BACKUP[@]";do
 
     # use xz with best compression
     printf "$(date +'%a %b %m %H:%M:%S'): starting backup of $dir\n"  | tee -a $BACKUP_LOG
-    XZ_OPT=-9 tar -cJf $THIS_BACKUP_DIR/$name.tar.xz $name
+    XZ_OPT=-9 tar -cJf $THIS_BACKUP_DIR/$name.tar.xz $name || mv $BACKUPS_TMP/$name.tar.xz $THIS_BACKUP_DIR
     printf "$(date +'%a %b %m %H:%M:%S'): backup of $dir done\n"  | tee -a $BACKUP_LOG
 done
 
 printf "$(date +'%a %b %m %H:%M:%S'): finished backup. Total size: $(du -sh $THIS_BACKUP_DIR | cut -d '/' -f1 | sed -e 's/\t//')\n"  | tee -a $BACKUP_LOG
+rm $BACKUPS_TMP/* && echo "$(date +'%a %b %m %H:%M:%S'): Removed tmp files" >> $BACKUP_LOG
 
 echo $(date +'%d%m') > $LAST_BCKUP
