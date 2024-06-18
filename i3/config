@@ -9,9 +9,6 @@ client.focused_inactive $black $black $bluegrad5  $black
 client.urgent  $transparent $transparent $text $black
 
 
-
-
-
 # =============================== execs  =================================
 # ON startup
 # exec -> only once at i3 startup
@@ -351,7 +348,7 @@ exec --no-startup-id kitty --class dropdown
 exec --no-startup-id  kitty --class linky-popup
 exec --no-startup-id kitty --working-directory=$HOME/notes/zettelkasten --class notes
 exec --no-startup-id  kitty --class calendar
-exec --no-startup-id  kitty --class spotify
+exec --no-startup-id  spotify --class spotify
 exec --no-startup-id ~/bin/startup
 
 

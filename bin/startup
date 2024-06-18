@@ -3,51 +3,52 @@
 
 # Workspace 2
 i3-msg workspace number 2
-msleep 300
+msleep 250
 kitty &
-msleep 300
+msleep 250
 # Workspace 3
 i3-msg workspace number 3
-msleep 300
+msleep 250
 kitty &
-msleep 300
+msleep 250
 
 # Workspace 4
 i3-msg workspace number 4
-msleep 300
+msleep 250
 kitty &
-msleep 300
+msleep 250
 
 # Workspace 5
 i3-msg workspace number 5
-msleep 300
+msleep 250
 kitty &
-msleep 300
+msleep 250
 
 # Workspace 6
 i3-msg workspace number 6
-msleep 300
+msleep 250
 kitty &
-msleep 300
+msleep 250
 
 # Workspace 7
 i3-msg workspace number 7
-msleep 300
+msleep 250
 kitty &
-msleep 300
+msleep 250
 
 # Workspace 8
 i3-msg workspace number 8 
+msleep 250
 kitty --hold journalctl -f & 
 kitty --hold htop &
-msleep 300
+msleep 250
 
 # Workspace 9
 i3-msg workspace number 9
-msleep 400
+msleep 250
 anki &
-msleep 700
+msleep 1000
 
 i3-msg workspace number 1
-msleep 300
+msleep 250
 firefox &

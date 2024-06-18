@@ -10,9 +10,13 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	end,
 })
 
-vim.api.nvim_create_user_command("Tester", function()
-	print("HEllo")
-end, {})
+-- Makes # <s> the devault comment for urls files
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = "urls",
+	callback = function()
+		vim.api.nvim_command("set commentstring=#\\ %s")
+	end,
+})
 
 vim.api.nvim_create_autocmd({ "BufAdd" }, {
 	pattern = "*",
