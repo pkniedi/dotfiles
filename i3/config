@@ -308,6 +308,7 @@ bindsym $mod+d     [instance="^dropdown$"]   scratchpad show
 bindsym $mod+n     [instance="^notes$"]   scratchpad show
 bindsym $mod+c     [instance="^calendar$"]   scratchpad show
 bindsym $mod+Shift+space     [instance="^linky-popup$"]   scratchpad show
+bindsym $mod+s [instance="^spotify$"] scratchpad show
 
 for_window [instance="^notes$"] \
     floating enable, border none, \
@@ -340,10 +341,20 @@ for_window [instance="^calendar$"] \
     sticky enable, \
     move scratchpad
 
+
+for_window [instance="^spotify$"] \
+    floating enable, border none, \
+    resize set 90 ppt 90 ppt, \
+    move position 70 30, \
+    sticky enable, \
+    move scratchpad
+
 exec --no-startup-id kitty --class dropdown
 exec --no-startup-id  kitty --class linky-popup
 exec --no-startup-id kitty --working-directory=$HOME/notes/zettelkasten --class notes
 exec --no-startup-id  kitty --class calendar
+exec --no-startup-id  kitty --class spotify
+exec --no-startup-id ~/bin/startup
 
 
 # bindsym $mod+Shift+t scratchpad

@@ -1,6 +1,6 @@
 # Setup
 
-Configs for:
+Configuration files for:
 
 -   nvim
 -   alacritty

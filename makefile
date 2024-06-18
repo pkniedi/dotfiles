@@ -38,9 +38,9 @@ md:
 	mkdir -p $(CONFIG_HOME)/kitty 
 
 
-
+# TODO: change to rsync
 cp-dirs:
-	cp -r $(PWD)/zsh $(CONFIG_HOME) 
+	# cp -r $(PWD)/zsh $(CONFIG_HOME) 
 	cp $(PWD)/zsh/zshenv $(HOME)/.zshenv
 	cp -r $(PWD)/nvim $(CONFIG_HOME) 
 	cp -r $(PWD)/bin $(HOME)
