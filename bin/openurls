@@ -9,7 +9,7 @@ fi
 
 pgrep firefox 1>/dev/null || {firefox;msleep 500}
 
-urls=$(grep -o "http[^ ^)(]*" $file)
+urls=$(grep -o "[^# ]http[^ ^)(]*" $file)
 
 
 

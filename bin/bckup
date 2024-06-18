@@ -3,9 +3,10 @@
 # Creates compressed archive files of dirs specified in DIRS_TO_BACKUP array.
 #
 # Runs as a CRON job according to:
-# 0 15 * * * zsh ~/bin/bckup
+# 0 * * * * zsh ~/bin/bckup
 # 10 15 */3 * * zsh ~/bin/bckup r
 # that is, makes  backups and empties tmp file every 3 days at 15:10.
+
 
 # Dirs
 BACKUPS=$HOME/backups
@@ -14,7 +15,16 @@ BACKUPS_TMP=$BACKUPS/.bck
 mkdir -p $THIS_BACKUP_DIR $BACKUPS_TMP
 
 BACKUP_LOG=$BACKUPS/.backup.log
+LAST_BCKUP=$BACKUPS/.last-backup
 touch $BACKUP_LOG
+touch $LAST_BCKUP
+
+last_update=$(cat $BACKUPS/.last-backup)
+
+if [[ $(date +'%d%m') == $(cat $LAST_BCKUP) ]]; then
+    echo Already did update today
+    exit 0
+fi
 
 # For crontab
 if [[ $1 -eq 'r' ]];then
@@ -44,3 +54,5 @@ for dir in "$DIRS_TO_BACKUP[@]";do
 done
 
 printf "$(date +'%a %b %m %H:%M:%S'): finished backup. Total size: $(du -sh $THIS_BACKUP_DIR | cut -d '/' -f1 | sed -e 's/\t//')\n"  | tee -a $BACKUP_LOG
+
+echo $(date +'%d%m') > $LAST_BCKUP
