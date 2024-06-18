@@ -1,0 +1,53 @@
+#!/usr/bin/env zsh
+
+
+# Workspace 2
+i3-msg workspace number 2
+msleep 300
+kitty &
+msleep 300
+# Workspace 3
+i3-msg workspace number 3
+msleep 300
+kitty &
+msleep 300
+
+# Workspace 4
+i3-msg workspace number 4
+msleep 300
+kitty &
+msleep 300
+
+# Workspace 5
+i3-msg workspace number 5
+msleep 300
+kitty &
+msleep 300
+
+# Workspace 6
+i3-msg workspace number 6
+msleep 300
+kitty &
+msleep 300
+
+# Workspace 7
+i3-msg workspace number 7
+msleep 300
+kitty &
+msleep 300
+
+# Workspace 8
+i3-msg workspace number 8 
+kitty --hold journalctl -f & 
+kitty --hold htop &
+msleep 300
+
+# Workspace 9
+i3-msg workspace number 9
+msleep 400
+anki &
+msleep 700
+
+i3-msg workspace number 1
+msleep 300
+firefox &

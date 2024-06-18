@@ -21,8 +21,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b
 exec --no-startup-id "feh --bg-fill $HOME/wallpapers/random/rice-terrace-landscape-wallpaper.jpg || echo Failed to set wallpaper"
-exec --no-startup-id firefox
-# exec --no-startup-id keepassxc
 exec --no-startup-id $HOME/.config/polybar/launch.sh &>/dev/null
 
 exec_always xset r rate 200 50

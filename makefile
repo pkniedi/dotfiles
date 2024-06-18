@@ -37,19 +37,17 @@ md:
 	mkdir -p $(CONFIG_HOME)/alacritty 
 	mkdir -p $(CONFIG_HOME)/kitty 
 
-
-# TODO: change to rsync
 cp-dirs:
-	# cp -r $(PWD)/zsh $(CONFIG_HOME) 
-	cp $(PWD)/zsh/zshenv $(HOME)/.zshenv
-	cp -r $(PWD)/nvim $(CONFIG_HOME) 
-	cp -r $(PWD)/bin $(HOME)
-	cp -r $(PWD)/i3 $(CONFIG_HOME) 
-	cp -r $(PWD)/polybar $(CONFIG_HOME) 
-	cp -r $(PWD)/nvim $(CONFIG_HOME) 
-	cp -r $(PWD)/starship $(CONFIG_HOME)
-	cp -r $(PWD)/alacritty $(CONFIG_HOME)
-	cp -r $(PWD)/kitty $(CONFIG_HOME)
+	rsync -av --progress $(PWD)/zsh $(CONFIG_HOME) 
+	rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv
+	rsync -av --progress $(PWD)/nvim $(CONFIG_HOME) 
+	rsync -av --progress $(PWD)/bin $(HOME)
+	rsync -av --progress $(PWD)/i3 $(CONFIG_HOME) 
+	rsync -av --progress $(PWD)/polybar $(CONFIG_HOME) 
+	rsync -av --progress $(PWD)/nvim $(CONFIG_HOME) 
+	rsync -av --progress $(PWD)/starship $(CONFIG_HOME)
+	rsync -av --progress $(PWD)/alacritty $(CONFIG_HOME)
+	rsync -av --progress $(PWD)/kitty $(CONFIG_HOME)
 
 
 reload-config:
