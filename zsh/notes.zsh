@@ -87,10 +87,10 @@ msleep 300
 
 kitty --directory $HOME/notes/$subject/notes --hold latexmk -pdf -outdir=output -pvc --shell-escape main.tex &
 msleep 300
-i3-msg move container right
+i3-msg move container right &>/dev/null
 zathura -P 0 output/main.pdf &>/dev/null &
-msleep 300
-i3-msg focus left
+msleep 300 
+i3-msg focus left &>/dev/null
 
 # automatically go to stopped sigh
 

@@ -1,6 +1,7 @@
 # Setup
 
-Configuration files for:
+
+Installs the following packages
 
 -   nvim
 -   alacritty
@@ -8,19 +9,22 @@ Configuration files for:
 -   polybar
 -   starship
 -   zsh + oh-my-zsh
+-   git
 -   bin
 
-Note: does not check for dependencies of scripts etc, only loads config files.
+and copies the configuration files to the correct location.
 
 
 # Installation
-run the following command to install everything.
+
+run the following command to install and sync everyting.
 ```sh
-make install
+sudo ./install.sh
 ```
 
-# Sync all config files
-Run the following command to copy the changed config files to the '.config' directory.
+# Copy configuration files
+
+Run the following command to copy the changed configuration files to the right (.config) directory:
 ```sh
 make sync
 ```
@@ -29,3 +33,4 @@ make sync
 
 -   oh-my-zsh setup -> check if it gets installed properly.
 -   point wd to this dir
+-   Make install script

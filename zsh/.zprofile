@@ -1,2 +1,3 @@
-toilet  -w 200 --font letter "welcome back 
+echo ""
+toilet  -w 200 --font letter "WELCOME BACK 
 $USER"
