@@ -28,6 +28,7 @@ zsh:
 	sudo chsh -s $$(which zsh) 
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+
 utils:
 	which git &>/dev/null || $(CMD_PCK_MANAGER) git
 	which curl &>/dev/null || $(CMD_PCK_MANAGER) curl
@@ -37,7 +38,6 @@ utils:
 
 kitty:
 	which kitty &>/dev/null || $(CMD_PCK_MANAGER) kitty
-
 
 sync: md cp-dirs
 
