@@ -24,7 +24,9 @@ tmux
 
 # WARN: Source both before oh-my-zsh
 source $ZDOTDIR/src.zsh
+export ZSH_COMPDUMP=$ZSH_HOME/cache/.zcompdump-$HOST
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 source $ZDOTDIR/colors.zsh
