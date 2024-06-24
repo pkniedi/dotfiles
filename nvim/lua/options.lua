@@ -44,7 +44,6 @@ vim.g.undodir = "~/.config/nvim/undo"
 vim.g.undolevels = 1000
 vim.diagnostic.config({ signcolumn = true })
 
-vim.cmd("set cindent")
 vim.cmd("set undofile")
 
 vim.g.netrw_nogx = 1 -- disable netrw gx

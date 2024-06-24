@@ -110,14 +110,6 @@ snippet noted "add new NOTE: <<??>> (since: Tue 26.09 16:12)"
 % NOTE: $0 (since: `date +%a` `date +%d.%m` `date +%H:%M`)
 endsnippet
 
-snippet algo "insert algorithm pseudocode template" i
-\begin{algorithm}
-	\caption{$1}
-	\begin{algorithmic}[1]
-		$0
-	\end{algorithmic}
-\end{algorithm}
-endsnippet
 
 snippet salgo "insert algorithm pseudocode template" i
 \begin{algorithmic}[1]
@@ -341,13 +333,13 @@ endsnippet
 snippet secdefs "new subsection with definitions" i
 \subsection{$1} 
 \subsubsection{Definitions} 
-\begin{itemize}
+\begin{itemize}[label=\textbullet]
     \item $0
 \end{itemize}
 endsnippet
 
 snippet dpdefs "Description" iA
-\begin{itemize}
+\begin{itemize}[label=\textbullet]
 	\item \textit{Definition of the table}: $0
 	\item \textit{Computation of an entry}:
 	\item \textit{Calculation order}:
