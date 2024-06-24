@@ -17,14 +17,15 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b
-exec --no-startup-id "feh --bg-fill $HOME/wallpapers/random/rice-terrace-landscape-wallpaper.jpg || echo Failed to set wallpaper"
+exec --no-startup-id "feh --bg-fill $HOME/wallpapers/astronaut.png || echo Failed to set wallpaper"
 exec --no-startup-id $HOME/.config/polybar/launch.sh &>/dev/null
+exec --no-startup-id ~/bin/startup.py
 
 exec_always xset r rate 200 50
 
 set $mod Mod4
 font pango: Hack Nerd Font 11
-focus_on_window_activation focus
+focus_on_window_activation none
 no_focus [window_role="pop-up"]
 
 # ============================= declarations =============================
@@ -204,6 +205,8 @@ mode "$mode-layout" {
     bindsym Right move right
     bindsym b split h
     bindsym v split v
+    bindsym $mod+Return mode "default"
+    bindsym $mod+Escape mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+Shift+Escape mode "default"
@@ -232,6 +235,7 @@ bindsym $mod+Shift+e exec zsh -c "{pgrep &>/dev/null vlc && i3-nagbar -m 'vlc ru
 mode "$mode-system" {
     bindsym i mode $mode-system-info
     bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym b exec --no-startup-id ~/bin/bckup f
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
@@ -344,12 +348,14 @@ for_window [instance="^spotify$"] \
     sticky enable, \
     move scratchpad
 
+
+
+
 exec --no-startup-id kitty --class dropdown
 exec --no-startup-id  kitty --class linky-popup
 exec --no-startup-id kitty --working-directory=$HOME/notes/zettelkasten --class notes
 exec --no-startup-id  kitty --class calendar
 exec --no-startup-id  spotify --class spotify
-exec --no-startup-id ~/bin/startup
 
 
 # bindsym $mod+Shift+t scratchpad
@@ -365,6 +371,3 @@ bindsym $mod+0  scratchpad show
 
 for_window [instance="^info$"] \
     floating enable \
-
-
-bindsym $mod+Shift+t exec i3-nagbar '-m "HEllo there"' --class info
