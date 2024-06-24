@@ -3,10 +3,11 @@
 
 from i3ipc import Connection
 import asyncio, subprocess, time, os
-
+import notify2
 
 i3 = Connection()
 
+start_time = time.time()
 class_map = {
     "firefox": "firefox",
     "anki" : "Anki",
@@ -25,6 +26,7 @@ def open_app_on_ws(cmd,ws_nr,window_class) -> None:
     while(len(tree.find_classed(window_class)) == 0):
         tree =  i3.get_tree()
 
+
 open_app_on_ws("firefox",1,class_map["firefox"])
 open_app_on_ws("kitty",2,class_map["kitty"])
 open_app_on_ws("kitty",3,class_map["kitty"])
@@ -37,4 +39,9 @@ open_app_on_ws("kitty --hold htop",8,class_map["kitty"])
 open_app_on_ws("anki",9,class_map["anki"])
 
 
-i3.cmd("workspace 1")
+i3.command("workspace 1")
+notify2.init("glib")
+n = notify2.Notification("Startup script",
+                         "finished in " + str(time.time()-start_time) + " seconds!",
+                        )
+n.show()

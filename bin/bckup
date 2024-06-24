@@ -51,3 +51,5 @@ printf "$(date +'%a %b %m %H:%M:%S'): finished backup. Total size: $(du -sh $THI
 rm $BACKUPS_TMP/* && echo "$(date +'%a %b %m %H:%M:%S'): Removed tmp files" >> $BACKUP_LOG
 
 echo $(date +'%d%m') > $LAST_BCKUP
+
+
