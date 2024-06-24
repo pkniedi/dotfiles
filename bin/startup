@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 # Workspace 2
+
 i3-msg workspace number 2
 msleep 250
 kitty &
@@ -46,7 +47,7 @@ msleep 250
 i3-msg workspace number 9
 msleep 250
 anki &
-msleep 1000
+msleep 1500
 
 i3-msg workspace number 1
 msleep 250
