@@ -1,4 +1,4 @@
-plugins=( httpie git zsh-autosuggestions aliases fancy-ctrl-z sudo copybuffer copyfile copypath colored-man-pages web-search wd cp aliases colorize archlinux zsh-syntax-highlighting zsh-history-substring-search dirhistory zsh-vi-mode tmux) 
+plugins=(httpie git zsh-autosuggestions aliases fancy-ctrl-z sudo copybuffer copyfile copypath colored-man-pages web-search wd cp aliases colorize archlinux zsh-syntax-highlighting zsh-history-substring-search dirhistory zsh-vi-mode tmux) 
 
 # WARN: All before sourcing oh-my-zsh
 source $ZDOTDIR/src.zsh
@@ -16,8 +16,4 @@ source $ZDOTDIR/aliases.zsh
 setopt HISTIGNOREDUPS HISTIGNORESPACE
 setopt SUNKEYBOARDHACK
 unsetopt HIST_VERIFY
-
-# FIX: disable notify-send command execution time
-# tty | grep dev/pts &>/dev/null  && eval "$(starship init zsh)" || PROMPT="%2. $ "
-
 PROMPT=$RIGHT_PROMPT
