@@ -1,5 +1,4 @@
-alias la='exa --icons -F -H --group-directories-first --sort=mod --git -1 -lah'
-alias l='exa --icons -F -H --group-directories-first --sort=mod --git -1 -lah'
+which exa &>/dev/null && alias la='exa --icons -F -H --group-directories-first --sort=mod --git -1 -lah'
 alias rmzip='rm -r *.zip'
 alias rmr='rm -r'
 alias pdw=';pwd'

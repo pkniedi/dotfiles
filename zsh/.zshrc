@@ -20,4 +20,4 @@ unsetopt HIST_VERIFY
 # FIX: disable notify-send command execution time
 # tty | grep dev/pts &>/dev/null  && eval "$(starship init zsh)" || PROMPT="%2. $ "
 
-PROMPT="%2. $ "
+PROMPT=$RIGHT_PROMPT
