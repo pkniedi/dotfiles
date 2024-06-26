@@ -10,11 +10,11 @@ test:
 
 
 zsh: 
-	mkdir -p $(CONFIG_HOME)/zsh 
-	rsync -av --progress $(PWD)/zsh $(CONFIG_HOME) 
-	rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	chsh -s $(which zsh)
+	# mkdir -p $(CONFIG_HOME)/zsh 
+	# rsync -av --progress $(PWD)/zsh $(CONFIG_HOME) 
+	# rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	chsh -s $$(which zsh)
 
 
 bin:
