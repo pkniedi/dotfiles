@@ -1,4 +1,5 @@
 CONFIG_HOME:=$(HOME)/.config
+ZSH:=$(CONFIG_HOME)/zsh/.oh-my-zsh
 
 .PHONY: sync md cp-dirs clean zsh nvim bin i3 polybar nvim kitty alacritty
 
@@ -11,7 +12,6 @@ test:
 
 
 zsh: 
-	chsh -s $$(which zsh)
 	chmod +x ./omz-bootstrap.sh && ./omz-bootstrap.sh
 	mkdir -p $(CONFIG_HOME)/zsh 
 	rsync -av --progress $(PWD)/zsh $(CONFIG_HOME) 
