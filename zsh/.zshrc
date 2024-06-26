@@ -1,4 +1,25 @@
-plugins=(httpie git zsh-autosuggestions aliases fancy-ctrl-z sudo copybuffer copyfile copypath colored-man-pages web-search wd cp aliases colorize archlinux zsh-syntax-highlighting zsh-history-substring-search dirhistory zsh-vi-mode tmux) 
+plugins=(
+httpie
+git
+zsh-autosuggestions
+aliases
+fancy-ctrl-z
+sudo
+copybuffer
+copyfile
+copypath
+colored-man-pages
+web-search
+wd
+cp
+aliases
+colorize
+archlinux
+zsh-syntax-highlighting
+zsh-history-substring-search
+dirhistory
+zsh-vi-mode
+)
 
 # WARN: All before sourcing oh-my-zsh
 
