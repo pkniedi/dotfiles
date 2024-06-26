@@ -15,9 +15,12 @@ omz:
 
 zsh: 
 	mkdir -p $(CONFIG_HOME)/zsh 
-	chmod +x ./omz-bootstrap.sh && ./omz-bootstrap.sh
 	rsync -av --progress $(PWD)/zsh $(CONFIG_HOME) 
 	rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv
+	rsync -av --progress $(PWD)/zsh/.warprc $(HOME)
+	rm $(HOME)/.zshrc
+	rm $(HOME)/.zshrc.pre-oh-my-zsh
+	rm -rf $(HOME)/.oh-my-zsh
 
 
 bin:
