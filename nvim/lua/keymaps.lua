@@ -124,3 +124,5 @@ end, opts)
 
 vim.keymap.set("n", [[<leader>mm]], [[:!make<CR>]], { desc = "run make" })
 vim.keymap.set("n", [[<leader>ma]], [[:!make]], { desc = "run make <arg>" })
+
+vim.keymap.set("n", [[<leader>ss]], [[:SubSQL<CR>]], { desc = "Substitute SQL statements" })

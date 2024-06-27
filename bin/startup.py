@@ -17,8 +17,8 @@ class_map = {
 def open_app_on_ws(cmd,ws_nr,window_class) -> None:
     """
     cmd          -- the command to be executed
-    ws_nr        -- the workspace number on which to execute the command
-    window_class -- the window class of the application
+    ws nr        -- the workspace number on which to execute the command
+    window class -- the window class of the application
     """
     i3.command("workspace " + str(ws_nr))
     i3.command("exec " + cmd)
@@ -38,10 +38,4 @@ open_app_on_ws("kitty --hold journalctl -f",8,class_map["kitty"])
 open_app_on_ws("kitty --hold htop",8,class_map["kitty"])
 open_app_on_ws("anki",9,class_map["anki"])
 
-
 i3.command("workspace 1")
-notify2.init("glib")
-n = notify2.Notification("Startup script",
-                         "finished in " + str(time.time()-start_time) + " seconds!",
-                        )
-n.show()
