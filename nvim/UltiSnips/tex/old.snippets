@@ -270,7 +270,7 @@ snippet fa "\forall" i
 \forall $1. \; $0
 endsnippet
 
-snippet ex "\exists" i
+snippet ex "\exists" 
 \exists $1. \; $0
 endsnippet
 
@@ -519,7 +519,7 @@ snippet pcode "Paste code from clipboard" ib
 endsnippet
 
 
-snippet "links|sources|urls" "" ir
+snippet "links|sources|urls" "" irbA
 % URLS: 
 % `xclip -o`
 $0
@@ -558,13 +558,6 @@ $2
 \end{bsp} $0
 endsnippet
 
-snippet cfig "Description" ib
-\begin{figure}[h]
-${1:\caption{$2}}
-\centering
-	\includegraphics[width=${3:10cm}]{$4}
-\end{figure}
-endsnippet
 
 snippet align "align block" i
 \begin{align*}
@@ -627,14 +620,6 @@ snippet exp "\mathbb{E}[$1]"
 endsnippet
 
 
-snippet fig "Add figure" ib
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=12cm]{./figures$1} 
-    \caption{$2}
-	\label{fig: $3}
-\end{figure}
-endsnippet
 
 
 
@@ -780,26 +765,9 @@ snippet mt "maps to" i
 \mapsto$0
 endsnippet
 
-snippet figandref "Description" 
-figure (\ref{fig: $1})$0
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=12cm]{./figures$1} 
-    \caption{$2}
-	\label{$3}
-\end{figure}
-endsnippet
 
 
-snippet afig "Automatic fig" i 
-figure (\ref{fig: $1})$0
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=12cm]{./figures/${1:`ls -t ./figures | head -n1 | rev | cut -d. -f2- | rev`}} 
-    \caption{$2}
-	\label{fig: $1}
-\end{figure}
-endsnippet
+
 
 # snippet "rec?o?r?d?i?n?g?|lec" "Description" ibr
 # % LECTURE: [vlc --rate=1.35 --start-time=$1 &>/dev/null &]$0

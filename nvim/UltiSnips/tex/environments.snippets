@@ -44,3 +44,39 @@ snippet enum "Enum environment" ibA
 \end{enumerate}
 endsnippet
 
+
+snippet aefig "Automatic fig" i 
+figure (\ref{fig: $1})$0
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{./figures/${1:`ls -t ./figures | head -n1 | rev | cut -d. -f2- | rev`}} 
+    \caption{$2}
+	\label{fig: $1}
+\end{figure}
+endsnippet
+
+
+snippet afig "Automatic fig" i 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{./figures/${1:`ls -t ./figures | head -n1 | rev | cut -d. -f2- | rev`}} 
+\end{figure}
+endsnippet
+
+
+snippet efig "Add figure" ib
+figure (\ref{fig: $1})$0
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{./figures/$1} 
+    \caption{$2}
+	\label{fig: $1}
+\end{figure}
+endsnippet
+
+snippet fig "Add figure" ib
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{./figures$1} 
+\end{figure}
+endsnippet
