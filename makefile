@@ -14,6 +14,7 @@ omz:
 	chmod +x ./omz-bootstrap.sh && ./omz-bootstrap.sh
 
 zsh: 
+	read input
 	mkdir -p $(CONFIG_HOME)/zsh 
 	rsync -av --progress $(PWD)/zsh $(CONFIG_HOME) 
 	rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv

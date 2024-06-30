@@ -25,3 +25,17 @@ snippet thmbox "Description" ib
 	\end{$1}
 \end{txbox}
 endsnippet
+
+snippet impbox "Add important box" b
+\begin{txbox}{\impcolor}{$1}
+	    $0
+\end{txbox}
+endsnippet
+
+snippet eqbox "Equation in a box" bA
+\begin{eqbox}{\eqcolor}{}
+	\begin{equation*}
+	    $0
+	\end{equation*}
+\end{eqbox}
+endsnippet

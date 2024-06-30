@@ -66,3 +66,4 @@ alias ltm="latexmk -pdf -outdir=output -pvc main.tex"
 alias hfzf="history | fzf"
 alias ll='linky'
 alias conread='zathura &>/dev/null ~/resources/curr_book'
+alias lc='wc -l'

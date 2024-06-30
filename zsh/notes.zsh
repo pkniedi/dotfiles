@@ -157,7 +157,7 @@ goToNotesDir $1
 cd res
 # [ -f urls ] && openurls urls
 [ -f defaults ] && openDefs
-[ -f lectures.md ] && nvim lectures.md
+[ -f lectures.md ] && nvim lectures.md defaults urls
 }
 
 

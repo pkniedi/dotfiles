@@ -26,41 +26,6 @@ endsnippet
 
 # requires a custom command 
 
-snippet defn "\begin{defn}[${1:title}] ... \end{defn} block" 
-\begin{defn}[${1:title}]
-	$2
-\end{defn} $0
-endsnippet
-
-snippet rem "\begin{rem}[${1:title}] ... \end{rem} block"  
-\begin{rem}[${1:title}]
-	$2
-\end{rem} $0
-endsnippet
-
-snippet thm "\begin{thm}[${1:title}] ... \end{thm} block" b
-\begin{thm}[${1:title}]
-	$2
-\end{thm} $0
-endsnippet
-
-snippet conv "\begin{conv}[${1:title}] ... \end{thm} block" 
-\begin{conv}[${1:title}]
-	$2
-\end{conv} $0
-endsnippet
-
-snippet lem "\begin{lem}[${1:title}] ... \end{thm} block" 
-\begin{lem}[${1:title}]
-	$2
-\end{lem} $0
-endsnippet
-
-snippet exmp "\begin{exmp}[${1:title}] ... \end{thm} block" 
-\begin{exmp}[${1:title}]
-	$2
-\end{exmp} $0
-endsnippet
 
 snippet array "\begin{array}{c|c} ... \end{array}" i
 \begin{array}{${1:c|c}}
@@ -619,22 +584,10 @@ snippet exp "\mathbb{E}[$1]"
 \mathbb{E}[$1]$0
 endsnippet
 
-
-
-
-
 snippet "src|link" "% src" ir
 % `xclip -o`
 endsnippet
 
-
-snippet eqbox "Equation in a box" b
-\begin{eqbox}{blue}{${1:title}}
-	${3:\begin{equation*}}
-	    $4
-	${2:\end{equation*}}
-\end{eqbox}
-endsnippet
 
 snippet pterm "" iA
 \term{`xclip -o`}$0
@@ -674,11 +627,6 @@ snippet cterm "\cterm{\?color}" iA
 \cterm{\\$1color}{$2}$0
 endsnippet
 
-snippet impbox "Add important box" b
-\begin{txbox}{\impcolor}{$1}
-	    $0
-\end{txbox}
-endsnippet
 
 snippet dose "Do subsection" i
 \subsection{$1}

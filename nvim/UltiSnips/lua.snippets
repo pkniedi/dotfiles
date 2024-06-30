@@ -6,21 +6,27 @@ snippet nmap "map in normal mode" A
 vim.keymap.set('n', [[$1]], [[$2]], ${3:opts})
 endsnippet
 
-snippet gitp "add link for github page" iA
--- github repository: `xclip -o`
+snippet todo
+-- TODO: $0
 endsnippet
 
-snippet todo "add new TODO: <<??>> (since: Tue 26.09 16:11)"
--- TODO: $1 (since: `date +%a` `date +%d.%m` `date +%H:%M`)
-$0
+snippet fix
+-- FIX: $0
 endsnippet
 
-snippet fix "add new FIX: <<??>> (since: Tue 26.09 16:12)"
--- FIX: $1 (since: `date +%a` `date +%d.%m` `date +%H:%M`)
-$0
+snippet note
+-- NOTE: $0 
 endsnippet
 
-snippet note "add new NOTE: <<??>> (since: Tue 26.09 16:12)"
--- NOTE: $1 (since: `date +%a` `date +%d.%m` `date +%H:%M`)
-$0
+snippet "(nvim)?autocmd" "nvim_create_autocmd" rb
+vim.api.nvim_create_autocmd(
+{ "${1:BufNewFile}" },
+{
+pattern = ${2:vim.fn.expand("~") .. "/some/path/*.py"},
+callback = function(ev)
+	$0
+end,
+}
+)
 endsnippet
+
