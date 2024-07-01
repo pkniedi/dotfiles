@@ -7,6 +7,7 @@ sync: zsh nvim bin i3 polybar nvim kitty alacritty
 
 
 test:
+	read input
 	@echo $(USER)
 
 omz:
@@ -14,7 +15,8 @@ omz:
 	chmod +x ./omz-bootstrap.sh && ./omz-bootstrap.sh
 
 zsh: 
-	read input
+	@echo confirm or ctrl-c to abort
+	read confirm
 	mkdir -p $(CONFIG_HOME)/zsh 
 	rsync -av --progress $(PWD)/zsh $(CONFIG_HOME) 
 	rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv

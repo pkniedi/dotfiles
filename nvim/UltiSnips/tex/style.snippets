@@ -10,8 +10,8 @@ snippet txx "\text{}" iA
 \text{$1}$0
 endsnippet
 
-snippet ve "\verb!$1!$0" 
-\verb!${VISUAL}$1!$0
+snippet ve "\verb!$1!$0"
+\verb!${VISUAL:}$1!$0
 endsnippet
 
 
@@ -19,3 +19,16 @@ snippet vterm "\term{${VISUAL}}" iA
 \term{${VISUAL}}$0
 endsnippet
 
+
+snippet verb "" bi
+\begin{verbatim}
+	${VISUAL:}$1
+\end{verbatim}
+$0
+endsnippet
+
+
+
+snippet term "Description" 
+\term{${VISUAL:}$1}$0
+endsnippet
