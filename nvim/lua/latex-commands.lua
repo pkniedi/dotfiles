@@ -13,5 +13,3 @@ autocmd({ "BufWritePre" }, {
 		vim.fn.setpos(".", save_cursor)
 	end,
 })
-
-

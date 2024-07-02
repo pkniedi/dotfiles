@@ -31,23 +31,23 @@ $HOME/projects
 $HOME/Documents/templates
 )
 
-printf "$(date +'%a %b %m %H:%M:%S'): starting backup...\n"  | tee -a $BACKUP_LOG | tee -a $CRON_LOG_FILE
+printf "$(date +'%a %b %d %H:%M:%S'): starting backup...\n"  | tee -a $BACKUP_LOG
 for dir in "$DIRS_TO_BACKUP[@]";do
     name=$(echo $dir | rev | cut -d'/' -f1 | rev)
     cd $dir
     cd ..
     if [[ -f $THIS_BACKUP_DIR/$name.tar.xz ]];then
         mv $THIS_BACKUP_DIR/$name.tar.xz $BACKUPS_TMP
-        printf "$(date +'%a %b %m %H:%M:%S'): moving $name.tar.xz to .tmp\n"
+        printf "$(date +'%a %b %d %H:%M:%S'): moving $name.tar.xz to .tmp\n"
     fi
 
     # use xz with best compression
-    printf "$(date +'%a %b %m %H:%M:%S'): starting backup of $dir\n"  | tee -a $BACKUP_LOG | tee -a $CRON_LOG_FILE
+    printf "$(date +'%a %b %d %H:%M:%S'): starting backup of $dir\n"  | tee -a $BACKUP_LOG
     XZ_OPT=-9 tar -cJf $THIS_BACKUP_DIR/$name.tar.xz $name || mv $BACKUPS_TMP/$name.tar.xz $THIS_BACKUP_DIR
-    printf "$(date +'%a %b %m %H:%M:%S'): backup of $dir done\n"  | tee -a $BACKUP_LOG | tee -a $CRON_LOG_FILE
+    printf "$(date +'%a %b %d %H:%M:%S'): backup of $dir done\n"  | tee -a $BACKUP_LOG
 done
 
-printf "$(date +'%a %b %m %H:%M:%S'): finished backup. Total size: $(du -sh $THIS_BACKUP_DIR | cut -d '/' -f1 | sed -e 's/\t//')\n"  | tee -a $BACKUP_LOG | tee -a $CRON_LOG_FILE
-rm $BACKUPS_TMP/* && echo "$(date +'%a %b %m %H:%M:%S'): Removed tmp files" >> $BACKUP_LOG
+printf "$(date +'%a %b %d %H:%M:%S'): finished backup. Total size: $(du -sh $THIS_BACKUP_DIR | cut -d '/' -f1 | sed -e 's/\t//')\n"  | tee -a $BACKUP_LOG
+rm $BACKUPS_TMP/* && echo "$(date +'%a %b %d %H:%M:%S'): Removed tmp files" >> $BACKUP_LOG
 
 echo $(date +'%d%m') > $LAST_BCKUP

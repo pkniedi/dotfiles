@@ -4,7 +4,7 @@ function notes() {
 subject=$2
 
 
-case $1 in 
+case $1 in
     f)
         finishnotes
         ;;
@@ -20,15 +20,12 @@ case $1 in
     u)
       updateStandards $subject
       ;;
-    i) 
-      initDirsAndFiles $subject 
+    i)
+      initDirsAndFiles $subject
       ;;
-  q) 
-      tester
-      ;;
-  *) 
+  *)
     printf "No valid option\n"
-    ;; 
+    ;;
 esac
 }
 
@@ -69,9 +66,6 @@ cd $HOME
 clear
 }
 
-tester(){
-    echo in the test function
-}
 
 function takenotes(){
 # Check if already in subject dir of some subject
@@ -82,21 +76,21 @@ msleep 500
 subject=$(pwd | cut -d/ -f5)
 
 cd notes
-# latexmk -pdf -outdir=output -pvc main.tex  &>/dev/null & 
+# latexmk -pdf -outdir=output -pvc main.tex  &>/dev/null &
 msleep 300
 
 kitty --directory $HOME/notes/$subject/notes --hold latexmk -pdf -outdir=output -pvc --shell-escape main.tex &
 msleep 300
 i3-msg move container right &>/dev/null
 zathura -P 0 output/main.pdf &>/dev/null &
-msleep 300 
+msleep 300
 i3-msg focus left &>/dev/null
 
 # automatically go to stopped sigh
 
 grep "STOPPED" *.tex 2>/dev/null
 if [ $? -eq 0 ]; then
-    nvim -c /STOPPED $(grep "STOPPED:" *.tex 2>/dev/null | cut -d':' -f1) 
+    nvim -c /STOPPED $(grep "STOPPED:" *.tex 2>/dev/null | cut -d':' -f1)
 else
     nvim  main.tex
 fi
@@ -120,7 +114,7 @@ function updateStandards(){
     goToNotesDir $1
     initDirsAndFiles
     if [ -f .progress-log.md ]; then
-       mv .progress-log.md progress.md 
+       mv .progress-log.md progress.md
     fi
     cd res
     if [ -f .tn-defaults.txt ]; then
@@ -142,7 +136,7 @@ return 0
 }
 
 function generatenotes() {
-   initDirsAndFiles 
+   initDirsAndFiles
 }
 
 function doexercises() {

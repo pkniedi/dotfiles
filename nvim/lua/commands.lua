@@ -5,6 +5,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local usercommand = vim.api.nvim_create_user_command
 local cmd = vim.cmd
 
+-- Format on write
 augroup("__formatter__", { clear = true })
 autocmd("BufWritePost", {
 	group = "__formatter__",
@@ -28,7 +29,6 @@ autocmd({ "BufEnter", "BufWinEnter" }, {
 	end,
 })
 
-
 -- For clang-format files syntax highlight to work
 autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = "*.clang-format",
@@ -49,6 +49,7 @@ autocmd({ "BufWritePre" }, {
 	pattern = { "*" },
 	callback = function()
 		local save_cursor = vim.fn.getpos(".")
+		print("HELLO DEBUG")
 		pcall(function()
 			vim.cmd([[%s/\s\+$//e]])
 		end)

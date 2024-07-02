@@ -64,31 +64,8 @@ vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = "#D4D4D4" })
 vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
 vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
 
--- make zsh files recognized as sh for bash-ls & treesitter
-
-vim.filetype.add({
-	extension = {
-		zsh = "sh",
-		sh = "sh", -- force sh-files with zsh-shebang to still get sh as filetype
-	},
-	filename = {
-		[".zshrc"] = "sh",
-		[".zshenv"] = "sh",
-	},
-	-- FIXME:
-	pattern = {
-		[".*/zsh-scripts/"] = function()
-			print("succ")
-			return "sh"
-		end,
-	},
-})
-
 vim.filetype.add({
 	extension = {
 		i3config = "i3config",
 	},
-	-- filename = {
-	--     ["i3config.snippets"] = "i3config"
-	-- }
 })

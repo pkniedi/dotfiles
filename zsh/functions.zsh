@@ -1,6 +1,3 @@
-function _testerrino() {
-echo Successful hello there
-}
 
 
 function openAllURLs() {
@@ -16,10 +13,6 @@ function openAllURLs() {
 function bluedown() {
 sudo systemctl disable bluetooth
 sudo systemctl stop bluetooth
-}
-
-function tester() {
-    fzf
 }
 
 

@@ -231,7 +231,7 @@ mode "$mode-browser" {
 set $Locker i3lock-fancy && sleep 1
 set $mode-system SYSTEM
 
-bindsym $mod+Shift+e exec zsh -c "{pgrep &>/dev/null vlc && i3-nagbar -m 'vlc running'} || i3-msg mode SYSTEM"
+bindsym $mod+Shift+e exec pkill vlc, exec i3-msg mode "$mode-system"
 mode "$mode-system" {
     bindsym i mode $mode-system-info
     bindsym l exec --no-startup-id $Locker, mode "default"

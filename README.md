@@ -17,5 +17,5 @@ Assumes all packages are already installed.
 Run the following command to sync everyting:
 
 ```sh
-git clone https://github.com/pkniedi/dotfiles.git $HOME/dotfiles && cd dotfiles && make sync
+git clone https://github.com/pkniedi/dotfiles.git $HOME/dotfiles && make --file=$HOME/dotfiles/makefile sync
 ```

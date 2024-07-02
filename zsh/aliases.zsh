@@ -40,7 +40,6 @@ alias pac='sudo pacman -S'
 alias con="nv -c /stopped"
 alias ldprompt="source ~/.config/zsh/prompts.sh"
 alias pasta="/home/jaron/resources/mathematics/real-analysis"
-alias thisisatest="echo testerererer"
 alias cnvim="nvim /home/jaron/.config/nvim/"
 alias gccsqlite="gcc -lsqlite3 -std=c99"
 alias vid="vlc &> /dev/null"

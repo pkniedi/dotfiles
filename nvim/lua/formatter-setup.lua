@@ -1,12 +1,5 @@
--- github repository: https://github.com/mhartington/formatter.nvim
--- github repo. filetypes: https://github.com/mhartington/formatter.nvim/tree/master/lua/formatter/filetypes
---
--- NOTE: You need to install the executables manually, otherwise the formatting won't work (since: Wed 27.09 11:05)
-
--- Utilities for creating configurations
--- local util = require("formatter.util")
-
--- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
+-- https://github.com/mhartington/formatter.nvim
+-- https://github.com/mhartington/formatter.nvim/tree/master/lua/formatter/filetypes
 
 local util = require("formatter.util")
 local vim = vim
@@ -80,9 +73,6 @@ require("formatter").setup({
 		sh = {
 			require("formatter.filetypes.sh").shfmt,
 		},
-		zsh = {
-			require("formatter.filetypes.sh").shfmt,
-		},
 		css = {
 			require("formatter.filetypes.css").cssbeautify,
 		},
@@ -99,6 +89,24 @@ require("formatter").setup({
 					},
 					stdin = true,
 					try_node_modules = true,
+				}
+			end,
+		},
+		zsh = {
+			function()
+				local shiftwidth = vim.opt.shiftwidth:get()
+				local expandtab = vim.opt.expandtab:get()
+
+				if not expandtab then
+					shiftwidth = 0
+				end
+				return {
+					exe = "beautysh",
+					args = {
+						"-i",
+						shiftwidth,
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
 				}
 			end,
 		},
