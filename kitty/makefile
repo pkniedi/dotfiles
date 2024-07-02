@@ -1,8 +1,9 @@
 DOTFILES:=$(HOME)/dotfiles
+CWD=$(HOME)/.config/kitty
 EXCLUDE:= --exclude .mypy_cache --exclude .git
 
 sync: makedir
-	rsync -av --progress $(PWD) $(DOTFILES) $(EXCLUDE)
+	rsync -av --progress $(CWD) $(DOTFILES) $(EXCLUDE)
 
 makedir:
 	mkdir -p $(DOTFILES)

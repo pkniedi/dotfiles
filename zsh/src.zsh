@@ -2,7 +2,7 @@ files=("functions.zsh" "prompt.zsh" "notes.zsh" "aliases.zsh" "utils.zsh" "widge
 
 for i in "${files[@]}" 
 do
-    printf "source $i "
+    # printf "source $i "
     source $ZDOTDIR/$i
-    printf "done!\n"
+    # printf "done!\n"
 done
