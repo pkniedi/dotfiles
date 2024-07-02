@@ -23,7 +23,7 @@ function main () {
  url=$(column -t -s '	' <(cat $FILE) | fzf --cycle --color='hl:#E12656,fg:#D9D9D9,header:#719872,fg+:#D9D9D9' \
                                              --color='pointer:#E12656,marker:#E17854,prompt:#66BEDE,hl+:#90BC76' \
                                              | sed -e 's/^.*\(http.*\)/\1/') \
-                                             
+
 if  ! xdg-open &>/dev/null $url;then
      exit 1
 fi

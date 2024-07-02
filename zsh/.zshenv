@@ -9,5 +9,4 @@ export MANPAGER="nvim +Man!"
 export CONFIG_HOME=$HOME/.config
 export NVIM_HOME=$CONFIG_HOME/nvim
 export XDG_CONFIG_HOME=$CONFIG_HOME
-
-# Test
+export CRON_LOG_FILE="$HOME/logs/crontab.log"

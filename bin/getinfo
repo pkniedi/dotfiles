@@ -1,5 +1,5 @@
 #! /usr/bin/env zsh
 
-DAYS=$(datediff 2024-06-25 now)
+DAYS=$(datediff 2024-06-30 now)
 
 printf "Days since: $DAYS\n"

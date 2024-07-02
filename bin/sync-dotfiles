@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+# Script for cron job which runs every hour.
+
+make --file=$HOME/dotfiles/makefile pull
+printf "$(date +'%a %b %m %H:%M:%S'): Synced dotfiles\n" | tee -a $CRON_LOG_FILE

@@ -17,6 +17,7 @@ pull:
 	make --file=$(CONFIG_HOME)/alacritty/makefile sync
 	make --file=$(CONFIG_HOME)/kitty/makefile sync
 	make --file=$(CONFIG_HOME)/polybar/makefile sync
+	make --file=$(HOME)/bin/makefile sync
 
 
 sync: makedir
