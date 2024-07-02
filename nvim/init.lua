@@ -25,6 +25,7 @@ local modules = {
 	"gitsigns-setup",
 	"user-functions",
 	"options",
+        "latex-commands"
 }
 
 for i = 1, #modules do

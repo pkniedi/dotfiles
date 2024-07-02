@@ -223,6 +223,7 @@ mode "$mode-browser" {
 # Searches the web for the term currently in clipboard
     bindsym w workspace number $ws1,exec zsh -c "firefox --new-tab $(xclip -o -selection clipboard)",mode "default"
     bindsym n workspace number $ws1,exec firefox --new-window,mode "default"
+    bindsym p workspace number $ws1,exec firefox --new-tab "https://archlinux.org/packages/" ,mode "default"
 }
 
 ####### MODE System #########

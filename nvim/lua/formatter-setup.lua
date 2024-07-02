@@ -8,6 +8,10 @@
 
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 
+local util = require("formatter.util")
+local vim = vim
+local variables = require("variables")
+
 require("formatter").setup({
 	-- Enable or disable logging
 	logging = false,
@@ -16,13 +20,7 @@ require("formatter").setup({
 	-- All formatter configurations are opt-in
 	filetype = {
 		html = {
-			function()
-				return {
-					exe = "tidy -m",
-					stdin = true,
-				}
-			end,
-			require("formatter.filetypes.html").tidy,
+			require("formatter.filetypes.html").prettier,
 		},
 
 		haskell = {
@@ -30,30 +28,46 @@ require("formatter").setup({
 		},
 
 		javascript = {
-			require("formatter.filetypes.javascript").clangformat,
+			function()
+				return {
+					exe = "clang-format",
+					args = {
+						"-assume-filename",
+						"-style=file:"
+							.. vim.fn.expand("$HOME")
+							.. ".config/nvim/.clang-format-files/javascript.clang-format",
+						util.escape_path(util.get_current_buffer_file_name()),
+					},
+					stdin = true,
+					try_node_modules = true,
+				}
+			end,
 		},
 
 		lua = {
 			require("formatter.filetypes.lua").stylua,
 		},
+		tex = {
+			function()
+				return {
+					exe = "latexindent",
+					args = {},
+					stdin = true,
+				}
+			end,
+		},
 
 		java = {
-
 			function()
-				-- Full specification of configurations is down below and in Vim help
-				-- files
-				-- available formats: LLVM|GNU|Google|Chromium|Microsoft|Mozilla|WebKit
 				return {
 					exe = "clang-format",
 					args = {
-						-- "--style=LLVM",
-						-- "--style=WebKit",
-						-- "--style=Google",
-						"--style=Chromium",
-						-- "--style=Microsoft",
-						-- "--style=GNU",
-						"-i",
+						"-assume-filename",
+						"-style=file:" .. variables.clang_format_files_dir .. "javascript.clang-format",
+						util.escape_path(util.get_current_buffer_file_name()),
 					},
+					stdin = true,
+					try_node_modules = true,
 				}
 			end,
 		},
@@ -77,19 +91,16 @@ require("formatter").setup({
 		},
 		c = {
 			function()
-				-- Full specification of configurations is down below and in Vim help
-				-- files
-				-- available formats: LLVM|GNU|Google|Chromium|Microsoft|Mozilla|WebKit
 				return {
 					exe = "clang-format",
 					args = {
-						"--style=Chromium",
-						-- "--style=GNU",
-						"-i",
+						"-style=file:" .. variables.clang_format_files_dir .. "c.clang-format",
+						util.escape_path(util.get_current_buffer_file_name()),
 					},
+					stdin = true,
+					try_node_modules = true,
 				}
 			end,
-			-- require("formatter.filetypes.c").clangformat,
 		},
 	},
 })
