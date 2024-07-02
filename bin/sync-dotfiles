@@ -3,4 +3,5 @@
 # Script for cron job which runs every hour.
 
 make --file=$HOME/dotfiles/makefile pull
+crontab -l > $HOME/dotfiles/crontab
 printf "$(date +'%a %b %m %H:%M:%S'): Synced dotfiles\n" | tee -a $CRON_LOG_FILE

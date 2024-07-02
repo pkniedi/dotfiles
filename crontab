@@ -1,0 +1,3 @@
+0 * * * * zsh ~/bin/bckup
+0 * * * * rm ~/screenshots/*
+*/10 * * * *  zsh ~/bin/sync-dotfiles
