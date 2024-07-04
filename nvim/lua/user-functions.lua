@@ -2,6 +2,7 @@ local vim = vim
 local fn = vim.fn
 local handlers = require("url-open.modules.handlers")
 local option_module = require("url-open.modules.options")
+local util = require("utility-functions")
 
 local M = {}
 
@@ -49,6 +50,8 @@ M.open_vlc_special = function(s)
 	end
 end
 
+-- Utility for gx keymap.
+-- FIX: files wihtout extensions do not work
 M.my_open_url = function()
 	local curr_line = vim.api.nvim_get_current_line()
 	if vim.fn.filereadable(vim.fn.expand("<cfile>")) == 1 then
@@ -62,6 +65,72 @@ M.my_open_url = function()
 	else
 		handlers.open_url(option_module.DEFAULT_OPTIONS)
 	end
+end
+
+---Wrap argument string with left and right pattern
+---
+---
+---@param toReplace string
+---@param leftPattern string
+---@param rightPattern string
+---@param global boolean
+---@param visual boolean
+---
+M.make_italic = function(toReplace, leftPattern, rightPattern, global, visual)
+	local range = global and "%" or "."
+	range = visual and "'<,'>" or range
+	local l_chars = "\\([ ]\\+\\)"
+	local r_chars = "\\([ .;:,]\\+\\)"
+	pcall(function()
+		vim.cmd(
+			range
+				.. "s/"
+				.. l_chars
+				.. "\\("
+				.. toReplace
+				.. "\\)"
+				.. r_chars
+				.. "/\\1\\"
+				.. leftPattern
+				.. "\\2"
+				.. rightPattern
+				.. "\\3/ge"
+		)
+
+		-- Check for begining of line
+		vim.cmd(
+			range
+				.. "s/^"
+				.. "\\("
+				.. toReplace
+				.. "\\)"
+				.. r_chars
+				.. "/"
+				.. leftPattern
+				.. "\\1"
+				.. rightPattern
+				.. "\\2/ge"
+		)
+		-- Check for end of line
+		vim.cmd(
+			range
+				.. "s/"
+				.. l_chars
+				.. "\\("
+				.. toReplace
+				.. "\\)"
+				.. "$/\\1"
+				.. leftPattern
+				.. "\\2"
+				.. rightPattern
+				.. "/ge"
+		)
+		-- Check for single work line
+		vim.cmd(
+			range .. "s/^" .. "\\(" .. toReplace .. "\\)" .. "$" .. "/" .. leftPattern .. "\\1" .. rightPattern .. "/ge"
+		)
+		vim.cmd("noh")
+	end)
 end
 
 return M

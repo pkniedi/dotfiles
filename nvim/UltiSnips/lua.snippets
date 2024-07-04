@@ -1,9 +1,9 @@
-snippet vmap "map in visual mode" A
+snippet vmap "map in visual mode" Ab
 vim.keymap.set('v', [[$1]], [[$2]], ${3:opts})
 endsnippet
 
-snippet nmap "map in normal mode" A
-vim.keymap.set('n', [[$1]], [[$2]], ${3:opts})
+snippet nmap "map in normal mode" Ab
+vim.keymap.set('n', [[$1]], [[$2]], {desc = "$3"})
 endsnippet
 
 snippet todo

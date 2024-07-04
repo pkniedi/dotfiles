@@ -19,8 +19,7 @@ pull:
 	@make --file=$(CONFIG_HOME)/picom/makefile sync
 	@make --file=$(HOME)/bin/makefile sync
 
-
-
+# FIX: does not load properly
 omz:
 	@mkdir -p $(CONFIG_HOME)/zsh
 	@chmod +x ./omz-bootstrap.sh && ./omz-bootstrap.sh
