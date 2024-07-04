@@ -20,20 +20,15 @@ pull:
 	@make --file=$(HOME)/bin/makefile sync
 
 # FIX: does not load properly
-omz:
-	@mkdir -p $(CONFIG_HOME)/zsh
-	@chmod +x ./omz-bootstrap.sh && ./omz-bootstrap.sh
-
 zsh:
-	@echo confirm or ctrl-c to abort
-	@read confirm
 	@mkdir -p $(CONFIG_HOME)/zsh
 	@rsync -av --progress $(PWD)/zsh $(CONFIG_HOME)
 	@rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv
 	@rsync -av --progress $(PWD)/zsh/.warprc $(HOME)
 	@rm $(HOME)/.zshrc
-	@rm $(HOME)/.zshrc.pre-oh-my-zsh
-	@rm -rf $(HOME)/.oh-my-zsh
+	@chmod +x ./omz-bootstrap.sh && ./omz-bootstrap.sh
+	# @rm $(HOME)/.zshrc.pre-oh-my-zsh
+	# @rm -rf $(HOME)/.oh-my-zsh
 
 
 bin:
