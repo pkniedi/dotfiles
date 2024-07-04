@@ -1,26 +1,9 @@
-# Info
+# TODO
 
-My current nvim config.
+- Fix gx open links:
+  - does not open url if '\_' is in path
 
-<!-- Use the following to try out the current config: -->
-<!-- ```zsh -->
-<!-- nvim -u path/to/init.lua -->
-<!---->
-<!-- ``` -->
+# Checkout
 
-[test](./test.md)
-
-# Issues
-## fzf.nvim
-
-When getting the error *fuzzy.nvim: Cannot find neither fzy nor fzf . Please install either*, run
-
-```zsh
-cd $XDG_DATA_HOME/nvim/lazy/telescope-fzf-native.nvim
-make
-```
-
-
-# Todo
-
--   change e.g. rtpath such that this config gets loaded with the above command
+https://github.com/axieax/urlview.nvim
+https://github.com/dhruvasagar/vim-open-url

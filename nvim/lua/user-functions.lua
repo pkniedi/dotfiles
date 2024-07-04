@@ -25,8 +25,6 @@ M.open_mp4 = function(s)
 	end
 end
 
-
-
 M.open_vlc_special = function(s)
 	local from, to = string.find(s, "%[vlc.*&>/dev/null &%]")
 
@@ -53,12 +51,12 @@ end
 
 M.my_open_url = function()
 	local curr_line = vim.api.nvim_get_current_line()
-    if vim.fn.filereadable(vim.fn.expand("<cfile>")) == 1 then
-        vim.api.nvim_command("edit " .. vim.fn.expand("<cfile>"))
-    elseif M.open_vlc_special(curr_line) then
+	if vim.fn.filereadable(vim.fn.expand("<cfile>")) == 1 then
+		vim.api.nvim_command("edit " .. vim.fn.expand("<cfile>"))
+	elseif M.open_vlc_special(curr_line) then
 		print("VLC")
 	elseif M.is_valid_filepath() then
-        print("hello there")
+		print("hello there")
 	elseif M.open_mp4(curr_line) then
 		print("MP4")
 	else

@@ -56,8 +56,11 @@ starship:~/.config/starship
 telerecht:~/notes/telerecht
 templ:~/Documents/templates
 test:~/notes/test
+tex:~/.config/nvim/UltiSnips/tex
 tmp:~/tmp
 ulti:~/.config/nvim/UltiSnips
+ultitex:~/.config/nvim/UltiSnips/tex
+utex:~/.config/nvim/UltiSnips/tex
 wall:~/wallpapers
 ws:~/notes/ws
 z:~/notes/zettelkasten

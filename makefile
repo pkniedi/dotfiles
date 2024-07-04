@@ -16,10 +16,9 @@ pull:
 	@make --file=$(CONFIG_HOME)/alacritty/makefile sync
 	@make --file=$(CONFIG_HOME)/kitty/makefile sync
 	@make --file=$(CONFIG_HOME)/polybar/makefile sync
+	@make --file=$(CONFIG_HOME)/picom/makefile sync
 	@make --file=$(HOME)/bin/makefile sync
 
-
-sync: makedir
 
 
 omz:
@@ -47,7 +46,7 @@ i3:
 	@rsync -av --progress $(PWD)/i3 $(CONFIG_HOME)
 
 
-polybar:@
+polybar:
 	@mkdir -p $(CONFIG_HOME)/polybar
 	@rsync -av --progress $(PWD)/polybar $(CONFIG_HOME)
 

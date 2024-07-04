@@ -15,6 +15,8 @@ autocmd("BufWritePost", {
 usercommand("SubR", ":%s/\\([,. ]\\)R\\([,. ]\\)/\\1$\\\\mathcal{R}$\\2/ge", {})
 usercommand("SubSQL", ".s/\\([A-Z]\\{2,}\\)/\\\\verb!\\1!/ge", {})
 
+usercommand("MvFig", ":!rm ~/screenshots/*screenshot*.png && mv ~/screenshots/*.png ./figures", {})
+
 autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = "lectures.md",
 	callback = function()
@@ -46,7 +48,7 @@ vim.cmd(" augroup pandoc_syntax au! BufNewFile,BufFilePre,BufRead *.md set filet
 
 -- Remove trailing whitespace on write.
 autocmd({ "BufWritePre" }, {
-	pattern = { "*" },
+	pattern = { "*.tex", "*.c", "*.py", "*.sh", "*.js", "*.lua" },
 	callback = function()
 		local save_cursor = vim.fn.getpos(".")
 		print("HELLO DEBUG")

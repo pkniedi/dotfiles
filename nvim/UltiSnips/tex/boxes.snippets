@@ -1,5 +1,5 @@
 snippet "(tx)*box|tcb" "Description" brA
-\begin{txbox}{\\$1color}{}
+\begin{txbox}{\\${1:hltext}color}{}
 	$0
 \end{txbox}
 endsnippet
@@ -39,3 +39,10 @@ snippet eqbox "Equation in a box" bA
 	\end{equation*}
 \end{eqbox}
 endsnippet
+
+snippet "q(uote)?box" "Quote box" ibr
+\begin{eqbox}{\quotecolor}{}
+    $0
+\end{eqbox}
+endsnippet
+
