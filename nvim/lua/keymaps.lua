@@ -1,5 +1,6 @@
 local user_functions = require("user-functions")
 local builtin = require("telescope.builtin")
+local utility_funtions = require("utility-functions")
 local vim = vim
 local setkeymap = vim.keymap.set
 local opts = {
@@ -19,6 +20,17 @@ setkeymap("n", "<leader>sc", [[:set spell!<CR>]], opts)
 setkeymap("n", [[<leader>w]], [[:wall<CR>]], opts)
 setkeymap("n", [[<leader>noh]], [[:noh<CR>]], opts)
 setkeymap("n", [[gf]], [[:e <cfile><CR>]], { desc = "Goto file" })
+-- setkeymap("n", [[gf]], function()
+-- 	vim.cmd()
+-- 	if vim.fn.expand("%") == "defaults" then
+-- 		print(vim.api.nvim_get_current_line())
+-- 		vim.fn.system({
+-- 			"zathura",
+-- 			vim.api.nvim_get_current_line(),
+-- 			"&",
+-- 		})
+-- 	end
+-- end, { desc = "Goto file" })
 setkeymap("n", "<leader>ff", builtin.find_files, opts)
 setkeymap("n", "<leader>fg", builtin.live_grep, opts)
 setkeymap("n", "<leader>fb", builtin.buffers, opts)
@@ -106,8 +118,15 @@ setkeymap("n", [[<leader>gw]], [[:r! getwiki ]], opts)
 setkeymap("n", [[<CR>]], function()
 	user_functions.my_open_url()
 end, opts)
+
+setkeymap("n", [[<localleader>tt]], function()
+	utility_funtions.create_default_makefile()
+end, { desc = "" })
+-- make keymaps
 setkeymap("n", [[<leader>mm]], [[:!make<CR>]], { desc = "run make" })
-setkeymap("n", [[<leader>ma]], [[:!make]], { desc = "run make <arg>" })
+setkeymap("n", [[<leader>ma]], [[:!make]], { desc = ":!" })
+setkeymap("n", [[<leader>mt]], [[:!make test<CR>]], { desc = ":!make test<CR>" })
+
 setkeymap("n", [[<leader>ss]], [[:SubSQL<CR>]], { desc = "Substitute SQL statements" })
 
 -- visual mode

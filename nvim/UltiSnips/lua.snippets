@@ -3,8 +3,9 @@ vim.keymap.set('v', [[$1]], [[$2]], ${3:opts})
 endsnippet
 
 snippet nmap "map in normal mode" Ab
-vim.keymap.set('n', [[$1]], [[$2]], {desc = "$3"})
+setkeymap('n', [[$1]], [[$2]], {desc = "$2"})
 endsnippet
+
 
 snippet todo
 -- TODO: $0

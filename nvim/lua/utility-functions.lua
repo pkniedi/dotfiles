@@ -1,5 +1,6 @@
 local vim = vim
 local fn = vim.fn
+local os = require("os")
 
 local M = {}
 local string = {}
@@ -23,4 +24,16 @@ M.split = function(pString, pPattern)
 	end
 	return Table
 end
+
+M.getFileName = function()
+	vim.notify('vim.fn.expand("%")', vim.log.levels.INFO)
+end
+M.create_default_makefile = function()
+	if vim.fn.filereadable("./makefile") then
+		vim.notify("File exists", 2)
+	else
+		vim.notify("File does not exist", 3)
+	end
+end
+
 return M

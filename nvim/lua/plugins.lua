@@ -50,7 +50,7 @@ require("lazy").setup({
 
 		dependencies = {
 			"hrsh7th/cmp-calc",
-			"/onsails/lspkind.nvim",
+			"onsails/lspkind.nvim",
 			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
@@ -255,7 +255,7 @@ require("lazy").setup({
 	"brenoprata10/nvim-highlight-colors",
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	"jghauser/follow-md-links.nvim",
-	"/norcalli/nvim-colorizer.lua",
+	-- "/norcalli/nvim-colorizer.lua",
 	"brenoprata10/nvim-highlight-colors",
 	"mbbill/undotree",
 	{

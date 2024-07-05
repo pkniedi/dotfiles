@@ -1,10 +1,12 @@
+local vim = vim
 require("plugins")
 
 local modules = {
 	"keymaps",
 	"lsp-setup",
-	"nvim-cmp",
-	"commands",
+	"completion",
+	"commands.usercommands",
+	"commands.autocommands",
 	"autoclose-setup",
 	"listchars-setup",
 	"formatter-setup",
@@ -25,12 +27,13 @@ local modules = {
 	"gitsigns-setup",
 	"user-functions",
 	"options",
-        "latex-commands"
+	"commands.latex-commands",
 }
 
 for i = 1, #modules do
 	local not_found, err = pcall(require, modules[i])
 	if not not_found then
 		print(err)
+		-- vim.notify("Module '" .. modules[i] .. "' not found!", vim.log.levels.WARN)
 	end
 end
