@@ -17,7 +17,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b
-exec --no-startup-id "feh --bg-fill $HOME/wallpapers/astronaut.png || echo Failed to set wallpaper"
+exec_always --no-startup-id "feh --bg-fill --random $HOME/wallpapers/random"
 exec --no-startup-id $HOME/.config/polybar/launch.sh &>/dev/null
 exec --no-startup-id ~/bin/startup.py
 
@@ -361,12 +361,12 @@ for_window [instance="^pomodoro$"] \
     move scratchpad
 
 
-exec_always --no-startup-id kitty --class dropdown
+exec --no-startup-id kitty --class dropdown
 exec --no-startup-id  kitty --class linky-popup
 exec --no-startup-id kitty --working-directory=$HOME/notes/zettelkasten --class notes
 exec --no-startup-id  kitty --class calendar
 exec --no-startup-id  spotify --class spotify
-exec_always --no-startup-id  kitty --class pomodoro
+exec --no-startup-id  kitty --class pomodoro
 
 
 

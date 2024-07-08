@@ -21,6 +21,7 @@ last_update=$(cat $BACKUPS/.last-backup)
 # Can force backup with f
 if [[ $(date +'%d%m') == $(cat $LAST_BCKUP) && $1 != 'f' ]]; then
         echo Already did update today
+        printf "$(date +'%a %b %d %H:%M:%S'): Already did backup today. Aborting...\n" | tee -a $BACKUP_LOG
         exit 0
 fi
 
@@ -33,6 +34,10 @@ DIRS_TO_BACKUP=(
 
 printf "$(date +'%a %b %d %H:%M:%S'): starting backup...\n"  | tee -a $BACKUP_LOG
 for dir in "$DIRS_TO_BACKUP[@]";do
+        if [[ ! -d $dir ]]; then
+                printf "$(date +'%a %b %d %H:%M:%S'): Directory $dir does not exists. Skipping.\n" | tee -a $BACKUP_LOG
+                continue
+        fi
         name=$(echo $dir | rev | cut -d'/' -f1 | rev)
         cd $dir
         cd ..

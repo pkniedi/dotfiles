@@ -14,7 +14,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
-	"tanvirtin/monokai.nvim",
 	"quangnguyen30192/cmp-nvim-ultisnips",
 	"valentjn/ltex-ls",
 	{
@@ -113,9 +112,10 @@ require("lazy").setup({
 	},
 
 	-- colorschemes
+	"tanvirtin/monokai.nvim",
 	{ "navarasu/onedark.nvim", lazy = true, priority = 1000 },
-	{ "folke/tokyonight.nvim", lazy = true },
-	{ "shaunsingh/nord.nvim", lazy = true },
+	{ "scottmckendry/cyberdream.nvim", lazy = true, priority = 1000 },
+	-- Using lazy.nvim
 
 	-- treesitter
 	"nvim-treesitter/nvim-treesitter",

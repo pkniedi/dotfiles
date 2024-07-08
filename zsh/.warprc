@@ -2,6 +2,7 @@
 ad:~/notes/ad
 ala:~/.config/alacritty
 analysis:~/notes/analysis
+b:~/bin
 bin:~/bin
 cn:~/notes/cn
 con:~/.config
@@ -58,6 +59,7 @@ templ:~/Documents/templates
 test:~/notes/test
 tex:~/.config/nvim/UltiSnips/tex
 tmp:~/tmp
+tulti:~/.config/nvim/UltiSnips/tex
 ulti:~/.config/nvim/UltiSnips
 ultitex:~/.config/nvim/UltiSnips/tex
 utex:~/.config/nvim/UltiSnips/tex

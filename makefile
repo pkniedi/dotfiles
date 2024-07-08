@@ -25,7 +25,6 @@ zsh:
 	@rsync -av --progress $(PWD)/zsh $(CONFIG_HOME)
 	@rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv
 	@rsync -av --progress $(PWD)/zsh/.warprc $(HOME)
-	@rm $(HOME)/.zshrc
 	@chmod +x ./omz-bootstrap.sh && ./omz-bootstrap.sh
 	# @rm $(HOME)/.zshrc.pre-oh-my-zsh
 	# @rm -rf $(HOME)/.oh-my-zsh
