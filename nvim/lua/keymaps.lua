@@ -1,6 +1,6 @@
 local user_functions = require("user-functions")
 local builtin = require("telescope.builtin")
-local utility_funtions = require("utility-functions")
+local util_funcs = require("utility-functions")
 local vim = vim
 local setkeymap = vim.keymap.set
 local opts = {
@@ -17,7 +17,7 @@ setkeymap("n", "<C-h>", "<C-w>h", opts)
 setkeymap("n", "<C-k>", "<C-w>k", opts)
 setkeymap("n", "<C-l>", "<C-w>l", opts)
 setkeymap("n", "<leader>sc", [[:set spell!<CR>]], opts)
-setkeymap("n", [[<leader>w]], [[:wall<CR>]], opts)
+setkeymap("n", [[<leader>w]], [[:wall<CR><CR>]], opts)
 setkeymap("n", [[<leader>noh]], [[:noh<CR>]], opts)
 setkeymap("n", [[gf]], [[:e <cfile><CR>]], { desc = "Goto file" })
 -- setkeymap("n", [[gf]], function()
@@ -40,7 +40,6 @@ setkeymap("n", [[<leader>fo]], [[:Format<CR>]], opts)
 setkeymap("n", [[<leader>fw]], [[:FormatWrite<CR>]], opts)
 setkeymap("n", [[<leader>ul]], [[:call UltiSnips#RefreshSnippets()<CR>]], opts)
 setkeymap("n", [[<leader>?]], [[:Cheatsheet<CR>]], opts)
-setkeymap("n", [[<leader>sv]], [[:vsplit<CR>]], opts)
 setkeymap("n", [[<leader>ss]], [[:split<CR>]], opts)
 setkeymap("n", [[<leader>cc]], [[:close<CR>]], opts)
 setkeymap("n", [[<leader>fq]], [[:set formatoptions=jrql<CR>]], opts)
@@ -120,7 +119,7 @@ setkeymap("n", [[<CR>]], function()
 end, opts)
 
 setkeymap("n", [[<localleader>tt]], function()
-	utility_funtions.create_default_makefile()
+	util_funcs.create_default_makefile()
 end, { desc = "" })
 -- make keymaps
 setkeymap("n", [[<leader>mm]], [[:!make<CR>]], { desc = "run make" })
@@ -133,3 +132,30 @@ setkeymap("n", [[<leader>ss]], [[:SubSQL<CR>]], { desc = "Substitute SQL stateme
 setkeymap("v", "p", '"_dP')
 setkeymap("v", "<", "<gv", opts)
 setkeymap("v", ">", ">gv", opts)
+
+vim.keymap.set("n", "<leader>sv", function()
+	if vim.bo.filetype == "tex" then
+		local save_cursor = vim.fn.getpos(".")
+		vim.cmd(":.s/" .. vim.fn.expand("<cword>") .. "/\\\\verb!" .. vim.fn.expand("<cword>") .. "!/g")
+                vim.cmd("noh")
+		vim.fn.setpos(".", save_cursor)
+	end
+end, { desc = "Surround with verb block" })
+
+vim.keymap.set("n", "<leader>si", function()
+	if vim.bo.filetype == "tex" then
+		local save_cursor = vim.fn.getpos(".")
+		vim.cmd(":.s/" .. vim.fn.expand("<cword>") .. "/\\\\textit{" .. vim.fn.expand("<cword>") .. "}/g")
+                vim.cmd("noh")
+		vim.fn.setpos(".", save_cursor)
+	end
+end, { desc = "Surround with verb block" })
+
+vim.keymap.set("n", "<leader>sb", function()
+	if vim.bo.filetype == "tex" then
+		local save_cursor = vim.fn.getpos(".")
+		vim.cmd(":.s/" .. vim.fn.expand("<cword>") .. "/\\\\textbf{" .. vim.fn.expand("<cword>") .. "}/g")
+                vim.cmd("noh")
+		vim.fn.setpos(".", save_cursor)
+	end
+end, { desc = "Surround with verb block" })

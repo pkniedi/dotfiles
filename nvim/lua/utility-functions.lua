@@ -36,4 +36,9 @@ M.create_default_makefile = function()
 	end
 end
 
+M.wordUnderCursor = function()
+	return vim.fn.expand("cword")
+end
+
+
 return M

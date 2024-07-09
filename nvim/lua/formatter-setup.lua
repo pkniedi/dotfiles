@@ -16,9 +16,18 @@ require("formatter").setup({
 			require("formatter.filetypes.html").prettier,
 		},
 
-		haskell = {
-			require("formatter.filetypes.haskell").stylish_haskell,
-		},
+		-- haskell = {
+		-- 	function()
+		-- 		return {
+		-- 			exe = "ormolu",
+		-- 			args = {
+		-- 				" --mode inplace",
+		-- 				util.escape_path(util.get_current_buffer_file_name()),
+		-- 			},
+		-- 			stdin = true,
+		-- 		}
+		-- 	end,
+		-- },
 
 		javascript = {
 			function()

@@ -5,8 +5,8 @@ local modules = {
 	"keymaps",
 	"lsp-setup",
 	"completion",
-	"commands.usercommands",
-	"commands.autocommands",
+	"usercommands",
+	"autocommands",
 	"autoclose-setup",
 	"listchars-setup",
 	"formatter-setup",
@@ -27,7 +27,6 @@ local modules = {
 	"gitsigns-setup",
 	"user-functions",
 	"options",
-	"commands.latex-commands",
 }
 
 for i = 1, #modules do

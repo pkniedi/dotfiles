@@ -22,3 +22,5 @@ autocmd({ "BufWritePre" }, {
 usercommand("RmNonAscii", function()
 	cmd("%s/[•]//g")
 end, { nargs = "?" })
+
+
