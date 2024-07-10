@@ -6,6 +6,6 @@ sync: makedir
 	@rsync -aq $(CWD) $(DOTFILES) $(EXCLUDE)
 
 makedir:
-	mkdir -p $(DOTFILES)
+	@mkdir -p $(DOTFILES)
 
 .Phony: sync makedir

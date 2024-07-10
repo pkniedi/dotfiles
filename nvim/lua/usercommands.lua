@@ -5,7 +5,7 @@ local user_functions = require("user-functions")
 
 usercommand("SubR", ":%s/\\([,. ]\\)R\\([,. ]\\)/\\1$\\\\mathcal{R}$\\2/ge", {})
 usercommand("SubSQL", ".s/\\([A-Z]\\{2,}\\)/\\\\verb!\\1!/ge", {})
-usercommand("MvFig", ":!rm ~/screenshots/*screenshot*.png && mv ~/screenshots/*.png ./figures", {})
+usercommand("MvFig", ":!rm ~/screenshots/*screenshot*.png && ls -t |head -n1 ~/screenshots && mv ~/screenshots/*.png ./figures", {})
 
 usercommand("Italic", function(opts)
 	local ft = vim.bo.filetype

@@ -13,7 +13,6 @@ require("autoclose").setup({
 		['"'] = { escape = true, close = true, pair = '""', disabled_filetypes = { "tex", "haskell" } },
 		["'"] = { escape = true, close = true, pair = "''", disabled_filetypes = { "tex", "haskell" } },
 		["`"] = { escape = true, close = true, pair = "``" },
-		["$"] = { escape = true, close = true, pair = "$$", enabled_filetypes = { "tex" } },
 	},
 	options = {
 		disabled_filetypes = { "text", "sh", "markdown", "zsh", "config" },

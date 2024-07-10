@@ -26,7 +26,7 @@ kitty:~/.config/kitty
 l:~/Documents/links
 lina:~/notes/linalg
 linalg:~/notes/linalg
-links:~/Documents/links
+links:~/links
 logs:~/logs
 lpy:~/projects/learning/python
 m:~/resources/mathematics
@@ -57,6 +57,7 @@ starship:~/.config/starship
 telerecht:~/notes/telerecht
 templ:~/Documents/templates
 test:~/notes/test
+testtex:~/notes/test/notes
 tex:~/.config/nvim/UltiSnips/tex
 tmp:~/tmp
 tulti:~/.config/nvim/UltiSnips/tex

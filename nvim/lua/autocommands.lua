@@ -52,7 +52,6 @@ autocmd({ "BufWritePre" }, {
 	pattern = { "*.tex", "*.py", "*.sh", "*.js", "*.lua" },
 	callback = function()
 		local save_cursor = vim.fn.getpos(".")
-		vim.notify("Formatted!", vim.log.levels.INFO)
 		pcall(function()
 			vim.cmd([[%s/\s\+$//e]])
 		end)

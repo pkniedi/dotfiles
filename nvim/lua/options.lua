@@ -4,38 +4,38 @@ local vim = vim
 vim.opt.clipboard = "unnamedplus" -- use system clipboard
 vim.opt.wildmenu = true
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
-vim.opt.mouse = "a" -- allow the mouse to be used in Nvim
+vim.opt.mouse = "a"           -- allow the mouse to be used in Nvim
 
-vim.opt.tabstop = 8 -- number of visual spaces per TAB
-vim.opt.softtabstop = 8 -- number of spacesin tab when editing
-vim.opt.shiftwidth = 8 -- insert 4 spaces on a tab
-vim.opt.expandtab = true -- tabs are spaces, mainly because of python
-vim.opt.number = true -- show absolute number
+vim.opt.tabstop = 8           -- number of visual spaces per TAB
+vim.opt.softtabstop = 8       -- number of spacesin tab when editing
+vim.opt.shiftwidth = 8        -- insert 4 spaces on a tab
+vim.opt.expandtab = true      -- tabs are spaces, mainly because of python
+vim.opt.number = true         -- show absolute number
 vim.opt.relativenumber = true -- add numbers to each line on the left side
-vim.opt.cursorline = true -- highlight cursor line underneath the cursor horizontally
-vim.opt.splitbelow = true -- open new vertical split bottom
-vim.opt.splitright = true -- open new horizontal splits right
-vim.opt.termguicolors = true -- enable 24-bit RGB color in the TUI
+vim.opt.cursorline = true     -- highlight cursor line underneath the cursor horizontally
+vim.opt.splitbelow = true     -- open new vertical split bottom
+vim.opt.splitright = true     -- open new horizontal splits right
+vim.opt.termguicolors = true  -- enable 24-bit RGB color in the TUI
 vim.o.showmode = false
 
 -- Searching
-vim.opt.incsearch = true -- search as characters are entered
-vim.opt.hlsearch = true -- do not highlight matches
+vim.opt.incsearch = true  -- search as characters are entered
+vim.opt.hlsearch = true   -- do not highlight matches
 vim.opt.ignorecase = true -- ignore case in searches by default
-vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entered
-vim.opt.expandtab = true -- enable tab characters
+vim.opt.smartcase = true  -- but make it case sensitive if an uppercase is entered
+vim.opt.expandtab = true  -- enable tab characters
 vim.opt.lazyredraw = true --  Do not redraw screen in the middle of a macro. Makes them complete faster.
 
 local signs = {
-	Error = "",
-	Warn = "",
-	Hint = "",
-	Info = "",
+        Error = "",
+        Warn = "",
+        Hint = "",
+        Info = "",
 }
 
 for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
 vim.cmd.colorscheme(vars.colorscheme)
@@ -64,7 +64,7 @@ vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
 vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
 
 vim.filetype.add({
-	extension = {
-		i3config = "i3config",
-	},
+        extension = {
+                i3config = "i3config",
+        },
 })

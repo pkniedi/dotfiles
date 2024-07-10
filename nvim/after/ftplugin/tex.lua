@@ -11,7 +11,6 @@ local opts = { noremap = true, silent = true }
 local cmd = vim.cmd
 
 autocmd({ "BufWritePre" }, {
-	pattern = "*.tex",
 	callback = function()
 		local save_cursor = vim.fn.getpos(".")
 		pcall(function()
@@ -21,11 +20,19 @@ autocmd({ "BufWritePre" }, {
 	end,
 })
 
+-- autocmd({ "ExitPre" }, {
+-- 	callback = function()
+-- 		local curr_line = vim.api.nvim_get_current_line()
+-- 		vim.api.nvim_set_current_line(curr_line .. "  % STOPPED: here")
+-- 		vim.cmd("w")
+-- 	end,
+-- })
+
 -- TODO:  which set (ascii)?
 usercommand(0, "RmNonAscii", function()
 	cmd("%s/[•]//g")
 end, { nargs = "?" })
 
 -- jump to (sub)*section and paragraphs
-map(0, "n", "<Tab>", "<Cmd>call search('\\(sub\\)*section\\|paragraph')<CR>", opts)
-map(0, "n", "<S-Tab>", "<Cmd>call search('\\(sub\\)*section\\|paragraph', 'b')<CR>", opts)
+map(0, "n", "<Tab>", "<Cmd>call search('\\\\\\(sub\\)*section\\|\\\\paragraph')<CR>zt", opts)
+map(0, "n", "<S-Tab>", "<Cmd>call search('\\\\\\(sub\\)*section\\|\\\\paragraph', 'b')<CR>zt", opts)

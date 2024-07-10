@@ -151,7 +151,6 @@ require("lazy").setup({
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
 	{ "tzachar/fuzzy.nvim", dependencies = "nvim-telescope/telescope-fzf-native.nvim" },
-
 	"vijaymarupudi/nvim-fzf",
 	"tzachar/cmp-fuzzy-buffer",
 	"amarakon/nvim-cmp-fonts",
