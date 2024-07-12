@@ -1,0 +1,16 @@
+{
+  "keyMappings": "map h previousTab\nmap l nextTab\nmap f LinkHints.activateModeToOpenInNewTab\nunmap t\nmap t Vomnibar.activateTabSelection",
+  "scrollStepSize": 150,
+  "searchUrl": "https://duckduckgo.com/?q=",
+  "settingsVersion": "2.1.2",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://expert.ethz.ch/*"
+    }
+  ]
+}

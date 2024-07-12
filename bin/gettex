@@ -82,7 +82,7 @@ getSection() {
     printf "\\" > $FILENAME.tex
     printf "newpage\n\section{$NAME}"  >> $FILENAME.tex
     echo $SECTION_INPUT >> $FILENAME.tex
-    echo "\\input{$FILENAME}"
+    echo "\\input{$FILENAME.tex}"
     exit 0
 }
 

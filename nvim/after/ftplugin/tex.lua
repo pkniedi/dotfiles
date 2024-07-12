@@ -10,6 +10,8 @@ local opts = { noremap = true, silent = true }
 
 local cmd = vim.cmd
 
+usercommand(0, "MvFig", ":!rm &>/dev/null ~/screenshots/*screenshot*.png; mv ~/screenshots/*.png ./figures", {})
+
 autocmd({ "BufWritePre" }, {
 	callback = function()
 		local save_cursor = vim.fn.getpos(".")

@@ -26,16 +26,36 @@ def open_app_on_ws(cmd,ws_nr,window_class) -> None:
     while(len(tree.find_classed(window_class)) == 0):
         tree =  i3.get_tree()
 
+def open_kitty_lr(ws_nr) -> None:
+    """
+    Opens kitty on the specified window twice with two stacking windows.
+
+    ws nr        -- the workspace number on which to execute the command
+    """
+    i3.command("workspace " + str(ws_nr))
+    i3.command("exec kitty")
+    tree =  i3.get_tree()
+    while(len(tree.find_classed("kitty")) == 0):
+        tree =  i3.get_tree()
+    i3.command("exec kitty")
+    tree =  i3.get_tree()
+    while(len(tree.find_classed("kitty")) == 0):
+        tree =  i3.get_tree()
+    time.sleep(0.25)
+    i3.command("move right")
+
+
 
 open_app_on_ws("firefox",1,class_map["firefox"])
 open_app_on_ws("kitty",2,class_map["kitty"])
 open_app_on_ws("kitty",3,class_map["kitty"])
 open_app_on_ws("kitty",4,class_map["kitty"])
-open_app_on_ws("kitty",5,class_map["kitty"])
+open_kitty_lr(5)
 open_app_on_ws("kitty",6,class_map["kitty"])
 open_app_on_ws("kitty",7,class_map["kitty"])
 open_app_on_ws("kitty --hold journalctl -f",8,class_map["kitty"])
 open_app_on_ws("kitty --hold htop",8,class_map["kitty"])
 open_app_on_ws("anki",9,class_map["anki"])
 
-i3.command("workspace 1")
+
+# i3.command("workspace 1")
