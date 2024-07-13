@@ -2,6 +2,10 @@ global p!
 from helpers.py import *
 endglobal
 
-snippet "rec?o?r?d?i?n?g?|lec" "Description" brA
-% LECTURE: [vlc --rate=1.35 --start-time=`xclip -o -selection clipboard` $1 &>/dev/null &]$0
+snippet "arec|alec" "Description" brA
+% LECTURE: [vlc --rate=1.35 --start-time=`xclip -o -selection clipboard` `cat ~/.cache/vlc/last-video` $1 &>/dev/null &]$0
+endsnippet
+
+snippet "rec|lec" "Description" brA
+% LECTURE: [vlc --rate=1.35 --start-time=$1 &>/dev/null &]$0
 endsnippet

@@ -13,13 +13,13 @@ local cmd = vim.cmd
 usercommand(0, "MvFig", ":!rm &>/dev/null ~/screenshots/*screenshot*.png; mv ~/screenshots/*.png ./figures", {})
 
 autocmd({ "BufWritePre" }, {
-	callback = function()
-		local save_cursor = vim.fn.getpos(".")
-		pcall(function()
-			cmd("%s/\\(^\\n\\)\\{2,}/\\r/ge")
-		end)
-		vim.fn.setpos(".", save_cursor)
-	end,
+        callback = function()
+                local save_cursor = vim.fn.getpos(".")
+                pcall(function()
+                        cmd("%s/\\(^\\n\\)\\{2,}/\\r/ge")
+                end)
+                vim.fn.setpos(".", save_cursor)
+        end,
 })
 
 -- autocmd({ "ExitPre" }, {
@@ -32,9 +32,24 @@ autocmd({ "BufWritePre" }, {
 
 -- TODO:  which set (ascii)?
 usercommand(0, "RmNonAscii", function()
-	cmd("%s/[•]//g")
+        cmd("%s/[•]//g")
 end, { nargs = "?" })
 
 -- jump to (sub)*section and paragraphs
 map(0, "n", "<Tab>", "<Cmd>call search('\\\\\\(sub\\)*section\\|\\\\paragraph')<CR>zt", opts)
 map(0, "n", "<S-Tab>", "<Cmd>call search('\\\\\\(sub\\)*section\\|\\\\paragraph', 'b')<CR>zt", opts)
+
+usercommand(0, "IncreaseSectionLevelByOne", function()
+        cmd(".s/\\\\subsubsection/\\\\paragraph/e")
+        cmd(".s/\\\\subsection/\\\\subsubsection/e")
+        cmd(".s/\\\\section/\\\\subsection/e")
+end, {})
+
+usercommand(0, "DecreaseSectionLevelByOne", function()
+        cmd(".s/subsection/section/e")
+        cmd(".s/subsubsection/subsection/e")
+        cmd(".s/paragraph/subsubsection/e")
+end, {})
+
+map(0, "n", "+", ":IncreaseSectionLevelByOne<CR>", opts)
+map(0, "n", "-", ":DecreaseSectionLevelByOne<CR>", opts)

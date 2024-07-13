@@ -3,6 +3,7 @@ local fn = vim.fn
 local handlers = require("url-open.modules.handlers")
 local option_module = require("url-open.modules.options")
 local util = require("utility-functions")
+local io = require("io")
 
 local M = {}
 
@@ -19,6 +20,7 @@ M.open_mp4 = function(s)
 	local from, to = string.find(s, "http[s]*://[%S]*%.mp4")
 	if from ~= nil and to ~= nil then
 		local url = string.sub(s, from, to)
+		M.cache_last_vlc_video(s)
 		handlers.open_url_with_app({ "vlc" }, url)
 		return true
 	else
@@ -32,6 +34,7 @@ M.open_vlc_special = function(s)
 	if from ~= nil and to ~= nil then
 		local cmd = string.sub(s, from + 1, to - 1)
 		if fn.executable("vlc") == 1 then
+			M.cache_last_vlc_video(s)
 			fn.jobstart(cmd, {
 				detach = true,
 				on_exit = function(_, code, _)
@@ -50,8 +53,19 @@ M.open_vlc_special = function(s)
 	end
 end
 
+M.cache_last_vlc_video = function(s)
+	local from, to = string.find(s, "https?.*.mp4")
+	if from ~= nil and to ~= nil then
+		local url = (string.sub(s, from, to))
+		local file = io.open(vim.fn.expand("~") .. "/.cache/vlc/last-video", "w")
+		if file ~= nil then
+			file:write(url)
+		end
+		io.close(file)
+	end
+end
+
 -- Utility for gx keymap.
--- FIX: files wihtout extensions do not work
 M.my_open_url = function()
 	local curr_line = vim.api.nvim_get_current_line()
 	if vim.fn.filereadable(vim.fn.expand("<cfile>")) == 1 then

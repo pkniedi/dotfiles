@@ -119,5 +119,15 @@ require("formatter").setup({
 				}
 			end,
 		},
+		json = {
+			function()
+				return {
+					exe = "python -m json.tool",
+					args = {
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
+				}
+			end,
+		},
 	},
 })

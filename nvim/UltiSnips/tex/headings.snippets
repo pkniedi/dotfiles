@@ -50,16 +50,18 @@ snippet ssse "subsubsection" A
 \subsubsection*{$1}$0
 endsnippet
 
-snippet para "paragraph" iA
+snippet para "paragraph" A
 \paragraph{$1}$0
 endsnippet
 
 
 snippet asse "Advanced subsection" i
-\subsection*{$1} 
+\subsection*{${VISUAL:}$1} 
 % URLS:
 % https://en.wikipedia.org/?curid=`!p
-`snip.rv = wiki.page('ananans').pageid
+snip.rv = wiki.page(snip.v.text).pageid
+`
+
 `!p
 import wikipedia as wiki
 def wikiSum():
@@ -69,10 +71,28 @@ snip.rv = wikiSum()
 endsnippet
 
 snippet assse "Advanced subsection" i
-\subsection*{$1} 
+\subsection*{${VISUAL:}$0} 
 % URLS:
 % https://en.wikipedia.org/?curid=`!p
-`snip.rv = wiki.page('ananans').pageid
+snip.rv = wiki.page(snip.v.text).pageid
+`
+
+`!p
+import wikipedia as wiki
+def wikiSum():
+    return wiki.summary(snip.v.text,sentences=4)
+snip.rv = wikiSum()
+`
+endsnippet
+
+
+snippet apara "Advanced subsection" Ab
+\paragraph*{${VISUAL:}$0} 
+% URLS:
+% https://en.wikipedia.org/?curid=`!p
+snip.rv = wiki.page(snip.v.text).pageid
+`
+
 `!p
 import wikipedia as wiki
 def wikiSum():
@@ -82,10 +102,12 @@ snip.rv = wikiSum()
 endsnippet
 
 snippet ase "Advanced subsection" i
-\section*{$1} 
+\section*{${VISUAL:}$0} 
 % URLS:
 % https://en.wikipedia.org/?curid=`!p
-`snip.rv = wiki.page(snip.).pageid
+snip.rv = wiki.page(snip.).pageid
+`
+
 `!p
 import wikipedia as wiki
 def wikiSum():
