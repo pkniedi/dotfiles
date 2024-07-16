@@ -160,10 +160,34 @@ map("n", "<leader>sb", function()
 	end
 end, { desc = "Surround with verb block" })
 
+map("n", "<leader>fr", 'ye:%s/<C-R>"/')
 
-map("n", "<leader>fr", "ye:%s/<C-R>\"/")
+-- Buffer movement
+local nvmap = vim.api.nvim_set_keymap
+-- Move to previous/next
+nvmap("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
+nvmap("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
+-- Re-order to previous/next
+nvmap("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", opts)
+nvmap("n", "<A->>", "<Cmd>BufferMoveNext<CR>", opts)
+-- Goto buffer in position...
+nvmap("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
+nvmap("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
+nvmap("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
+nvmap("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
+nvmap("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
+nvmap("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", opts)
+nvmap("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
+nvmap("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
+nvmap("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
+nvmap("n", "<A-0>", "<Cmd>BufferLast<CR>", opts)
+-- Pin/unpin buffer
+nvmap("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
+-- Close buffer
+nvmap("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
 
+map("n", "<C-p>", "q:", opts)
 
 -- visual mode
-map("v", "<leader>fr", "y:%s/<C-R>\"/")
-map("v", "<leader>lfr", "y:.s/<C-R>\"/")
+map("v", "<leader>fr", 'y:%s/<C-R>"/')
+map("v", "<leader>lfr", 'y:.s/<C-R>"/')

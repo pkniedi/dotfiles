@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 from i3ipc import Connection
 import asyncio, subprocess, time, os
 import notify2
@@ -11,7 +10,8 @@ start_time = time.time()
 class_map = {
     "firefox": "firefox",
     "anki" : "Anki",
-    "kitty": "kitty"
+    "kitty": "kitty",
+    "keepassxc":"KeePassXC"
 }
 
 def open_app_on_ws(cmd,ws_nr,window_class) -> None:
@@ -46,9 +46,11 @@ def open_kitty_lr(ws_nr) -> None:
 
 
 
+open_app_on_ws("keepassxc",1,class_map["keepassxc"])
 open_app_on_ws("firefox",1,class_map["firefox"])
 open_app_on_ws("kitty",2,class_map["kitty"])
 open_app_on_ws("kitty",3,class_map["kitty"])
+
 open_app_on_ws("kitty",4,class_map["kitty"])
 open_kitty_lr(5)
 open_app_on_ws("kitty",6,class_map["kitty"])
@@ -58,4 +60,4 @@ open_app_on_ws("kitty --hold htop",8,class_map["kitty"])
 open_app_on_ws("anki",9,class_map["anki"])
 
 
-# i3.command("workspace 1")
+i3.command("workspace 1")

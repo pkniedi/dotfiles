@@ -17,21 +17,18 @@ endsnippet
 
 snippet unse "heading" A
 \section{$1}
-% URLS: 
 % `xclip -o`
 $0
 endsnippet
 
 snippet unsse "subsection" A
 \subsection{$1}
-% URLS: 
 % `xclip -o`
 $0
 endsnippet
 
 snippet unssse "subsubsection" A
 \subsubsection{$1}$0
-% URLS: 
 % `xclip -o`
 $0
 endsnippet
@@ -50,14 +47,13 @@ snippet ssse "subsubsection" A
 \subsubsection*{$1}$0
 endsnippet
 
-snippet para "paragraph" A
+snippet para "paragraph" Ab
 \paragraph{$1}$0
 endsnippet
 
 
 snippet asse "Advanced subsection" i
 \subsection*{${VISUAL:}$1} 
-% URLS:
 % https://en.wikipedia.org/?curid=`!p
 snip.rv = wiki.page(snip.v.text).pageid
 `
@@ -72,7 +68,6 @@ endsnippet
 
 snippet assse "Advanced subsection" i
 \subsection*{${VISUAL:}$0} 
-% URLS:
 % https://en.wikipedia.org/?curid=`!p
 snip.rv = wiki.page(snip.v.text).pageid
 `
@@ -88,7 +83,6 @@ endsnippet
 
 snippet apara "Advanced subsection" Ab
 \paragraph*{${VISUAL:}$0} 
-% URLS:
 % https://en.wikipedia.org/?curid=`!p
 snip.rv = wiki.page(snip.v.text).pageid
 `
@@ -103,7 +97,6 @@ endsnippet
 
 snippet ase "Advanced subsection" i
 \section*{${VISUAL:}$0} 
-% URLS:
 % https://en.wikipedia.org/?curid=`!p
 snip.rv = wiki.page(snip.).pageid
 `

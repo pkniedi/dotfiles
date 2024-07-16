@@ -21,7 +21,19 @@ M.open_mp4 = function(s)
 	if from ~= nil and to ~= nil then
 		local url = string.sub(s, from, to)
 		M.cache_last_vlc_video(s)
-		handlers.open_url_with_app({ "vlc" }, url)
+		if fn.executable("vlc") == 1 then
+			M.cache_last_vlc_video(s)
+			fn.jobstart("vlc  --rate=1.5 " .. url, {
+				detach = true,
+				on_exit = function(_, code, _)
+					print(code)
+					if code ~= 0 then
+						print("Error code:" .. code)
+					end
+				end,
+			})
+			return true
+		end
 		return true
 	else
 		return false
