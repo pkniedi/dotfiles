@@ -51,5 +51,7 @@ usercommand(0, "DecreaseSectionLevelByOne", function()
         cmd(".s/paragraph/subsubsection/e")
 end, {})
 
+map(0,"v","<space>v",'y<esc>:.s/\\(<C-r>"\\)/\\\\verb!\\1!/g<CR>',{desc = "Surround with \\verb! !"})
+
 map(0, "n", "+", ":IncreaseSectionLevelByOne<CR>", opts)
 map(0, "n", "-", ":DecreaseSectionLevelByOne<CR>", opts)
