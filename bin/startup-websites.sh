@@ -4,8 +4,10 @@
 news_urls=(
         "https://archlinux.org/packages/"
         "https://aur.archlinux.org/"
-        "https://news.ycombinator.com/"
         "https://www.theguardian.com/europe"
+        "https://www.theguardian.com/us-news"
+        "https://www.theguardian.com/international"
+        "https://news.ycombinator.com/"
         "https://stallman.org/"
         "https://slavoj.substack.com/"
         "https://github.com/login"
