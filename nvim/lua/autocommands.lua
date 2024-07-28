@@ -32,6 +32,13 @@ autocmd({ "BufEnter", "BufWinEnter" }, {
 	end,
 })
 
+autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = {"*.pml"},
+	callback = function()
+		vim.bo.commentstring = "// %s"
+	end,
+})
+
 -- For clang-format files syntax highlight to work
 autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = "*.clang-format",

@@ -9,7 +9,7 @@ news_urls=(
         "https://www.theguardian.com/international"
         "https://news.ycombinator.com/"
         "https://stallman.org/"
-        "https://slavoj.substack.com/"
+        "https://substack.com/sign-in?"
         "https://github.com/login"
         "https://account.proton.me/mail"
 )

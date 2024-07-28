@@ -1,6 +1,15 @@
 # Setup
 
-Contains the configuration files of: nvim , i3 , polybar , starship , zsh + oh-my-zsh setup, crond, picom, and contains some shell scripts.
+Contains the configuration files of: 
+nvim
+i3
+polybar
+starship
+zsh + oh-my-zsh setup
+crond
+picom
+
+Contains some shell scripts which, some of which are required for the other configuarations to work.
 
 Assumes all packages are already installed.
 
@@ -15,3 +24,4 @@ git clone https://github.com/pkniedi/dotfiles.git $HOME/dotfiles && make --file=
 # TODO
 
 - omz boostrapper
+- Documentation

@@ -14,7 +14,7 @@ docs:~/Documents
 dot:~/dotfiles
 dotfiles:~/dotfiles
 down:~/Downloads
-dreams:~/Documents/dreams/2024
+dreams:~/Documents/private/dreams
 ehas:~/notes/fmfp/exercises/haskell
 ehaskell:~/notes/fmfp/exercises/haskell
 eprog:~/notes/eprog
@@ -38,6 +38,7 @@ nvim:~/.config/nvim/lua
 nws:~/notes/ws/notes
 os:~/resources/computer-science/operating-systems
 poly:~/.config/polybar
+private:~/Documents/private
 pro:~/projects
 r:~/resources
 rad:~/resources/computer-science/introduction-to-algorithms-and-datastructures
