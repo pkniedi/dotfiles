@@ -9,4 +9,4 @@ local optlocal = vim.opt_local
 local opts = { noremap = true, silent = true }
 local cmd = vim.cmd
 
-cmd("set textwidth=10")
+cmd("set textwidth=80")

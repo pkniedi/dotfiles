@@ -1,0 +1,53 @@
+
+# ============================= colors =============================
+set $background  #1e2127
+set $black  #1e2127
+set $red  #e06c75
+set $green  #98c379
+set $yellow  #d19a66
+set $blue  #61afef
+set $magenta  #c678dd
+set $cyan  #56b6c2
+set $white  #abb2bf
+set $transparent #00000000
+
+set $bluegrad1 #61afef
+set $bluegrad2 #59a1dc
+set $bluegrad3 #5093c9
+set $bluegrad4 #4885b7
+set $bluegrad5 #4077a5
+set $bluegrad6 #386a94
+set $bluegrad7 #305d82
+set $bluegrad8 #295071
+set $bluegrad9 #214461
+set $bluegrad10 #1a3851
+
+set $whitegrad1 #ffffff
+set $whitegrad2 #f8f6f6
+set $whitegrad3 #f0ecef
+set $whitegrad4 #e8e3e7
+set $whitegrad5 #dfdae0
+set $whitegrad6 #d6d2da
+set $whitegrad7 #ccc9d3
+set $whitegrad8 #c2c1cd
+set $whitegrad9 #b7bac6
+set $whitegrad10 #abb2bf
+
+set $foreground  #abb2bf
+set $fggrad1 #abb2bf
+set $fggrad2 #9ca3af
+set $fggrad3 #8e949f
+set $fggrad4 #80868f
+set $fggrad5 #727780
+set $fggrad6 #646971
+set $fggrad7 #575c62
+set $fggrad8 #4a4e54
+set $fggrad9 #3e4246
+set $fggrad10 #323539
+
+
+# border  background text indicator
+client.focused $bluegrad5 $bluegrad5 $whitegrad1 $whitegrad1
+client.unfocused $black $black $fggrad5 $black
+client.focused_inactive $black $black $bluegrad5  $black
+client.urgent  $transparent $transparent $text $black
