@@ -47,7 +47,7 @@ autocmd({ "BufEnter", "BufWinEnter" }, {
 	end,
 })
 
-autocmd({ "BufAdd", "BufWinEnter" }, {
+autocmd({ "BufAdd" }, {
 	pattern = "*",
 	command = "BufferOrderByBufferNumber",
 })

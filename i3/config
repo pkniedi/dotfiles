@@ -19,9 +19,31 @@ exec --no-startup-id $HOME/.config/polybar/launch.sh &>/dev/null
 exec_always xset r rate 200 50
 
 set $mod Mod4
-font pango: Hack Nerd Font 11
+font pango: Hack Nerd Font 10
 focus_on_window_activation none
 no_focus [window_role="pop-up"]
+
+# give the focused window a prefix
+# bindsym $mod+p title_format "Important | %instance"
+# print all window titles bold
+# for_window [class=".*"] title_format "<b>%class</b>"
+# for_window [class="kitty"] title_format "<b>%class: %title</b>"
+# for_window [class="Zathura"] title_format "<b>%class: %title</b>"
+
+# TODO: add icons for window classes
+# include ./window-titles.i3config
+
+# for_window [class=".*"] title_format "%class"
+for_window [class=".*"] title_format "%class: <i>%title</i>"
+for_window [class="firefox"] title_format "<b>󰈹 </b> <i>%title</i>"
+for_window [class="Zathura"] title_format "<b> </b><i>%title</i>"
+for_window [class="kitty"] title_format "<b>󰄛 </b> <i>%title</i>"
+for_window [class="KeePassXC"] title_format "<b> </b> <i>%title</i>"
+#  󰄛    
+
+# for_window [class=__focused__] title_format "%class: <i>%title</i>"
+
+# for_window [class="Zathura"] title_format "%class: %title"
 
 
 # ============================= declarations =============================
@@ -62,7 +84,7 @@ show_marks yes
 
 
 
-
+# TODO: change title to italic when moving to it and back.
 
 
 # ================================ bindings =======================================
@@ -73,7 +95,8 @@ floating_modifier $mod
 
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec ~/bin/i3appendws
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
+bindsym $mod+Shift+q [class="__focused__"] kill
 bindsym $mod+space exec "rofi -show drun"
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -317,7 +340,7 @@ for_window [instance="^pomodoro$"] \
     move scratchpad
 
 
-# bindsym $mod+Shift+t exec kitty --class dropdown
+
 
 exec --no-startup-id kitty --class dropdown
 exec --no-startup-id  kitty --class linky-popup

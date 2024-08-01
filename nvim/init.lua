@@ -24,7 +24,8 @@ local modules = {
 	"linting",
 	"vimtex-setup",
 	"colorizer-setup",
-	"gitsigns-setup",
+	-- "gitsigns-setup",
+        "bufferline-setup",
 	"user-functions",
 	"options",
 }

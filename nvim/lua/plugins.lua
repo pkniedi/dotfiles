@@ -131,8 +131,6 @@ require("lazy").setup({
 	-- https://github.com/nvim-telescope/telescope.nvim
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.6",
-		-- or                              , branch = '0.1.x',
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	-- https://github.com/nvim-lua/plenary.nvim
@@ -164,24 +162,9 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	"sindrets/diffview.nvim",
-	-- https://github.com/romgrk/barbar.nvim
-	{
-		"romgrk/barbar.nvim",
-		dependencies = {
-			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
-			"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
-		},
-		init = function()
-			vim.g.barbar_auto_setup = false
-		end,
-		opts = {
-			-- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-			-- animation = true,
-			-- insert_at_start = true,
-			-- …etc.
-		},
-		version = "^1.0.0", -- optional: only update when a new 1.x version is released
-	},
+
+        -- https://github.com/akinsho/bufferline.nvim
+	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	{
 		"folke/trouble.nvim",
 		opts = {}, -- for default options, refer to the configuration section for custom setup.

@@ -4,6 +4,7 @@ ala:~/.config/alacritty
 analysis:~/notes/analysis
 b:~/bin
 bin:~/bin
+chrome:~/.mozilla/firefox/w197tuwx.default-release-1714597885033/chrome
 cn:~/notes/cn
 con:~/.config
 czsh:~/.config/zsh
@@ -19,6 +20,7 @@ ehas:~/notes/fmfp/exercises/haskell
 ehaskell:~/notes/fmfp/exercises/haskell
 eprog:~/notes/eprog
 eprogrepo:~/notes/eprog/exercises/jniederer
+firefox:~/.mozilla/firefox/w197tuwx.default-release-1714597885033/chrome
 fmfp:~/notes/fmfp
 i3:~/.config/i3
 i3b:~/.config/i3blocks

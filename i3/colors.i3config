@@ -47,7 +47,7 @@ set $fggrad10 #323539
 
 
 # border  background text indicator
-client.focused $bluegrad5 $bluegrad5 $whitegrad1 $whitegrad1
-client.unfocused $black $black $fggrad5 $black
-client.focused_inactive $black $black $bluegrad5  $black
+client.focused $black $black $whitegrad1 $whitegrad1
+client.unfocused $black $black $fggrad8 $black
+client.focused_inactive $black $black $whitegrad10  $black
 client.urgent  $transparent $transparent $text $black

@@ -52,7 +52,7 @@ open_app_on_ws("kitty",2,class_map["kitty"])
 open_app_on_ws("kitty",3,class_map["kitty"])
 
 open_app_on_ws("kitty",4,class_map["kitty"])
-open_kitty_lr(5)
+open_app_on_ws("kitty",5,class_map["kitty"])
 open_app_on_ws("kitty",6,class_map["kitty"])
 open_app_on_ws("kitty",7,class_map["kitty"])
 open_app_on_ws("kitty --hold journalctl -f",8,class_map["kitty"])
