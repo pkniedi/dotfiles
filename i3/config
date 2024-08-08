@@ -15,13 +15,15 @@ exec --no-startup-id picom -b
 exec_always --no-startup-id "feh --bg-fill --random $HOME/wallpapers/random"
 exec --no-startup-id ~/bin/startup.py
 exec --no-startup-id $HOME/.config/polybar/launch.sh &>/dev/null
-# exec --no-startup-id ~/bin/startup-websites.sh
+exec --no-startup-id ~/bin/startup-websites.sh
 exec_always xset r rate 200 50
 
 set $mod Mod4
 font pango: Hack Nerd Font 10
 focus_on_window_activation none
 no_focus [window_role="pop-up"]
+
+for_window [class="Linky"] floating enable
 
 # give the focused window a prefix
 # bindsym $mod+p title_format "Important | %instance"

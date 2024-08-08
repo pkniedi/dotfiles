@@ -47,10 +47,10 @@ autocmd({ "BufEnter", "BufWinEnter" }, {
 	end,
 })
 
-autocmd({ "BufAdd" }, {
-	pattern = "*",
-	command = "BufferOrderByBufferNumber",
-})
+-- autocmd({ "BufAdd" }, {
+-- 	pattern = "*",
+-- 	command = "BufferOrderByBufferNumber",
+-- })
 
 -- TODO: Add .c files. clangd not yet right customized
 --

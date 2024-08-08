@@ -4,6 +4,7 @@ local handlers = require("url-open.modules.handlers")
 local option_module = require("url-open.modules.options")
 local util = require("utility-functions")
 local io = require("io")
+local api = vim.api
 
 local M = {}
 
@@ -159,4 +160,52 @@ M.make_italic = function(toReplace, leftPattern, rightPattern, global, visual)
 	end)
 end
 
+M.split = function(s, textwidth)
+	local linelength = s:len()
+	if textwidth < linelength then
+		local l, r = textwidth, textwidth
+		--
+		-- find next withespace on the left
+		while l >= 0 and string.sub(s, l, l) ~= " " do
+			l = l - 1
+		end
+		while r < linelength and string.sub(s, r, r) ~= " " do
+			r = r + 1
+		end
+		local c = l
+		if r - textwidth < textwidth - l then
+			c = r
+		end
+		local res = {}
+		local fstHalf = string.sub(s, 0, c)
+		local sndHalf = string.sub(s, c + 1, linelength)
+		table.insert(res, fstHalf)
+		if sndHalf:len() > textwidth then
+			local recTable = M.split(sndHalf, textwidth) or {}
+			for _, v in ipairs(recTable) do
+				table.insert(res, v)
+			end
+		else
+			table.insert(res, sndHalf)
+		end
+		return res
+	end
+end
+
+-- TODO: Check for correct environment
+M.splitToTextWidth = function(textwidth)
+	local buf = api.nvim_buf_get_lines(0, 0, -1, false)
+	for i = 1, #buf do
+		-- get the table of split lines
+
+                if string.match(buf[i],"^[#`]+") then
+                        vim.notify(buf[i],3)
+                -- NOTE: ad hoc solution! If the word is longer than 20, we have a problem
+                elseif buf[i]:len() > textwidth + 20 then
+			local t = M.split(buf[i], textwidth) or {}
+			api.nvim_buf_set_lines(0, i, i + 1, false, t)
+			api.nvim_buf_set_lines(0, i - 1, i, false, {})
+		end
+	end
+end
 return M

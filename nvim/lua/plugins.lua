@@ -119,8 +119,6 @@ require("lazy").setup({
 
 	-- treesitter
 	"nvim-treesitter/nvim-treesitter",
-	-- markdown preview
-	"iamcco/markdown-preview.nvim",
 	-- https://github.com/lervag/vimtex
 	{
 		"lervag/vimtex",
@@ -136,7 +134,6 @@ require("lazy").setup({
 	-- https://github.com/nvim-lua/plenary.nvim
 	"nvim-lua/plenary.nvim",
 	"fraso-dev/nvim-listchars",
-
 	-- https://github.com/lukas-reineke/indent-blankline.nvim
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
@@ -163,7 +160,7 @@ require("lazy").setup({
 	},
 	"sindrets/diffview.nvim",
 
-        -- https://github.com/akinsho/bufferline.nvim
+	-- https://github.com/akinsho/bufferline.nvim
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	{
 		"folke/trouble.nvim",
@@ -203,7 +200,6 @@ require("lazy").setup({
 			},
 		},
 	},
-	"jinh0/eyeliner.nvim",
 	"AckslD/nvim-neoclip.lua",
 	"folke/which-key.nvim",
 	-- https://github.com/tpope/vim-surround
@@ -250,7 +246,13 @@ require("lazy").setup({
 			})
 		end,
 	},
-	"wellle/targets.vim", -- https://github.com/wellle/targets.vim
+	-- https://github.com/wellle/targets.vim
+	-- Targets.vim is a Vim plugin that adds various text objects to give you more targets to operate on.
+	-- It expands on the idea of simple commands like di' (delete inside the single quotes around the cursor)
+	-- to give you more opportunities to craft powerful commands that can be repeated reliably.
+	-- One major goal is to handle all corner cases correctly.
+	"wellle/targets.vim",
+
 	"tpope/vim-fugitive",
 	"tpope/vim-repeat", -- https://github.com/tpope/vim-repeat
 	"deoplete-plugins/deoplete-clang",
@@ -263,4 +265,14 @@ require("lazy").setup({
 	},
 	-- "ntpeters/vim-better-whitespace",
 	"mg979/vim-visual-multi",
+
+        -- https://github.com/MeanderingProgrammer/render-markdown.nvim
+        -- Renders markdown with :RenderMarkdown
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		opts = {},
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+	},
 })
