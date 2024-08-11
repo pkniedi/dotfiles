@@ -1,59 +1,50 @@
-snippet wiki "wiki snippet"
-[wikipedia](${1:link})
-endsnippet
+global !p
+import wikipedia as wiki
+endglobal
 
-snippet todo "add new TODO: <<??>>"
+snippet todo "TODO: <<??>>"
 TODO: $1
 $0
 endsnippet
 
-snippet fix "add new FIX: <<??>>"
+snippet fix "FIX: <<??>>"
 FIX: $1
 $0
 endsnippet
 
-snippet note "add new NOTE: <<??>>"
+snippet note "NOTE: <<??>>"
 NOTE: $1
 $0
 endsnippet
 
-snippet todod "add new TODO: <<??>> (since: Tue 26.09 16:11)"
+snippet todod "TODO: <<??>> (since: Tue 26.09 16:11)"
 TODO: $1				(since: `date +%a` `date +%d.%m` `date +%H:%M`)
 $0
 endsnippet
 
-snippet fixd "add new FIX: <<??>> (since: Tue 26.09 16:12)"
+snippet fixd "FIX: <<??>> (since: Tue 26.09 16:12)"
 FIX: $1					(since: `date +%a` `date +%d.%m` `date +%H:%M`)
 $0
 endsnippet
 
-snippet noted "add new NOTE: <<??>> (since: Tue 26.09 16:12)"
+snippet noted "NOTE: <<??>> (since: Tue 26.09 16:12)"
 NOTE: $1				(since: `date +%a` `date +%d.%m` `date +%H:%M`)
 $0
 endsnippet
 
-
-snippet slog "Log what I did today" i
-## `date +'%a. %d.%m. %H:%m'`
-- Topics: ${1:until page $2 in book $3}
-- Exercises: ${4:None}
-- Lecture: $5
-- Stopped: at $6
-
-### Sum
-
-$7
+snippet [f "[file](file-title.md)" iA
+[$1]($2)
 endsnippet
 
-# TODO: add slides
-# [Slides](../res/slides$2)
-
-snippet lec "Lecture overview" ib
-# $1
-date (upload): $2
-
-[Recording](`xclip -o`)
-$0
+snippet [w "[file](file-title.md)" i
+[wiki](`xclip -o clipboard`)
 endsnippet
 
 
+snippet init "Description" biA
+(wikipedia article)[https://en.wikipedia.org/?curid=`!p snip.rv=wiki.page(snip.fn.replace("-"," ")).pageid `]
+endsnippet
+
+snippet test "Description" biA
+(wikipedia article)[`!p snip.rv=snip.fn.replace("-"," ")`]
+endsnippet

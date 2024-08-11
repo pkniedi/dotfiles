@@ -1,4 +1,3 @@
--- github repository mason: https://github.com/williamboman/mason.nvim
 --         nvim-lspconfig:  https://github.com/neovim/nvim-lspconfig
 -- https://wiki.archlinux.org/title/Language_Server_Protocol
 local vim = vim
@@ -8,8 +7,7 @@ local lspconfig = require("lspconfig")
 lspconfig.texlab.setup({})
 lspconfig.denols.setup({})
 
-
-lspconfig.diagnosticls.setup{}
+lspconfig.diagnosticls.setup({})
 lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
@@ -55,6 +53,12 @@ lspconfig.jdtls.setup({})
 lspconfig.bashls.setup({})
 lspconfig.cssls.setup({})
 lspconfig.clangd.setup({})
+lspconfig.rust_analyzer.setup({
+	-- Server-specific settings. See `:help lspconfig-setup`
+	settings = {
+		["rust-analyzer"] = {},
+	},
+})
 lspconfig.html.setup({})
 
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }

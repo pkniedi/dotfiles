@@ -15,6 +15,9 @@ require("formatter").setup({
 		html = {
 			require("formatter.filetypes.html").prettier,
 		},
+		rust = {
+			require("formatter.filetypes.rust").rustfmt,
+		},
 
 		-- haskell = {
 		-- 	function()

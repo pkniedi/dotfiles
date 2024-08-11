@@ -7,8 +7,38 @@ local optlocal = vim.opt_local
 local cmd = vim.cmd
 local api = vim.api
 
--- local print = io.write
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local conf = require("telescope.config").values
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 
+local fileLinkHelper = function(opts)
+	opts = opts or {}
+	pickers
+		.new(opts, {
+			prompt_title = "Find file",
+			finder = finders.new_oneshot_job({ "find" }, opts),
+			sorter = conf.generic_sorter(opts),
+			attach_mappings = function(prompt_bufnr)
+				actions.select_default:replace(function()
+					actions.close(prompt_bufnr)
+					local selection = action_state.get_selected_entry()
+					vim.api.nvim_put({ selection[1] }, "", false, true)
+				end)
+				return true
+			end,
+		})
+		:find()
+end
+
+usercommand(0, "CreateLink", function()
+	fileLinkHelper()
+end, {})
+
+map(0, "i", "<C-f>", "<esc>:CreateLink<CR>", {})
+
+-- Formatting
 local textwidth = 80
 cmd("set textwidth=" .. textwidth)
 
@@ -87,14 +117,26 @@ local function formatMarkdown()
 		if not codeblock and buf[i]:len() > textwidth then
 			local t = split(buf[i]) or {}
 			if t[2] ~= "" then
-				api.nvim_buf_set_lines(0, i, i + 1, false, t)
-				api.nvim_buf_set_lines(0, i - 1, i, false, {})
+				api.nvim_buf_set_lines(0, i, i, false, t)
+				api.nvim_buf_set_lines(0, i-1, i, false, {})
 			end
 		end
 	end
 end
 
+-- api.nvim_buf_del_keymap(0, "n", "<leader>fo")
+map(0, "n", "<space>fo", ":FormatMarkdown <CR>", {})
+
+-- Workaround: used for the keymap because buffer local maps cannot call a function directly
 usercommand(0, "FormatMarkdown", function()
-	formatMarkdown()
+	pcall(formatMarkdown)
 end, {})
+
 map(0, "n", "<space>fm", ":FormatMarkdown<CR>", { desc = "Format markdown file" })
+
+map(0, "n", "<Tab>", "<Cmd>call search('^#')<CR>", {}) -- Jump to next heading
+map(0, "n", "<Tab>", "<Cmd>call search('^#')<CR>", {}) -- Jump to prev heading
+map(0, "n", "<leader>gl", "<Cmd>call search('^# Links')<CR>", {}) -- go to links
+
+
+-- Zettelkasten file

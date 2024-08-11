@@ -1,6 +1,7 @@
 local user_functions = require("user-functions")
 local builtin = require("telescope.builtin")
 local util_funcs = require("utility-functions")
+
 local vim = vim
 local map = vim.keymap.set
 local opts = {
@@ -10,6 +11,9 @@ local opts = {
 
 vim.g.maplocalleader = ","
 vim.g.mapleader = " "
+-- reload the configuration
+vim.api.nvim_set_keymap("n", "<leader><CR>", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
+
 map("n", "<C-S-h>", ":bp<CR>", opts)
 map("n", "<C-S-l>", ":bn<CR>", opts)
 map("n", "<C-j>", "<C-w>j", opts)
@@ -105,13 +109,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 map("n", "<bs>", ":edit #<cr>", { silent = true })
-map("n", [[<localleader>t]], function()
-	user_functions.my_open_url()
-end, { desc = "Hello there" })
 map("n", [[<leader>gn]], function()
 	print(vim.api.nvim_buf_get_name(0))
 end, opts)
-map("n", [[<leader>ee]], [[:!./%<CR>]], { desc = "Execute current file." })
+-- NOTE: moved to ftplugin
+-- map("n", [[<leader>ee]], [[:!./%<CR>]], { desc = "Execute current file." })
+
+
 map("n", [[<leader>ea]], [[:!./% ]], { desc = "Execute current file with arguments." })
 map("n", [[<leader>gw]], [[:r! getwiki ]], opts)
 map("n", [[<CR>]], function()
@@ -161,6 +165,10 @@ map("n", "<leader>sb", function()
 end, { desc = "Surround with verb block" })
 
 map("n", "<leader>fr", 'ye:%s/<C-R>"/')
+
+map("n", ",e", [[:e <C-R>=expand("%:p:h") . "/" <CR>]], {})
+map("n", ",t", [[:tabe <C-R>=expand("%:p:h") . "/" <CR>]], {})
+map("n", ",s", [[:split <C-R>=expand("%:p:h") . "/" <CR>]], {})
 
 -- Buffer movement
 local nvmap = vim.api.nvim_set_keymap

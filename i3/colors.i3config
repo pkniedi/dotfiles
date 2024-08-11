@@ -1,53 +1,130 @@
 
 # ============================= colors =============================
-set $background  #1e2127
-set $black  #1e2127
-set $red  #e06c75
-set $green  #98c379
-set $yellow  #d19a66
-set $blue  #61afef
-set $magenta  #c678dd
-set $cyan  #56b6c2
-set $white  #abb2bf
-set $transparent #00000000
 
-set $bluegrad1 #61afef
-set $bluegrad2 #59a1dc
-set $bluegrad3 #5093c9
-set $bluegrad4 #4885b7
-set $bluegrad5 #4077a5
-set $bluegrad6 #386a94
-set $bluegrad7 #305d82
-set $bluegrad8 #295071
-set $bluegrad9 #214461
-set $bluegrad10 #1a3851
+set $foreground #a9b1d6
+set $background #1a1b26
 
-set $whitegrad1 #ffffff
-set $whitegrad2 #f8f6f6
-set $whitegrad3 #f0ecef
-set $whitegrad4 #e8e3e7
-set $whitegrad5 #dfdae0
-set $whitegrad6 #d6d2da
-set $whitegrad7 #ccc9d3
-set $whitegrad8 #c2c1cd
-set $whitegrad9 #b7bac6
-set $whitegrad10 #abb2bf
+# Black
+set $color0 #414868
+set $color8 #414868
 
-set $foreground  #abb2bf
-set $fggrad1 #abb2bf
-set $fggrad2 #9ca3af
-set $fggrad3 #8e949f
-set $fggrad4 #80868f
-set $fggrad5 #727780
-set $fggrad6 #646971
-set $fggrad7 #575c62
-set $fggrad8 #4a4e54
-set $fggrad9 #3e4246
-set $fggrad10 #323539
+# Red
+set $color1 #f7768e
+set $color9 #f7768e
+
+# Green
+set $color2  #73daca
+set $color10 #73daca
+
+# Yellow
+set $color3  #e0af68
+set $color11 #e0af68
+
+# Blue
+set $color4  #7aa2f7
+set $color12 #7aa2f7
+
+# Magenta
+set $color5  #bb9af7
+set $color13 #bb9af7
+
+# Cyan
+set $color6  #7dcfff
+set $color14 #7dcfff
+
+# White
+set $color7  #c0caf5
+set $color15 #c0caf5
+
+# Cursor
+set $cursor #c0caf5
+set $cursor_text_color #1a1b26
+
+# Selection highlight
+set $selection_background #28344a
+
+# The color for highlighting URLs on mouse-over
+set $url_color #9ece6a
+
+# Window borders
+set $active_border_color #3d59a1
+set $inactive_border_color #101014
+set $bell_border_color #e0af68
+
+# Tab bar
+
+# set $active_tab_foreground   #3d59a1
+set $active_tab_foreground    #7dcfff
+set $active_tab_background   #16161e
+set $inactive_tab_foreground #787c99
+set $inactive_tab_background #16161e
+set $tab_bar_background #101014
+
+# Title bar
+set $macos_titlebar_color #16161e
+
+# Storm
+# background #24283b
+# cursor_text_color #24283b
+# active_tab_background   #1f2335
+# inactive_tab_background #1f2335
+# macos_titlebar_color #1f2335
 
 
-# border  background text indicator
-client.focused $black $black $whitegrad1 $whitegrad1
-client.unfocused $black $black $fggrad8 $black
-client.focused_inactive $black $black $whitegrad10  $black
-client.urgent  $transparent $transparent $text $black
+
+client.focused $active_tab_background $active_tab_background $active_tab_foreground $active_tab_foreground
+client.unfocused $inactive_tab_background $inactive_tab_background $inactive_tab_foreground $inactive_tab_background
+client.focused_inactive $inactive_tab_background $inactive_tab_background $inactive_tab_foreground   $inactive_tab_background
+client.urgent  $transparent $transparent $text $inactive_tab_background
+
+# set $background  #1e2127
+# set $black  #1e2127
+# set $red  #e06c75
+# set $green  #98c379
+# set $yellow  #d19a66
+# set $blue  #61afef
+# set $magenta  #c678dd
+# set $cyan  #56b6c2
+# set $white  #abb2bf
+# set $transparent #00000000
+#
+# set $bluegrad1 #61afef
+# set $bluegrad2 #59a1dc
+# set $bluegrad3 #5093c9
+# set $bluegrad4 #4885b7
+# set $bluegrad5 #4077a5
+# set $bluegrad6 #386a94
+# set $bluegrad7 #305d82
+# set $bluegrad8 #295071
+# set $bluegrad9 #214461
+# set $bluegrad10 #1a3851
+#
+# set $whitegrad1 #ffffff
+# set $whitegrad2 #f8f6f6
+# set $whitegrad3 #f0ecef
+# set $whitegrad4 #e8e3e7
+# set $whitegrad5 #dfdae0
+# set $whitegrad6 #d6d2da
+# set $whitegrad7 #ccc9d3
+# set $whitegrad8 #c2c1cd
+# set $whitegrad9 #b7bac6
+# set $whitegrad10 #abb2bf
+#
+# set $foreground  #abb2bf
+# set $fggrad1 #abb2bf
+# set $fggrad2 #9ca3af
+# set $fggrad3 #8e949f
+# set $fggrad4 #80868f
+# set $fggrad5 #727780
+# set $fggrad6 #646971
+# set $fggrad7 #575c62
+# set $fggrad8 #4a4e54
+# set $fggrad9 #3e4246
+# set $fggrad10 #323539
+#
+#
+# # border  background text indicator
+# client.focused $black $black $whitegrad1 $whitegrad1
+# client.unfocused $black $black $fggrad8 $black
+# client.focused_inactive $black $black $whitegrad10  $black
+# client.urgent  $transparent $transparent $text $black

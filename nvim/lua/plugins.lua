@@ -117,6 +117,14 @@ require("lazy").setup({
 	{ "scottmckendry/cyberdream.nvim", lazy = true, priority = 1000 },
 	-- Using lazy.nvim
 
+	-- https://github.com/folke/tokyonight.nvim
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
+
 	-- treesitter
 	"nvim-treesitter/nvim-treesitter",
 	-- https://github.com/lervag/vimtex
@@ -260,14 +268,13 @@ require("lazy").setup({
 		"ellisonleao/carbon-now.nvim",
 		lazy = true,
 		cmd = "CarbonNow",
-		---@param opts cn.ConfigSchema
 		opts = { [[ your custom config here ]] },
 	},
 	-- "ntpeters/vim-better-whitespace",
 	"mg979/vim-visual-multi",
 
-        -- https://github.com/MeanderingProgrammer/render-markdown.nvim
-        -- Renders markdown with :RenderMarkdown
+	-- https://github.com/MeanderingProgrammer/render-markdown.nvim
+	-- Renders markdown with :RenderMarkdown
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {},
@@ -275,4 +282,10 @@ require("lazy").setup({
 		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
 		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
 	},
+
+	-- rust tools
+	"simrat39/rust-tools.nvim",
+
+	-- Debugging
+	"mfussenegger/nvim-dap",
 })

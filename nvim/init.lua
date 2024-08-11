@@ -26,7 +26,9 @@ local modules = {
 	"colorizer-setup",
 	-- "gitsigns-setup",
         "bufferline-setup",
+        "render-markdown-setup",
 	"user-functions",
+        "reload",
 	"options",
 }
 

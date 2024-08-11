@@ -2,3 +2,5 @@
 0 * * * * rm -f ~/screenshots/*
 */10 * * * * ~/bin/sync-dotfiles
 * */10 * * * cat /dev/null > ~/dotfiles/.synch.log
+* * * * * ~/battery-life-log.sh
+

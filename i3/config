@@ -12,7 +12,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b
-exec_always --no-startup-id "feh --bg-fill --random $HOME/wallpapers/random"
+exec_always --no-startup-id "feh --bg-fill $HOME/wallpapers/2SfkyU.jpg"
 exec --no-startup-id ~/bin/startup.py
 exec --no-startup-id $HOME/.config/polybar/launch.sh &>/dev/null
 exec --no-startup-id ~/bin/startup-websites.sh
@@ -72,14 +72,16 @@ workspace_layout stacking
 title_align left
 
 default_border pixel 0
-default_floating_border pixel 0
+default_floating_border pixel 3
 set $gaps-inner 7
 set $gaps-outer 3
 gaps inner $gaps-inner
 gaps outer $gaps-outer
 smart_gaps off
 hide_edge_borders smart
+
 for_window [window_role="^floating$"] floating enable
+
 for_window [class="Alacritty"] sticky enable
 for_window [class="Kitty"] sticky enable
 show_marks yes
@@ -289,7 +291,7 @@ bindsym $mod+s [instance="^spotify$"] scratchpad show
 bindsym $mod+t [instance="^pomodoro$"] scratchpad show
 
 for_window [instance="^notes$"] \
-    floating enable, border none, \
+    floating enable, border pixel 3  \
     resize set 90 ppt 90 ppt, \
     move position 70 30, \
     sticky enable, \
@@ -299,7 +301,7 @@ for_window [instance="^notes$"] \
 
 # WARN: utility requires this setup
 for_window [instance="^linky-popup$"] \
-    floating enable, border none, \
+    floating enable, border pixel 3  \
     resize set 60 ppt 30 ppt, \
     move position 330 100, \
     sticky enable, \
@@ -307,7 +309,7 @@ for_window [instance="^linky-popup$"] \
     move scratchpad
 
 for_window [instance="^dropdown$"] \
-    floating enable, border none, \
+    floating enable, border pixel 3  \
     resize set 90 ppt 90 ppt, \
     move position 70 30, \
     sticky enable, \
@@ -316,7 +318,7 @@ for_window [instance="^dropdown$"] \
 
 
 for_window [instance="^calendar$"] \
-    floating enable, border none, \
+    floating enable, border pixel 3  \
     resize set 90 ppt 90 ppt, \
     move position 70 30, \
     sticky enable, \
@@ -325,7 +327,7 @@ for_window [instance="^calendar$"] \
 
 
 for_window [instance="^spotify$"] \
-    floating enable, border none, \
+    floating enable, border pixel 3  \
     resize set 90 ppt 90 ppt, \
     move position 70 30, \
     sticky enable, \
@@ -334,7 +336,7 @@ for_window [instance="^spotify$"] \
 
 
 for_window [instance="^pomodoro$"] \
-    floating enable, border none, \
+    floating enable, border pixel 3  \
     resize set 15 ppt 5 ppt, \
     move position 1300 100, \
     sticky enable, \
@@ -355,7 +357,7 @@ exec --no-startup-id  kitty --class pomodoro
 
 # bindsym $mod+Shift+t scratchpad
 
-bindsym $mod+Shift+minus  floating enable, border none, \
+bindsym $mod+Shift+minus  floating enable,  \
                           resize set 90 ppt 90 ppt, \
                           move position 70 30, \
                           sticky enable \
