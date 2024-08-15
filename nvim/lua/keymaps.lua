@@ -112,12 +112,9 @@ map("n", "<bs>", ":edit #<cr>", { silent = true })
 map("n", [[<leader>gn]], function()
 	print(vim.api.nvim_buf_get_name(0))
 end, opts)
--- NOTE: moved to ftplugin
--- map("n", [[<leader>ee]], [[:!./%<CR>]], { desc = "Execute current file." })
 
-
-map("n", [[<leader>ea]], [[:!./% ]], { desc = "Execute current file with arguments." })
 map("n", [[<leader>gw]], [[:r! getwiki ]], opts)
+
 map("n", [[<CR>]], function()
 	user_functions.my_open_url()
 end, opts)

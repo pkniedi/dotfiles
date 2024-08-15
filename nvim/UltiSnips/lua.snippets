@@ -35,3 +35,8 @@ snippet acmd "Description" bA
 autocmd({$1}, {$0})
 endsnippet
 
+
+snippet testnot "Test notify" A
+vim.notify("HELLO THERE",vim.log.levels.WARN)$0
+endsnippet
+

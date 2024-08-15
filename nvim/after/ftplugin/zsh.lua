@@ -8,3 +8,4 @@ local cmd = vim.cmd
 local api = vim.api
 
 map(0,"n", [[<leader>ee]], [[:!./%<CR>]], { desc = "Execute current file." })
+map(0,"n", [[<leader>ea]], [[:!./% ]], { desc = "Execute current file with arguments." })

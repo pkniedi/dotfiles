@@ -1,6 +1,5 @@
 0 * * * * ~/bin/bckup
 0 * * * * rm -f ~/screenshots/*
 */10 * * * * ~/bin/sync-dotfiles
-* */10 * * * cat /dev/null > ~/dotfiles/.synch.log
-* * * * * ~/battery-life-log.sh
-
+# * */10 * * * cat /dev/null > ~/dotfiles/.synch.log
+* * * * * ~/bin/battery-life-log.sh

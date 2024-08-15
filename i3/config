@@ -1,6 +1,7 @@
 # https://itsfoss.com/i3-customization/
 # https://i3wm.org/docs/userguide.html
 
+# TODO: update to environment variables
 
 
 
@@ -346,16 +347,17 @@ for_window [instance="^pomodoro$"] \
 
 
 
+
+
 exec --no-startup-id kitty --class dropdown
 exec --no-startup-id  kitty --class linky-popup
-exec --no-startup-id kitty --working-directory=$HOME/notes/zettelkasten --class notes
+exec --no-startup-id kitty --working-directory=$ZETTELKASTEN_DIR --class notes
 exec --no-startup-id  kitty --class calendar
 exec --no-startup-id  spotify --class spotify
 exec --no-startup-id  kitty --class pomodoro
 
 
 
-# bindsym $mod+Shift+t scratchpad
 
 bindsym $mod+Shift+minus  floating enable,  \
                           resize set 90 ppt 90 ppt, \

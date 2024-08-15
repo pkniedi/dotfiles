@@ -6,13 +6,17 @@ local map = vim.api.nvim_buf_set_keymap
 local optlocal = vim.opt_local
 local cmd = vim.cmd
 local api = vim.api
+local fn = vim.fn
 
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local cwd = vim.fn.expand("%:p:h")
+local home = vim.fn.expand("$HOME")
 
+-- TODO: Cut ./
 local fileLinkHelper = function(opts)
 	opts = opts or {}
 	pickers
@@ -24,7 +28,7 @@ local fileLinkHelper = function(opts)
 				actions.select_default:replace(function()
 					actions.close(prompt_bufnr)
 					local selection = action_state.get_selected_entry()
-					vim.api.nvim_put({ selection[1] }, "", false, true)
+					api.nvim_put({ selection[1] }, "", false, true)
 				end)
 				return true
 			end,
@@ -118,7 +122,7 @@ local function formatMarkdown()
 			local t = split(buf[i]) or {}
 			if t[2] ~= "" then
 				api.nvim_buf_set_lines(0, i, i, false, t)
-				api.nvim_buf_set_lines(0, i-1, i, false, {})
+				api.nvim_buf_set_lines(0, i - 1, i, false, {})
 			end
 		end
 	end
@@ -138,5 +142,15 @@ map(0, "n", "<Tab>", "<Cmd>call search('^#')<CR>", {}) -- Jump to next heading
 map(0, "n", "<Tab>", "<Cmd>call search('^#')<CR>", {}) -- Jump to prev heading
 map(0, "n", "<leader>gl", "<Cmd>call search('^# Links')<CR>", {}) -- go to links
 
-
 -- Zettelkasten file
+
+if cwd == home .. "/notes/zettelkasten" then
+	-- TODO: Create template for new files
+	autocmd({ "BufNewFile" }, {
+		pattern = { "*" },
+		callback = function()
+			api.nvim_buf_set_lines(0, 0, 2, false, { "# " .. fn.expand("%"), "", "", "# Links" })
+		end,
+	})
+	vim.notify("IMPLEMENT", vim.log.levels.WARN)
+end

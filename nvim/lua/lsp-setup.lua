@@ -1,5 +1,6 @@
 --         nvim-lspconfig:  https://github.com/neovim/nvim-lspconfig
 -- https://wiki.archlinux.org/title/Language_Server_Protocol
+
 local vim = vim
 local lspconfig = require("lspconfig")
 
@@ -61,9 +62,55 @@ lspconfig.rust_analyzer.setup({
 })
 lspconfig.html.setup({})
 
+-- NOTE: moved to after/ftplugin
+--
+-- vim.diagnostic.config({
+-- 	virtual_text = false, -- text on the right side
+-- 	signs = true,
+-- 	underline = true,
+-- 	update_in_insert = true,
+-- })
+
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
 
 for type, icon in pairs(signs) do
 	local hl = "LspDiagnosticsSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
+
+
+
+local M = {}
+
+M.icons = {
+	Class = " ",
+	Color = " ",
+	Constant = " ",
+	Constructor = " ",
+	Enum = " ",
+	EnumMember = " ",
+	Field = "󰄶 ",
+	File = " ",
+	Folder = " ",
+	Function = " ",
+	Interface = "󰜰",
+	Keyword = "󰌆 ",
+	Method = "ƒ ",
+	Module = "󰏗 ",
+	Property = " ",
+	Snippet = "󰘍 ",
+	Struct = " ",
+	Text = " ",
+	Unit = " ",
+	Value = "󰎠 ",
+	Variable = " ",
+}
+
+function M.setup()
+	local kinds = vim.lsp.protocol.CompletionItemKind
+	for i, kind in ipairs(kinds) do
+		kinds[i] = M.icons[kind] or kind
+	end
+end
+
+return M

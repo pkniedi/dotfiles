@@ -13,7 +13,8 @@ require("render-markdown").setup({
 		-- Replaces '#+' of 'atx_h._marker'
 		-- The number of '#' in the heading determines the 'level'
 		-- The 'level' is used to index into the array using a cycle
-		heading = { icons = { "󰼏 ", "󰎨 " } },
+		icons = { "󰼏 ", "󰎨 " },
+		-- icons = { "I ", "II ", "III ", "IV ", "V ", "VI " },
 		-- Added to the sign column if enabled
 		-- The 'level' is used to index into the array using a cycle
 		signs = { "󰫎 " },

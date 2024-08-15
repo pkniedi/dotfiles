@@ -1,5 +1,6 @@
 
 ad:~/notes/ad
+after:~/.config/nvim/after/ftplugin
 ala:~/.config/alacritty
 analysis:~/notes/analysis
 b:~/bin
@@ -35,6 +36,7 @@ lpy:~/projects/learning/python
 m:~/resources/mathematics
 n:~/notes/zettelkasten
 nad:~/notes/ad/notes
+nafter:~/.config/nvim/after/ftplugin
 nv:~/.config/nvim/lua
 nvim:~/.config/nvim/lua
 nws:~/notes/ws/notes

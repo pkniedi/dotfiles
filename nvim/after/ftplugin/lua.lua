@@ -8,3 +8,11 @@ local cmd = vim.cmd
 local api = vim.api
 
 map(0,"n", [[<leader>ee]], [[:luafile %<CR>]], { desc = "Execute current file." })
+
+
+vim.diagnostic.config({
+	virtual_text = false, -- text on the right side
+	signs = true,
+	underline = true,
+	update_in_insert = true,
+})
