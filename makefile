@@ -1,12 +1,69 @@
-DOTFILES:=$(HOME)/dotfiles
-CWD=$(HOME)/.config/zsh
-EXCLUDE:=--exclude .oh-my-zsh --exclude .mypy_cache --exclude cache
+CONFIG_HOME:=$(HOME)/.config
+ZSH:=$(CONFIG_HOME)/zsh/.oh-my-zsh
 
-sync: makedir
-	rsync --recursive $(CWD) $(DOTFILES) $(EXCLUDE)
-	rsync --recursive $(HOME)/.warprc $(DOTFILES)/zsh
+.PHONY: sync md cp-dirs clean zsh nvim bin i3 polybar nvim kitty alacritty
 
-makedir:
-	@mkdir -p $(DOTFILES)
+sync: zsh nvim bin i3 polybar nvim kitty alacritty
 
-.Phony: sync makedir
+
+test:
+	@echo $$(date) from test function
+
+pull:
+	@make --file=$(CONFIG_HOME)/nvim/makefile sync
+	@make --file=$(CONFIG_HOME)/zsh/makefile sync
+	@make --file=$(CONFIG_HOME)/i3/makefile sync
+	@make --file=$(CONFIG_HOME)/alacritty/makefile sync
+	@make --file=$(CONFIG_HOME)/kitty/makefile sync
+	@make --file=$(CONFIG_HOME)/polybar/makefile sync
+	@make --file=$(CONFIG_HOME)/picom/makefile sync
+	@make --file=$(HOME)/bin/makefile sync
+
+# FIX: does not load properly
+zsh:
+	@mkdir -p $(CONFIG_HOME)/zsh
+	@rsync -av --progress $(PWD)/zsh $(CONFIG_HOME)
+	@rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv
+	@rsync -av --progress $(PWD)/zsh/.warprc $(HOME)
+	@chmod +x ./omz-bootstrap.sh && ./omz-bootstrap.sh
+	# @rm $(HOME)/.zshrc.pre-oh-my-zsh
+	# @rm -rf $(HOME)/.oh-my-zsh
+
+
+bin:
+	@mkdir -p $(HOME)/bin
+	@rsync -av --progress $(PWD)/bin $(HOME)
+
+i3:
+	@mkdir -p $(CONFIG_HOME)/i3
+	@rsync -av --progress $(PWD)/i3 $(CONFIG_HOME)
+
+
+polybar:
+	@mkdir -p $(CONFIG_HOME)/polybar
+	@rsync -av --progress $(PWD)/polybar $(CONFIG_HOME)
+
+
+nvim:
+	@mkdir -p $(CONFIG_HOME)/nvim
+	@rsync -av --progress $(PWD)/nvim $(CONFIG_HOME)
+
+kitty:
+	@mkdir -p $(CONFIG_HOME)/kitty
+	@rsync -av --progress $(PWD)/kitty $(CONFIG_HOME)
+
+alacritt@y:
+	@mkdir -p $(CONFIG_HOME)/alacritty
+	@rsync -av --progress $(PWD)/alacritty $(CONFIG_HOME)
+
+
+clean:
+	@rm -rf $(CONFIG_HOME)/zsh
+	@rm -rf $(CONFIG_HOME)/nvim
+	@rm -rf $(HOME)/bin
+	@rm -rf $(CONFIG_HOME)/i3
+	@rm -rf $(CONFIG_HOME)/polybar
+	@rm -rf $(CONFIG_HOME)/nvim
+	@rm -rf $(CONFIG_HOME)/kitty
+	@rm -rf $(CONFIG_HOME)/alacritty
+

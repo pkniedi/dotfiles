@@ -3,7 +3,7 @@ CWD=$(HOME)/.config/i3
 EXCLUDE:= --exclude .mypy_cache --exclude .git
 
 sync: makedir
-	rsync -av --progress --recursive $(CWD) $(DOTFILES) $(EXCLUDE)
+	rsync -av --progress $(CWD) $(DOTFILES) $(EXCLUDE)
 
 makedir:
 	mkdir -p $(DOTFILES)

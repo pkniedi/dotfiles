@@ -18,29 +18,6 @@ no_focus [window_role="pop-up"]
 
 for_window [class="Linky"] floating enable
 
-# give the focused window a prefix
-# bindsym $mod+p title_format "Important | %instance"
-# print all window titles bold
-# for_window [class=".*"] title_format "<b>%class</b>"
-# for_window [class="kitty"] title_format "<b>%class: %title</b>"
-# for_window [class="Zathura"] title_format "<b>%class: %title</b>"
-
-# TODO: add icons for window classes
-# include ./window-titles.i3config
-
-# for_window [class=".*"] title_format "%class"
-for_window [class=".*"] title_format "%class: <i>%title</i>"
-for_window [class="firefox"] title_format "<b>󰈹 </b> <i>%title</i>"
-for_window [class="Zathura"] title_format "<b> </b><i>%title</i>"
-for_window [class="kitty"] title_format "<b>󰄛 </b> <i>%title</i>"
-for_window [class="KeePassXC"] title_format "<b> </b> <i>%title</i>"
-#  󰄛    
-
-# for_window [class=__focused__] title_format "%class: <i>%title</i>"
-
-# for_window [class="Zathura"] title_format "%class: %title"
-
-
 # ============================= declarations =============================
 set $zsh-bin-dir $HOME/bin/zsh-scripts
 set $config-dir $HOME/.config
@@ -54,9 +31,35 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
+set $foreground #a9b1d6
+set $background #1a1b26
+set $black #414868
+set $red #f7768e
+set $green  #73daca
+set $yellow  #e0af68
+set $blue  #7aa2f7
+set $magenta  #bb9af7
+set $cyan  #7dcfff
+set $white  #c0caf5
+set $cursor #c0caf5
+set $cursor_text_color #1a1b26
+set $selection_background #28344a
+set $url_color #9ece6a
+set $active_border_color #3d59a1
+set $inactive_border_color #101014
+set $bell_border_color #e0af68
+set $active_tab_foreground   #f7768e 
+set $active_tab_background   #16161e
+set $inactive_tab_foreground #787c99
+set $inactive_tab_background #16161e
+set $tab_bar_background #101014
+set $macos_titlebar_color #16161e
 
+client.focused $active_tab_background $active_tab_background $active_tab_foreground $active_tab_foreground
+client.unfocused $inactive_tab_background $inactive_tab_background $inactive_tab_foreground $inactive_tab_background
+client.focused_inactive $inactive_tab_background $inactive_tab_background $inactive_tab_foreground   $inactive_tab_background
+client.urgent  $transparent $transparent $text $inactive_tab_background
 
-include ./colors.i3config
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
