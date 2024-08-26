@@ -3,7 +3,7 @@ CWD=$(HOME)/.config/nvim
 EXCLUDE:= --exclude .mypy_cache --exclude .git
 
 sync: makedir
-	@rsync -aq $(CWD) $(DOTFILES) $(EXCLUDE)
+	@rsync -a --recursive $(CWD) $(DOTFILES) $(EXCLUDE)
 
 makedir:
 	@mkdir -p $(DOTFILES)

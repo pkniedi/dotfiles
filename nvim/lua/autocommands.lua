@@ -1,6 +1,15 @@
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local conf = require("telescope.config").values
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+local cwd = vim.fn.expand("%:p:h")
+local home = vim.fn.expand("$HOME")
 local vim = vim
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
+local fn = vim.fn
+local api = vim.api
 -- local user_functions = require("user-functions")
 local cmd = vim.cmd
 
@@ -28,12 +37,12 @@ autocmd({ "CursorHold" }, {
 autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "urls", "defaults" },
 	callback = function()
-		vim.bo.commentstring = "#\\ %s"
+		vim.bo.commentstring = "# %s"
 	end,
 })
 
 autocmd({ "BufEnter", "BufWinEnter" }, {
-	pattern = {"*.pml"},
+	pattern = { "*.pml" },
 	callback = function()
 		vim.bo.commentstring = "// %s"
 	end,
@@ -65,3 +74,21 @@ autocmd({ "BufWritePre" }, {
 		vim.fn.setpos(".", save_cursor)
 	end,
 })
+
+-- NOTE: needs to be here
+
+local cwd = vim.fn.expand("%:p:h")
+local home = vim.fn.expand("$HOME")
+--
+-- TODO: fix file name need to substitute - and remove extension
+--
+-- if cwd == home .. "/notes/zettelkasten" then
+-- 	-- TODO: Create template for new files
+-- 	autocmd({ "BufNewFile" }, {
+-- 		pattern = { "*" },
+-- 		callback = function()
+-- 			api.nvim_buf_set_lines(0, 0, 2, false, { "# " .. fn.expand("%"), "", "", "# Links" })
+-- 		end,
+-- 	})
+-- 	vim.notify("IMPLEMENT", vim.log.levels.WARN)
+-- end

@@ -285,4 +285,5 @@ require("lazy").setup({
 
 	-- Debugging
 	"mfussenegger/nvim-dap",
+	"masukomi/vim-markdown-folding",
 })

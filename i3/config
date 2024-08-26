@@ -1,22 +1,14 @@
 # https://itsfoss.com/i3-customization/
 # https://i3wm.org/docs/userguide.html
 
-# TODO: update to environment variables
-
-
-
-# =============================== execs  =================================
-# ON startup
-# exec -> only once at i3 startup
-
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b
-exec_always --no-startup-id "feh --bg-fill $HOME/wallpapers/2SfkyU.jpg"
-exec --no-startup-id ~/bin/startup.py
+# exec_always --no-startup-id "feh --bg-fill $HOME/wallpapers/2SfkyU.jpg"
+# exec --no-startup-id ~/bin/startup.py
 exec --no-startup-id $HOME/.config/polybar/launch.sh &>/dev/null
-exec --no-startup-id ~/bin/startup-websites.sh
+# exec --no-startup-id ~/bin/startup-websites.sh
 exec_always xset r rate 200 50
 
 set $mod Mod4
@@ -98,8 +90,8 @@ show_marks yes
 
 floating_modifier $mod
 
-bindsym $mod+Return exec kitty
-bindsym $mod+Shift+Return exec ~/bin/i3appendws
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec kitty
 bindsym $mod+q kill
 bindsym $mod+Shift+q [class="__focused__"] kill
 bindsym $mod+space exec "rofi -show drun"

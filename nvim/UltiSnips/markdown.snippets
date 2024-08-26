@@ -1,5 +1,8 @@
 global !p
-import wikipedia as wiki
+import wikipedia as wiki, os
+def getFileNameCapitalized(s):
+	return s.rsplit( ".", 1 )[ 0 ].replace("-"," ").capitalize()
+
 endglobal
 
 snippet todo "TODO: <<??>>"
@@ -42,15 +45,32 @@ endsnippet
 
 
 snippet init "Description" biA
-(wikipedia article)[https://en.wikipedia.org/?curid=`!p snip.rv=wiki.page(snip.fn.replace("-"," ")).pageid `]
+# `!p snip.rv = getFileNameCapitalized(snip.fn)`
+$0
+
+# Links
 endsnippet
+# (wikipedia article)[https://en.wikipedia.org/?curid=`!p snip.rv=wiki.page(snip.fn.replace("-"," ")).pageid `]
 
 snippet test "Description" biA
-(wikipedia article)[`!p snip.rv=snip.fn.replace("-"," ")`]
+[wikipedia article](`!p snip.rv=snip.fn.replace("-"," ")`)
 endsnippet
 
 
 snippet ** "****" i
 **$1**$0
+endsnippet
+
+
+snippet link "[link](file/URL)" ib
+[$1](./$2)$0
+endsnippet
+
+snippet url "[link](file/URL)" i
+[$1](`xclip -o`)$0
+endsnippet
+
+snippet trigger "Description" options
+
 endsnippet
 

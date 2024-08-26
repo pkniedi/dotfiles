@@ -28,6 +28,8 @@ i3b:~/.config/i3blocks
 i3blocks:~/.config/i3blocks
 kitty:~/.config/kitty
 l:~/Documents/links
+learn:~/projects/learning
+learning:~/projects/learning
 lina:~/notes/linalg
 linalg:~/notes/linalg
 links:~/links

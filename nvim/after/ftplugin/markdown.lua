@@ -107,6 +107,11 @@ local function formatMarkdown()
 			i = i + 1
 		end
 
+		-- skip lists
+		while string.match(buf[i], "^[ ]*-.*") do
+			i = i + 1
+		end
+
 		-- skip links (link)[https://example.com]
 		if not codeblock and string.match(buf[i], "^%(.*%)%[.*%][ ]*$") then
 			i = i + 1
@@ -142,15 +147,4 @@ map(0, "n", "<Tab>", "<Cmd>call search('^#')<CR>", {}) -- Jump to next heading
 map(0, "n", "<Tab>", "<Cmd>call search('^#')<CR>", {}) -- Jump to prev heading
 map(0, "n", "<leader>gl", "<Cmd>call search('^# Links')<CR>", {}) -- go to links
 
--- Zettelkasten file
 
-if cwd == home .. "/notes/zettelkasten" then
-	-- TODO: Create template for new files
-	autocmd({ "BufNewFile" }, {
-		pattern = { "*" },
-		callback = function()
-			api.nvim_buf_set_lines(0, 0, 2, false, { "# " .. fn.expand("%"), "", "", "# Links" })
-		end,
-	})
-	vim.notify("IMPLEMENT", vim.log.levels.WARN)
-end

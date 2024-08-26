@@ -13,8 +13,12 @@
 
 ### FormatMarkdown
 
-Formats the file such that the text is not longer than the specified textwidth  dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-dddddddddddddddddddd
+Formats the file such that the text is not longer than the specified textwidth  
+
+
+## TODO
+
+Add proper folding method for headings.
 
 
 ## Keymaps
@@ -26,7 +30,10 @@ dddddddddddddddddddd
 
 ## TODO
 
-Docs
+-   Docs
+-   Add shortcut for inserting lecture and pdf references
+-   Fix <CR> to "open everything"
+
 
 ## Links
 
