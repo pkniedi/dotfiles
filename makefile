@@ -1,5 +1,4 @@
 CONFIG_HOME:=$(HOME)/.config
-ZSH:=$(CONFIG_HOME)/zsh/.oh-my-zsh
 
 .PHONY: sync md cp-dirs clean zsh nvim bin i3 polybar nvim kitty alacritty
 
@@ -8,6 +7,9 @@ sync: zsh nvim bin i3 polybar nvim kitty alacritty
 
 test:
 	echo $$(date) from test function
+
+init:
+	@mkdir -p $(CONFIG_HOME)
 
 pull:
 	@echo "Pulling all updates from configuration files..."
@@ -21,7 +23,7 @@ pull:
 	@make --file=$(HOME)/bin/makefile sync
 
 # FIX: does not load properly
-zsh:
+zsh: init
 	@echo "Copying zsh configuration files..."
 	@mkdir -p $(CONFIG_HOME)/zsh
 	@rsync -av --progress --recursive $(PWD)/zsh $(CONFIG_HOME)
@@ -33,35 +35,35 @@ bin:
 	@mkdir -p $(HOME)/bin
 	@rsync -av --recursive --progress $(PWD)/bin $(HOME)
 
-i3:
+i3: init
 	@echo "Copying i3 configuration files..."
 	@mkdir -p $(CONFIG_HOME)/i3
 	@rsync -av --recursive --progress $(PWD)/i3 $(CONFIG_HOME)
 
 
-polybar:
+polybar: init
 	@echo "Copying polybar configuration files..."
 	@mkdir -p $(CONFIG_HOME)/polybar
 	@rsync -av ---recursive -progress $(PWD)/polybar $(CONFIG_HOME)
 
 
-nvim:
+nvim: init
 	@echo "Copying nvim configuration files..."
 	@mkdir -p $(CONFIG_HOME)/nvim
 	@rsync -av --recursive --progress $(PWD)/nvim $(CONFIG_HOME)
 
-kitty:
+kitty: init
 	@echo "Copying configuration files..."
 	@mkdir -p $(CONFIG_HOME)/kitty
 	@rsync -av --recursive --progress $(PWD)/kitty $(CONFIG_HOME)
 
-alacritty:
+alacritty: init
 	@echo "Copying configuration files..."
 	@mkdir -p $(CONFIG_HOME)/alacritty
 	@rsync -av--recursive --progress $(PWD)/alacritty $(CONFIG_HOME)
 
 
-clean:
+clean: 
 	@echo "Deleting everything..."
 	@rm -rf $(CONFIG_HOME)/zsh
 	@rm -rf $(CONFIG_HOME)/nvim
