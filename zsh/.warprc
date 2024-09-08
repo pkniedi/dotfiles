@@ -12,7 +12,8 @@ czsh:~/.config/zsh
 d:~/Downloads
 dm:~/notes/dm
 dmdb:~/notes/dmdb
-docs:~/Documents
+docs:~/documents
+documents:~/documents
 dot:~/dotfiles
 dotfiles:~/dotfiles
 down:~/Downloads
@@ -76,4 +77,5 @@ wall:~/wallpapers
 ws:~/notes/ws
 z:~/notes/zettelkasten
 zcon:~/.config/zsh
+zivi:~/documents/zivildienst
 zsh:~/.config/zsh

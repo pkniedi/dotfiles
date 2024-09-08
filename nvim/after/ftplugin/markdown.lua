@@ -43,7 +43,7 @@ end, {})
 map(0, "i", "<C-f>", "<esc>:CreateLink<CR>", {})
 
 -- Formatting
-local textwidth = 80
+local textwidth = 180
 cmd("set textwidth=" .. textwidth)
 
 map(0, "n", "<space>ob", ":!firefox %<CR>", { desc = "Open file in browser" })
@@ -146,5 +146,3 @@ map(0, "n", "<space>fm", ":FormatMarkdown<CR>", { desc = "Format markdown file" 
 map(0, "n", "<Tab>", "<Cmd>call search('^#')<CR>", {}) -- Jump to next heading
 map(0, "n", "<Tab>", "<Cmd>call search('^#')<CR>", {}) -- Jump to prev heading
 map(0, "n", "<leader>gl", "<Cmd>call search('^# Links')<CR>", {}) -- go to links
-
-

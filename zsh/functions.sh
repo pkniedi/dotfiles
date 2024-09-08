@@ -1,5 +1,21 @@
 #!/usr/bin/env zsh
 
+
+function src() {
+        source $ZDOTDIR/aliases.sh
+        source $ZDOTDIR/functions.sh
+}
+
+function comppwd() {
+        if [[ $# -ne 1 ]]; then
+                printf "Enter archive name: "
+                read archive_name
+        else
+                archive_name=$1
+        fi
+        XZ_OPT=-9 tar -vcJf $archive_name.tar.xz $(pwd)
+}
+
 function openAllURLs {
         [ ! -f urls ] && return 1
         urls=$(cat urls | tr "\\n" " ")
@@ -148,22 +164,6 @@ function remind  {
 }
 
 
-function vlc {
-        local cache_dir=$HOME/.cache/vlc
-        local last_video_file=$cache_dir/last-video
-        mkdir $cache_dir
-        touch $last_video_file
-
-        if isvalidurl $1;then
-                /usr/bin/vlc --rate=1.5 &>/dev/null $1 &
-                echo $1 > $last_video_file
-        else
-                /usr/bin/vlc --rate=1.5 &>/dev/null ./$1 &
-                echo "$(pwd)/$1" > $last_video_file
-        fi
-
-}
-
 function getsecs {
         if [[ $# == 1 ]];then
                 echo $1 | gsecs | tr -d '\n' |xclip -i -selection clipboard
@@ -171,8 +171,9 @@ function getsecs {
         fi
         gsecs
 }
+
 function afk() {
-    pgrep vlc &>/dev/null && {pkill vlc}
-    systemctl suspend
+        pgrep vlc &>/dev/null && {pkill vlc}
+        systemctl suspend
 }
 

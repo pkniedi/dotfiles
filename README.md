@@ -15,7 +15,7 @@ Assumes all packages are already installed.
 
 # Installation
 
-Run the following command to sync everyting:
+Run the following command to sync everything:
 
 ```sh
 git clone https://github.com/pkniedi/dotfiles.git $HOME/dotfiles && make --file=$HOME/dotfiles/makefile sync
@@ -23,5 +23,4 @@ git clone https://github.com/pkniedi/dotfiles.git $HOME/dotfiles && make --file=
 
 # TODO
 
-- omz boostrapper
-- Documentation
+- docs

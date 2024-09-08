@@ -30,6 +30,7 @@ Add proper folding method for headings.
 
 ## TODO
 
+-   Rename function -> rename all links
 -   Docs
 -   Add shortcut for inserting lecture and pdf references
 -   Fix <CR> to "open everything"

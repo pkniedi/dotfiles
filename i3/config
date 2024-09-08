@@ -69,8 +69,8 @@ title_align left
 
 default_border pixel 0
 default_floating_border pixel 3
-set $gaps-inner 7
-set $gaps-outer 3
+set $gaps-inner 4
+set $gaps-outer 2
 gaps inner $gaps-inner
 gaps outer $gaps-outer
 smart_gaps off
@@ -344,12 +344,12 @@ for_window [instance="^pomodoro$"] \
 
 
 
-exec --no-startup-id kitty --class dropdown
-exec --no-startup-id  kitty --class linky-popup
-exec --no-startup-id kitty --working-directory=$ZETTELKASTEN_DIR --class notes
-exec --no-startup-id  kitty --class calendar
+exec --no-startup-id alacritty --class dropdown
+exec --no-startup-id  alacritty --class linky-popup
+exec --no-startup-id alacritty --class notes
+exec --no-startup-id  alacritty --class calendar
 exec --no-startup-id  spotify --class spotify
-exec --no-startup-id  kitty --class pomodoro
+exec --no-startup-id  alacritty --class pomodoro
 
 
 

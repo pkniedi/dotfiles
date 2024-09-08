@@ -1,3 +1,6 @@
+alias copypath='pwd | xclip -i -selection clipboard'
+alias d='dirs -v'
+alias md='mkdir -p'
 alias rmzip='rm -r *.zip'
 alias ls='ls --color'
 alias la='ls -lah'
@@ -29,9 +32,7 @@ alias addsnip='cd ~/.config/nvim/Ultisnips; nv'
 alias lt='latexmk -pdf -outdir=output -pvc --shell-escape'
 alias lts='latexmk -pdf -silent -outdir=output -pvc '
 alias echopath="echo '\$PATH: \n'; sed 's/:/  \n  /g' <<<$PATH"
-alias annihilate="rm -rf"
 alias jc='javac'
-alias jcrm='javac Main.java; java Main'
 alias dirs='dirs -v'
 alias pd='pushd -q'
 alias gd='popd -q'
@@ -45,7 +46,6 @@ alias gccsqlite="gcc -lsqlite3 -std=c99"
 alias vid="vlc &> /dev/null"
 alias bckupdir="mkdir -p $(date +\"%d-%m\")-backup"
 alias today="date +%d-%m"
-alias src="source $HOME/.config/zsh/src.sh"
 # alias vlc="vlc --rate=1.35 &>/dev/null"
 alias texsym="zat $HOME/resources/references/symbols-a4.pdf &"
 alias python=/usr/bin/python3

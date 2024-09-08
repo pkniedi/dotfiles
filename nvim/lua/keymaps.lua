@@ -21,7 +21,6 @@ map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 map("n", "<leader>sc", [[:set spell!<CR>]], opts)
-map("n", [[<leader>w]], [[:wall<CR><CR>]], opts)
 map("n", [[<leader>noh]], [[:noh<CR>]], opts)
 map("n", [[gf]], [[:e <cfile><CR>]], { desc = "Goto file" })
 -- map("n", [[gf]], function()
@@ -69,6 +68,7 @@ map("i", [[<C-p>]], [[<C-r>]], opts)
 map("n", [[gx]], function()
 	user_functions.my_open_url()
 end)
+
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 map("n", [[<leader>tt]], [[:TodoTelescope<CR>]], opts)
 map("n", "<leader><space>", "<cmd>Telescope buffers<cr>")
@@ -192,6 +192,11 @@ nvmap("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
 nvmap("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
 
 map("n", "<C-p>", "q:", opts)
+
+
+map("n", "<localleader>t", function()
+	print(vim.fn.expand("<cfile>"))
+end, opts)
 
 -- visual mode
 map("v", "<leader>fr", 'y:%s/<C-R>"/')

@@ -7,9 +7,10 @@ sync: zsh nvim bin i3 polybar nvim kitty alacritty
 
 
 test:
-	@echo $$(date) from test function
+	echo $$(date) from test function
 
 pull:
+	@echo "Pulling all updates from configuration files..."
 	@make --file=$(CONFIG_HOME)/nvim/makefile sync
 	@make --file=$(CONFIG_HOME)/zsh/makefile sync
 	@make --file=$(CONFIG_HOME)/i3/makefile sync
@@ -21,43 +22,47 @@ pull:
 
 # FIX: does not load properly
 zsh:
+	@echo "Copying zsh configuration files..."
 	@mkdir -p $(CONFIG_HOME)/zsh
-	@rsync -av --progress $(PWD)/zsh $(CONFIG_HOME)
+	@rsync -av --progress --recursive $(PWD)/zsh $(CONFIG_HOME)
 	@rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv
 	@rsync -av --progress $(PWD)/zsh/.warprc $(HOME)
-	@chmod +x ./omz-bootstrap.sh && ./omz-bootstrap.sh
-	# @rm $(HOME)/.zshrc.pre-oh-my-zsh
-	# @rm -rf $(HOME)/.oh-my-zsh
-
 
 bin:
+	@echo "Copying scripts..."
 	@mkdir -p $(HOME)/bin
-	@rsync -av --progress $(PWD)/bin $(HOME)
+	@rsync -av --recursive --progress $(PWD)/bin $(HOME)
 
 i3:
+	@echo "Copying i3 configuration files..."
 	@mkdir -p $(CONFIG_HOME)/i3
-	@rsync -av --progress $(PWD)/i3 $(CONFIG_HOME)
+	@rsync -av --recursive --progress $(PWD)/i3 $(CONFIG_HOME)
 
 
 polybar:
+	@echo "Copying polybar configuration files..."
 	@mkdir -p $(CONFIG_HOME)/polybar
-	@rsync -av --progress $(PWD)/polybar $(CONFIG_HOME)
+	@rsync -av ---recursive -progress $(PWD)/polybar $(CONFIG_HOME)
 
 
 nvim:
+	@echo "Copying nvim configuration files..."
 	@mkdir -p $(CONFIG_HOME)/nvim
-	@rsync -av --progress $(PWD)/nvim $(CONFIG_HOME)
+	@rsync -av --recursive --progress $(PWD)/nvim $(CONFIG_HOME)
 
 kitty:
+	@echo "Copying configuration files..."
 	@mkdir -p $(CONFIG_HOME)/kitty
-	@rsync -av --progress $(PWD)/kitty $(CONFIG_HOME)
+	@rsync -av --recursive --progress $(PWD)/kitty $(CONFIG_HOME)
 
-alacritt@y:
+alacritty:
+	@echo "Copying configuration files..."
 	@mkdir -p $(CONFIG_HOME)/alacritty
-	@rsync -av --progress $(PWD)/alacritty $(CONFIG_HOME)
+	@rsync -av--recursive --progress $(PWD)/alacritty $(CONFIG_HOME)
 
 
 clean:
+	@echo "Deleting everything..."
 	@rm -rf $(CONFIG_HOME)/zsh
 	@rm -rf $(CONFIG_HOME)/nvim
 	@rm -rf $(HOME)/bin
@@ -66,4 +71,3 @@ clean:
 	@rm -rf $(CONFIG_HOME)/nvim
 	@rm -rf $(CONFIG_HOME)/kitty
 	@rm -rf $(CONFIG_HOME)/alacritty
-

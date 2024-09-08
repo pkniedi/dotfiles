@@ -21,9 +21,7 @@ M.open_mp4 = function(s)
 	local from, to = string.find(s, "http[s]*://[%S]*%.mp4")
 	if from ~= nil and to ~= nil then
 		local url = string.sub(s, from, to)
-		M.cache_last_vlc_video(s)
 		if fn.executable("vlc") == 1 then
-			M.cache_last_vlc_video(s)
 			fn.jobstart("vlc  --rate=1.5 " .. url, {
 				detach = true,
 				on_exit = function(_, code, _)
@@ -41,13 +39,15 @@ M.open_mp4 = function(s)
 	end
 end
 
+--- Opens the url (mp4 file) in a new vlc instance
+---@param s String the current line
+---@return boolean true if it found the special pattern %[vlc.*&>/dev/null &%]
 M.open_vlc_special = function(s)
 	local from, to = string.find(s, "%[vlc.*&>/dev/null &%]")
 
 	if from ~= nil and to ~= nil then
 		local cmd = string.sub(s, from + 1, to - 1)
 		if fn.executable("vlc") == 1 then
-			M.cache_last_vlc_video(s)
 			fn.jobstart(cmd, {
 				detach = true,
 				on_exit = function(_, code, _)
@@ -66,22 +66,45 @@ M.open_vlc_special = function(s)
 	end
 end
 
-M.cache_last_vlc_video = function(s)
-	local from, to = string.find(s, "https?.*.mp4")
-	if from ~= nil and to ~= nil then
-		local url = (string.sub(s, from, to))
-		local file = io.open(vim.fn.expand("~") .. "/.cache/vlc/last-video", "w")
-		if file ~= nil then
-			file:write(url)
-		end
-		io.close(file)
+---Gets the file extension, if it exists
+---@param path any
+---@return nil
+M.get_filetype_extension = function(path)
+	local pathReversed = string.reverse(path)
+	local s, e = string.find(pathReversed, "%.")
+	if s == nil or e == nil then
+		return nil
 	end
+	local res = string.reverse(string.sub(pathReversed, 0, e - 1))
+	return res
 end
 
 -- Utility for gx keymap.
+-- tests:
+-- ~/resources/mathematics/real-analysis/pvw-analysis.pdf
 M.my_open_url = function()
 	local curr_line = vim.api.nvim_get_current_line()
-	if vim.fn.filereadable(vim.fn.expand("<cfile>")) == 1 then
+	local cfile = vim.fn.expand("<cfile>")
+
+	if fn.filereadable(cfile) then
+		-- TODO: check whether it is better to check the filetype?
+		--
+		-- If the file extension is pdf, then use zathura to open the file
+		if M.get_filetype_extension(cfile) == "pdf" then
+			if fn.executable("zathura") == 1 then
+				fn.jobstart("zathura " .. cfile, {
+					detach = true,
+					on_exit = function(_, code, _)
+						print(code)
+						if code ~= 0 then
+							print("Error code:" .. code)
+						end
+					end,
+				})
+				return true
+			end
+		end
+		-- else just edit the file
 		vim.api.nvim_command("edit " .. vim.fn.expand("<cfile>"))
 	elseif M.open_vlc_special(curr_line) then
 		print("VLC")
@@ -89,9 +112,10 @@ M.my_open_url = function()
 		print("hello there")
 	elseif M.open_mp4(curr_line) then
 		print("MP4")
-	else
-		handlers.open_url(option_module.DEFAULT_OPTIONS)
 	end
+	-- else
+	-- 	handlers.open_url(option_module.DEFAULT_OPTIONS)
+	-- end
 end
 
 ---Wrap argument string with left and right pattern
@@ -198,10 +222,10 @@ M.splitToTextWidth = function(textwidth)
 	for i = 1, #buf do
 		-- get the table of split lines
 
-                if string.match(buf[i],"^[#`]+") then
-                        vim.notify(buf[i],3)
-                -- NOTE: ad hoc solution! If the word is longer than 20, we have a problem
-                elseif buf[i]:len() > textwidth + 20 then
+		if string.match(buf[i], "^[#`]+") then
+			vim.notify(buf[i], 3)
+			-- NOTE: ad hoc solution! If the word is longer than 20, we have a problem
+		elseif buf[i]:len() > textwidth + 20 then
 			local t = M.split(buf[i], textwidth) or {}
 			api.nvim_buf_set_lines(0, i, i + 1, false, t)
 			api.nvim_buf_set_lines(0, i - 1, i, false, {})
