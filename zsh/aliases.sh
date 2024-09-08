@@ -1,4 +1,4 @@
-alias copypath='pwd | xclip -i -selection clipboard'
+alias copypath="pwd | tr -d '\n' | xclip -i -selection clipboard"
 alias d='dirs -v'
 alias md='mkdir -p'
 alias rmzip='rm -r *.zip'
