@@ -49,6 +49,7 @@ require("lspconfig").pylsp.setup({
 	},
 })
 
+lspconfig.ocamllsp.setup{}
 lspconfig.hls.setup({ cmd = { "haskell-language-server" } })
 lspconfig.jdtls.setup({})
 lspconfig.bashls.setup({})

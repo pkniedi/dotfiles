@@ -77,7 +77,17 @@ require("formatter").setup({
 			end,
 		},
 		cpp = {
-			require("formatter.filetypes.cpp").clangformat,
+			function()
+				return {
+					exe = "clang-format",
+					args = {
+						"-style=file:" .. variables.clang_format_files_dir .. "c.clang-format",
+						util.escape_path(util.get_current_buffer_file_name()),
+					},
+					stdin = true,
+					try_node_modules = true,
+				}
+			end,
 		},
 		markdown = {
 			require("formatter.filetypes.markdown").prettier,

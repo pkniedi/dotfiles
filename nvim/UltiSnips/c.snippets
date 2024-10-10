@@ -9,3 +9,18 @@ for ($1;$2;$3) {
 $0
 }
 endsnippet
+
+snippet fopen "Open file"
+FILE *$1;
+if (! ($1 = fopen( "./t.txt","$2")) ) {
+	perror("Failed to open file");
+	return 1;
+}
+$0
+fclose($1);
+endsnippet
+
+snippet printx "Description" biA
+printf("%d\n",x);$0
+endsnippet
+

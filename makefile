@@ -59,6 +59,16 @@ alacritty:
 	@mkdir -p $(CONFIG_HOME)/alacritty
 	@rsync -av--recursive --progress $(PWD)/alacritty $(CONFIG_HOME)
 
+# TODO:
+
+# bash:
+# 	@echo "Copying bash configuration files..."
+# 	@mkdir -p $(CONFIG_HOME)/zsh
+# 	@rsync -av --progress --recursive $(PWD)/zsh $(CONFIG_HOME)
+# 	@rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv
+	# @rsync -av --progress $(PWD)/zsh/.warprc $(HOME)
+
+
 
 clean:
 	@echo "Deleting everything..."

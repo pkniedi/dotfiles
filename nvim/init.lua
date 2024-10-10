@@ -21,7 +21,7 @@ local modules = {
 	"oil-setup",
 	"lualine-setup",
 	"open-url-setup",
-	"linting",
+	-- "linting",
 	"vimtex-setup",
 	"colorizer-setup",
 	-- "gitsigns-setup",

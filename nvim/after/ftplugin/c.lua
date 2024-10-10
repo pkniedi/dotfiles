@@ -10,7 +10,5 @@ local opts = { noremap = true, silent = true }
 
 local cmd = vim.cmd
 
--- jump to (sub)*section and paragraphs
---
--- map(0, "n", "<Tab>", "<Cmd>call search('\\(\\(long\\)*\\|\\)')<CR>", opts)
--- map(0, "n", "<S-Tab>", "<Cmd>call search('\\(sub\\)*section\\|paragraph', 'b')<CR>", opts)
+-- NOTE: only used in t.c
+

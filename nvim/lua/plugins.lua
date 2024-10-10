@@ -111,16 +111,31 @@ require("lazy").setup({
 	-- colorschemes
 	"tanvirtin/monokai.nvim",
 	{ "navarasu/onedark.nvim", lazy = true, priority = 1000 },
-	{ "scottmckendry/cyberdream.nvim", lazy = true, priority = 1000 },
-	-- Using lazy.nvim
-
-	-- https://github.com/folke/tokyonight.nvim
 	{
-		"folke/tokyonight.nvim",
+		"ribru17/bamboo.nvim",
 		lazy = false,
 		priority = 1000,
-		opts = {},
+		config = function()
+			require("bamboo").setup({
+				-- optional configuration here
+			})
+			require("bamboo").load()
+		end,
 	},
+	{ "scottmckendry/cyberdream.nvim", lazy = true, priority = 1000 },
+	-- Using lazy.nvim
+	{
+		"scottmckendry/cyberdream.nvim",
+		lazy = false,
+		priority = 1000,
+	},
+	-- https://github.com/folke/tokyonight.nvim
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- },
 
 	-- treesitter
 	"nvim-treesitter/nvim-treesitter",

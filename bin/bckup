@@ -1,10 +1,11 @@
 #!/usr/bin/env zsh
 
 # Creates compressed archive files of dirs specified in DIRS_TO_BACKUP array.
-#
-# Runs as a cron job according to:
+
+# Run as a cron job:
 # 0 * * * * zsh ~/bin/bckup
-# that is, attempts to make daily backup every hour.
+# (attempt to make daily backup every hour)
+
 
 BACKUPS=$HOME/backups
 THIS_BACKUP_DIR=$BACKUPS/week-$(date +%W)
@@ -26,13 +27,14 @@ if [[ $(date +'%d%m') == $(cat $LAST_BCKUP) && $1 != 'f' ]]; then
 fi
 
 DIRS_TO_BACKUP=(
-        $HOME/notes
+        $HOME/notes/zettelkasten
         $HOME/dotfiles
         $HOME/projects
-        $HOME/Documents/templates
+        $HOME/documents
+        $HOME/bin
 )
 
-printf "$(date +'%a %b %d %H:%M:%S'): starting backup...\n"  | tee -a $BACKUP_LOG
+printf "$(date +'%a %b %d %H:%M:%S'): Starting backup...\n"  | tee -a $BACKUP_LOG
 for dir in "$DIRS_TO_BACKUP[@]";do
         if [[ ! -d $dir ]]; then
                 printf "$(date +'%a %b %d %H:%M:%S'): Directory $dir does not exists. Skipping.\n" | tee -a $BACKUP_LOG
@@ -43,16 +45,16 @@ for dir in "$DIRS_TO_BACKUP[@]";do
         cd ..
         if [[ -f $THIS_BACKUP_DIR/$name.tar.xz ]];then
                 mv $THIS_BACKUP_DIR/$name.tar.xz $BACKUPS_TMP
-                printf "$(date +'%a %b %d %H:%M:%S'): moving $name.tar.xz to .tmp\n"
+                printf "$(date +'%a %b %d %H:%M:%S'): Moving $name.tar.xz to .tmp\n"
         fi
 
         # use xz with best compression
-        printf "$(date +'%a %b %d %H:%M:%S'): starting backup of $dir\n"  | tee -a $BACKUP_LOG
+        printf "$(date +'%a %b %d %H:%M:%S'): Starting backup of $dir\n"  | tee -a $BACKUP_LOG
         XZ_OPT=-9 tar -cJf $THIS_BACKUP_DIR/$name.tar.xz $name || mv $BACKUPS_TMP/$name.tar.xz $THIS_BACKUP_DIR
-        printf "$(date +'%a %b %d %H:%M:%S'): backup of $dir done\n"  | tee -a $BACKUP_LOG
+        printf "$(date +'%a %b %d %H:%M:%S'): Backup of $dir done\n"  | tee -a $BACKUP_LOG
 done
 
-printf "$(date +'%a %b %d %H:%M:%S'): finished backup. Total size: $(du -sh $THIS_BACKUP_DIR | cut -d '/' -f1 | sed -e 's/\t//')\n"  | tee -a $BACKUP_LOG
+printf "$(date +'%a %b %d %H:%M:%S'): Finished backup. Total size: $(du -sh $THIS_BACKUP_DIR | cut -d '/' -f1 | sed -e 's/\t//')\n"  | tee -a $BACKUP_LOG
 rm $BACKUPS_TMP/* && echo "$(date +'%a %b %d %H:%M:%S'): Removed tmp files" >> $BACKUP_LOG
 
 echo $(date +'%d%m') > $LAST_BCKUP

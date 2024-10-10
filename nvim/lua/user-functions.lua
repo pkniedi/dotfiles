@@ -17,7 +17,7 @@ M.is_valid_filepath = function()
 	return vim.fn.filereadable(line_content) == 1
 end
 
-M.open_mp4 = function(s)
+M.contains_mp4_url = function(s)
 	local from, to = string.find(s, "http[s]*://[%S]*%.mp4")
 	if from ~= nil and to ~= nil then
 		local url = string.sub(s, from, to)
@@ -39,33 +39,6 @@ M.open_mp4 = function(s)
 	end
 end
 
---- Opens the url (mp4 file) in a new vlc instance
----@param s String the current line
----@return boolean true if it found the special pattern %[vlc.*&>/dev/null &%]
-M.open_vlc_special = function(s)
-	local from, to = string.find(s, "%[vlc.*&>/dev/null &%]")
-
-	if from ~= nil and to ~= nil then
-		local cmd = string.sub(s, from + 1, to - 1)
-		if fn.executable("vlc") == 1 then
-			fn.jobstart(cmd, {
-				detach = true,
-				on_exit = function(_, code, _)
-					print(code)
-					if code ~= 0 then
-						print("Error code:" .. code)
-					end
-				end,
-			})
-			return true
-		end
-		return true
-	else
-		print("No match found")
-		return false
-	end
-end
-
 ---Gets the file extension, if it exists
 ---@param path any
 ---@return nil
@@ -79,16 +52,28 @@ M.get_filetype_extension = function(path)
 	return res
 end
 
+M.contains_urls = function(s)
+	local from, to = string.find(s, "http[s]://[%w.-]+%S*")
+	return from ~= nil and to ~= nil
+end
+
 -- Utility for gx keymap.
 -- tests:
--- ~/resources/mathematics/real-analysis/pvw-analysis.pdf
+-- https://github.com/MeanderingProgrammer/render-markdown.nvim
+-- $HOME/resources/mathematics/real-analysis/pvw-analysis.pdf
+-- ./README.md
 M.my_open_url = function()
 	local curr_line = vim.api.nvim_get_current_line()
 	local cfile = vim.fn.expand("<cfile>")
 
-	if fn.filereadable(cfile) then
-		-- TODO: check whether it is better to check the filetype?
-		--
+	-- if curr line contains a pattern which is a valid url for a mp4 file, opens it with vlc
+	if M.contains_mp4_url(curr_line) then
+		-- vim.notify("Opening video stream with vlc...", vim.log.levels.INFO)
+		print("MP4")
+	elseif M.contains_urls(curr_line) then
+		handlers.open_url(option_module.DEFAULT_OPTIONS)
+	elseif fn.filereadable(cfile) then
+		-- vim.notify(cfile, vim.log.levels.WARN)
 		-- If the file extension is pdf, then use zathura to open the file
 		if M.get_filetype_extension(cfile) == "pdf" then
 			if fn.executable("zathura") == 1 then
@@ -105,17 +90,8 @@ M.my_open_url = function()
 			end
 		end
 		-- else just edit the file
-		vim.api.nvim_command("edit " .. vim.fn.expand("<cfile>"))
-	elseif M.open_vlc_special(curr_line) then
-		print("VLC")
-	elseif M.is_valid_filepath() then
-		print("hello there")
-	elseif M.open_mp4(curr_line) then
-		print("MP4")
+		vim.api.nvim_command("edit " .. cfile)
 	end
-	-- else
-	-- 	handlers.open_url(option_module.DEFAULT_OPTIONS)
-	-- end
 end
 
 ---Wrap argument string with left and right pattern

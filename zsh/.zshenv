@@ -10,3 +10,5 @@ export CONFIG_HOME=$HOME/.config
 export NVIM_HOME=$CONFIG_HOME/nvim
 export XDG_CONFIG_HOME=$CONFIG_HOME
 export CRON_LOG_FILE="$HOME/logs/crontab.log"
+GPG_TTY=$(tty)
+export GPG_TTY

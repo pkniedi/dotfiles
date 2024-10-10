@@ -1,6 +1,23 @@
 #!/usr/bin/env zsh
 
 
+function eth_vpn(){
+                sudo openconnect -u jniederer@student-net.ethz.ch --useragent=AnyConnect -g student-net sslvpn.ethz.ch
+}
+
+# NOTE: added to scripts to make zathura persists after shell exits
+# function zr() {
+#         cd ~/resources
+#         pdf=`fd .pdf | fzf --cycle --wrap`
+#         if [[ $? == 0 ]];then
+#                 zat ./$pdf &
+#                 echo Opening \"`echo $pdf | rev | cut -d / -f1 | rev`\" in background
+#         else
+#                 echo Aborted!!
+#         fi
+#         cd -
+# }
+
 function src() {
         source $ZDOTDIR/aliases.sh
         source $ZDOTDIR/functions.sh
@@ -16,38 +33,10 @@ function comppwd() {
         XZ_OPT=-9 tar -vcJf $archive_name.tar.xz $(pwd)
 }
 
-function openAllURLs {
-        [ ! -f urls ] && return 1
-        urls=$(cat urls | tr "\\n" " ")
-        array=( ${=urls} )
-        for i ("$array[@]");do
-                firefox "$i"
-                # xdg-open $i
-        done
-}
-
 function bluedown {
         sudo systemctl disable bluetooth
         sudo systemctl stop bluetooth
 }
-
-
-# function newbin {
-#         if [[ $# -eq 1 ]];then
-#                 which &>/dev/null
-#                 if [[ ! -f $1 && $? == 1  ]]; then
-#                         name=$1
-#                 else
-#                         name="new-script-$(date +%H-%M)"
-#                 fi
-#         else
-#                 name="script-$(date +%H%M)"
-#         fi
-#         echo "#!/usr/bin/env zsh\n" > $name
-#         chmod +x $name || return 1
-#         nvim $name
-#         return 0
-# }
 
 
 function addfig {
@@ -69,39 +58,6 @@ function tomcon {
         for i in ( "$arr[@]" )
 
 }
-
-function chgthm(){
-        cwd=$(pwd)
-        # dark="onedark"
-        # light="light"
-        echo $#
-        if [ $# -ne 1 ];then
-                mode=$dark
-        else
-                mode=$1
-        fi
-        echo Applying $mode mode
-
-        cd ~/.config/polybar
-        git checkout $mode
-        $HOME/.config/polybar/launch.sh &>/dev/null &
-        cd ~/.config/alacritty
-        git checkout $mode
-        cd $cwd
-        clear
-}
-
-function tglcolo (){
-        grep onedark ~/.config/alacritty/colorscheme.toml &>/dev/null
-        if [[ $? -eq 0 ]];then
-                sed -i "s|onedark|alabaster|" ~/.config/alacritty/colorscheme.toml
-        else
-                sed -i "s|alabaster|onedark|" ~/.config/alacritty/colorscheme.toml
-        fi
-        touch ~/.config/alacritty/alacritty.toml
-}
-
-
 
 function remind  {
         local COUNT="$#"
@@ -161,15 +117,6 @@ function remind  {
         # Schedule the notification
         echo "notify-send  'REMINDER' '$MESSAGE'" | at $TIME
         echo "Notification scheduled at $TIME"
-}
-
-
-function getsecs {
-        if [[ $# == 1 ]];then
-                echo $1 | gsecs | tr -d '\n' |xclip -i -selection clipboard
-                return
-        fi
-        gsecs
 }
 
 function afk() {

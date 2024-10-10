@@ -4,27 +4,39 @@ if [ $# -ne 1 ]; then
         echo "Usage: hotspot d(isconnect) or c(onnect)"
         exit 1
 fi
-if [ $1 = "c" ] || [ $1 = "connect" ]; then
-        echo "unblocking wifi device"
+if [ $1 = "c" ] || [ $1 = "connect" ] || [ $1 = "vpn" ]; then
+        echo "Unblocking wifi device"
         rfkill unblock wifi
-        echo "Turning radio on"
         nmcli radio wifi on
-        echo "Sleeping..."
-        sleep 4.5
+        printf "Turning radio on. Waiting: "
+        for i in {5..1}; do
+                printf "$i"
+                sleep 1
+                printf "\b"
+        done
+        echo done
+
         echo "Trying to connect to 'Mike's Handy'"
         nmcli device wifi connect Mike\'s\ Handy
         if [[ $? == 0 ]]; then
-                echo success
+                if [ $1 = "vpn" ]; then
+                        echo "Trying to use eth vpn..."
+                        sudo openconnect -u jniederer@student-net.ethz.ch --useragent=AnyConnect -g student-net sslvpn.ethz.ch
+                fi
+                echo Success
                 exit 0
         fi
+        echo Failed to connect
         exit 1
+
 elif [ $1 = "d" ] || [ $1 = "disconnect" ]; then
         echo "Turning down connection to 'Mike's Handy'"
         nmcli connection down Mike\'s\ Handy
         nmcli radio wifi off
-        echo "blocking wifi..."
+        echo "Blocking wifi"
         rfkill block wifi
-        echo "wifi blocked"
+        echo "Wifi blocked"
 else
         echo "Not an option: $1"
 fi
+

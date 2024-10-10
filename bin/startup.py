@@ -11,7 +11,8 @@ class_map = {
     "firefox": "firefox",
     "anki" : "Anki",
     "kitty": "kitty",
-    "keepassxc":"KeePassXC"
+    "keepassxc":"KeePassXC",
+        "Alacritty" : "Alacritty"
 }
 
 def open_app_on_ws(cmd,ws_nr,window_class) -> None:
@@ -46,18 +47,18 @@ def open_kitty_lr(ws_nr) -> None:
 
 
 
-open_app_on_ws("keepassxc",1,class_map["keepassxc"])
+# open_app_on_ws("keepassxc",1,class_map["keepassxc"])
 open_app_on_ws("firefox",1,class_map["firefox"])
-open_app_on_ws("kitty",2,class_map["kitty"])
-open_app_on_ws("kitty",3,class_map["kitty"])
+open_app_on_ws("alacritty",2,class_map["Alacritty"])
+open_app_on_ws("alacritty",3,class_map["Alacritty"])
 
-open_app_on_ws("kitty",4,class_map["kitty"])
-open_app_on_ws("kitty",5,class_map["kitty"])
-open_app_on_ws("kitty",6,class_map["kitty"])
-open_app_on_ws("kitty",7,class_map["kitty"])
-open_app_on_ws("kitty --hold journalctl -f",8,class_map["kitty"])
-open_app_on_ws("kitty --hold htop",8,class_map["kitty"])
-open_app_on_ws("anki",9,class_map["anki"])
+# open_app_on_ws("kitty",4,class_map["kitty"])
+# open_app_on_ws("kitty",5,class_map["kitty"])
+# open_app_on_ws("kitty",6,class_map["kitty"])
+# open_app_on_ws("kitty",7,class_map["kitty"])
+# open_app_on_ws("kitty --hold journalctl -f",8,class_map["kitty"])
+# open_app_on_ws("kitty --hold htop",8,class_map["kitty"])
+# open_app_on_ws("anki",9,class_map["anki"])
 
 
 i3.command("workspace 1")

@@ -3,6 +3,8 @@ import wikipedia as wiki, os
 def getFileNameCapitalized(s):
 	return s.rsplit( ".", 1 )[ 0 ].replace("-"," ").capitalize()
 
+def getFileName(s):
+	return s.rsplit( ".", 1 )[ 0 ].replace("-"," ")
 endglobal
 
 snippet todo "TODO: <<??>>"
@@ -35,8 +37,19 @@ NOTE: $1				(since: `date +%a` `date +%d.%m` `date +%H:%M`)
 $0
 endsnippet
 
-snippet [f "[file](file-title.md)" iA
+# Links 
+
+
+snippet [g4 "[file](file-title.md)" iA
+[g4g](`xclip -o clipboard`)$0
+endsnippet
+
+snippet [f "[file](file-title.md)" 
 [$1]($2)
+endsnippet
+
+snippet [aw "[file](file-title.md)" biA
+[archwiki](`xclip -o clipboard`)
 endsnippet
 
 snippet [w "[file](file-title.md)" i
@@ -44,11 +57,19 @@ snippet [w "[file](file-title.md)" i
 endsnippet
 
 
+snippet [m "main" i
+[main]($1)$0
+endsnippet
+
 snippet init "Description" biA
-# `!p snip.rv = getFileNameCapitalized(snip.fn)`
+# `!p snip.rv = getFileName(snip.fn)`
 $0
 
+
+
+---
 # Links
+---
 endsnippet
 # (wikipedia article)[https://en.wikipedia.org/?curid=`!p snip.rv=wiki.page(snip.fn.replace("-"," ")).pageid `]
 
@@ -71,17 +92,19 @@ snippet url "[link](file/URL)" i
 endsnippet
 
 snippet bash "Description" biA
-```bash
-$0
-```
+\`\`\`bash$0
+\`\`\`
+endsnippet
+
+
+snippet ``` "Description" bi
+\`\`\`$0
+\`\`\`
 endsnippet
 
 
 
 # Course abbreviations
-
-
-
 ## SCPA
 
 snippet spca "Systems programming and computer architecture" i
@@ -90,5 +113,15 @@ endsnippet
 
 snippet spcatop "Top section" i
 [top](./)
+endsnippet
+
+
+# Heading
+
+snippet h1 "Heading 1" ibA
+---
+# $1
+---
+$0
 endsnippet
 
