@@ -24,3 +24,9 @@ snippet printx "Description" biA
 printf("%d\n",x);$0
 endsnippet
 
+
+snippet malloc "malloc block" iA
+malloc($1);
+if($0 == NULL) exit(0);
+endsnippet
+

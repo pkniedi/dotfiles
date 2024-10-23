@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+function zaf() {
+        pdf=`fzf`
+        zathura &>/dev/null $pdf &
+}
 
 function eth_vpn(){
                 sudo openconnect -u jniederer@student-net.ethz.ch --useragent=AnyConnect -g student-net sslvpn.ethz.ch

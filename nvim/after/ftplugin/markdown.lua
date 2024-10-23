@@ -172,4 +172,4 @@ end, {})
 map(0, "n", "<space>ww", ":FindWiki <CR>", { desc = "Toggle rendering markdown (plugin)" })
 
 
-
+map(0, "n", "<space>ni", "highlight markdownItalic cterm=NONE gui=NONE", { desc = "Don't highlight italic" })

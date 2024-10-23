@@ -252,7 +252,15 @@ bindsym $mod+n     [instance="^notes$"]   scratchpad show
 bindsym $mod+c     [instance="^calendar$"]   scratchpad show
 bindsym $mod+Shift+space     [instance="^linky-popup$"]   scratchpad show
 bindsym $mod+s [instance="^spotify$"] scratchpad show
-bindsym $mod+t [instance="^pomodoro$"] scratchpad show
+bindsym $mod+t [instance="^todo$"] scratchpad show
+
+for_window [instance="^todo$"] \
+    floating enable, border pixel 3  \
+    resize set 90 ppt 90 ppt, \
+    move position 70 30, \
+    sticky enable, \
+    border pixel 3, \
+    move scratchpad
 
 for_window [instance="^notes$"] \
     floating enable, border pixel 3  \
@@ -312,7 +320,7 @@ exec --no-startup-id alacritty --class dropdown
 exec --no-startup-id  alacritty --class linky-popup
 exec --no-startup-id alacritty --class notes
 exec --no-startup-id  alacritty --class calendar
-# exec --no-startup-id  spotify --class spotify
+exec --no-startup-id  alacritty --class todo
 # exec --no-startup-id  alacritty --class pomodoro
 
 

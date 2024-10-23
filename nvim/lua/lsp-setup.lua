@@ -49,7 +49,19 @@ require("lspconfig").pylsp.setup({
 	},
 })
 
-lspconfig.ocamllsp.setup{}
+lspconfig.ocamllsp.setup({
+	cmd = { "ocamllsp" },
+	filetypes = { "ocaml", "reason" },
+	root_dir = require("lspconfig").util.root_pattern(
+		"*.opam",
+		"esy.json",
+		"package.json",
+		".git",
+		"dune-project",
+		"dune-workspace",
+		"hw*"
+	),
+})
 lspconfig.hls.setup({ cmd = { "haskell-language-server" } })
 lspconfig.jdtls.setup({})
 lspconfig.bashls.setup({})
@@ -78,8 +90,6 @@ for type, icon in pairs(signs) do
 	local hl = "LspDiagnosticsSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
-
-
 
 local M = {}
 

@@ -100,6 +100,7 @@ require("lazy").setup({
 
 	{
 		"SirVer/ultisnips",
+		lazy = false,
 		init = function()
 			vim.g.UltiSnipsExpandTrigger = "<C-l>"
 			vim.g.UltiSnipsJumpForwardTrigger = "<C-l>"

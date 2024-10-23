@@ -26,10 +26,13 @@ snippet pwd "current working dir" i
 `pwd`
 endsnippet
 
-snippet yesterday "" i
+snippet yesterday "Yesterday's date long" i
 `date -d yesterday +"%a. %d.%m.%y."`
 endsnippet
 
+snippet yday "Yesterday short" i
+`date -d yesterday +"%a. %d.%m."`
+endsnippet
 
 
 snippet ue "" i

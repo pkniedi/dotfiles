@@ -125,7 +125,13 @@ end, { desc = "" })
 -- make keymaps
 map("n", [[<leader>mm]], [[:!make<CR>]], { desc = "run make" })
 map("n", [[<leader>ma]], [[:!make]], { desc = ":!" })
-map("n", [[<leader>mt]], [[:!make test<CR>]], { desc = ":!make test<CR>" })
+map("n", [[<leader>mf]], [[:!make test-full &> ./output <CR>]], { desc = ":!make test-full<CR>" })
+map(
+        "n",
+        [[<leader>mt]],
+        [[:!make test &> ./output <CR>]],
+        { desc = ":!make test<CR>" }
+)
 
 map("n", [[<leader>ss]], [[:SubSQL<CR>]], { desc = "Substitute SQL statements" })
 

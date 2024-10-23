@@ -1,4 +1,5 @@
 CONFIG_HOME:=$(HOME)/.config
+DOTFILES:=$(PWD)/dotfiles
 
 .PHONY: sync md cp-dirs clean zsh nvim bin i3 polybar nvim kitty alacritty
 
@@ -23,41 +24,41 @@ pull:
 zsh:
 	@echo "Copying zsh configuration files..."
 	@mkdir -p $(CONFIG_HOME)/zsh
-	@rsync -av --progress --recursive $(PWD)/zsh $(CONFIG_HOME)
-	@rsync -av --progress $(PWD)/zsh/zshenv $(HOME)/.zshenv
-	@rsync -av --progress $(PWD)/zsh/.warprc $(HOME)
+	@rsync -av --progress --recursive $(DOTFILES)/zsh $(CONFIG_HOME)
+	@rsync -av --progress $(DOTFILES)/zsh/zshenv $(HOME)/.zshenv
+	@rsync -av --progress $(DOTFILES)/zsh/.warprc $(HOME)
 
 bin:
 	@echo "Copying scripts..."
 	@mkdir -p $(HOME)/bin
-	@rsync -av --recursive --progress $(PWD)/bin $(HOME)
+	@rsync -av --recursive --progress $(DOTFILES)/bin $(HOME)
 
 i3:
 	@echo "Copying i3 configuration files..."
 	@mkdir -p $(CONFIG_HOME)/i3
-	@rsync -av --recursive --progress $(PWD)/i3 $(CONFIG_HOME)
+	@rsync -av --recursive --progress $(DOTFILES)/i3 $(CONFIG_HOME)
 
 
 polybar:
 	@echo "Copying polybar configuration files..."
 	@mkdir -p $(CONFIG_HOME)/polybar
-	@rsync -av ---recursive -progress $(PWD)/polybar $(CONFIG_HOME)
+	@rsync -av ---recursive -progress $(DOTFILES)/polybar $(CONFIG_HOME)
 
 
 nvim:
 	@echo "Copying nvim configuration files..."
 	@mkdir -p $(CONFIG_HOME)/nvim
-	@rsync -av --recursive --progress $(PWD)/nvim $(CONFIG_HOME)
+	@rsync -av --recursive --progress $(DOTFILES)/nvim $(CONFIG_HOME)
 
 kitty:
 	@echo "Copying configuration files..."
 	@mkdir -p $(CONFIG_HOME)/kitty
-	@rsync -av --recursive --progress $(PWD)/kitty $(CONFIG_HOME)
+	@rsync -av --recursive --progress $(DOTFILES)/kitty $(CONFIG_HOME)
 
 alacritty:
 	@echo "Copying configuration files..."
 	@mkdir -p $(CONFIG_HOME)/alacritty
-	@rsync -av--recursive --progress $(PWD)/alacritty $(CONFIG_HOME)
+	@rsync -av--recursive --progress $(DOTFILES)/alacritty $(CONFIG_HOME)
 
 # TODO:
 
