@@ -1,0 +1,123 @@
+global !p
+import wikipedia as wiki, os
+def getFileNameCapitalized(s):
+	return s.rsplit( ".", 1 )[ 0 ].replace("-"," ").capitalize()
+
+def getFileName(s):
+	return s.rsplit( ".", 1 )[ 0 ].replace("-"," ")
+endglobal
+
+snippet todo "TODO: <<??>>"
+TODO: $1
+$0
+endsnippet
+
+snippet fix "FIX: <<??>>"
+FIX: $1
+$0
+endsnippet
+
+snippet note "NOTE: <<??>>"
+NOTE: $1
+$0
+endsnippet
+
+snippet todod "TODO: <<??>> (since: Tue 26.09 16:11)"
+TODO: $1				(since: `date +%a` `date +%d.%m` `date +%H:%M`)
+$0
+endsnippet
+
+snippet fixd "FIX: <<??>> (since: Tue 26.09 16:12)"
+FIX: $1					(since: `date +%a` `date +%d.%m` `date +%H:%M`)
+$0
+endsnippet
+
+snippet noted "NOTE: <<??>> (since: Tue 26.09 16:12)"
+NOTE: $1				(since: `date +%a` `date +%d.%m` `date +%H:%M`)
+$0
+endsnippet
+
+# Links 
+
+
+snippet [g4 "[file](file-title.md)" iA
+[g4g](`wl-paste`)$0
+endsnippet
+
+snippet [f "[file](file-title.md)" i
+[$1]($2)
+endsnippet
+
+snippet [aw "[file](file-title.md)" biA
+[archwiki](`wl-paste`)
+endsnippet
+
+snippet [w "[file](file-title.md)" i
+[wiki](`wl-paste`)
+endsnippet
+
+
+snippet [m "main" i
+[main]($1)$0
+endsnippet
+
+snippet init "Description" biA
+# `!p snip.rv = getFileName(snip.fn)`
+$0
+
+
+
+---
+# Links
+---
+endsnippet
+# (wikipedia article)[https://en.wikipedia.org/?curid=`!p snip.rv=wiki.page(snip.fn.replace("-"," ")).pageid `]
+
+
+snippet ** "****" i
+**$1**$0
+endsnippet
+
+
+snippet link "[link](file/URL)" ib
+[$1](./$2)$0
+endsnippet
+
+snippet url "[link](file/URL)" i
+[$1](`wl-paste`)$0
+endsnippet
+
+snippet bash "Description" biA
+\`\`\`bash$0
+\`\`\`
+endsnippet
+
+
+snippet ``` "Description" bi
+\`\`\`$0
+\`\`\`
+endsnippet
+
+
+
+# Course abbreviations
+## SCPA
+
+snippet spca "Systems programming and computer architecture" i
+systems$1programming$1and$1computer$1architecture$0
+endsnippet
+
+snippet spcatop "Top section" i
+[top](./)
+endsnippet
+
+
+# Heading
+
+snippet h1 "Heading 1" ibA
+---
+# $1
+---
+$0
+endsnippet
+

@@ -50,9 +50,42 @@ Run the following command to sync everything:
 git clone https://github.com/pkniedi/dotfiles.git $HOME/dotfiles && make --file=$HOME/dotfiles/makefile sync
 ```
 
-# TODO
 
-- docs
+# Helper scripts
+
+Located in helpers directory.
+
+install-zsh-dependencies.sh: Installs all zsh dependencies (duh)
+    -   oh-my-zsh
+    -   zsh-autosuggestions
+    -   zsh-syntax-highlighting
+
+
+
+# Applications
+
+## zsh
+
+run the following command to sync the nvim configuration in this repository with the nvim configuration in the home directory:
+
+```bash
+make zsh_sync
+```
+
+## nvim
+
+
+run the following command to sync the nvim configuration in this repository with the nvim configuration in the home directory:
+
+```bash
+make nvim_sync
+```
+
+run the following command to start nvim with the configuration in this repository:
+
+```bash
+nvim -u init.lua
+```
 
 
 
@@ -60,16 +93,4 @@ git clone https://github.com/pkniedi/dotfiles.git $HOME/dotfiles && make --file=
 
 # Colors
 
-The colorscheme is generated using wal. The colors are stored in the `wal` directory. The colors are generated using the `wal` command. The colors are then stored in the `wal`
-directory. The colors are then used in the configuration files for the various applications.
-
 https://github.com/dylanaraps/pywal?tab=readme-ov-file
-
-
-
-
-# ZSH configuration
-
-The makefile in the root directory copies
--   .zshrc to ~/.zshrc
--   all other files in zsh to ~/.config/zshrc

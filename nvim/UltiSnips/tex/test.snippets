@@ -1,0 +1,27 @@
+global p!
+from helpers.py import *
+endglobal
+
+snippet vwiki "" i
+`!p
+import wikipedia as wiki
+def wikiSum():
+    return wiki.summary(snip.v.text,sentences=5)
+snip.rv = wikiSum()
+`
+endsnippet
+
+snippet twiki "" i
+`!p
+import wikipedia as wiki
+def wikiSum():
+    return wiki.summary('Ananas fruit')
+snip.rv = wikiSum()
+`
+endsnippet
+
+
+snippet "hello there this is another one" "Description" 
+THIS IS THE INPUT
+endsnippet
+

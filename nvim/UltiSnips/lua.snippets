@@ -1,0 +1,42 @@
+snippet vmap "map in visual mode" Ab
+vim.keymap.set('v', [[$1]], [[$2]], ${3:opts})
+endsnippet
+
+snippet nmap "map in normal mode" Ab
+map('n', $1, $2, {desc = "$2"})
+endsnippet
+
+
+snippet todo
+-- TODO: $0
+endsnippet
+
+snippet fix
+-- FIX: $0
+endsnippet
+
+snippet note
+-- NOTE: $0 
+endsnippet
+
+snippet "(nvim)?autocmd" "nvim_create_autocmd" rb
+vim.api.nvim_create_autocmd(
+{ "${1:BufNewFile}" },
+{
+pattern = ${2:vim.fn.expand("~") .. "/some/path/*.py"},
+callback = function(ev)
+	$0
+end,
+}
+)
+endsnippet
+
+snippet acmd "Description" bA
+autocmd({$1}, {$0})
+endsnippet
+
+
+snippet testnot "Test notify" A
+vim.notify("HELLO THERE",vim.log.levels.WARN)$0
+endsnippet
+

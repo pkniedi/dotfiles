@@ -100,7 +100,7 @@ pull_zsh:
 	@rsync -a $(CONFIG_HOME)/zshrc $(DOTFILES)
 
 # -----------------------------------------------
-#  NVIM
+#  nvim
 
 single_nvim: requirements nvim_sync nvim_dependencies
 	
@@ -143,4 +143,16 @@ pull_kitty:
 
 
 # -----------------------------------------------
+#  wal
+
+wal:
+
+wal: wal_dependencies wal_sync
+
+
+
+
+# -----------------------------------------------
 #  wayland
+#
+#

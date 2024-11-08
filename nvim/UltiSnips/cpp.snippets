@@ -1,0 +1,29 @@
+snippet todo "add new TODO:<<??>>"
+//TODO: $1
+$0
+endsnippet
+
+snippet fix "add new FIX: <<??>>"
+//FIX: $1
+$0
+endsnippet
+
+snippet note "add new NOTE: <<??>>"
+//NOTE: $1
+$0
+endsnippet
+
+snippet todod "add new TODO: <<??>> (since: Tue 26.09 16:11)"
+//TODO: $1 (since: `date +%a` `date +%d.%m` `date +%H:%M`)
+$0
+endsnippet
+
+snippet fixd "add new FIX: <<??>> (since: Tue 26.09 16:12)"
+//FIX: $1 (since: `date +%a` `date +%d.%m` `date +%H:%M`)
+$0
+endsnippet
+
+snippet noted "add new NOTE: <<??>> (since: Tue 26.09 16:12)"
+//NOTE: $1 (since: `date +%a` `date +%d.%m` `date +%H:%M`)
+$0
+endsnippet
