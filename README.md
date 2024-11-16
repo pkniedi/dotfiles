@@ -1,12 +1,21 @@
 # Dotfiles
 
-
-My dotfiles for the following appli
+nvim & zsh configuration files work, rest not done yet.
 
 
 # Setup
 
 This repository contains my current arch linux setup.
+
+Note: only run make inside the root of the repository.
+
+Do not run
+```bash
+make --file=$HOME/dotfiles/makefile sync
+```
+as the makefile relies on the current working directory being the root of the repository to correctly sync the configuration files.
+(fix this)
+
 
 The configuartion files for for the following applications are included in their respective directories:
 
@@ -39,8 +48,6 @@ make zsh                # install all zsh dependencies and sync the zsh configur
 make zsh_dependencies   # install all zsh dependencies
 make zsh_sync           # sync the zsh configuration
 ```
-
-
 
 
 
@@ -94,3 +101,8 @@ nvim -u init.lua
 # Colors
 
 https://github.com/dylanaraps/pywal?tab=readme-ov-file
+
+
+# TODO
+
+- [ ] change wallpapers to script which downloads instead of storing them in the repository

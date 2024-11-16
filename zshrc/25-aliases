@@ -663,3 +663,10 @@ for old_alias new_alias (
     $new_alias"
 done
 unset old_alias new_alias
+
+
+# ------------------------------------------------------------------------------
+# school
+# ------------------------------------------------------------------------------
+
+alias dockerRun="docker run -v $(pwd):/home/student/hw -it quarub/ubuntu-ocaml-4.13.1:latest"

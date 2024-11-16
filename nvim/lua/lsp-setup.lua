@@ -49,19 +49,19 @@ require("lspconfig").pylsp.setup({
 	},
 })
 
-lspconfig.ocamllsp.setup({
-	cmd = { "ocamllsp" },
-	filetypes = { "ocaml", "reason" },
-	root_dir = require("lspconfig").util.root_pattern(
-		"*.opam",
-		"esy.json",
-		"package.json",
-		".git",
-		"dune-project",
-		"dune-workspace",
-		"hw*"
-	),
-})
+-- lspconfig.ocamllsp.setup({
+-- 	cmd = { "ocamllsp" },
+-- 	filetypes = { "ocaml", "reason" },
+-- 	root_dir = require("lspconfig").util.root_pattern(
+-- 		"*.opam",
+-- 		"esy.json",
+-- 		"package.json",
+-- 		".git",
+-- 		"dune-project",
+-- 		"dune-workspace",
+-- 		"hw*"
+-- 	),
+-- })
 lspconfig.hls.setup({ cmd = { "haskell-language-server" } })
 lspconfig.jdtls.setup({})
 lspconfig.bashls.setup({})

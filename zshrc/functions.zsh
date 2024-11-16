@@ -22,11 +22,6 @@ function eth_vpn(){
 #         cd -
 # }
 
-function src() {
-        source $ZDOTDIR/aliases.sh
-        source $ZDOTDIR/functions.sh
-}
-
 function comppwd() {
         if [[ $# -ne 1 ]]; then
                 printf "Enter archive name: "

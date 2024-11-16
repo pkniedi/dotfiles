@@ -1,5 +1,4 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
-
 local ts = require("nvim-treesitter.configs")
 ts.setup({
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
@@ -34,5 +33,7 @@ ts.setup({
 	},
 	indent = {
 		enable = true,
+                disable = { "ocaml" },
 	},
+
 })

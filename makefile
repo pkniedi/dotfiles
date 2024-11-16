@@ -22,7 +22,7 @@ requirements:
 
 
 
-pull_all: pull_zsh pull_nvim
+pull_all: zsh_pull nvim_pull
 
 all: requirements cli gui
 
@@ -74,6 +74,7 @@ sync: zsh nvim bin i3 polybar nvim kitty alacritty
 # Install zsh-autosuggestions
 # Install zsh-syntax-highlighting
 #
+zsh: zsh_dependencies zsh_sync
 single_zsh: requirements zsh_sync zsh_dependencies
 
 zsh_dependencies:
@@ -93,11 +94,11 @@ zsh_sync:
 	@rsync -a  $(DOTFILES)/zshrc/.warprc $(HOME)
 	@echo ":: Running install script..."
 
-pull_zsh:
+zsh_pull:
 	@echo ":: Pulling zsh configuration files..."
-	@rsync -a $(HOME)/.zshrc $(DOTFILES)/zshrc/.zshrc
-	@rsync -a $(HOME)/.warprc $(DOTFILES)/zshrc/.warprc
-	@rsync -a $(CONFIG_HOME)/zshrc $(DOTFILES)
+	@cp -r $(CONFIG_HOME)/zshrc/* $(DOTFILES)/zshrc
+	@rsync -a $(HOME)/.zshrc $(DOTFILES)/zshrc
+	@rsync -a $(HOME)/.warprc $(DOTFILES)/zshrc
 
 # -----------------------------------------------
 #  nvim
@@ -109,13 +110,13 @@ nvim_dependencies:
 	@sudo ./helpers/install-nvim-dependencies.sh
 
 nvim_sync:
-	figlet -f ./figlet-fonts/3D-ASCII.flf "NVIM"
+	@figlet -f ./figlet-fonts/3D-ASCII.flf "NVIM"
 	@echo ":: Copying nvim configuration files..."
 	@mkdir -p $(CONFIG_HOME)/nvim
 	@rsync -a $(DOTFILES)/nvim $(CONFIG_HOME)
 
 
-pull_nvim:
+nvim_pull:
 	@echo ":: Pulling nvim configuration files..."
 	@rsync -a $(CONFIG_HOME)/nvim $(DOTFILES)
 
@@ -137,7 +138,8 @@ kitty_sync:
 	@mkdir -p $(CONFIG_HOME)/kitty
 	@rsync -a $(DOTFILES)/kitty $(CONFIG_HOME)
 
-pull_kitty:
+
+kitty_pull:
 	@echo ":: Pulling kitty configuration files..."
 	@rsync -a $(CONFIG_HOME)/kitty $(DOTFILES)
 

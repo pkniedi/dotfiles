@@ -2,12 +2,6 @@ local vim = vim
 require("plugins")
 
 
-local pwd = vim.fn.getcwd()
-local home = os.getenv("HOME")
-if pwd ~= home .. ".config/nvim" then
-        vim.notify(":: dotfiles config loaded", vim.log.levels.WARN)
-end
-
 local modules = {
 	"keymaps",
 	"lsp-setup",
@@ -28,16 +22,15 @@ local modules = {
 	"oil-setup",
 	"lualine-setup",
 	"open-url-setup",
-	-- "linting",
 	"vimtex-setup",
 	"colorizer-setup",
-	-- "gitsigns-setup",
         "bufferline-setup",
         "render-markdown-setup",
 	"user-functions",
         "reload",
 	"options",
         "dashboard-setup",
+        "filetypes", -- set custom filetypes not correctly detected
 }
 
 for i = 1, #modules do

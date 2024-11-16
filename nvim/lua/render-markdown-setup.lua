@@ -1,5 +1,7 @@
 -- https://github.com/MeanderingProgrammer/render-markdown.nvim
--- ./README.md
+-- render-markdown.nvim is a plugin that renders markdown files in a buffer with a focus on readability and aesthetics.
+
+local vim = vim
 require("render-markdown").setup({
 
 	heading = {

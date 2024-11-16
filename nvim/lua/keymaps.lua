@@ -228,6 +228,18 @@ map("n", "<leader>n+", [[:NoNeckPainWidthUp<CR>]],  {noremap = true, silent = tr
 map("n", "<leader>n-", [[:NoNeckPainWidthDown<CR>]], {noremap = true, silent = true, desc = "NoNeckPainWidthDown" })
 
 
+
+map("n", "<leader>s", function()
+        -- check if cmd.vim file exists in pwd
+       if  vim.fn.filereadable("cmd.vim") == 1 then
+           vim.cmd("source cmd.vim")
+       else
+           print("cmd.vim not found")
+       end
+end , {noremap = true, silent = true, desc = "Source cmd.vim" })
+
+
+
 -------------------------
 --- VISUAL
 

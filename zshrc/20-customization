@@ -6,7 +6,7 @@ POSH=agnoster
 # -----------------------------------------------------
 # oh-myzsh themes: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # -----------------------------------------------------
-ZSH_THEME=robbyrussell
+# ZSH_THEME=robbyrussell
 
 # -----------------------------------------------------
 # oh-myzsh plugins
@@ -26,6 +26,7 @@ plugins=(
     archlinux
     copyfile
     copybuffer
+    eza
     fancy-ctrl-z
     zsh-autosuggestions
 )
@@ -39,8 +40,15 @@ source $ZSH/oh-my-zsh.sh
 source <(fzf --zsh)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+
 # zsh history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+
+# To set a new config/theme you need to change the --config option of the oh-my-posh
+# init <shell> line in your profile or .<shell>rc script (see prompt) and point it 
+# to the location of a predefined theme or custom configuration.
+
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"

@@ -19,7 +19,7 @@ dm:~/notes/dm
 dmdb:~/notes/dmdb
 docs:~/documents
 documents:~/documents
-dot:~/dotfiles
+dot:~/projects/jniedi-dotfiles
 dotfiles:~/dotfiles
 down:~/Downloads
 dreams:~/Documents/private/dreams
@@ -53,8 +53,8 @@ n:~/notes/zettelkasten
 nad:~/notes/ad/notes
 nafter:~/.config/nvim/after/ftplugin
 numcs:~/notes/numcs
-nv:~/.config/nvim/lua
-nvim:~/.config/nvim/lua
+nv:~/.config/nvim
+nvim:~/.config/nvim
 nws:~/notes/ws/notes
 os:~/resources/computer-science/operating-systems
 picom:~/.config/picom
