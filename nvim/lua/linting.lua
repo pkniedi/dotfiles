@@ -1,4 +1,4 @@
--- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file
+--    https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file
 
 local lint = require("lint")
 

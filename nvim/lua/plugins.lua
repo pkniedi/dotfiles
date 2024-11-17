@@ -1,3 +1,9 @@
+--  _ __ | |_   _  __ _(_)_ __  ___
+-- | '_ \| | | | |/ _` | | '_ \/ __|
+-- | |_) | | |_| | (_| | | | | \__ \
+-- | .__/|_|\__,_|\__, |_|_| |_|___/
+-- |_|            |___/
+
 local vim = vim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -14,6 +20,16 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+
+	-- {
+	-- 	"~/projects/ascii.nvim/lua/ascii/init.lua", -- The path to the init.lua of your local plugin
+	-- 	dir = "~/projects/ascii.nvim", -- Path to your local plugin directory
+	-- 	-- You can optionally set additional configuration options here
+	-- 	-- For example, specifying when the plugin should be loaded
+	-- 	-- lazy = false,  -- Ensure it loads on startup (if you want it to)
+	-- 	-- dependencies = { "some_other_plugin" },  -- If the plugin has dependencies
+	-- },
+
 	"quangnguyen30192/cmp-nvim-ultisnips",
 	"valentjn/ltex-ls",
 	{
@@ -112,7 +128,7 @@ require("lazy").setup({
 	-- colorschemes
 	-- others: https://vimcolorschemes.com/i/trending
 
-	-- https://github.com/rose-pine/neovim
+	--    https://github.com/rose-pine/neovim
 	{ "rose-pine/neovim", name = "rose-pine" },
 	"tanvirtin/monokai.nvim",
 	{ "navarasu/onedark.nvim", lazy = true, priority = 1000 },
@@ -134,7 +150,7 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 	},
-	-- https://github.com/folke/tokyonight.nvim
+	--    https://github.com/folke/tokyonight.nvim
 	-- {
 	-- 	"folke/tokyonight.nvim",
 	-- 	lazy = false,
@@ -144,26 +160,26 @@ require("lazy").setup({
 
 	-- treesitter
 	"nvim-treesitter/nvim-treesitter",
-	-- https://github.com/lervag/vimtex
+	--    https://github.com/lervag/vimtex
 	{
 		"lervag/vimtex",
 		lazy = false, -- we don't want to lazy load VimTeX
 		-- tag = "v2.15", -- uncomment to pin to a specific release
 	},
 
-	-- https://github.com/nvim-telescope/telescope.nvim
+	--    https://github.com/nvim-telescope/telescope.nvim
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
-	-- https://github.com/nvim-lua/plenary.nvim
+	--    https://github.com/nvim-lua/plenary.nvim
 	"nvim-lua/plenary.nvim",
 	"fraso-dev/nvim-listchars",
-	-- https://github.com/lukas-reineke/indent-blankline.nvim
+	--    https://github.com/lukas-reineke/indent-blankline.nvim
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
-	-- https://github.com/mhartington/formatter.nvim
-	"https://github.com/mhartington/formatter.nvim",
+	--    https://github.com/mhartington/formatter.nvim
+	"mhartington/formatter.nvim",
 	"m4xshen/autoclose.nvim",
 	"numToStr/Comment.nvim",
 	{
@@ -174,18 +190,18 @@ require("lazy").setup({
 	"vijaymarupudi/nvim-fzf",
 	"tzachar/cmp-fuzzy-buffer",
 	"amarakon/nvim-cmp-fonts",
-	-- https://github.com/sudormrfbin/cheatsheet.nvim
+	--    https://github.com/sudormrfbin/cheatsheet.nvim
 	"sudormrfbin/cheatsheet.nvim",
 	"ryanoasis/vim-devicons",
 
-	-- https://github.com/nvim-lualine/lualine.nvim
+	--    https://github.com/nvim-lualine/lualine.nvim
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	"sindrets/diffview.nvim",
 
-	-- https://github.com/akinsho/bufferline.nvim
+	--    https://github.com/akinsho/bufferline.nvim
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	{
 		"folke/trouble.nvim",
@@ -227,7 +243,7 @@ require("lazy").setup({
 	},
 	"AckslD/nvim-neoclip.lua",
 	"folke/which-key.nvim",
-	-- https://github.com/tpope/vim-surround
+	--    https://github.com/tpope/vim-surround
 	"tpope/vim-surround",
 	"yamatsum/nvim-cursorline",
 
@@ -242,7 +258,7 @@ require("lazy").setup({
 	},
 	{ "kevinhwang91/nvim-ufo", lazy = false, dependencies = "kevinhwang91/promise-async" },
 	{ "stevearc/oil.nvim", lazy = false },
-	-- https://github.com/sontungexpt/url-open/
+	--    https://github.com/sontungexpt/url-open/
 	"sontungexpt/url-open",
 	{
 		"Wansmer/treesj",
@@ -271,7 +287,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	-- https://github.com/wellle/targets.vim
+	--    https://github.com/wellle/targets.vim
 	-- Targets.vim is a Vim plugin that adds various text objects to give you more targets to operate on.
 	-- It expands on the idea of simple commands like di' (delete inside the single quotes around the cursor)
 	-- to give you more opportunities to craft powerful commands that can be repeated reliably.
@@ -279,7 +295,7 @@ require("lazy").setup({
 	"wellle/targets.vim",
 
 	"tpope/vim-fugitive",
-	"tpope/vim-repeat", -- https://github.com/tpope/vim-repeat
+	"tpope/vim-repeat", --    https://github.com/tpope/vim-repeat
 	"deoplete-plugins/deoplete-clang",
 	{
 		"ellisonleao/carbon-now.nvim",
@@ -290,7 +306,7 @@ require("lazy").setup({
 	-- "ntpeters/vim-better-whitespace",
 	"mg979/vim-visual-multi",
 
-	-- https://github.com/MeanderingProgrammer/render-markdown.nvim
+	--    https://github.com/MeanderingProgrammer/render-markdown.nvim
 	-- Renders markdown with :RenderMarkdown
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
@@ -330,43 +346,47 @@ require("lazy").setup({
 	},
 
 	"github/copilot.vim",
-	--- dashboard: https://github.com/MeanderingProgrammer/dashboard.nvim
-	--- ascii: https://github.com/MaximilianLloyd/ascii.nvim?tab=readme-ov-file
+	--- dashboard:    https://github.com/MeanderingProgrammer/dashboard.nvim
+	--- ascii:    https://github.com/MaximilianLloyd/ascii.nvim?tab=readme-ov-file
 	{
 		{
 			"MeanderingProgrammer/dashboard.nvim",
 			event = "VimEnter",
-			dependencies = {
-				{ "MaximilianLloyd/ascii.nvim", dependencies = { "MunifTanjim/nui.nvim" } },
-			},
-			-- config = function()
-			-- 	require("dashboard").setup({
-			-- 		header = require("ascii").get_random_global(),
-			-- 		date_format = "%Y-%m-%d %H:%M:%S",
-			-- 		directories = {
-			-- 			"~/.config",
-			-- 			"~/.config/nvim/lua",
-			-- 			"~/.config/nvim/hypr",
-			-- 			"~/.config/nvim/hypr",
-			-- 			"~/notes/zettelkasten",
-			-- 		},
-			-- 		footer = {},
-			-- 		-- Gets called after directory is changed and is provided with the
-			-- 		-- directory path as an argument
-			-- 		on_load = function(path)
-			-- 			vim.notify("Loaded " .. path)
-			-- 		end,
-			-- 		-- Highlight groups to use for various components
-			-- 		highlight_groups = {
-			-- 			header = "Constant",
-			-- 			icon = "Type",
-			-- 			directory = "Delimiter",
-			-- 			hotkey = "Statement",
-			-- 		},
-			-- 	})
-			-- end,
+			dependencies = { { "MaximilianLloyd/ascii.nvim", dependencies = { "MunifTanjim/nui.nvim" } } },
 		},
 	},
-	-- https://github.com/shortcuts/no-neck-pain.nvim
+	--    https://github.com/shortcuts/no-neck-pain.nvim
 	{ "shortcuts/no-neck-pain.nvim", version = "*" },
+
+	-- render images in neovim
+	{
+		"3rd/image.nvim",
+		opts = {},
+	},
+
+	--    https://github.com/nvim-neorg/neorg
+	{
+		"nvim-neorg/neorg",
+		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+		version = "*", -- Pin Neorg to the latest stable release
+		config = true,
+	},
+
+	-- templates
+	--       https://github.com/nvimdev/template.nvim
+
+	{
+		"glepnir/template.nvim",
+		cmd = { "Template", "TemProject" },
+		config = function()
+			require("template").setup({
+				-- config in there
+				temp_dir = vim.fn.stdpath("config") .. "/templates",
+			})
+		end,
+	},
 })
+
+
+
+

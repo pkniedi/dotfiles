@@ -1,6 +1,10 @@
 local vim = vim
 require("dashboard").setup({
-	header = require("ascii").get_random_global(),
+                -- header = require("ascii").get_random_global(),
+                header = require("ascii").get_random_global(),
+                --arch_btw_doom
+            -- header = require('ascii').art.text.neovim.sharp,
+            -- header = require('ascii').art.series.theoffice.prison_mike,
 	date_format = "%Y-%m-%d %H:%M:%S",
 	directories = {
 		"~/.config",

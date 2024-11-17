@@ -1,4 +1,4 @@
--- github repository: https://github.com/folke/which-key.nvim
+--   https://github.com/folke/which-key.nvim
 
 vim.o.timeout = true
 vim.o.timeoutlen = 500

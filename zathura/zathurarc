@@ -1,0 +1,59 @@
+set selection-clipboard clipboard
+
+# Zathura configuration file
+# See man `man zathurarc'
+
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
+
+# One page per row by default
+set pages-per-row 1
+
+#stop at page boundries
+set scroll-page-aware "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+# set guioptions ""
+set database "sqlite"
+#zoom settings
+set zoom-min 10
+# zathurarc-dark
+set guioptions none
+
+set font "FiraCode Nerd Font 11"
+set default-bg '#00000000' #00
+set default-fg "#F7F7F6" #01
+
+set statusbar-fg "#F7F7F6" #04
+set statusbar-bg "#00000000" #01
+
+set inputbar-bg "#00000000" #00 currently not used
+set inputbar-fg "#ffffff" #02
+
+set notification-error-bg "#f7768e00" #08
+set notification-error-fg "#32344a" #00
+
+set notification-warning-bg "#f7768e00" #08
+set notification-warning-fg "#32344a" #00
+
+
+set completion-highlight-fg "#32344a" #02
+set completion-highlight-bg "#61afef" #0C
+
+set completion-bg "#303030" #02
+set completion-fg "#9699a8" #0C
+
+set notification-bg "#e0af68" #0B
+set notification-fg "#32344a" #00
+
+set recolor "false"
+set recolor-lightcolor "#000000" #00
+set recolor-darkcolor "#E0E0E0" #06
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+
+set render-loading "false"
+set scroll-step 50
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen

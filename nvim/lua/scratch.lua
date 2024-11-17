@@ -1,4 +1,4 @@
--- https://github.com/nvim-telescope/telescope.nvim/blob/master/developers.md#introduction
+--    https://github.com/nvim-telescope/telescope.nvim/blob/master/developers.md#introduction
 
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")

@@ -1,4 +1,4 @@
--- github repository: https://github.com/nvim-telescope/telescope.nvim
+-- github repository:    https://github.com/nvim-telescope/telescope.nvim
 
 local telescope = require("telescope")
 

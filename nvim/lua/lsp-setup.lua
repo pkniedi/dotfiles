@@ -1,10 +1,13 @@
---         nvim-lspconfig:  https://github.com/neovim/nvim-lspconfig
+--         nvim-lspconfig:     https://github.com/neovim/nvim-lspconfig
 -- https://wiki.archlinux.org/title/Language_Server_Protocol
 
 local vim = vim
 local lspconfig = require("lspconfig")
 
--- github repository: https://github.com/latex-lsp/texlab
+-- github repository:    https://github.com/latex-lsp/texlab
+--
+
+
 lspconfig.texlab.setup({})
 lspconfig.denols.setup({})
 
@@ -62,7 +65,7 @@ require("lspconfig").pylsp.setup({
 -- 		"hw*"
 -- 	),
 -- })
-lspconfig.hls.setup({ cmd = { "haskell-language-server" } })
+--
 lspconfig.jdtls.setup({})
 lspconfig.bashls.setup({})
 lspconfig.cssls.setup({})

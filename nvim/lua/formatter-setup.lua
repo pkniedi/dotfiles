@@ -1,5 +1,5 @@
--- https://github.com/mhartington/formatter.nvim
--- https://github.com/mhartington/formatter.nvim/tree/master/lua/formatter/filetypes
+--    https://github.com/mhartington/formatter.nvim
+--    https://github.com/mhartington/formatter.nvim/tree/master/lua/formatter/filetypes
 
 local util = require("formatter.util")
 local vim = vim

@@ -9,7 +9,6 @@ nvim & zsh configuration files work, rest not done yet.
 Only run make inside the root of the repository.
 The configuartion files for for the following applications are included in their respective directories:
 
-- [Alacritty](./alacritty/README.md)
 - [Kitty](./kitty/README.md)
 - [Neovim](./nvim/README.md)
 - [Waybar](./waybar/README.md)
@@ -23,14 +22,20 @@ wal is used for automatically generating color schemes for the terminal and othe
 
 # Installation
 
-## ZSH
-
 ```bash
-make zsh                # install all zsh dependencies and sync the zsh configuration to their correct locations
-make zsh_dependencies   # install all zsh dependencies
-make zsh_sync           # sync the zsh configuration
+make install 
+
 ```
 
+## Lightweight installation
+
+Only install zsh and nvim with dependencies
+
+
+
+```bash
+make install_light
+```
 
 
 # Helper scripts

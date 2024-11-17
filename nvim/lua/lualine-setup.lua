@@ -1,4 +1,4 @@
--- https://github.com/nvim-lualine/lualine.nvim
+--    https://github.com/nvim-lualine/lualine.nvim
 local vim = vim
 
 local M = {}

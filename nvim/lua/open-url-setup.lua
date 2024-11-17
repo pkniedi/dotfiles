@@ -1,4 +1,4 @@
--- src: https://github.com/sontungexpt/url-open/
+--   https://github.com/sontungexpt/url-open/
 -- default values
 require("url-open").setup({
     -- default will open url with default browser of your system or you can choose your browser like this

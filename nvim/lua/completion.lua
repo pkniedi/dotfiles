@@ -1,4 +1,4 @@
--- github repository: https://github.com/hrsh7th/nvim-cmp
+-- github repository:    https://github.com/hrsh7th/nvim-cmp
 
 local vim = vim
 local lspkind = require("lspkind")
@@ -119,7 +119,7 @@ cmp.setup({
 		-- ... Your other configuration ...
 	},
 	-- Let's configure the item's appearance
-	-- source: https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
+	-- source:    https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
 
 	formatting = {
 		-- Set order from left to right
@@ -138,7 +138,7 @@ cmp.setup({
 			show_labelDetails = true, -- show labelDetails in menu. Disabled by default
 
 			-- The function below will be called before any actual modifications from lspkind
-			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+			-- so that you can provide more controls on popup customization. (See [#30](   https://github.com/onsails/lspkind-nvim/pull/30))
 			before = function(entry, vim_item)
 				vim_item.menu = ({
 					nvim_lsp = "[Lsp]",

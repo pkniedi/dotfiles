@@ -63,11 +63,6 @@ vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = "#D4D4D4" })
 vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
 vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
 
-vim.filetype.add({
-        extension = {
-                i3config = "i3config",
-        },
-})
 
 -- Highlighting groups in Lua
 vim.cmd('hi NonText ctermbg=none guibg=NONE')

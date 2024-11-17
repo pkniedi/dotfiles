@@ -1,4 +1,4 @@
--- github repository: https://github.com/sudormrfbin/cheatsheet.nvim
+-- github repository:    https://github.com/sudormrfbin/cheatsheet.nvim
 
 require("cheatsheet").setup({
 	telescope_mappings = {

@@ -1,42 +1,29 @@
 #!/usr/bin/env bash
 
-# https://github.com/Jguer/yay
-# Installs requirements used by later scripts and in the makefile
-# Assumes that the script is run as root
-# Add any additional packages to the packages array
-
+source library.sh
 
 packages=(
-    "which"
-    "rsync"
-    "figlet"
-    "fastfetch"
-    "curl"
-    "unzip"
+"coreutils"
+"base-devel"
+"wget"
+"unzip"
+"gum"
+"rsync"
+"figlet"
+"which"
+"curl"
 )
 
-echo "Updating system..."
-pacman -Syu --noconfirm
-pacman -S --noconfirm base-devel
 
-if [ "$EUID" -ne 0 ]; then
-    echo "Please run as root"
-    exit 1
-fi
+# Install required packages
+echo ":: Checking that required packages are installed..."
+_installPackages "${packages[@]}";
 
-if ! command -v yay > /dev/null; then
-    echo "Installing yay..."
-    # git clone https://aur.archlinux.org/yay.git
-    # cd yay
-    # makepkg -si
-    # cd ..
-    # rm -rf yay
+# Double check rsync
+if ! command -v rsync &> /dev/null; then
+    echo ":: Force rsync installation"
+    sudo pacman -S rsync --noconfirm
 else
-    echo "yay is already installed. Skipping..."
-    exit 0
+    echo ":: rsync double checked"
 fi
-
-echo "Installing packages..."
-for package in "${packages[@]}"; do
-    pacman -S --noconfirm --needed "$package"
-done
+echo

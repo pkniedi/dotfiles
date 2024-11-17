@@ -14,9 +14,6 @@ vim.g.mapleader = " "
 -- reload the configuration
 vim.api.nvim_set_keymap("n", "<leader><CR>", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
 
-map("n", "<C-w>", ":bd<CR>", opts)
-map("n", "<C-S-h>", ":bp<CR>", opts)
-map("n", "<C-S-l>", ":bn<CR>", opts)
 map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-k>", "<C-w>k", opts)
@@ -128,7 +125,7 @@ map("n", [[<leader>mm]], [[:!make<CR>]], { desc = "run make" })
 map("n", [[<leader>ma]], [[:!make ]], { desc = ":!" })
 map("n", [[<leader>mf]], [[:!make test-full<CR>]], { desc = ":!make test-full<CR>" })
 map("n", [[<leader>mt]], [[:!make test<CR>]], { desc = ":!make test<CR>" })
-
+map("n", [[<leader>mq]], [[:!make quick<CR>]], { desc = "Make quick target" })
 map("n", [[<leader>ss]], [[:SubSQL<CR>]], { desc = "Substitute SQL statements" })
 
 -- visual mode
@@ -204,7 +201,7 @@ map("v", "<leader>fr", 'y:%s/<C-R>"/')
 map("v", "<leader>lfr", 'y:.s/<C-R>"/')
 
 --- For compiler plugin
---- https://github.com/Zeioth/compiler.nvim
+---    https://github.com/Zeioth/compiler.nvim
 -- Open compiler
 vim.api.nvim_set_keymap("n", "<F6>", "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-e>", "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })
@@ -238,7 +235,12 @@ map("n", "<leader>s", function()
        end
 end , {noremap = true, silent = true, desc = "Source cmd.vim" })
 
+-- map <> to resize windows vetically
+map("n", "<C-u>", ":vertical resize -2<CR>", {noremap = true, silent = true, desc = "Resize window left" })
+map("n", "<C-i>", ":vertical resize +2<CR>", {noremap = true, silent = true, desc = "Resize window right" })
 
+
+-- map("n","<C-n>",":Template nnotes")
 
 -------------------------
 --- VISUAL

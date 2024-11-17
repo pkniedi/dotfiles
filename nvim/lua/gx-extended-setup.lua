@@ -6,7 +6,7 @@ require("gx-extended").setup({
 			match_to_url = function(line_string)
 				local line = string.match(line_string, "[\"|'].*/.*[\"|']")
 				local repo = vim.split(line, ":")[1]:gsub("[\"|']", "")
-				local url = "https://github.com/" .. repo
+				local url = "   https://github.com/" .. repo
 				return line and repo and url or nil
 			end,
 		},

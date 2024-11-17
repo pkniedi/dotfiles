@@ -8,5 +8,3 @@ vim.g.indendexpr = ""
 vim.opt.smartindent = false
 vim.opt.cindent = false
 vim.filetype.indenting = false
-
-vim.notify("Smart indenting disabled", vim.log.levels.WARN)

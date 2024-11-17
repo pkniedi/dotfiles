@@ -17,3 +17,13 @@ vim.filetype.add({
   }
 })
 
+vim.filetype.add({
+        extension = {
+                i3config = "i3config",
+        },
+})
+vim.filetype.add({
+        extension = {
+                ll = "llvm",
+        },
+})

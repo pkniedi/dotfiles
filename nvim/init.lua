@@ -31,6 +31,7 @@ local modules = {
 	"options",
         "dashboard-setup",
         "filetypes", -- set custom filetypes not correctly detected
+        "image-setup",
 }
 
 for i = 1, #modules do

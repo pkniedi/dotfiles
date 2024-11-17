@@ -59,7 +59,7 @@ end
 
 -- Utility for gx keymap.
 -- tests:
--- https://github.com/MeanderingProgrammer/render-markdown.nvim
+--    https://github.com/MeanderingProgrammer/render-markdown.nvim
 -- $HOME/resources/mathematics/real-analysis/pvw-analysis.pdf
 -- ./README.md
 M.my_open_url = function()
