@@ -81,3 +81,6 @@ vim.api.nvim_set_hl(0, 'BufferLineBackground', { bg = 'NONE' })  -- Background o
 vim.api.nvim_set_hl(0, 'BufferLineTab', { bg = 'NONE' })         -- Background of active buffers
 vim.api.nvim_set_hl(0, 'BufferLineTabSelected', { bg = 'NONE' }) -- Background of selected buffer
 vim.api.nvim_set_hl(0, 'BufferLineTabClose', { bg = 'NONE' })    -- Background of the close button
+
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
