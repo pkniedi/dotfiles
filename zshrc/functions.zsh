@@ -123,3 +123,12 @@ function afk() {
         systemctl suspend
 }
 
+
+function gwp(){
+        
+printf "Enter name of wallpaper: "
+read -r wallpaper_name
+
+wl-paste  | wget -O ~/wallpaper/$wallpaper_name.jpg -i -
+
+}

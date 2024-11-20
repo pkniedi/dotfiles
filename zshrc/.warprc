@@ -6,7 +6,7 @@ ana:~/notes/analysis-II
 analysis:~/notes/analysis
 autodotfs:~/projects/autodotfs
 b:~/bin
-bin:~/bin
+bin:~/.local/bin
 cd:~/notes/compiler-design
 cheat:~/projects/eth-cheatsheets/analysis-II
 chrome:~/.mozilla/firefox/w197tuwx.default-release-1714597885033/chrome
@@ -55,7 +55,7 @@ n:~/notes/zettelkasten
 nad:~/notes/ad/notes
 nafter:~/.config/nvim/after/ftplugin
 numcs:~/notes/numcs
-nv:~/.config/nvim
+nv:~/.config/nvim/lua
 nvim:~/.config/nvim
 nws:~/notes/ws/notes
 os:~/resources/computer-science/operating-systems
@@ -77,6 +77,7 @@ rlina:~/resources/mathematics/linear-algebra
 rmaths:~/resources/mathematics
 rws:~/resources/mathematics/probability-and-statistics
 s:~/notes
+scripts:~/.local/bin
 spca:~/notes/spca
 star:~/.config/starship
 starship:~/.config/starship

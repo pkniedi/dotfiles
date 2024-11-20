@@ -6,9 +6,6 @@
 # General
 # -----------------------------------------------------
 alias c='clear'
-alias nf='fastfetch'
-alias pf='fastfetch'
-alias ff='fastfetch'
 alias ls='eza -a --icons=always'
 alias ll='eza -al --icons=always'
 alias lt='eza -a --tree --level=1 --icons=always'
@@ -18,6 +15,7 @@ alias vim='$EDITOR'
 alias ts='~/.config/ml4w/scripts/snapshot.sh'
 alias wifi='nmtui'
 alias cleanup='~/.config/ml4w/scripts/cleanup.sh'
+alias src="source"
 
 # -----------------------------------------------------
 # ML4W Apps
@@ -57,11 +55,23 @@ alias res2='xrandr --output DisplayPort-0 --mode 1920x1080 --rate 120'
 alias setkb='setxkbmap de;echo "Keyboard set back to de."'
 
 
+
+# -----------------------------------------------------
+# fzf
+# -----------------------------------------------------
+alias fnv='nv `fzf --preview="bat --color=always {}" --preview-window=right:70%:wrap`'
+alias ff='fzf --preview="bat --color=always {}" --preview-window=right:70%:wrap'
+
+
+
+# -----------------------------------------------------
+# Others
+# -----------------------------------------------------
 alias zf=zaf
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias fnv='nv `fzf`'
+
 alias d='dirs -v'
 alias md='mkdir -p'
 alias rmzip='rm -r *.zip'

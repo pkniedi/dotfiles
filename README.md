@@ -67,3 +67,7 @@ make nvim_sync
 - [ ] change wallpapers to script which downloads instead of storing them in the repository
 -   [ ] cmd to sync everything
 -   [ ] Add [pywal](https://github.com/dylanaraps/pywal?tab=readme-ov-file) for the applications
+
+
+# tmux
+[plugin manager](https://github.com/tmux-plugins/tpm)
