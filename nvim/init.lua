@@ -32,6 +32,7 @@ local modules = {
         "dashboard-setup",
         "filetypes", -- set custom filetypes not correctly detected
         "image-setup",
+        "refocus-setup",
 }
 
 for i = 1, #modules do

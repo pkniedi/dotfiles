@@ -83,9 +83,14 @@ snippet link "[link](file/URL)" ib
 [$1](./$2)$0
 endsnippet
 
-snippet url "[link](file/URL)" i
+snippet url "[link](file/URL)" 
 [$1](`wl-paste`)$0
 endsnippet
+
+snippet durl "Description" options
+[`date +%d-%m-%y:` $1](`wl-paste`)$0
+endsnippet
+
 
 snippet bash "Description" biA
 \`\`\`bash$0

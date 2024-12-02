@@ -4,6 +4,7 @@ after:~/.config/nvim/after/ftplugin
 ala:~/.config/alacritty
 ana:~/notes/analysis-II
 analysis:~/notes/analysis
+ass7:~/notes/spca/exercises/spca2024-jniederer-hand-in/assignment7/target82
 autodotfs:~/projects/autodotfs
 b:~/bin
 bin:~/.local/bin
@@ -36,6 +37,7 @@ hw2:~/notes/compiler-design/exercises/hw2
 hw3:~/notes/compiler-design/exercises/hw3
 hw4:~/notes/compiler-design/exercises/hw4
 hw5:~/notes/compiler-design/exercises/hw5
+hw6:~/notes/compiler-design/exercises/hw6
 hw:~/notes/compiler-design/exercises/hw2
 hypr:~/.config/hypr
 i3:~/.config/i3
@@ -59,6 +61,7 @@ nv:~/.config/nvim/lua
 nvim:~/.config/nvim
 nws:~/notes/ws/notes
 os:~/resources/computer-science/operating-systems
+output:~/output
 picom:~/.config/picom
 poly:~/.config/polybar
 polybar:~/.config/polybar

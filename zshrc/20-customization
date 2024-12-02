@@ -29,7 +29,7 @@ plugins=(
     eza
     fancy-ctrl-z
     zsh-autosuggestions
-    tmux
+    # tmux
 )
 
 # Set-up oh-my-zsh

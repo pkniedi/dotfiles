@@ -14,6 +14,7 @@ vim.g.mapleader = " "
 -- reload the configuration
 vim.api.nvim_set_keymap("n", "<leader><CR>", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
 
+map("n", "<C-w>", ":bd<CR>", opts)
 map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-k>", "<C-w>k", opts)
