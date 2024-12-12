@@ -1,45 +1,49 @@
-GUI_PACKAGES_PACMAN:=firefox wayland kitty
-GUI_PACKAGES_YAY:=waypaper
-CLI_PACKAGES_PACMAN:=zsh neovim
-CLI_PACKAGES_YAY:=zsh neovim
-
 CONFIG_HOME:=$(HOME)/.config
 DOTFILES:=$(PWD)
+ARCH_BOOTSTRAP:=helpers/bootstrap/archlinux
+HELPER_SCRIPTS:=helpers
+
+# -----------------------------------------------
+#  Managing dotfiles
+
+
+link:
+	@./$(HELPER_SCRIPTS)/link.sh
+	# @gum spin --title "Linking configuration files..." -- ./$(HELPER_SCRIPTS)/link.sh
+
+push:
+	gum spin --title "Pushing configuration files..."  -- ./$(HELPER_SCRIPTS)/sync-repo.sh
+
+pull:
+	@gum spin --title "Pulling configuration files..."  -- ./$(HELPER_SCRIPTS)/pull-configs.sh
+
+
+push_confirm:
+	@gum confirm "Pushing changes from this git repo?" && gum spin --title "Pushing configuration files..."  -- ./$(HELPER_SCRIPTS)/sync-repo.sh
+
+pull_confirm:
+	@gum confirm "Pulling changes from local repos?" && gum spin --title "Pulling configuration files..."  -- ./$(HELPER_SCRIPTS)/pull-configs.sh
 
 
 # -----------------------------------------------
-# Installations
+# Arch (btw) bootstrap
 
-test: install_install_requirements zsh
+test: install_requirements
 
-install_requirements:
-	@echo ":: Installing requirements..."
-	@sudo ./helpers/install-requirements.sh
+arch_install_requirements:
+	@sudo ./$(ARCH_BOOTSTRAP)/install-base-requirements.sh
 
-install_packages:
-	@echo ":: Installing packages..."
-	@sudo ./helpers/install-packages.sh
-
-pull_all: zsh_pull nvim_pull
-
-all: install_packages cli gui
+arch_install_packages:
+	@sudo ./$(ARCH_BOOTSTRAP)/install-packages.sh
 
 
-
-sync:
-	@echo ":: Syncing dotfiles..."
-	@./helpers/sync-repo.sh
-
-intstall:
-	@sudo ./helpers/install-requirements.sh
-	@sudo ./helpers/install-packages.sh
+arch_intstall:
+	@sudo ./$(ARCH_BOOTSTRAP)/install-base-requirements.sh
+	@sudo ./$(ARCH_BOOTSTRAP)/install-packages.sh
 
 
 install_light: 
 	@echo ":: Setting up nvim and zsh..."
-	@sudo ./helpers/install-requirements.sh
-	@sudo ./helpers/install-zsh.sh
-	@sudo ./helpers/install-nvim.sh
-
-pull:
-	@./helpers/pull-configs.sh
+	@sudo ./$(ARCH_BOOTSTRAP)/install-base-requirements.sh
+	@sudo ./$(ARCH_BOOTSTRAP)/install-zsh.sh
+	@sudo ./$(ARCH_BOOTSTRAP)/install-nvim.sh

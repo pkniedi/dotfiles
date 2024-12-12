@@ -2,6 +2,7 @@
 # ALIASES
 # -----------------------------------------------------
 alias salias='source /home/jaron/.config/zshrc/25-aliases'
+alias wifi='hotspot'
 alias c='clear'
 alias ls='eza -a --icons=always'
 alias ll='eza -al --icons=always'
@@ -10,7 +11,6 @@ alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias vim='$EDITOR'
 alias ts='~/.config/ml4w/scripts/snapshot.sh'
-alias wifi='nmtui'
 alias cleanup='~/.config/ml4w/scripts/cleanup.sh'
 alias src="source"
 alias sa="source aliases*"

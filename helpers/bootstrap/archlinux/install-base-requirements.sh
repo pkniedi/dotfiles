@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-source library.sh
+
+PWD=$(dirname $(realpath $0))
+source $PWD/library.sh
 
 packages=(
 "coreutils"
@@ -14,6 +16,7 @@ packages=(
 "curl"
 )
 
+echo ":: Installing requirements..."
 
 # Install required packages
 echo ":: Checking that required packages are installed..."

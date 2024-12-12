@@ -97,6 +97,7 @@ ulti:~/.config/nvim/UltiSnips
 ultitex:~/.config/nvim/UltiSnips/tex
 utex:~/.config/nvim/UltiSnips/tex
 wall:~/wallpapers
+waybar:~/.config/waybar
 ws:~/notes/ws
 z:~/notes/zettelkasten
 zcon:~/.config/zsh

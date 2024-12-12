@@ -7,7 +7,8 @@
 # /___|___/_| |_|
 
 
-source library.sh
+PWD=$(dirname $(realpath $0))
+source $PWD/library.sh
 
 packages=(
 "figlet"

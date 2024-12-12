@@ -53,8 +53,8 @@ require("lualine").setup({
 	options = {
 		icons_enabled = true,
 		theme = M.theme(),
-		-- component_separators = { left = "", right = "" },
-		component_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
+		-- component_separators = { left = "", right = "" },
 		-- component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {
@@ -71,9 +71,10 @@ require("lualine").setup({
 		},
 	},
 	sections = {
-		lualine_a = { "mode" },
+		-- lualine_a = { "mode", "buffers" },
+		lualine_a = { "buffers" },
 		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = { "filename","searchcount" ,"tabs"},
+		lualine_c = { "searchcount" ,"tabs"},
 		lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" },

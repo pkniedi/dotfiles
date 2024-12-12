@@ -14,7 +14,7 @@ _installPackages() {
     toInstall=();
     for pkg; do
         if [[ $(_isInstalled "${pkg}") == 0 ]]; then
-            echo "${pkg} is already installed.";
+            echo ":: ${pkg} is already installed.";
             continue;
         fi;
         toInstall+=("${pkg}");
@@ -23,7 +23,7 @@ _installPackages() {
         # echo "All pacman packages are already installed.";
         return;
     fi;
-    printf "Package not installed:\n%s\n" "${toInstall[@]}";
+    printf ":: Package not installed:\n%s\n" "${toInstall[@]}";
     sudo pacman --noconfirm -S "${toInstall[@]}";
 }
 
@@ -49,9 +49,9 @@ _installPackagesYay() {
 # Install Yay
 _installYay() {
     if sudo pacman -Qs yay > /dev/null ; then
-        echo "yay is already installed!"
+        echo ":: yay is already installed!"
     else
-        echo "yay is not installed. Will be installed now!"
+        echo ":: yay is not installed. Will be installed now!"
         _installPackagesPacman "base-devel"
         SCRIPT=$(realpath "$0")
         temp_path=$(dirname "$SCRIPT")
@@ -60,6 +60,6 @@ _installYay() {
         cd ~/yay-git
         makepkg -si
         cd $temp_path
-        echo "yay has been installed successfully."
+        echo ":: yay has been installed successfully."
     fi
 }

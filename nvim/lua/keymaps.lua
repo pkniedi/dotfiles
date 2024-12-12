@@ -19,20 +19,16 @@ map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
+-- previous buffer with ctr shift h
+
+map("n", "<CS-h>", ":bp<CR>", opts)
+map("n", "<CS-l>", ":bn<CR>", opts)
+
+
 map("n", "<leader>sc", [[:set spell!<CR>]], opts)
 map("n", [[<leader>noh]], [[:noh<CR>]], opts)
 map("n", [[gf]], [[:e <cfile><CR>]], { desc = "Goto file" })
--- map("n", [[gf]], function()
--- 	vim.cmd()
--- 	if vim.fn.expand("%") == "defaults" then
--- 		print(vim.api.nvim_get_current_line())
--- 		vim.fn.system({
--- 			"zathura",
--- 			vim.api.nvim_get_current_line(),
--- 			"&",
--- 		})
--- 	end
--- end, { desc = "Goto file" })
+
 map("n", "<leader>ff", builtin.find_files, opts)
 map("n", "<leader>fg", builtin.live_grep, opts)
 map("n", "<leader>fb", builtin.buffers, opts)
@@ -42,7 +38,6 @@ map("n", [[<leader>fo]], [[:Format<CR>]], opts)
 map("n", [[<leader>fw]], [[:FormatWrite<CR>]], opts)
 map("n", [[<leader>ul]], [[:call UltiSnips#RefreshSnippets()<CR>]], opts)
 map("n", [[<leader>?]], [[:Cheatsheet<CR>]], opts)
-map("n", [[<leader>ss]], [[:split<CR>]], opts)
 map("n", [[<leader>cc]], [[:close<CR>]], opts)
 map("n", [[<leader>fq]], [[:set formatoptions=jrql<CR>]], opts)
 map("n", [[<leader>tr]], [[:TransparentToggle<CR>]], opts)
@@ -75,6 +70,11 @@ map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
 map("n", "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+
+map("n", "<C-o>", "<cmd>Telescope buffers<CR>", {noremap = true, silent = true, desc = "Telescope buffers" })
+map("n", "<C-f>", "<cmd>Telescope find_files<CR>", {noremap = true, silent = true, desc = "Telescope find files" })
+
+
 map("n", [[<leader>bd]], [[:bd<CR>]], opts)
 map("n", [[<leader>bn]], [[:bn<CR>]], opts)
 map("n", [[<leader>bp]], [[:bp<CR>]], opts)
@@ -127,7 +127,6 @@ map("n", [[<leader>ma]], [[:!make ]], { desc = ":!" })
 map("n", [[<leader>mf]], [[:!make test-full<CR>]], { desc = ":!make test-full<CR>" })
 map("n", [[<leader>mt]], [[:!make test<CR>]], { desc = ":!make test<CR>" })
 map("n", [[<leader>mq]], [[:!make quick<CR>]], { desc = "Make quick target" })
-map("n", [[<leader>ss]], [[:SubSQL<CR>]], { desc = "Substitute SQL statements" })
 
 -- visual mode
 map("v", "p", '"_dP')
@@ -241,7 +240,7 @@ map("n", "<C-u>", ":vertical resize -2<CR>", {noremap = true, silent = true, des
 map("n", "<C-i>", ":vertical resize +2<CR>", {noremap = true, silent = true, desc = "Resize window right" })
 
 
--- map("n","<C-n>",":Template nnotes")
+
 
 -------------------------
 --- VISUAL
@@ -250,4 +249,7 @@ map("v", "<leader>s(", "c()<ESC>P", {noremap = true, silent = true, desc = "Surr
 map("v", "<leader>s[", "c[]<ESC>P", {noremap = true, silent = true, desc = "Surround with []" })
 map("v", "<leader>s\"", "c\"\"<ESC>P", {noremap = true, silent = true, desc = "Surround with \"\"" })
 map("v", "<leader>s\'", "c''<ESC>P", {noremap = true, silent = true, desc = "Surround with ''" })
+
+
+
 

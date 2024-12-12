@@ -19,8 +19,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({
 
+require("lazy").setup({
 	-- {
 	-- 	"~/projects/ascii.nvim/lua/ascii/init.lua", -- The path to the init.lua of your local plugin
 	-- 	dir = "~/projects/ascii.nvim", -- Path to your local plugin directory
@@ -72,48 +72,10 @@ require("lazy").setup({
 			"quangnguyen30192/cmp-nvim-ultisnips",
 		},
 	},
-	-- {
-	-- 	"mfussenegger/nvim-lint",
-	-- 	event = {
-	-- 		"BufReadPre",
-	-- 		"BufNewFile",
-	-- 	},
-	-- 	config = function()
-	-- 		local lint = require("lint")
-	--
-	-- 		lint.linters_by_ft = {
-	-- 			javascript = { "eslint_d" },
-	-- 			typescript = { "eslint_d" },
-	-- 			javascriptreact = { "eslint_d" },
-	-- 			typescriptreact = { "eslint_d" },
-	-- 			svelte = { "eslint_d" },
-	-- 			kotlin = { "ktlint" },
-	-- 			terraform = { "tflint" },
-	-- 			ruby = { "standardrb" },
-	-- 			lua = { "luacheck" },
-	-- 		}
-	--
-	-- 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-	--
-	-- 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-	-- 			group = lint_augroup,
-	-- 			callback = function()
-	-- 				lint.try_lint()
-	-- 			end,
-	-- 		})
-	--
-	-- 		vim.keymap.set("n", "<leader>ll", function()
-	-- 			lint.try_lint()
-	-- 		end, { desc = "Trigger linting for current file" })
-	-- 	end,
-	-- },
-
-	-- lsp
 	"neovim/nvim-lspconfig",
+	--
 	-- snippets
-
 	"honza/vim-snippets",
-
 	{
 		"SirVer/ultisnips",
 		lazy = false,
@@ -124,39 +86,6 @@ require("lazy").setup({
 			vim.g.UltiSnipsSnippetDirectories = { "~/.config/nvim/UltiSnips" }
 		end,
 	},
-
-	-- colorschemes
-	-- others: https://vimcolorschemes.com/i/trending
-
-	--    https://github.com/rose-pine/neovim
-	{ "rose-pine/neovim", name = "rose-pine" },
-	"tanvirtin/monokai.nvim",
-	{ "navarasu/onedark.nvim", lazy = true, priority = 1000 },
-	{
-		"ribru17/bamboo.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("bamboo").setup({
-				-- optional configuration here
-			})
-			require("bamboo").load()
-		end,
-	},
-	{ "scottmckendry/cyberdream.nvim", lazy = true, priority = 1000 },
-	-- Using lazy.nvim
-	{
-		"scottmckendry/cyberdream.nvim",
-		lazy = false,
-		priority = 1000,
-	},
-	--    https://github.com/folke/tokyonight.nvim
-	-- {
-	-- 	"folke/tokyonight.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	opts = {},
-	-- },
 
 	-- treesitter
 	"nvim-treesitter/nvim-treesitter",
@@ -345,6 +274,13 @@ require("lazy").setup({
 		},
 	},
 
+	--                  _ _       _
+	--   ___ ___  _ __ (_) | ___ | |_
+	--  / __/ _ \| '_ \| | |/ _ \| __|
+	-- | (_| (_) | |_) | | | (_) | |_
+	--  \___\___/| .__/|_|_|\___/ \__|
+	--           |_|
+
 	"github/copilot.vim",
 	--- dashboard:    https://github.com/MeanderingProgrammer/dashboard.nvim
 	--- ascii:    https://github.com/MaximilianLloyd/ascii.nvim?tab=readme-ov-file
@@ -355,14 +291,13 @@ require("lazy").setup({
 			dependencies = { { "MaximilianLloyd/ascii.nvim", dependencies = { "MunifTanjim/nui.nvim" } } },
 		},
 	},
+
 	--    https://github.com/shortcuts/no-neck-pain.nvim
+	-- Creates evenly sized empty buffers on each side of your focused buffer, which acts as padding for the window.
 	{ "shortcuts/no-neck-pain.nvim", version = "*" },
 
 	-- render images in neovim
-	{
-		"3rd/image.nvim",
-		opts = {},
-	},
+	{ "3rd/image.nvim", opts = {} },
 
 	--    https://github.com/nvim-neorg/neorg
 	{
@@ -385,11 +320,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-
-        --   https://github.com/nvim-focus/focus.nvim?tab=readme-ov-file
-
-        { 'nvim-focus/focus.nvim', version = false },
-
 
 	-- {
 	-- 	"yetone/avante.nvim",
@@ -437,4 +367,46 @@ require("lazy").setup({
 	-- 		},
 	-- 	},
 	-- },
+	--
+	--            _                     _
+	--   ___ ___ | | ___  _ __ ___  ___| |__   ___ _ __ ___   ___  ___
+	--  / __/ _ \| |/ _ \| '__/ __|/ __| '_ \ / _ \ '_ ` _ \ / _ \/ __|
+	-- | (_| (_) | | (_) | |  \__ \ (__| | | |  __/ | | | | |  __/\__ \
+	--  \___\___/|_|\___/|_|  |___/\___|_| |_|\___|_| |_| |_|\___||___/
+
+	-- Set of colorschemes
+	-- others: https://vimcolorschemes.com/i/trending
+
+	--    https://github.com/rose-pine/neovim
+	{ "rose-pine/neovim", name = "rose-pine" },
+	"tanvirtin/monokai.nvim",
+	{ "navarasu/onedark.nvim", lazy = true, priority = 1000 },
+	{
+		"ribru17/bamboo.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("bamboo").setup({
+				-- optional configuration here
+			})
+			require("bamboo").load()
+		end,
+	},
+	--    https://github.com/catppuccin/nvim
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
+	{ "scottmckendry/cyberdream.nvim", lazy = true, priority = 1000 },
+	-- Using lazy.nvim
+	{
+		"scottmckendry/cyberdream.nvim",
+		lazy = false,
+		priority = 1000,
+	},
+	--    https://github.com/folke/tokyonight.nvim
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
 })

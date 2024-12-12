@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 
-source library.sh
+PWD=$(dirname $(realpath $0))
+source $PWD/library.sh
 
 packages=(
 "hyprland"
@@ -52,6 +53,7 @@ aur_packages=(
 "vim-language-server"
 "diagnostic-languageserver"
 )
+echo ":: Installing packages..."
 
 _installPackages "${packages[@]}";
 _installYay "${aur_packages[@]}";

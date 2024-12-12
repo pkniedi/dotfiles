@@ -7,7 +7,8 @@
 # |_| |_|\_/ |_|_| |_| |_|
 
 
-source library.sh
+PWD=$(dirname $(realpath $0))
+source $PWD/library.sh
 
 # https://wiki.archlinux.org/title/Language_Server_Protocol
 packages=(
