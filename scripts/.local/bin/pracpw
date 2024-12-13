@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+
+
+printf "Enter attempt: "
+read -s TMP
+if [[ -z $TMP ]];then
+        echo Lol, input is empty
+fi
+
+echo $TMP

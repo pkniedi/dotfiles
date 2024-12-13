@@ -1,0 +1,39 @@
+#!/usr/bin/env zsh
+
+# Copy configuration files to the github repository
+# located in ~/jniedi-dotfiles
+# Intended to run periodically (via crond) to keep the repo up-to-date
+
+# ------------------------
+# Check if the directory exists
+
+debug=1
+
+if [[ ! -d ~/jniedi-dotfiles ]]; then
+  echo ":: The directory ~/jniedi-dotfiles does not exist."
+  echo ":: Please clone the repository first."
+  exit 1
+fi
+
+
+# applications.txt contains list of directories in ~/.config to copy
+directories=$(cat ~/jniedi-dotfiles/applications.txt)
+
+
+# debug print the directories
+if [[ $debug -eq 1 ]]; then
+  echo "Directories to copy:"
+  for directory in $directories; do
+    echo $directory
+  done
+fi
+exit 0
+
+for directory in $directories; do
+  if [[ -d ~/.config/$directory ]]; then
+    echo ":: Copying ~/.config/$directory to ~/jniedi-dotfiles/.config/$directory"
+    cp -r ~/.config/$directory ~/jniedi-dotfiles/.config/$directory
+  else
+    echo ":: Directory ~/.config/$directory does not exist."
+  fi
+done

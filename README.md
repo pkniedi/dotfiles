@@ -48,6 +48,9 @@ make arch_install_light
 -  [ ] Add link-restore script
 -   [ ] make installs platform independent
 -   [ ] synch files with incrontab 
+-   [ ] change to stow dirs:
+    -   DONE: nvim, kitty, fastfetch, tmux, zathura, zshrc
+
 
 # tmux
 [plugin manager](https://github.com/tmux-plugins/tpm)

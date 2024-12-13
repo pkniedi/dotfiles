@@ -1,0 +1,60 @@
+#!/usr/bin/env zsh
+
+# Creates compressed archive files of dirs specified in DIRS_TO_BACKUP array.
+
+# Run as a cron job:
+# 0 * * * * zsh ~/bin/bckup
+# (attempt to make daily backup every hour)
+
+
+BACKUPS=$HOME/backups
+THIS_BACKUP_DIR=$BACKUPS/week-$(date +%W)
+BACKUPS_TMP=$BACKUPS/.bck
+mkdir -p $THIS_BACKUP_DIR $BACKUPS_TMP
+
+BACKUP_LOG=$BACKUPS/.backup.log
+LAST_BCKUP=$BACKUPS/.last-backup
+touch $BACKUP_LOG
+touch $LAST_BCKUP
+
+last_update=$(cat $BACKUPS/.last-backup)
+
+# Can force backup with f
+if [[ $(date +'%d%m') == $(cat $LAST_BCKUP) && $1 != 'f' ]]; then
+        echo Already did update today
+        printf "$(date +'%a %b %d %H:%M:%S'): Already did backup today. Aborting...\n" | tee -a $BACKUP_LOG
+        exit 0
+fi
+
+DIRS_TO_BACKUP=(
+        $HOME/notes/zettelkasten
+        $HOME/dotfiles-github
+        $HOME/projects
+        $HOME/documents
+        $HOME/bin
+)
+
+printf "$(date +'%a %b %d %H:%M:%S'): Starting backup...\n"  | tee -a $BACKUP_LOG
+for dir in "$DIRS_TO_BACKUP[@]";do
+        if [[ ! -d $dir ]]; then
+                printf "$(date +'%a %b %d %H:%M:%S'): Directory $dir does not exists. Skipping.\n" | tee -a $BACKUP_LOG
+                continue
+        fi
+        name=$(echo $dir | rev | cut -d'/' -f1 | rev)
+        cd $dir
+        cd ..
+        if [[ -f $THIS_BACKUP_DIR/$name.tar.xz ]];then
+                mv $THIS_BACKUP_DIR/$name.tar.xz $BACKUPS_TMP
+                printf "$(date +'%a %b %d %H:%M:%S'): Moving $name.tar.xz to .tmp\n"
+        fi
+
+        # use xz with best compression
+        printf "$(date +'%a %b %d %H:%M:%S'): Starting backup of $dir\n"  | tee -a $BACKUP_LOG
+        XZ_OPT=-9 tar -cJf $THIS_BACKUP_DIR/$name.tar.xz $name || mv $BACKUPS_TMP/$name.tar.xz $THIS_BACKUP_DIR
+        printf "$(date +'%a %b %d %H:%M:%S'): Backup of $dir done\n"  | tee -a $BACKUP_LOG
+done
+
+printf "$(date +'%a %b %d %H:%M:%S'): Finished backup. Total size: $(du -sh $THIS_BACKUP_DIR | cut -d '/' -f1 | sed -e 's/\t//')\n"  | tee -a $BACKUP_LOG
+rm $BACKUPS_TMP/* && echo "$(date +'%a %b %d %H:%M:%S'): Removed tmp files" >> $BACKUP_LOG
+
+echo $(date +'%d%m') > $LAST_BCKUP

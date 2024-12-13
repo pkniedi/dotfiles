@@ -1,0 +1,191 @@
+#!/usr/bin/env zsh
+
+# TODO: add the single files option
+# NOTE: add new templates here
+
+TEMPLATES_HOME="$HOME/Documents/templates"
+NOTES=$TEMPLATES_HOME/notes-templates/
+EXERCISES=$TEMPLATES_HOME/exercises-templates/
+GENERAL=$TEMPLATES_HOME/general-templates
+CHEATSHEETS=$TEMPLATES_HOME/cheatsheet-templates/
+
+# this is the dafault if no filetype is set
+FILES=$NOTES
+
+NAME="main"
+TEMPL_TYPE=n
+
+# OPTIONS
+
+INCTITLE=false
+HELP=false
+CHOOSEFILE=false
+
+HELPMESSAGE="usage: gettex [-hc] [-n NAME] [-t TYPE] 
+available commands:
+        -h                 print help message
+        -c                 include title page (\"cover\")
+        -t                 choose type of templates (dir)
+        -s                 choose single file to include
+available types:
+        - e/ex             exercises
+        - n                notes
+        - c                cheatsheets
+"
+# TODO: add the name etc.
+#
+#
+SECTION_INPUT="
+
+\\subsection{Introduction}
+"
+
+SINGLEFILEOPTS=">> Enter filetype\n
+>> 1: main-note
+>> 2: main-exercise
+>> 3: title
+>> 4: Section-x
+"
+
+exit_abnormal() { # Function: Exit with error.
+    echo $HELPMESSAGE
+    exit 1
+}
+
+chooseFile() {
+
+    echo $SINGLEFILEOPTS
+    read OPT
+    case $OPT in
+
+    1) echo "hello there" ;;
+    2) ;;
+    4)
+        getSection
+        ;;
+
+    esac
+    exit 0
+
+}
+
+getSection() {
+
+    # Handle if the name got input...
+    if [[ ! $ENTERNAME ]]; then
+        echo "Enter name of section: "
+        read NAME
+    fi
+    FILENAME=$(echo "$NAME" | tr " " "-" | tr '[:upper:]' '[:lower:]')
+    NAME=$(echo "$NAME" | tr "-" " ")
+    SECTIONNAME="${NAME//-/ }"
+    printf "\\" > $FILENAME.tex
+    printf "newpage\n\section{$NAME}"  >> $FILENAME.tex
+    echo $SECTION_INPUT >> $FILENAME.tex
+    echo "\\input{$FILENAME.tex}"
+    exit 0
+}
+
+createAndExit() {
+
+    # if entered name
+
+    # if [[ ! $ENTERNAME ]]; then
+    #     echo "no name entered"
+    # fi
+    # include different options of templates here:
+
+    if [[ $TEMPL_TYPE == "e" || $TEMPL_TYPE == "ex" ]]; then
+        NR=$(pwd  | rev | cut -d/ -f1 | rev | cut -d- -f2)
+        while ! ((NR)); do
+            echo ">> $NR is not a number. Enter number of exercise:"
+            read NR
+        done
+
+        if [[ ! $ENTERNAME ]]; then
+            NAME="exercise"
+        fi
+        echo "Name: $NAME"
+
+        NAME="$NAME-$NR"
+        FILES=$EXERCISES
+
+        # if notes
+
+    elif [[ $TEMPL_TYPE == "n" || $TEMPL_TYPE == "notes" ]]; then
+        FILES=$NOTES
+
+        # if cheatsheet
+
+    elif [[ $TEMPL_TYPE == "c" || $TEMPL_TYPE == "cheatsheet" ]]; then
+        printf "Enter name of cheatsheet: "
+        read NAME
+        FILES=$CHEATSHEETS
+
+    elif [[ $TEMPL_TYPE == "s" || $TEMPL_TYPE == "section" ]]; then
+        getSection
+    else # DEFAULT is notes
+
+        FILES=$NOTES
+    fi
+
+    echo "Creating files."
+    echo "Main file: ==> $NAME.tex"
+
+    cp $FILES* .
+    mv main-* $NAME.tex
+    if [ -f header.tex ];then
+        sed -i "s/xxx/$NR/g" header.tex
+        rm header.tex
+    fi
+    exit 0
+}
+
+
+latest (){
+    ls -t | head -n1 | sed "s/.tex//" | tr "-" " "
+    exit 0
+}
+
+
+
+while getopts ":hcsn:t:" args; do # Loop: Get the next option;
+    # use silent error checking;
+    # options n and t take arguments.
+    #
+    case "${args}" in
+    n) # If the option is n,
+        ENTERNAME=true
+        NAME=${OPTARG} # set $NAME to specified value.
+        ;;
+    t)                       # If the option is t,
+        TEMPL_TYPE=${OPTARG} # Set $TIMES to specified value.
+        ;;
+    c)
+        INCTITLE=true
+        ;;
+    s)
+        TEMPL_TYPE=${OPTARG} # Set $TIMES to specified value.
+        ;;
+    h)
+        HELP=true
+        ;;
+
+    *)                # If unknown (any other) option:
+        exit_abnormal # Exit abnormally.
+        ;;
+
+    esac
+
+done
+
+if $HELP; then
+    echo $HELPMESSAGE
+    exit 0
+fi
+
+if $CHOOSEFILE; then
+    chooseFile
+fi
+
+createAndExit

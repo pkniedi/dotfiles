@@ -1,0 +1,38 @@
+#! /usr/bin/env zsh
+
+# assumes gum is installed
+
+
+if [ $# -ne 1 ]; then
+        echo "Usage: hotspot d(isconnect) or c(onnect)"
+        exit 1
+fi
+
+if [ $1 = "c" ] || [ $1 = "connect" ] || [ $1 = "vpn" ]; then
+        rfkill unblock wifi
+        nmcli radio wifi on
+
+        gum spin --title "Establishing connection..." -- sleep 5;nmcli device wifi connect Mike\'s\ Handy
+
+        if [[ $? == 0 ]]; then
+                if [ $1 = "vpn" ]; then
+                        echo "Trying to use eth vpn..."
+                        sudo openconnect -u jniederer@student-net.ethz.ch --useragent=AnyConnect -g student-net sslvpn.ethz.ch
+                fi
+                echo Success
+                exit 0
+        fi
+        echo Failed to connect
+        exit 1
+
+elif [ $1 = "d" ] || [ $1 = "disconnect" ]; then
+        echo "Turning down connection to 'Mike's Handy'"
+        nmcli connection down Mike\'s\ Handy
+        nmcli radio wifi off
+        echo "Blocking wifi"
+        rfkill block wifi
+        echo "Wifi blocked"
+else
+        echo "Not an option: $1"
+fi
+

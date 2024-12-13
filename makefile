@@ -3,12 +3,14 @@ DOTFILES:=$(PWD)
 ARCH_BOOTSTRAP:=helpers/bootstrap/archlinux
 HELPER_SCRIPTS:=helpers
 
+
 # -----------------------------------------------
 #  Managing dotfiles
 
 
 link:
-	@./$(HELPER_SCRIPTS)/link.sh
+	@echo "Use stow intead"
+	# @./$(HELPER_SCRIPTS)/link.sh
 
 # -----------------------------------------------
 # Arch (btw) bootstrap

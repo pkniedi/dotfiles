@@ -1,0 +1,49 @@
+#!/usr/bin/env zsh
+
+function usage {
+        printf "Usage: timer [ (s)op | (c)on | hours:minutes:seconds]\n"
+        exit 0
+}
+
+CACHE_DIR=$HOME/.cache/timer
+
+function init {
+
+        if [[ ! -d $CACHE_DIR ]];then
+                mkdir -p $CACHE_DIR
+        fi
+        if [[ ! -f $CACHE_DIR/seconds ]];then
+                printf "10\n" > $CACHE_DIR/seconds
+        fi
+
+}
+
+function stop {
+        $CACHE_DIR/seconds
+}
+
+function cont {
+        rest=$(cat $CACHE_DIR/seconds)
+        echo $rest
+}
+
+
+function start {
+
+        start="$(( $(date '+%s') + $(echo $1 | getsecs)))"
+        while [ $start -ge $(date +%s) ]; do
+                time="$(( $start - $(date +%s) ))"
+                printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+                sleep 5
+        done
+}
+
+if [[ $# -eq 1 ]]; then
+        start $1
+else
+        if [[ $(tglstate) == 1 ]]; then
+                cont
+        else
+                stop
+        fi
+fi

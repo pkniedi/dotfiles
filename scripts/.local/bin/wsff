@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+
+# Goes to $ws1 and opens a new firefox tab
+
+nr=$(i3getwsnr)
+
+if [ $nr -eq 1 ];then
+    firefox &
+else
+    i3-msg workspace 1 &>/dev/null
+    firefox --new-tab 
+fi
