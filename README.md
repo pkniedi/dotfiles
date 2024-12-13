@@ -22,52 +22,32 @@ wal is used for automatically generating color schemes for the terminal and othe
 
 # Installation
 
-```bash
-make install 
 
+
+## Arch (btw)
+
+```bash
+make arch_install 
 ```
 
 ## Lightweight installation
 
 Only install zsh and nvim with dependencies
 
-
-
 ```bash
-make install_light
+make arch_install_light
 ```
 
-
-# Helper scripts
-
-Located in helpers directory.
-
--   install-zsh-dependencies.sh: Installs all zsh dependencies (oh-my-zsh, zsh-autosuggestions, zsh-syntax-highlighting)
-
-
-# Applications
-
-## zsh
-
-run the following command to sync the nvim configuration in this repository with the nvim configuration in the home directory:
-
-```bash
-make zsh_sync
-```
-
-## nvim
-
-sync the nvim config:
-```bash
-make nvim_sync
-```
 
 # TODO
 
 - [ ] change wallpapers to script which downloads instead of storing them in the repository
 -   [ ] cmd to sync everything
 -   [ ] Add [pywal](https://github.com/dylanaraps/pywal?tab=readme-ov-file) for the applications
-
+-   [ ] Add rofi
+-  [ ] Add link-restore script
+-   [ ] make installs platform independent
+-   [ ] synch files with incrontab 
 
 # tmux
 [plugin manager](https://github.com/tmux-plugins/tpm)

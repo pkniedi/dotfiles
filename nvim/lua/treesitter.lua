@@ -2,7 +2,7 @@
 local ts = require("nvim-treesitter.configs")
 ts.setup({
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
-	ensure_installed = { "c", "vim", "vimdoc", "query", "lua", "java", "python" },
+	ensure_installed = { "bash", "rust", "c", "vim", "vimdoc", "query", "lua", "java", "python" },
 
 	-- List of parsers to ignore installing (or "all")
 	ignore_install = { "javascript" },
@@ -33,7 +33,6 @@ ts.setup({
 	},
 	indent = {
 		enable = true,
-                disable = { "ocaml" },
+		disable = { "ocaml" },
 	},
-
 })
