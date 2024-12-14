@@ -21,8 +21,12 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 -- previous buffer with ctr shift h
 
-map("n", "<CS-h>", ":bp<CR>", opts)
-map("n", "<CS-l>", ":bn<CR>", opts)
+map("n", "<C-S-h>", ":bp<CR>", opts)
+map("n", "<C-S-l>", ":bn<CR>", opts)
+
+map("n","<A-l>", ":bn<CR>", opts)
+map("n","<A-h>", ":bp<CR>", opts)
+
 
 
 map("n", "<leader>sc", [[:set spell!<CR>]], opts)
@@ -42,7 +46,6 @@ map("n", [[<leader>cc]], [[:close<CR>]], opts)
 map("n", [[<leader>fq]], [[:set formatoptions=jrql<CR>]], opts)
 map("n", [[<leader>tr]], [[:TransparentToggle<CR>]], opts)
 map("n", [[<leader>th]], [[:TSToggle highlight<CR>]], opts)
-map("n", [[<leader>bs]], [[:BufferOrderByBufferNumber<CR>]], opts)
 map("n", "<space>e", vim.diagnostic.open_float)
 map("n", "[d", vim.diagnostic.goto_prev)
 map("n", "]d", vim.diagnostic.goto_next)
@@ -238,7 +241,6 @@ end , {noremap = true, silent = true, desc = "Source cmd.vim" })
 -- map <> to resize windows vetically
 map("n", "<C-u>", ":vertical resize -2<CR>", {noremap = true, silent = true, desc = "Resize window left" })
 map("n", "<C-i>", ":vertical resize +2<CR>", {noremap = true, silent = true, desc = "Resize window right" })
-
 
 
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function zaf() {
         pdf=`fzf`
         zathura &>/dev/null $pdf &
@@ -539,4 +540,8 @@ fi
 
 function checkhealth() {
 gum spin --title "Checking for integrity" -- pacman -Qk
+}
+
+function rename_files_with_space() {
+  find . -type f -name "* *" -exec bash -c 'mv "$1" "${1// /-}"' _ {} \;
 }

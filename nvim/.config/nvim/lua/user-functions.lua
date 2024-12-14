@@ -208,4 +208,48 @@ M.splitToTextWidth = function(textwidth)
 		end
 	end
 end
+
+-- print figlet
+M.print_commented_figlet = function(s)
+	local res = vim.fn.system("figlet -w 200 " .. s)
+	local commentstring = vim.bo.commentstring
+	local lines = {}
+
+	-- Use string.gmatch to match all lines separated by '\n'
+	for line in string.gmatch(res, "([^\n]+)") do
+		table.insert(lines, line)
+	end
+	local res_lines = {}
+
+	for _, line in ipairs(lines) do
+		local r = string.gsub(commentstring, "%%s", line)
+		table.insert(res_lines, r)
+	end
+	local current_line = vim.api.nvim_win_get_cursor(0)[1]
+	vim.api.nvim_buf_set_lines(0, current_line, current_line, false, res_lines)
+end
+
+M.get_dashboard_figlet = function(s)
+	local res = vim.fn.system("figlet -w 200 -f ANSI\\ Shadow " .. s)
+	local lines = {}
+	-- Use string.gmatch to match all lines separated by '\n'
+	for line in string.gmatch(res, "([^\n]+)") do
+		table.insert(lines, line)
+	end
+	local res_lines = {}
+	return lines
+end
+
+M.get_dashboard_footer = function()
+	local pwd = vim.fn.getcwd()
+
+	local res = vim.fn.system("fortune")
+	local lines = {}
+
+	-- Use string.gmatch to match all lines separated by '\n'
+	for line in string.gmatch(res, "([^\n]+)") do
+		table.insert(lines, line)
+	end
+	return lines
+end
 return M

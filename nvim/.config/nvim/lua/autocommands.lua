@@ -15,13 +15,6 @@ local cmd = vim.cmd
 
 cmd(" augroup pandoc_syntax au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc augroup END ")
 
--- Format on write
--- augroup("__formatter__", { clear = true })
--- autocmd("BufWritePost", {
--- 	group = "__formatter__",
--- 	command = ":FormatWrite",
--- })
-
 autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = "lectures.md",
 	callback = function()
@@ -42,6 +35,14 @@ autocmd({ "BufEnter", "BufWinEnter" }, {
 })
 
 autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = { "rasi" },
+	callback = function()
+		vim.bo.commentstring = "/*%s*/"
+	end,
+})
+
+
+autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*.pml" },
 	callback = function()
 		vim.bo.commentstring = "// %s"
@@ -55,11 +56,6 @@ autocmd({ "BufEnter", "BufWinEnter" }, {
 		vim.cmd("set filetype=yaml")
 	end,
 })
-
--- autocmd({ "BufAdd" }, {
--- 	pattern = "*",
--- 	command = "BufferOrderByBufferNumber",
--- })
 
 -- TODO: Add .c files. clangd not yet right customized
 --

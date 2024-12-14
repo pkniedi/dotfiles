@@ -20,8 +20,23 @@ The configuartion files for for the following applications are included in their
 
 wal is used for automatically generating color schemes for the terminal and other applications. 
 
-# Installation
+# Linking
 
+Use the following command in the root of the repository to link the configuration files to the home directory:
+```bash
+stow -t $HOME <target>
+```
+e.g.
+
+```bash
+stow -t $HOME nvim
+```
+This example creates simlinks in $HOME/.config/nvim to the files in the nvim directory in this repo.
+
+
+
+
+# Installation
 
 
 ## Arch (btw)

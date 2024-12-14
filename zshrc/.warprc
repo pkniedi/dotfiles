@@ -43,6 +43,7 @@ hypr:~/.config/hypr
 i3:~/.config/i3
 i3b:~/.config/i3blocks
 i3blocks:~/.config/i3blocks
+keys:~/.config/hypr/conf/keybindings
 kitty:~/.config/kitty
 l:~/Documents/links
 learn:~/projects/learning
@@ -58,7 +59,7 @@ nad:~/notes/ad/notes
 nafter:~/.config/nvim/after/ftplugin
 numcs:~/notes/numcs
 nv:~/.config/nvim/lua
-nvim:~/.config/nvim
+nvim:~/.config/nvim/lua
 nws:~/notes/ws/notes
 os:~/resources/computer-science/operating-systems
 output:~/output
@@ -96,7 +97,7 @@ tulti:~/.config/nvim/UltiSnips/tex
 ulti:~/.config/nvim/UltiSnips
 ultitex:~/.config/nvim/UltiSnips/tex
 utex:~/.config/nvim/UltiSnips/tex
-wall:~/wallpapers
+wall:~
 waybar:~/.config/waybar
 ws:~/notes/ws
 z:~/notes/zettelkasten

@@ -24,7 +24,7 @@ local modules = {
         "open-url-setup",
         "vimtex-setup",
         "colorizer-setup",
-        "bufferline-setup",
+        "cokeline-setup",
         "render-markdown-setup",
         "user-functions",
         "reload",
@@ -32,6 +32,7 @@ local modules = {
         "dashboard-setup",
         "filetypes", -- set custom filetypes not correctly detected
         "image-setup",
+        -- "wal-setup", TODO:
         -- "avante-setup",
 }
 
