@@ -31,6 +31,7 @@ local modules = {
         "options",
         "dashboard-setup",
         "filetypes", -- set custom filetypes not correctly detected
+       -- "symbol-usage-setup", TODO:
         "image-setup",
         -- "wal-setup", TODO:
         -- "avante-setup",

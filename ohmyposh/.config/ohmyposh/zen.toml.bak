@@ -1,0 +1,116 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version = 2
+final_space = true
+
+# path
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    type = 'path'
+    style = 'plain'
+    template = '  {{ .Path }}'
+    foreground = 'p:pink'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      folder_icon = ''
+      home_icon = '~'
+      style = 'agnoster_full'
+
+# time, executiontime, language info
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+  # newline = true
+
+  [[blocks.segments]]
+    type = "python"
+    style = "plain"
+    foreground = "p:blue"
+    template = " {{ .Venv }}"
+
+  [[blocks.segments]]
+    type = "go"
+    style = "plain"
+    template = "  {{ .Full }}"
+    foreground = "p:blue"
+
+  [[blocks.segments]]
+    type = "rust"
+    style = "plain"
+    foreground = "p:rust"
+    template = " 󱘗 {{ .Full }}"
+
+  [[blocks.segments]]
+    type = 'executiontime'
+    style = 'plain'
+    foreground = 'yellow'
+    background = 'transparent'
+    template = '  {{ .FormattedMs }}'
+
+    [blocks.segments.properties]
+      threshold = 500
+
+  [[blocks.segments]]
+    type = "time"
+    style = "plain"
+    foreground = "p:pink"
+
+    [blocks.segments.properties]
+      time_format = "15:04:05"
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  # newline = true
+
+  [[blocks.segments]]
+    type = 'git'
+    style = 'plain'
+    template = ' {{ .HEAD }} '
+    foreground = 'p:lavender'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      branch_icon = ' '
+      cherry_pick_icon = ' '
+      commit_icon = ' '
+      fetch_status = false
+      fetch_upstream_icon = false
+      merge_icon = ' '
+      no_commits_icon = ' '
+      rebase_icon = ' '
+      revert_icon = ' '
+      tag_icon = ' '
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    template = ' '
+    foreground = 'p:closer'
+    Duration = 0
+    NameLength = 0
+
+[transient_prompt]
+  background = 'transparent'
+  template = '  '
+
+[palette]
+  blue = '#89B4FA'
+  closer = 'p:os'
+  rust = '#d3462a'
+  lavender = '#B4BEFE'
+  os = '#ACB0BE'
+  pink = '#F5C2E7'

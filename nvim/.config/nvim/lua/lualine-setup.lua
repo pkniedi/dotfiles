@@ -71,8 +71,8 @@ require("lualine").setup({
 		},
 	},
 	sections = {
-		-- lualine_a = { "mode", "buffers" },
-		lualine_a = { "buffers" },
+		lualine_a = { "mode" },
+		-- lualine_a = { "buffers" },
 		lualine_b = { "branch", "diff", "diagnostics" },
 		lualine_c = { "searchcount" ,"tabs"},
 		lualine_x = { "encoding", "fileformat", "filetype" },
