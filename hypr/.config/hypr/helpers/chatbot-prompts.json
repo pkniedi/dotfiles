@@ -1,0 +1,9 @@
+{
+    "Explain the concept": "Explain the concept of <<CONCEPT>>",
+    "Brief summary": "Give a brief summary of <<CONCEPT>>",
+    "possible exam questions": "What are some possible exam questions on <<CONCEPT>>? Give a list of questions. Make it ready to copy (Markdown style). The questions should progressively require deeper understanding and reasoning about the <<CONCEPT>>.",
+    "Sum of disadvantages": "What are the disadvantages of <<CONCEPT>>? Be brief. List them in a markdown style list. Make it ready to copy Be brief",
+    "Sum of advantages": "What are the advantages of <<CONCEPT>>? Be brief. List them in a markdown style list. Make it ready to copy Be brief",
+    "List related terms": "What are some key terms related to <<CONCEPT>>? List them in a markdown style list. Make it ready to copy. Be brief"
+}
+

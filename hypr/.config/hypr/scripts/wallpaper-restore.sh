@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #                _ _
 # __      ____ _| | |_ __   __ _ _ __   ___ _ __
 # \ \ /\ / / _` | | | '_ \ / _` | '_ \ / _ \ '__|
@@ -14,8 +15,8 @@
 # Set defaults
 # -----------------------------------------------------
 
-defaultwallpaper="$HOME/wallpaper/default.jpg"
-cachefile="$HOME/.config/ml4w/cache/current_wallpaper"
+defaultwallpaper="$HOME/wallpapers/greenish-old-japanese-village.jpg"
+cachefile="$CACHE_DIR/current_wallpaper"
 
 # -----------------------------------------------------
 # Get current wallpaper
@@ -39,4 +40,4 @@ fi
 # -----------------------------------------------------
 
 echo ":: Setting wallpaper with source image $wallpaper"
-waypaper --wallpaper $wallpaper
+/usr/bin/waypaper --wallpaper $wallpaper

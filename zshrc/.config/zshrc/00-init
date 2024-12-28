@@ -3,7 +3,8 @@
 # -----------------------------------------------------
 # Use global environment file
 
-export EDITOR=nvim
-export PATH="$PATH:/usr/lib/ccache/bin:$HOME/.local/bin:/usr/local/texlive/2023/bin/x86_64-linux:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin/zsh-scripts"
-export ZSH="$HOME/.oh-my-zsh"
 
+# WARN: needs to be set this way
+
+export JNIEDI_DOTFILES=$HOME/projects/jniedi-dotfiles
+source $JNIEDI_DOTFILES/ENV.sh

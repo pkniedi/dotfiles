@@ -154,12 +154,11 @@ cmp.setup({
 		completion = {
 			col_offset = -3,
 			side_padding = 0,
-                        border = "rounded",
-
+			border = "rounded",
 		},
-                documentation = {
-                        border = "rounded",
-                },
+		documentation = {
+			border = "rounded",
+		},
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },

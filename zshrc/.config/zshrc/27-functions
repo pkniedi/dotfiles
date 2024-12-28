@@ -1,7 +1,13 @@
 #!/usr/bin/env zsh
 function zaf() {
-        pdf=`fzf`
-        zathura &>/dev/null $pdf &
+        pdf=$(find . -type f -name "*.pdf" | fzf)
+        if [[ -f $pdf ]]; then
+                echo ":: Opening '$pdf' in background"
+                zathura &>/dev/null $pdf &
+        else
+                echo "No file selected"
+        fi
+        
 }
 
 function eth_vpn(){
@@ -544,4 +550,24 @@ gum spin --title "Checking for integrity" -- pacman -Qk
 
 function rename_files_with_space() {
   find . -type f -name "* *" -exec bash -c 'mv "$1" "${1// /-}"' _ {} \;
+}
+
+function enabled_unit_files() {
+        sudo systemctl list-unit-files --state=enabled
+}
+
+# Setup a small git repository
+#
+function setup_repo(){
+        name=$(gum input --placeholder "Repo name")
+        if [[ -d $name ]]; then
+                echo "Directory already exists"
+                return 1
+        fi
+        mkdir -p $name
+        cd $name
+        echo "Switching to $name"
+        git init
+        echo "Initialized git repository"
+        touch README.md
 }

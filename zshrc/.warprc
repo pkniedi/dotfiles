@@ -93,12 +93,13 @@ testtex:~/notes/test/notes
 tex:~/.config/nvim/UltiSnips/tex
 ti:~/notes/ti
 tmp:~/tmp
+tofi:~/.config/tofi
 tulti:~/.config/nvim/UltiSnips/tex
 ulti:~/.config/nvim/UltiSnips
 ultitex:~/.config/nvim/UltiSnips/tex
 utex:~/.config/nvim/UltiSnips/tex
-wall:~
-waybar:~/.config/waybar
+wall:~/wallpapers
+waybar:~/projects/jniedi-dotfiles/waybar/.config/waybar
 ws:~/notes/ws
 z:~/notes/zettelkasten
 zcon:~/.config/zsh
