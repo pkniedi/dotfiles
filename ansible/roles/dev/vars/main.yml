@@ -1,0 +1,5 @@
+arch_apps:
+  - nvim
+
+darwin_apps:
+  - nvim

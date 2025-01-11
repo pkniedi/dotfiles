@@ -1,8 +1,0 @@
-- name: System Setup
-  hosts: home
-  roles:
-    - cli # minimal for ssh sessions ??
-    # - tiling
-    # - general
-    # - tiling 
-    # - dev

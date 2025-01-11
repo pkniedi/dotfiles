@@ -11,14 +11,7 @@
 
 
 
-# Debian based ------------------------------
-- name: Dabian | Install command line tools
-  ansible.builtin.include_tasks: "./install-raspberrypi.yml"
-  when: ansible_os_family == 'Debian'
-
-
-
 # Common ------------------------------
 
 - name: All | Symlinking config files
-  ansible.builtin.include_tasks: "./symlink-config-files.yml"
+  ansible.builtin.include_tasks: "./symlink-dev-config-files.yml"

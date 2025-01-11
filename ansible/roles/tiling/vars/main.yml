@@ -1,0 +1,5 @@
+arch_apps:
+  - hypr
+  - waypaper
+  - waybar
+  - tofi

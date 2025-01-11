@@ -1,0 +1,13 @@
+arch_apps:
+  - firefox
+  - zathura
+  - zathura-pdf-mupdf
+  - kitty
+  - alacritty
+
+darwin_apps:
+  - firefox
+  - zathura
+  - zathura-pdf-mupdf
+  - kitty
+  - alacritty

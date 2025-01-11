@@ -21,4 +21,4 @@
 # Common ------------------------------
 
 - name: All | Symlinking config files
-  ansible.builtin.include_tasks: "./symlink-config-files.yml"
+  ansible.builtin.include_tasks: "./symlink-dev-config-files.yml"

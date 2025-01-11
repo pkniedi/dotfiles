@@ -2,8 +2,14 @@ arch_apps:
   - zsh
   - git
   - oh-my-posh
+  - fastfetch
+  - yazi
+  - python
 
 darwin_apps:
   - zsh
   - git
   - oh-my-posh
+  - fastfetch
+  - yazi
+  - python
