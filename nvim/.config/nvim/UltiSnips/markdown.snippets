@@ -39,7 +39,6 @@ endsnippet
 
 # Links 
 
-
 snippet [g4 "[file](file-title.md)" iA
 [g4g](`wl-paste`)$0
 endsnippet
@@ -130,5 +129,13 @@ endsnippet
 snippet "a?summa?r?y?" "Summary" rA
 # Summary
 `wl-paste`
+endsnippet
+
+snippet nlink "Link with path to notes dir" i
+[$0](`!p snip.rv = os.path.expanduser("~/notes/")`$1)
+endsnippet
+
+snippet "stopped" "Stopped note" biA
+<!-- STOPPED: $1  --> $0
 endsnippet
 

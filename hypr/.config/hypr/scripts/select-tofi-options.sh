@@ -35,7 +35,7 @@ case $SELECTION in
                 cat $HELPERFILES/actions.txt | tofi --require-match false  | wl-copy
                 ;;
         "Nerd-fonts cheatsheet")
-                cat $HELPERFILES/nerd-font-cheatsheet.txt | tofi --require-match false  | cut -d ' ' -f2 | wl-copy
+                cat $HELPERFILES/nerd-font-cheatsheet.txt | tofi --require-match false   | cut -d ' ' -f2 | wl-copy
                 ;;
         "Umlaute")
                 # Change to keyboard switcher
@@ -66,6 +66,10 @@ case $SELECTION in
                 ;;
         "Logout")
                 hyprctl dispatch logout
+                ;;
+        "Urls")
+                # notify-send "Select urls"
+                firefox $(cat $HELPERFILES/urls | tofi --require-match false |  cut -d '	' -f2)
                 ;;
 
         *)

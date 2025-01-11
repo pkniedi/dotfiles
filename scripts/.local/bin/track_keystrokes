@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-xev | grep -oP '\(keysym [^,]+, \K[^)]+' > /tmp/keys.txt 
-cat /tmp/keys.txt | uniq -c | sed -s 's/^\s*//g' 
-
-# cat /tmp/keys.txt | sort | uniq -c | sort -rn

@@ -1,9 +1,11 @@
 {
-    "Explain the concept": "Explain the concept of <<CONCEPT>>",
-    "Brief summary": "Give a brief summary of <<CONCEPT>>",
-    "possible exam questions": "What are some possible exam questions on <<CONCEPT>>? Give a list of questions. Make it ready to copy (Markdown style). The questions should progressively require deeper understanding and reasoning about the <<CONCEPT>>.",
-    "Sum of disadvantages": "What are the disadvantages of <<CONCEPT>>? Be brief. List them in a markdown style list. Make it ready to copy Be brief",
-    "Sum of advantages": "What are the advantages of <<CONCEPT>>? Be brief. List them in a markdown style list. Make it ready to copy Be brief",
-    "List related terms": "What are some key terms related to <<CONCEPT>>? List them in a markdown style list. Make it ready to copy. Be brief"
+    "Explain the concept": "Forget all previous instructions. Explain the concept of <<CONCEPT>>.",
+    "List synonyms": "Forget all previous instructions. What are some synonyms for <<CONCEPT>>? Provide a brief explanation/definition for each synonym.",
+    "Brief summary": "Forget all previous instructions. Give a brief summary of <<CONCEPT>>. Use only a few sentences (3-5).",
+    "Brief summary (markdown format)": "Forget all previous instructions. Give a brief summary of <<CONCEPT>>. Use only a few sentences (3-5). Provide it in markdown syntax format (titled Summary (h1 header)), ready to copy.",
+    "possible exam questions": "What are some possible exam questions on <<CONCEPT>>? Give a list of questions. The questions should progressively require deeper understanding and reasoning about the <<CONCEPT>>.",
+    "possible exam questions (markdown format)": "What are some possible exam questions on <<CONCEPT>>? Give a list of questions. Make it ready to copy (Markdown style). The questions should progressively require deeper understanding and reasoning about the <<CONCEPT>>.",
+    "Sum of disadvantages (markdown format)": "What are the disadvantages of <<CONCEPT>>? Be brief. List them in a markdown style list but without the - symbol. Make it ready to copy Be brief",
+    "Sum of advantages (markdown format)": "What are the advantages of <<CONCEPT>>? Be brief. List them in a markdown style list but without the - symbol. Make it ready to copy Be brief",
+    "List related terms": "What are some key terms related to <<CONCEPT>>? List them in a markdown style list but without the - symbol. Make it ready to copy. Be brief"
 }
-

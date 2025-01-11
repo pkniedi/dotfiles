@@ -1,6 +1,11 @@
-snippet datelong "Tuesday 26.09. 13:12" i
-`date +%A` `date +%d.%m.` `date +%H:%M`
+snippet datelong "Tuesday 26.09." i
+`date +"%a. %d.%m.%Y"`
 endsnippet
+
+snippet weekday "Tuesday" i
+`date +%A`
+endsnippet
+
 
 snippet tmrw "Date tommorow" i
 `date  --date="tomorrow" +"%a. %d.%m."`

@@ -42,16 +42,33 @@
         "tooltip-format": "{:%A, %B %d, %Y}",
         "format": "{:%H:%M}"
     },
+
     "battery": {
         "states": {
-            "warning": 20
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
         },
-        "format": "{icon}",
-        "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
-        "format-charging": "󰂄",
-        "format-warning": "󰂃",
-				"tooltip-format": "{capacity}% capacity"
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
     },
+
+    // "battery": {
+    //     "states": {
+    //         "warning": 20
+    //     },
+    //     "format": "{icon}",
+    //     "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+    //     "format-charging": "󰂄",
+    //     "format-warning": "󰂃",
+				// "tooltip-format": "{capacity}% capacity"
+    // },
+
     "network": {
         "format-wifi": "󰤨",
         "format-disconnected": "󰤭",
@@ -65,7 +82,9 @@
 				"format-icons": {
 					"default": ["", "", "󰕾"]
 				},
-				"tooltip-format": "{volume}% volume"
+				"tooltip-format": "{volume}% volume",
+
+        "on-click": "pavucontrol"
 		},
     "custom/power": {
         "format": "󰐥",

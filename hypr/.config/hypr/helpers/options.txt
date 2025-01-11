@@ -1,24 +1,17 @@
 
-Chatbot Prompts
-
+Urls
 Suspend
+Lock
 
 
 
 
+news
 
-
-
-
-
-
-
-
-
+Chatbot Prompts
+Umlaute
 
 Nerd-fonts cheatsheet
-Umlaute
 Clipboard history
 Shutdown
-Lock
 Logout

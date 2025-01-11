@@ -1,0 +1,10 @@
+# -----------------------------------------------------
+# Exports
+# -----------------------------------------------------
+# Use global environment file
+
+
+# WARN: needs to be set this way
+
+export JNIEDI_DOTFILES=$HOME/projects/jniedi-dotfiles
+source $JNIEDI_DOTFILES/ENV.sh

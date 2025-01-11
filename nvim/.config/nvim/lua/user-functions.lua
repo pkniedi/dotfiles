@@ -211,7 +211,7 @@ end
 
 -- print figlet
 M.print_commented_figlet = function(s)
-	local res = vim.fn.system("figlet -w 200 " .. s)
+	local res = vim.fn.system("toilet -w 200 " .. s)
 	local commentstring = vim.bo.commentstring
 	local lines = {}
 
@@ -230,7 +230,7 @@ M.print_commented_figlet = function(s)
 end
 
 M.get_dashboard_figlet = function(s)
-	local res = vim.fn.system("figlet -w 200 -f ANSI\\ Shadow " .. s)
+	local res = vim.fn.system("toilet -w 200 -f ANSI-Shadow " .. s)
 	local lines = {}
 	-- Use string.gmatch to match all lines separated by '\n'
 	for line in string.gmatch(res, "([^\n]+)") do

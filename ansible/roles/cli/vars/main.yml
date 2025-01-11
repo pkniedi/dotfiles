@@ -1,0 +1,9 @@
+arch_apps:
+  - zsh
+  - git
+  - oh-my-posh
+
+darwin_apps:
+  - zsh
+  - git
+  - oh-my-posh
