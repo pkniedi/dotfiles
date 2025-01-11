@@ -1,19 +1,24 @@
 # Install
 
 
+First install all ansible and all other dependencies
 ```bash
-run ./bootstrap.sh
+yay -S python3 ansible-core git # On Arch
+brew install ansible git        # On MacOS
 ```
 
-
-First install requirements
-
+Before running the playbook, install the required roles with:
 ```bash
 ansible-galaxy install -r requirements.yml
 
 ```
 
-Then run the playbook
+Run the preferred playbook 
 ```bash
-ansible-playbook playbook.yml -i inventory.yml --vault-password-file=$HOME/.vault_pass
+ansible-playbook full-install.yml -i inventory.yml  # For full install
 ```
+or
+```bash
+ansible-playbook install.yml -i inventory.yml       # For minimal install
+```
+<!-- # TODO: --vault-password-file=$HOME/.vault_pass -->

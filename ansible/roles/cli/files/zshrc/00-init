@@ -1,6 +1,0 @@
-# -----------------------------------------------------
-# Exports
-# -----------------------------------------------------
-# Use global environment file -> symlinked via ansible
-
-source ~/.config/DOTFILES_ENV_VARS

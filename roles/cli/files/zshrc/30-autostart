@@ -1,0 +1,22 @@
+# -----------------------------------------------------
+# AUTOSTART
+# -----------------------------------------------------
+
+# -----------------------------------------------------
+# Pywal
+# -----------------------------------------------------
+# cat ~/.cache/wal/sequences
+
+# -----------------------------------------------------
+# Fastfetch
+# -----------------------------------------------------
+if [[ $(tty) == *"pts"* ]]; then
+    # fastfetch --config examples/13
+fi
+
+if [[ $OS == "raspbian" ]]; then
+   echo "For resolving terminal issues, run infocmp -x | ssh user@host tic -x - on the local host"
+fi
+
+#
+# vim: set ft=bash:

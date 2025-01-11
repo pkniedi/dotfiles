@@ -1,6 +1,0 @@
-0 * * * * ~/.local/bin/bckup
-0 * * * * rm -f ~/screenshots/*
-# */10 * * * * ~/bin/sync-dotfiles
-# * */10 * * * cat /dev/null > ~/dotfiles/.synch.log
-* * * * * ~/bin/battery-life-log.sh
-# * * * * * ~/bin/internet-check.sh

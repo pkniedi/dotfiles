@@ -1,0 +1,12 @@
+# -----------------------------------------------------
+# Exports
+# -----------------------------------------------------
+# Use global environment file -> symlinked via ansible
+# zsh specific exports
+
+
+source ~/.config/DOTFILES_ENV_VARS # shared with other shells
+
+# If on a pi, print help message
+
+# vim: set ft=bash:

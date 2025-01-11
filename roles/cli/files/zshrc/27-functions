@@ -1,0 +1,672 @@
+# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
+#          _        __                  _   _                 
+#  _______| |__    / _|_   _ _ __   ___| |_(_) ___  _ __  ___ 
+# |_  / __| '_ \  | |_| | | | '_ \ / __| __| |/ _ \| '_ \/ __|
+#  / /\__ \ | | | |  _| |_| | | | | (__| |_| | (_) | | | \__ \
+# /___|___/_| |_| |_|  \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
+#                                                             
+# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
+
+
+
+function resource_aliases() {
+        source $ZSH_CONFIG/25-aliases
+}
+
+
+function resource_functions() {
+        source $ZSH_CONFIG/27-functions
+}
+
+function resource_aliases_functions() {
+        resource_aliases
+        resource_functions
+}
+
+function zsh_actions(){
+        command -v skate &>/dev/null || return 1
+        skate list  @zsh_actions -k | gum choose | xargs skate get @zsh_actions
+
+}
+
+
+
+function zaf() {
+        pdf=$(find . -type f -L -name "*.pdf" | fzf)
+        if [[ -f $pdf ]]; then
+                echo ":: Opening '$pdf' in background"
+                xdg-open &>/dev/null $pdf &
+        else
+                echo "No file selected"
+        fi
+}
+
+
+
+function eth_vpn(){
+                sudo openconnect -u jniederer@student-net.ethz.ch --useragent=AnyConnect -g student-net sslvpn.ethz.ch
+}
+
+# NOTE: added to scripts to make zathura persists after shell exits
+#
+# function zr() {
+#         cd ~/resources
+#         pdf=`fd .pdf | fzf --cycle --wrap`
+#         if [[ $? == 0 ]];then
+#                 zat ./$pdf &
+#                 echo Opening \"`echo $pdf | rev | cut -d / -f1 | rev`\" in background
+#         else
+#                 echo Aborted!!
+#         fi
+#         cd -
+# }
+
+function comppwd() {
+        if [[ $# -ne 1 ]]; then
+                printf "Enter archive name: "
+                read archive_name
+        else
+                archive_name=$1
+        fi
+        XZ_OPT=-9 tar -vcJf $archive_name.tar.xz $(pwd)
+}
+
+function bluedown {
+        sudo systemctl disable bluetooth
+        sudo systemctl stop bluetooth
+}
+
+
+function addfig {
+        [ -d figures ] || mkdir figures
+        cd figures
+        wget $(xclip -o) || (echo failed && return 1)
+        cd ..
+        return 0
+}
+
+function screenshot(){
+        [ ! -d $HOME/.screenshots ] && mkdir $HOME/.screenshots
+        scrot -u -d 3 $HOME/.screenshots/screenshot-$(date +%H%M).png
+}
+
+function tomcon {
+        typeset -a arr
+        arr=$(ls)
+        for i in ( "$arr[@]" )
+
+}
+
+function remind  {
+        local COUNT="$#"
+        local COMMAND="$1"
+        local MESSAGE="$1"
+        local OP="$2"
+        shift 2
+        local WHEN="$@"
+        # Display help if no parameters or help command
+        if [[ $COUNT -eq 0 || "$COMMAND" == "help" || "$COMMAND" == "--help" || "$COMMAND" == "-h" ]]; then
+                echo "COMMAND"
+                echo "    remind <message> <time>"
+                echo "    remind <command>"
+                echo
+                echo "DESCRIPTION"
+                echo "    Displays notification at specified time"
+                echo
+                echo "EXAMPLES"
+                echo '    remind "Hi there" now'
+                echo '    remind "Time to wake up" in 5 minutes'
+                echo '    remind "Dinner" in 1 hour'
+                echo '    remind "Take a break" at noon'
+                echo '    remind "Are you ready?" at 13:00'
+                echo '    remind list'
+                echo '    remind clear'
+                echo '    remind help'
+                echo
+                return
+        fi
+        # Check presence of AT command
+        if ! which at >/dev/null; then
+                echo "remind: AT utility is required but not installed on your system. Install it with your package manager of choice, for example 'sudo apt install at'."
+                return
+        fi
+        # Run commands: list, clear
+        if [[ $COUNT -eq 1 ]]; then
+                if [[ "$COMMAND" == "list" ]]; then
+                        at -l
+                elif [[ "$COMMAND" == "clear" ]]; then
+                        at -r $(atq | cut -f1)
+                else
+                        echo "remind: unknown command $COMMAND. Type 'remind' without any parameters to see syntax."
+                fi
+                return
+        fi
+        # Determine time of notification
+        if [[ "$OP" == "in" ]]; then
+                local TIME="now + $WHEN"
+        elif [[ "$OP" == "at" ]]; then
+                local TIME="$WHEN"
+        elif [[ "$OP" == "now" ]]; then
+                local TIME="now"
+        else
+                echo "remind: invalid time operator $OP"
+                return
+        fi
+        # Schedule the notification
+        echo "notify-send  'REMINDER' '$MESSAGE'" | at $TIME
+        echo "Notification scheduled at $TIME"
+}
+
+function afk() {
+        pgrep vlc &>/dev/null && {pkill vlc}
+        systemctl suspend
+}
+
+
+function gwp(){
+        
+printf "Enter name of wallpaper: "
+read -r wallpaper_name
+
+wl-paste  | wget -O ~/wallpaper/$wallpaper_name.jpg -i -
+
+}
+
+
+function retlog() {
+  if [[ -z $1 ]];then
+    echo '/var/log/nginx/access.log'
+  else
+    echo $1
+  fi
+}
+
+alias ping='ping -c 5'
+alias clr='clear; echo Currently logged in on $TTY, as $USERNAME in directory $PWD.'
+alias path='print -l $path'
+alias mkdir='mkdir -pv'
+# get top process eating memory
+alias psmem='ps -e -orss=,args= | sort -b -k1 -nr'
+alias psmem10='ps -e -orss=,args= | sort -b -k1 -nr | head -n 10'
+# get top process eating cpu if not work try execute : export LC_ALL='C'
+alias pscpu='ps -e -o pcpu,cpu,nice,state,cputime,args | sort -k1,1n -nr'
+alias pscpu10='ps -e -o pcpu,cpu,nice,state,cputime,args | sort -k1,1n -nr | head -n 10'
+# top10 of the history
+alias hist10='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
+
+function ip() {
+  if [ -t 1 ]; then
+    command ip -color "$@"
+  else
+    command ip "$@"
+  fi
+}
+
+# directory LS
+function dls() {
+  print -l *(/)
+}
+function psgrep() {
+  ps aux | grep "${1:-.}" | grep -v grep
+}
+# Kills any process that matches a regexp passed to it
+function killit() {
+  ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
+}
+
+# list contents of directories in a tree-like format
+if ! (( $+commands[tree] )); then
+  function tree() {
+    find $@ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+  }
+fi
+
+# Sort connection state
+function sortcons() {
+  {
+    LANG= ss -nat | awk 'NR > 1 {print $1}' \
+    || LANG= netstat -nat | awk 'NR > 2 {print $6}'
+  } | sort | uniq -c | sort -rn
+}
+
+# View all 80 Port Connections
+function con80() {
+  {
+    LANG= ss -nat || LANG= netstat -nat
+  } | grep -E ":80[^0-9]" | wc -l
+}
+
+# On the connected IP sorted by the number of connections
+function sortconip() {
+  {
+    LANG= ss -ntu | awk 'NR > 1 {print $6}' \
+    || LANG= netstat -ntu | awk 'NR > 2 {print $5}'
+  } | cut -d: -f1 | sort | uniq -c | sort -n
+}
+
+# top20 of Find the number of requests on 80 port
+function req20() {
+  {
+    LANG= ss -tn | awk '$4 ~ /:80$/ {print $5}' \
+    || LANG= netstat -tn | awk '$4 ~ /:80$/ {print $5}'
+  } | awk -F: '{print $1}' | sort | uniq -c | sort -nr | head -n 20
+}
+
+# top20 of Using tcpdump port 80 access to view
+function http20() {
+  sudo tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F"." '{print $1"."$2"."$3"."$4}' | sort | uniq -c | sort -nr | head -n 20
+}
+
+# top20 of Find time_wait connection
+function timewait20() {
+  {
+    LANG= ss -nat | awk 'NR > 1 && /TIME-WAIT/ {print $5}' \
+    || LANG= netstat -nat | awk 'NR > 2 && /TIME_WAIT/ {print $5}'
+  } | sort | uniq -c | sort -rn | head -n 20
+}
+
+# top20 of Find SYN connection
+function syn20() {
+  {
+    LANG= ss -an | awk '/SYN/ {print $5}' \
+    || LANG= netstat -an | awk '/SYN/ {print $5}'
+  } | awk -F: '{print $1}' | sort | uniq -c | sort -nr | head -n20
+}
+
+# Printing process according to the port number
+function port_pro() {
+  LANG= ss -ntlp | awk "NR > 1 && /:${1:-}/ {print \$6}" | sed 's/.*pid=\([^,]*\).*/\1/' \
+  || LANG= netstat -ntlp | awk "NR > 2 && /:${1:-}/ {print \$7}" | cut -d/ -f1
+}
+
+# top10 of gain access to the ip address
+function accessip10() {
+  awk '{counts[$(11)]+=1}; END {for(url in counts) print counts[url], url}' "$(retlog)"
+}
+
+# top20 of Most Visited file or page
+function visitpage20() {
+  awk '{print $11}' "$(retlog)" | sort | uniq -c | sort -nr | head -n 20
+}
+
+# top100 of Page lists the most time-consuming (more than 60 seconds) as well as the corresponding page number of occurrences
+function consume100() {
+  awk '($NF > 60 && $7~/\.php/){print $7}' "$(retlog)" | sort -n | uniq -c | sort -nr | head -n 100
+  # if django website or other website make by no suffix language
+  # awk '{print $7}' "$(retlog)" | sort -n | uniq -c | sort -nr | head -n 100
+}
+
+# Website traffic statistics (G)
+function webtraffic() {
+  awk "{sum+=$10} END {print sum/1024/1024/1024}" "$(retlog)"
+}
+
+# Statistical connections 404
+function c404() {
+  awk '($9 ~ /404/)' "$(retlog)" | awk '{print $9,$7}' | sort
+}
+
+# Statistical http status.
+function httpstatus() {
+  awk '{counts[$(9)]+=1}; END {for(code in counts) print code, counts[code]}' "$(retlog)"
+}
+
+# Delete 0 byte file
+function d0() {
+  find "${1:-.}" -type f -size 0 -exec rm -rf {} \;
+}
+
+# gather external ip address
+function geteip() {
+  curl -s -S -4 https://icanhazip.com
+
+  # handle case when there is no IPv6 external IP, which shows error
+  # curl: (7) Couldn't connect to server
+  curl -s -S -6 https://icanhazip.com 2>/dev/null
+  local ret=$?
+  (( ret == 7 )) && print -P -u2 "%F{red}error: no IPv6 route to host%f"
+  return $ret
+}
+
+# determine local IP address(es)
+function getip() {
+  if (( ${+commands[ip]} )); then
+    ip addr | awk '/inet /{print $2}' | command grep -v 127.0.0.1
+  else
+    ifconfig | awk '/inet /{print $2}' | command grep -v 127.0.0.1
+  fi
+}
+
+# Clear zombie processes
+function clrz() {
+  ps -eal | awk '{ if ($2 == "Z") {print $4}}' | kill -9
+}
+
+# Second concurrent
+function conssec() {
+  awk '{if($9~/200|30|404/)COUNT[$4]++}END{for( a in COUNT) print a,COUNT[a]}' "$(retlog)" | sort -k 2 -nr | head -n10
+}
+
+
+
+function gbda() {
+  git branch --no-color --merged | command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" | command xargs git branch --delete 2>/dev/null
+}
+
+# Copied and modified from James Roeder (jmaroeder) under MIT License
+# https://github.com/jmaroeder/plugin-git/blob/216723ef4f9e8dde399661c39c80bdf73f4076c4/functions/gbda.fish
+function gbds() {
+  local default_branch=$(git_main_branch)
+  (( ! $? )) || default_branch=$(git_develop_branch)
+
+  git for-each-ref refs/heads/ "--format=%(refname:short)" | \
+    while read branch; do
+      local merge_base=$(git merge-base $default_branch $branch)
+      if [[ $(git cherry $default_branch $(git commit-tree $(git rev-parse $branch\^{tree}) -p $merge_base -m _)) = -* ]]; then
+        git branch -D $branch
+      fi
+    done
+}
+
+
+# Pretty log messages
+function _git_log_prettily(){
+  if ! [ -z $1 ]; then
+    git log --pretty=$1
+  fi
+}
+
+function ggu() {
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  git pull --rebase origin "${b:=$1}"
+}
+
+function ggl() {
+  if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+    git pull origin "${*}"
+  else
+    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+    git pull origin "${b:=$1}"
+  fi
+}
+
+
+function upgrade() {
+  echo ":: Checking Arch Linux PGP Keyring..."
+  local installedver="$(LANG= sudo pacman -Qi archlinux-keyring | grep -Po '(?<=Version         : ).*')"
+  local currentver="$(LANG= sudo pacman -Si archlinux-keyring | grep -Po '(?<=Version         : ).*')"
+  if [ $installedver != $currentver ]; then
+    echo " Arch Linux PGP Keyring is out of date."
+    echo " Updating before full system upgrade."
+    sudo pacman -Sy --needed --noconfirm archlinux-keyring
+  else
+    echo " Arch Linux PGP Keyring is up to date."
+    echo " Proceeding with full system upgrade."
+  fi
+  if (( $+commands[yay] )); then
+    yay -Syu
+  elif (( $+commands[trizen] )); then
+    trizen -Syu
+  elif (( $+commands[pacaur] )); then
+    pacaur -Syu
+  elif (( $+commands[aura] )); then
+    sudo aura -Syu
+  else
+    sudo pacman -Syu
+  fi
+}
+
+
+function paclist() {
+  pacman -Qqe | xargs -I{} -P0 --no-run-if-empty pacman -Qs --color=auto "^{}\$"
+
+}
+
+unset git_version
+
+# Logic for adding warnings on deprecated aliases
+local old_alias new_alias
+for old_alias new_alias (
+  # TODO(2023-10-19): remove deprecated `git pull --rebase` aliases
+  gup     gpr
+  gupv    gprv
+  gupa    gpra
+  gupav   gprav
+  gupom   gprom
+  gupomi  gpromi
+); do
+  aliases[$old_alias]="
+    print -Pu2 \"%F{yellow}[oh-my-zsh] '%F{red}${old_alias}%F{yellow}' is a deprecated alias, using '%F{green}${new_alias}%F{yellow}' instead.%f\"
+    $new_alias"
+done
+unset old_alias new_alias
+
+
+
+# shellcheck shell=bash
+
+# =============================================================================
+#
+# Utility functions for zoxide.
+#
+
+# pwd based on the value of _ZO_RESOLVE_SYMLINKS.
+function __zoxide_pwd() {
+    \builtin pwd -L
+}
+
+# cd + custom logic based on the value of _ZO_ECHO.
+function __zoxide_cd() {
+    # shellcheck disable=SC2164
+    \builtin cd -- "$@"
+}
+
+# =============================================================================
+#
+# Hook configuration for zoxide.
+#
+
+# Hook to add new entries to the database.
+function __zoxide_hook() {
+    # shellcheck disable=SC2312
+    \command zoxide add -- "$(__zoxide_pwd)"
+}
+
+# Initialize hook.
+# shellcheck disable=SC2154
+if [[ ${precmd_functions[(Ie)__zoxide_hook]:-} -eq 0 ]] && [[ ${chpwd_functions[(Ie)__zoxide_hook]:-} -eq 0 ]]; then
+    chpwd_functions+=(__zoxide_hook)
+fi
+
+# =============================================================================
+#
+# When using zoxide with --no-cmd, alias these internal functions as desired.
+#
+
+# Jump to a directory using only keywords.
+function __zoxide_z() {
+    # shellcheck disable=SC2199
+    if [[ "$#" -eq 0 ]]; then
+        __zoxide_cd ~
+    elif [[ "$#" -eq 1 ]] && { [[ -d "$1" ]] || [[ "$1" = '-' ]] || [[ "$1" =~ ^[-+][0-9]$ ]]; }; then
+        __zoxide_cd "$1"
+    elif [[ "$#" -eq 2 ]] && [[ "$1" = "--" ]]; then
+        __zoxide_cd "$2"
+    else
+        \builtin local result
+        # shellcheck disable=SC2312
+        result="$(\command zoxide query --exclude "$(__zoxide_pwd)" -- "$@")" && __zoxide_cd "${result}"
+    fi
+}
+
+# Jump to a directory using interactive search.
+function __zoxide_zi() {
+    \builtin local result
+    result="$(\command zoxide query --interactive -- "$@")" && __zoxide_cd "${result}"
+}
+
+# =============================================================================
+#
+# Commands for zoxide. Disable these using --no-cmd.
+#
+
+function z() {
+    __zoxide_z "$@"
+}
+
+function zi() {
+    __zoxide_zi "$@"
+}
+
+# Completions.
+if [[ -o zle ]]; then
+    __zoxide_result=''
+
+    function __zoxide_z_complete() {
+        # Only show completions when the cursor is at the end of the line.
+        # shellcheck disable=SC2154
+        [[ "${#words[@]}" -eq "${CURRENT}" ]] || return 0
+
+        if [[ "${#words[@]}" -eq 2 ]]; then
+            # Show completions for local directories.
+            _cd -/
+
+        elif [[ "${words[-1]}" == '' ]]; then
+            # Show completions for Space-Tab.
+            # shellcheck disable=SC2086
+            __zoxide_result="$(\command zoxide query --exclude "$(__zoxide_pwd || \builtin true)" --interactive -- ${words[2,-1]})" || __zoxide_result=''
+
+            # Set a result to ensure completion doesn't re-run
+            compadd -Q ""
+
+            # Bind '\e[0n' to helper function.
+            \builtin bindkey '\e[0n' '__zoxide_z_complete_helper'
+            # Sends query device status code, which results in a '\e[0n' being sent to console input.
+            \builtin printf '\e[5n'
+
+            # Report that the completion was successful, so that we don't fall back
+            # to another completion function.
+            return 0
+        fi
+    }
+
+    function __zoxide_z_complete_helper() {
+        if [[ -n "${__zoxide_result}" ]]; then
+            # shellcheck disable=SC2034,SC2296
+            BUFFER="z ${(q-)__zoxide_result}"
+            __zoxide_result=''
+            \builtin zle reset-prompt
+            \builtin zle accept-line
+        else
+            \builtin zle reset-prompt
+        fi
+    }
+    \builtin zle -N __zoxide_z_complete_helper
+
+    [[ "${+functions[compdef]}" -ne 0 ]] && \compdef __zoxide_z_complete z
+fi
+
+# =============================================================================
+#
+# To initialize zoxide, add this to your configuration (usually ~/.zshrc):
+#
+# eval "$(zoxide init zsh)"
+
+
+# -----
+
+# Check the integrity of your package database: 
+# TODO:
+
+function checkhealth() {
+gum spin --title "Checking for integrity" -- pacman -Qk
+}
+
+function rename_files_with_space() {
+  find . -type f -name "* *" -exec bash -c 'mv "$1" "${1// /-}"' _ {} \;
+}
+
+function enabled_unit_files() {
+        sudo systemctl list-unit-files --state=enabled
+}
+
+# Setup a small git repository
+#
+function setup_repo(){
+        name=$(gum input --placeholder "Repo name")
+        if [[ -d $name ]]; then
+                echo "Directory already exists"
+                return 1
+        fi
+        mkdir -p $name
+        cd $name
+        echo "Switching to $name"
+        git init
+        echo "Initialized git repository"
+        touch README.md
+}
+
+# Some (useful?) functions involving gum
+
+# Open all selected pdfs in the current directory
+function open_pdfs(){
+        for pdf in $(find -L . -type f -name "*.pdf" | gum choose --no-limit); do
+                nohup xdg-open &>/dev/null $pdf &
+                disown
+        done
+}
+
+
+function efiles(){
+        find . -type f | gum choose --no-limit | xargs $EDITOR
+}
+
+
+
+# Add an alias and resource the file
+function addalias(){
+        cd $ZSH_CONFIG
+        nvim 25-aliases
+        source 25-aliases
+        cd -
+}
+
+# Add a function and resource the file
+function addfunction(){
+        cd $ZSH_CONFIG
+        nvim 27-functions
+        source 27-functions
+        cd -
+}
+
+# Get all files recursively in a directory and choose which to open using gum
+
+
+
+# Quickly edit important config files
+# TODO: Add more config files
+function editconfig(){
+        if [[ -z $1 ]]; then
+                echo ":: Nothing specified"
+                return 1
+        fi
+        case $1 in
+                "zsh")
+                        cd $ZSH_CONFIG
+                        ls | gum choose --no-limit | xargs nvim
+                        ;;
+        esac
+}
+
+
+# Create a new zsh script with a suffix if the name already exists
+# Enter it after creation
+
+
+# TODO
+# function newscript() {}
+
+
+# vim: set ft=zsh:
