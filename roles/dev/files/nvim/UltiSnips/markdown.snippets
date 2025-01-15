@@ -51,8 +51,9 @@ snippet [aw "[file](file-title.md)" biA
 [archwiki](`wl-paste`)
 endsnippet
 
-snippet [w "[file](file-title.md)" i
+snippet [w "[file](file-title.md)" ibA
 [wiki](`wl-paste`)
+$0
 endsnippet
 
 
@@ -118,15 +119,15 @@ endsnippet
 
 # Heading
 
-snippet h1 "Heading 1" ibA
+snippet "h1|header" "Heading 1" ribA
 ---
-# $1
----
+## $1
+
 $0
 endsnippet
 
 # Create summary from the text in the clipboard
-snippet "a?summa?r?y?" "Summary" rA
+snippet "a?summa?r?y?" "Summary" rbA
 # Summary
 `wl-paste`
 endsnippet

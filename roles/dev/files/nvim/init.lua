@@ -5,6 +5,7 @@ require("plugins")
 local modules = {
         "keymaps",
         "lsp-setup",
+        "telescope-setup",
         "completion",
         "usercommands",
         "autocommands",
@@ -32,6 +33,7 @@ local modules = {
         "dashboard-setup",
         "filetypes", -- set custom filetypes not correctly detected
        -- "symbol-usage-setup", TODO:
+        "obsidian-setup",
         "image-setup",
         -- "wal-setup", TODO:
         -- "avante-setup",

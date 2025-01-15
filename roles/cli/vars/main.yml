@@ -1,3 +1,13 @@
+# ██████╗  █████╗  ██████╗██╗  ██╗ █████╗  ██████╗ ███████╗███████╗
+# ██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔══██╗██╔════╝ ██╔════╝██╔════╝
+# ██████╔╝███████║██║     █████╔╝ ███████║██║  ███╗█████╗  ███████╗
+# ██╔═══╝ ██╔══██║██║     ██╔═██╗ ██╔══██║██║   ██║██╔══╝  ╚════██║
+# ██║     ██║  ██║╚██████╗██║  ██╗██║  ██║╚██████╔╝███████╗███████║
+# ╚═╝     ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝
+#
+# All packages necessary for a smooth experience with the terminal.
+# Some functions or aliases may not work if the packages are not installed.
+
 arch_apps:
   - zsh
   - zsh-completions
@@ -5,14 +15,7 @@ arch_apps:
   - zsh-autosuggestions
   - git
   - oh-my-posh
+  - lazygit
   - fastfetch
   - yazi
-  - python
-
-darwin_apps:
-  - zsh
-  - git
-  - oh-my-posh
-  - fastfetch
-  - yazi
-  - python
+  - eza

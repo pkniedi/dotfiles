@@ -12,3 +12,5 @@
     - { src: "fastfetch", dest: "{{ ansible_env.HOME }}/.config/fastfetch" }
     - { src: "yazi", dest: "{{ ansible_env.HOME }}/.config/yazi" }
     - { src: ".tmux.conf", dest: "{{ ansible_env.HOME }}/.tmux.conf" }
+    - { src: "scripts" , dest: "{{ ansible_env.HOME }}/.local/bin" }
+    - { src: "lazygit", dest: "{{ ansible_env.HOME }}/.config/lazygit" }

@@ -1,11 +1,4 @@
-arch_apps:
-  - firefox
-  - zathura
-  - zathura-pdf-mupdf
-  - kitty
-  - alacritty
-
-darwin_apps:
+packages:
   - firefox
   - zathura
   - zathura-pdf-mupdf

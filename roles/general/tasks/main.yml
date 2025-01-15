@@ -10,8 +10,6 @@
   when: ansible_os_family == 'Darwin'
 
 
-
 # Common ------------------------------
-
 - name: All | Symlinking config files
   ansible.builtin.include_tasks: "./symlink-dev-config-files.yml"

@@ -1,3 +1,10 @@
+--  ██████╗ ██████╗ ████████╗██╗ ██████╗ ███╗   ██╗███████╗
+-- ██╔═══██╗██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
+-- ██║   ██║██████╔╝   ██║   ██║██║   ██║██╔██╗ ██║███████╗
+-- ██║   ██║██╔═══╝    ██║   ██║██║   ██║██║╚██╗██║╚════██║
+-- ╚██████╔╝██║        ██║   ██║╚██████╔╝██║ ╚████║███████║
+--  ╚═════╝ ╚═╝        ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+
 local vars = require("variables")
 local vim = vim
 
@@ -25,6 +32,8 @@ vim.opt.ignorecase = true -- ignore case in searches by default
 vim.opt.smartcase = true  -- but make it case sensitive if an uppercase is entered
 vim.opt.expandtab = true  -- enable tab characters
 vim.opt.lazyredraw = true --  Do not redraw screen in the middle of a macro. Makes them complete faster.
+
+vim.opt.conceallevel = 2 -- Hide * markup for bold and italic text
 
 local signs = {
         Error = "",

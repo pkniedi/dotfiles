@@ -15,10 +15,24 @@ ansible-galaxy install -r requirements.yml
 
 Run the preferred playbook 
 ```bash
-ansible-playbook full-install.yml -i inventory.yml  # For full install
+ansible-playbook full-setup.yml -i inventory.yml  # For full install
 ```
 or
 ```bash
-ansible-playbook install.yml -i inventory.yml       # For minimal install
+ansible-playbook light-setup.yml -i inventory.yml       # For minimal install (e.g. on pi)
 ```
 <!-- # TODO: --vault-password-file=$HOME/.vault_pass -->
+
+# Roles
+
+privileged: do some privileged tasks that require to become root
+
+
+# TODO:
+
+- [ ] setup sddm
+
+setup fonts correctly:
+cp -r /usr/share/fonts ~/.local/share/  ??
+setup sddm.conf file
+there is a script in dotfiles repo where I yoinked the setup

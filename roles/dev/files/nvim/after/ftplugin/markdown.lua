@@ -143,9 +143,9 @@ end, {})
 
 map(0, "n", "<space>fm", ":FormatMarkdown<CR>", { desc = "Format markdown file" })
 
-map(0, "n", "<Tab>", "<Cmd>call search('^# ')<CR>zt", {})            -- Jump to next heading
-map(0, "n", "<s-Tab>", "<Cmd>call search('^# ','b')<CR>zt", {})        -- Jump to prev heading
-map(0, "n", "<leader>gl", "<Cmd>call search('^# Links')<CR>zt", {}) -- go to links
+map(0, "n", "<Tab>", "<Cmd>call search('^## ')<CR>zt", {})            -- Jump to next heading
+map(0, "n", "<s-Tab>", "<Cmd>call search('^## ','b')<CR>zt", {})        -- Jump to prev heading
+map(0, "n", "<leader>gl", "<Cmd>call search('^## Links')<CR>zt", {}) -- go to links
 
 -- Autocommand creating files from templates when new
 

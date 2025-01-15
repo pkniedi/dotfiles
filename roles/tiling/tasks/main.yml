@@ -1,7 +1,9 @@
 # Archlinux ------------------------------
-- name: Arch | Install command line tools
+- name: Install command line tools
   ansible.builtin.include_tasks: "./install-archlinux.yml"
   when: ansible_os_family == 'Archlinux'
-- name: Arch | Symlink config files
+
+- name: Symlink config files
   ansible.builtin.include_tasks: "./symlink-tiling-config-files.yml"
   when: ansible_os_family == 'Archlinux'
+

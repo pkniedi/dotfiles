@@ -1,7 +1,10 @@
+Urls
+Nerd-fonts cheatsheet
+
+
 Umlaute
 
 
-Urls
 Suspend
 Lock
 
@@ -12,7 +15,6 @@ news
 
 Chatbot Prompts
 
-Nerd-fonts cheatsheet
 Clipboard history
 Shutdown
 Logout

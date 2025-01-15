@@ -6,6 +6,6 @@
   loop:
     - { src: "hypr", dest: "{{ ansible_env.HOME }}/.config/hypr" }
     - { src: "waypaper", dest: "{{ ansible_env.HOME }}/.config/waypaper" }
-    - { src: "waybar", dest: "{{ ansible_env.HOME }}/.config/waybar" }
+    - { src: "waybar/current", dest: "{{ ansible_env.HOME }}/.config/waybar" }
     - { src: "tofi", dest: "{{ ansible_env.HOME }}/.config/tofi" }
     - { src: "dunst", dest: "{{ ansible_env.HOME }}/.config/dunst" }

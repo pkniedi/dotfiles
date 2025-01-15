@@ -2,7 +2,9 @@
 ad:~/notes/ad
 after:~/.config/nvim/after/ftplugin
 ala:~/.config/alacritty
-ana:~/notes/analysis-II
+ana2:~/resources/school/analysis-II
+ana:~/resources/school/analysis-II
+anaII:~/resources/school/analysis-II
 analysis:~/notes/analysis
 ass7:~/notes/spca/exercises/spca2024-jniederer-hand-in/assignment7/target82
 autodotfs:~/projects/autodotfs
@@ -25,6 +27,7 @@ dotfiles:~/dotfiles
 down:~/Downloads
 dreams:~/Documents/private/dreams
 e:~/notes/spca/exercises/e01/e01-src
+eanaII:~/resources/school/analysis-II/exercises
 ehas:~/notes/fmfp/exercises/haskell
 ehaskell:~/notes/fmfp/exercises/haskell
 eprog:~/notes/eprog
@@ -70,6 +73,8 @@ private:~/Documents/private
 pro:~/projects
 r:~/resources
 rad:~/resources/computer-science/introduction-to-algorithms-and-datastructures
+rana2:~/resources/school/analysis-II
+rcd:~/resources/school/compiler-design
 rcn:~/resources/computer-science/computer-networks
 rcs:~/resources/computer-science
 rdm:~/resources/mathematics/discrete-mathematics
@@ -80,6 +85,8 @@ rhaskell:~/resources/computer-science/programming-languages/haskell
 rlina:~/resources/mathematics/linear-algebra
 rmaths:~/resources/mathematics
 rnumcs:~/resources/computer-science/numcs
+roles:~/projects/jniedi-dotfiles/roles
+rschool:~/resources/school
 rws:~/resources/mathematics/probability-and-statistics
 s:~/notes
 scripts:~/.local/bin
@@ -100,7 +107,7 @@ ulti:~/.config/nvim/UltiSnips
 ultitex:~/.config/nvim/UltiSnips/tex
 utex:~/.config/nvim/UltiSnips/tex
 wall:~/wallpapers
-waybar:~/projects/jniedi-dotfiles/waybar/.config/waybar
+waybar:~/.config/waybar
 ws:~/notes/ws
 z:~/notes/zettelkasten
 zcon:~/.config/zsh

@@ -129,9 +129,9 @@ button {
     margin: 0 4px;
 }
 
-/* If workspaces is the leftmost module, reduce left margin */
+/* If workspaces is the leftmost module, reduce left margin otherwise set it to 5 */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 2px;
+    margin-left: 5px;
 }
 
 #clock {

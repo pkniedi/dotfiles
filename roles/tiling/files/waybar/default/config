@@ -3,34 +3,38 @@
     "height": 30,
     "spacing": 5,
     // Choose the order of the modules
+
     "modules-left": [
-        "hyprland/workspaces"
+        "custom/wallpaper",
     ],
     "modules-center": [
-        "hyprland/window"
+        "hyprland/workspaces"
     ],
+
     "modules-right": [
-				"tray",
+        "tray",
         "custom/pacman",
         "pulseaudio",
         "network",
         "battery",
-				"clock",
+        "clock",
         "custom/power"
 		],
-		"hyprland/window": {
-			"separate-outputs": true
-		},
+"hyprland/window": {
+                "separate-outputs": true
+        },
+
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate"
     },
+
     "tray": {
         // "icon-size": 21,
         "spacing": 10
     },
-		"custom/pacman": {
+     "custom/pacman": {
 			"interval": 3600,
 			"return-type": "json",
 			"exec": "pacman-updates",
@@ -86,6 +90,12 @@
 
         "on-click": "pavucontrol"
 		},
+
+   "custom/wallpaper": {
+        "format": "󰸉",
+        "on-click": "waypaper"
+    },
+
     "custom/power": {
         "format": "󰐥",
         "on-click": "sleep 0.15 && powermenu"

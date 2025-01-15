@@ -2,7 +2,7 @@
     monitor = 0
     follow = mouse
 		width = 350
-    origin = top-right
+    origin = top-center
     offset = 48x48
 
     progress_bar = true
@@ -39,7 +39,9 @@
     icon_position = left
     min_icon_size = 50
     max_icon_size = 60
-    icon_path = $HOME/.local/share/icons/dunst
+    icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/Adwaita/16x16/legacy/
+    icon_theme = Papirus
+    enable_recursive_icon_lookup = true
     sticky_history = yes
     history_length = 20
     always_run_script = true
@@ -56,23 +58,25 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#181825"
-    foreground = "#CDD6F4"
+    foreground = "#181825"
+    background  = "#CDD6F4"
     highlight = "#CDD6F4"
-    frame_color = "#181825"
+    # frame_color = "#181825"
+    frame_color  = "#CDD6F4"
     timeout = 5
 
 [urgency_normal]
-    background = "#181825"
-    foreground = "#CDD6F4"
+    foreground = "#181825"
+    background  = "#CDD6F4"
     highlight = "#CDD6F4"
-    frame_color = "#181825"
-    timeout = 5
+    # frame_color = "#181825"
+    frame_color  = "#CDD6F4"
+    timeout = 10
 
 [urgency_critical]
-    background = "#181825"
-    foreground = "#CDD6F4"
-    frame_color = "#f38ba8"
+    foreground = "#181825"
+    # foreground = "#CDD6F4"
+    background = "#f38ba8"
     timeout = 1000
 
 [volume]
@@ -82,5 +86,11 @@
 [backlight]
     appname = "Backlight"
     highlight = "#eba0ac"
+
+# [Vivaldi]
+#     appname = "proton-mail"
+#     summary = New mail
+#     script = ~/.config/dunst/scripts/libreoffice.sh
+
 
 # vim: ft=cfg

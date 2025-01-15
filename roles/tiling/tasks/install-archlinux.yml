@@ -1,4 +1,4 @@
-- name: Arch | Install command line tools 
+- name: Install command line tools 
   kewlfft.aur.aur:
     name: "{{ app }}"
     use: yay
@@ -7,4 +7,3 @@
   loop_control:
     loop_var: app
   when: ansible_os_family == 'Archlinux'
-

@@ -75,15 +75,6 @@ snippet fig "Add figure" ib
 endsnippet
 
 # https://www.overleaf.com/learn/latex/Tables
-snippet table "Description" bA
-\begin{center}
-\begin{tabular}{$1} 
- \hline
- $0 \\\\
- \hline
-\end{tabular}
-\end{center}
-endsnippet
 
 snippet $ "Description" A
 $$1$$0
@@ -96,5 +87,16 @@ snippet tabularx "Description" ibA
 	\midrule
 	\bottomrule
 \end{tabularx}
+endsnippet
+
+snippet table "Description" ibA
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\($0\) \\
+		\hline
+	\end{tabular}
+\end{table}
 endsnippet
 

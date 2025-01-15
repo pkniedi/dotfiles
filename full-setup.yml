@@ -20,6 +20,14 @@
   hosts: home
   roles:
     - cli # full environment
-    - dev
-    - general # general apps and tools on all systems
-    - tiling  # tiling window manager (only necessary on arch)
+    # - dev
+    # - general # general apps and tools on all systems
+    # - tiling  # tiling window manager (only necessary on arch)
+
+# TODO:
+ 
+# - name: Privileged tasks
+#   hosts: home
+#   become: yes
+#   roles:
+#     - privileged

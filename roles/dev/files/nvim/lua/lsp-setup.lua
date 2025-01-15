@@ -1,5 +1,13 @@
---         nvim-lspconfig:     https://github.com/neovim/nvim-lspconfig
--- https://wiki.archlinux.org/title/Language_Server_Protocol
+
+-- ██╗     ███████╗██████╗
+-- ██║     ██╔════╝██╔══██╗
+-- ██║     ███████╗██████╔╝
+-- ██║     ╚════██║██╔═══╝
+-- ███████╗███████║██║
+-- ╚══════╝╚══════╝╚═╝
+--   https://github.com/neovim/nvim-lspconfig
+-- 󰣇 https://wiki.archlinux.org/title/Language_Server_Protocol
+
 
 local vim = vim
 local lspconfig = require("lspconfig")
@@ -68,7 +76,13 @@ require("lspconfig").pylsp.setup({
 --
 lspconfig.jdtls.setup({})
 lspconfig.bashls.setup({})
-lspconfig.cssls.setup({})
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+-- lspconfig.cssls.setup({
+--         capabilities = capabilities,
+-- })
 
 lspconfig.clangd.setup({})
 
