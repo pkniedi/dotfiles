@@ -1,8 +1,0 @@
-- name: Setting up sddm
-  ansible.builtin.copy:
-    src: "{{ role_path }}/files/sddm/{{ item.src }}"
-    dest: "{{ item.dest }}"
-    recursive: yes
-  loop:
-    - { src: "sddm.conf", dest: "/etc/sddm.conf.d" }
-    - { src: "astronaut", dest: "/usr/share/sddm/themes" }

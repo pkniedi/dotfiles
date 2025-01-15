@@ -1,36 +1,26 @@
 # Install
 
-
-First install all ansible and all other dependencies
+First install all dependencies:
 ```bash
-yay -S python3 ansible-core git # On Arch
-brew install ansible git        # On MacOS
+yay -S python3 ansible-core git make
 ```
-
-Before running the playbook, install the required roles with:
+The rest is handled in the Makefile:
 ```bash
-ansible-galaxy install -r requirements.yml
-
+make install # installs all packages and symlinks dotfiles
 ```
-
-Run the preferred playbook 
-```bash
-ansible-playbook full-setup.yml -i inventory.yml  # For full install
-```
-or
-```bash
-ansible-playbook light-setup.yml -i inventory.yml       # For minimal install (e.g. on pi)
-```
-<!-- # TODO: --vault-password-file=$HOME/.vault_pass -->
+Be cautious when running the `install` target. 
+I'm not sure whether ansible overwrites stuff already existing in ~/.config.
 
 # Roles
 
-privileged: do some privileged tasks that require to become root
+cli: responsible for installing cli tools and symlinking dotfiles
+privileged: do some privileged tasks which require root privileges
+gui: install gui tools
 
 
-# TODO:
+# TODOs
 
-- [ ] setup sddm
+- [ ] setup copying files for sddm
 
 setup fonts correctly:
 cp -r /usr/share/fonts ~/.local/share/  ??

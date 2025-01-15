@@ -1,24 +1,22 @@
-# Archlinux ------------------------------
-- name: Arch | Install command line tools 
-  ansible.builtin.include_tasks: "./install-archlinux.yml"
+# Installing packages ------------------------------
+- name: Installing dev packages
+  kewlfft.aur.aur:
+    name: "{{ app }}"
+    use: yay
+    state: latest
+  loop: "{{ arch_apps }}"
+  loop_control:
+    loop_var: app
   when: ansible_os_family == 'Archlinux'
 
 
-# Darwin ------------------------------
-- name: Darwin | Install command line tools
-  ansible.builtin.include_tasks: "./install-darwin.yml"
-  when: ansible_os_family == 'Darwin'
-
-
-
-# Debian based ------------------------------
-- name: Dabian | Install command line tools
-  ansible.builtin.include_tasks: "./install-raspberrypi.yml"
-  when: ansible_os_family == 'Debian'
-
-
-
-# Common ------------------------------
-
-- name: All | Symlinking config files
-  ansible.builtin.include_tasks: "./symlink-dev-config-files.yml"
+# Symlinking ------------------------------
+- name:  Symlinking config files of dev tools
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
+    - { src: "nvim", dest: "{{ ansible_env.HOME }}/.config/nvim" }
+  tags: 
+    - symlink

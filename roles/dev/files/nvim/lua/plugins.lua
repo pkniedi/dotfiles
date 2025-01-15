@@ -475,4 +475,8 @@ require("lazy").setup({
                 -- see below for full list of options 👇
         },
 
+        -- ansible
+
+        --    "https://github.com/mfussenegger/nvim-ansible.git"
+        "mfussenegger/nvim-ansible",
 })

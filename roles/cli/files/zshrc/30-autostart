@@ -10,14 +10,14 @@
 # -----------------------------------------------------
 # Fastfetch
 # -----------------------------------------------------
-if [[ $(tty) == *"pts"* ]]; then
-    # fastfetch --config examples/13
-    fastfetch --config examples/8 
-fi
+# if [[ $(tty) == *"pts"* ]]; then
+#     # fastfetch --config examples/13
+#     fastfetch --config examples/8 
+# fi
 
-if [[ $OS == "raspbian" ]]; then
-   echo "For resolving terminal issues, run infocmp -x | ssh user@host tic -x - on the local host"
-fi
+# if [[ $OS == "raspbian" ]]; then
+#    echo "For resolving terminal issues, run infocmp -x | ssh user@host tic -x - on the local host"
+# fi
 
 #
 # vim: set ft=bash:

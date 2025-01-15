@@ -1,3 +1,16 @@
+# Installing packages -----------------------
+- name: Install command line tools 
+  kewlfft.aur.aur:
+    name: "{{ app }}"
+    use: yay
+    state: latest
+  loop: "{{ arch_apps }}"
+  loop_control:
+    loop_var: app
+  when: ansible_os_family == 'Archlinux'
+
+
+# Symllinking config files ------------------------------
 - name:  Linking config files
   ansible.builtin.file:
     src: "{{ role_path }}/files/{{ item.src }}"
@@ -9,3 +22,7 @@
     - { src: "waybar/current", dest: "{{ ansible_env.HOME }}/.config/waybar" }
     - { src: "tofi", dest: "{{ ansible_env.HOME }}/.config/tofi" }
     - { src: "dunst", dest: "{{ ansible_env.HOME }}/.config/dunst" }
+    - { src: "kitty", dest: "{{ ansible_env.HOME }}/.config/kitty" }
+    - { src: "zathura", dest: "{{ ansible_env.HOME }}/.config/zathura" }
+  tags:
+    - symlink

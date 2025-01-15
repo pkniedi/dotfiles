@@ -37,6 +37,7 @@
   "neorg": { "branch": "main", "commit": "81ee90cb2d72ac43bfadb7dd276646f34c8f85be" },
   "no-neck-pain.nvim": { "branch": "main", "commit": "2a786bf7130cce20449885fb799f3c7f4ce93595" },
   "nui.nvim": { "branch": "main", "commit": "53e907ffe5eedebdca1cd503b00aa8692068ca46" },
+  "nvim-ansible": { "branch": "main", "commit": "44dabdaa8a9193b7f564a8408ed6d7107705030a" },
   "nvim-cmp": { "branch": "main", "commit": "3403e2e9391ed0a28c3afddd8612701b647c8e26" },
   "nvim-cmp-fonts": { "branch": "master", "commit": "43be83eb24ff8aec124c3aae64d053a095e03bd0" },
   "nvim-cokeline": { "branch": "main", "commit": "adfd1eb87e0804b6b86126e03611db6f62bb2909" },

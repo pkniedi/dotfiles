@@ -1,8 +1,0 @@
-- name: Darwin | Install command line tools 
-  homebrew:
-    name: "{{ item }}"
-    state: latest
-  loop: "{{ darwin_apps }}"
-  loop_control:
-    loop_var: item
-  when: ansible_os_family == 'Darwin'

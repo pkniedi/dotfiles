@@ -8,7 +8,11 @@
 # The filename can be changed in the ansible playbook
 # Do not change the location of this file
 
-export REPO_DIR=$(dirname $(dirname $(realpath $0)))
+
+export DOTFILES_CLI_ROLE_DIR=$(dirname $(dirname $(realpath $0)))
+
+# The location of the base dotfiles directory, where the git repo is located
+export DOTFILES=$(dirname $(dirname $DOTFILES_CLI_ROLE_DIR))
 
 # Actual locations according to docs
 
@@ -38,26 +42,5 @@ export BACKUP_DIRS=(
         $HOME/notes/zettelkasten
         $HOME/documents
 )
-
-
-# Set distro/OS specific variables
-OS=$(cat /etc/os-release | grep "^ID=.*" | cut -d'=' -f2)
-
-# case $OS in
-#         "arch")
-#                 echo "Welcome to Arch Linux!"
-#                 ;;
-#         "ubuntu")
-#                 echo "Welcome to Ubuntu!"
-#                 ;;
-#         "raspbian")
-#                 echo "Welcome to Raspbian!"
-#                 ;;
-#         *)
-#                 echo "Unknown OS"
-#                 ;;
-# esac
-
-
 
 # vim: set ft=bash:
