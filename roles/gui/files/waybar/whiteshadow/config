@@ -3,9 +3,9 @@
         "position": "top",
         "reload_style_on_change": true,
         // "modules-left": ["custom/notification", "custom/waypaper" ,"custom/pacman","tray"],
-        "modules-left": [ "custom/wallpaper","custom/capture-screen" ,"custom/colorpicker", "tray"],
+        "modules-left": [ "custom/wallpaper","custom/capture-screen" ,"custom/colorpicker","pulseaudio",  "tray" ],
         "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["group/expand","bluetooth","network","battery","pulseaudio",  "clock"],
+        "modules-right": ["group/expand","bluetooth","network","battery", "clock"],
 
 
         "hyprland/workspaces": {
@@ -108,7 +108,7 @@
             "modules": ["custom/expand", "cpu","memory","temperature","custom/endpoint"],
         },
         "custom/colorpicker": {
-            "format": "  ",
+            "format": " ",
             "return-type": "json",
             "tooltip-format" : "Pick color from screen",
             "interval": "once",
@@ -132,13 +132,13 @@
             "spacing": 10
         },
    "custom/wallpaper": {
-        "format": " 󰸉 ",
+        "format": "󰸉 ",
         "tooltip-format": "Select wallpaper",
         "on-click": "waypaper"
     },
 
    "custom/wallpaper": {
-        "format": " 󰸉 ",
+        "format": "󰸉 ",
         "tooltip-format": "Select wallpaper",
         "on-click": "waypaper"
     },

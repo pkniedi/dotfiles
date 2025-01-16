@@ -1,15 +1,7 @@
 # Install
 
-First install all dependencies:
-```bash
-yay -S python3 ansible-core git make
-```
-The rest is handled in the Makefile:
-```bash
-make install # installs all packages and symlinks dotfiles
-```
-Be cautious when running the `install` target. 
-I'm not sure whether ansible overwrites stuff already existing in ~/.config.
+Follow the instructions in [./docs/INSTALL.md](./docs/INSTALL.md) to install the system.
+
 
 # Roles
 
