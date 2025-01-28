@@ -1,9 +1,383 @@
+snippet "(tx)*box|tcb" "Description" brA
+\begin{txbox}{\hltextcolor}{}
+	${VISUAL:}$0
+\end{txbox}
+endsnippet
+
+snippet tcolorbox "tcolorbox" ib
+\begin{txbox}{$1}{$2}
+	    $0
+\end{txbox}
+endsnippet
+
+snippet defbox "" ibA
+\begin{txbox}{\defcolor}{}
+	\begin{defn}[]
+		$2
+	\end{defn} $0
+\end{txbox}
+endsnippet
+
+snippet thmbox "Description" ib
+\begin{txbox}{\\$1color}{}
+	\begin{$1}
+		${VISUAL:}$0
+	\end{$1}
+\end{txbox}
+endsnippet
+
+snippet impbox "Add important box" bA
+\begin{txbox}{\impcolor}{}
+	    ${VISUAL:}$0
+\end{txbox}
+endsnippet
+
+snippet eqbox "Equation in a box" bA
+\begin{eqbox}{\eqcolor}{}
+	\begin{equation*}
+	    ${VISUAL:}$0
+	\end{equation*}
+\end{eqbox}
+endsnippet
+
+snippet "q(uote)?box" "Quote box" ibrA
+\begin{eqbox}{\quotecolor}{}
+    ${VISUAL:}$0
+\end{eqbox}
+endsnippet
+
+snippet main "Main box cheatsheet" ibA
+\begin{main}
+	$0
+\end{main}
+endsnippet
+
+snippet sub "Sub box cheatsheet" ibA
+\begin{sub}
+	$0
+\end{sub}
+endsnippet
+snippet todo "add new TODO: <<??>> " b
+% TODO: $0
+endsnippet
+
+snippet fix "add new FIX: <<??>>"  b
+% FIX: $0
+endsnippet
+
+snippet note "add new NOTE: <<??>>" b
+% NOTE: $0
+endsnippet
+
+snippet NOTE "add new NOTE: <<??>>" bA
+% NOTE: $0
+endsnippet
+
+snippet todo "add new TODO: <<??>> " bA
+% TODO: $0
+endsnippet
+
+snippet fix "add new FIX: <<??>>"  bA
+% FIX: $0
+endsnippet
+
+snippet todod "add new TODO: <<??>> (since: Tue 26.09 16:11)" bA
+% TODO: $0 (since:  `date +%d.%m`)
+endsnippet
+
+snippet fixd "add new FIX: <<??>> (since: Tue 26.09 16:12)" bA
+% FIX: $0 (since:  `date +%d.%m`)
+endsnippet
+
+snippet noted "add new NOTE: <<??>> (since: Tue 26.09 16:12)" bA
+% NOTE: $0 (since:  `date +%d.%m`)
+endsnippet
+
+snippet stopped "% Stopped" bA
+% STOPPED: here on `date +%d.%m`$0
+endsnippet
+global !p
+import subprocess
+def open_algo_docs():
+	subprocess.run(["firefox", "https://www.overleaf.com/learn/latex/Algorithms"]) 
+endglobal
+
+snippet "ce(enter)?" "center block" br
+\begin{center}
+	$0
+\end{center}
+endsnippet
+
+snippet minted "" ibA
+\begin{minted}[bgcolor=mintedbg]{$1}
+${VISUAL}$0
+\end{minted}
+endsnippet
+
+snippet item "itemize" ibA
+\begin{itemize}[label=\textbullet]
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet algo "insert algorithm pseudocode template" i
+% NOTE: opened https://www.overleaf.com/learn/latex/Algorithms$1
+\begin{algorithm}
+	\begin{algorithmic}[1]
+		$0
+	\end{algorithmic}
+\end{algorithm}
+`!p
+open_algo_docs()
+`
+endsnippet
+
+snippet enum "Enum environment" ibA
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet aefig "Automatic fig" bA
+figure (\ref{fig: $1})$0
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=8cm]{./figures/${1:`ls -t ./figures | head -n1 | rev | cut -d. -f2- | rev`}} 
+    \caption{$2}
+	\label{fig: $1}
+\end{figure}
+endsnippet
+
+snippet afig "Automatic fig" ibA
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=8$0cm]{./figures/${2:`ls -t ./figures | head -n1 | rev | cut -d. -f2- | rev`}} 
+\end{figure}
+endsnippet
+
+snippet efig "Add figure" ib
+figure (\ref{fig: $1})$0
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=8cm]{./figures/$1} 
+    \caption{$2}
+	\label{fig: $1}
+\end{figure}
+endsnippet
+
+snippet fig "Add figure" ib
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=8cm]{./figures$1} 
+\end{figure}
+endsnippet
+
+# https://www.overleaf.com/learn/latex/Tables
+
+snippet $ "Description" A
+$$1$$0
+endsnippet
+
+snippet tabularx "Description" ibA
+\begin{tabularx}{\linewidth}{c>{\centering\arraybackslash}Xc}
+	\toprule
+	$0
+	\midrule
+	\bottomrule
+\end{tabularx}
+endsnippet
+
+snippet table "Description" ibA
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\($0\) \\
+		\hline
+	\end{tabular}
+\end{table}
+endsnippet
+
+snippet "(IMP|imp)while" "\mathtt{\ while\ }b\mathtt{\ do \ }s_{1}\mathtt{\ end\ }" iAr
+\mathtt{\ while\ }$1\mathtt{\ do \ }$2\mathtt{\ end\ }$0
+endsnippet
+
+snippet "(IMP|imp)if" "\mathtt{\ if\ }b\mathtt{\ do \ }s_{1}\mathtt{\ else\ skip\ }\mathtt{\ end\ }" iAr
+\mathtt{\ if\ }b\mathtt{\ do \ }${1:s_{1}}\mathtt{\ else\ ${2:s_{2}} \ }\mathtt{\ end\ } $0
+endsnippet
+
+snippet sostr "Small step transition" i
+\rightarrow_1^{$1}$0
+endsnippet
+
+## axiomatic semantics
+
+snippet "(as|AS)skip" "Description" iAr
+\AxiomC{}
+\RightLabel{SKIP$AS$}
+\UnaryInfC{$\left\{ $1 \right\}s\left\{ $2 \right\}$} $3
+endsnippet
+
+snippet "(as|AS)ass" "Description" iAr
+\AxiomC{}
+\RightLabel{ASS$AS$}
+\UnaryInfC{$\left\{ $1 \right\}s\left\{ $2 \right\}$} $3
+endsnippet
+
+snippet bexp "Description" i
+\mathcal{B}[[$1]]${2:\sigma}$0
+endsnippet
+
+snippet aexp "Description" i
+\mathcal{A}[[$1]]${2:\sigma}$0
+endsnippet
+
+snippet hoaretriple "Description" iA
+\left\\{ \textbf{P} \right\\}s\left\\{ \textbf{Q} \right\\} $0
+endsnippet
+
+global !p
+import wikipedia as wiki
+endglobal
+
+snippet nse "heading" A
+\section{$1}$0
+endsnippet
+
+snippet nsse "subsection" A
+\subsection{$1}
+endsnippet
+
+snippet nssse "subsubsection" A
+\subsubsection{$1}$0
+endsnippet
+
+snippet unse "heading" A
+\section{$1}
+% `xclip -o`
+$0
+endsnippet
+
+snippet unsse "subsection" A
+\subsection{$1}
+% `xclip -o`
+$0
+endsnippet
+
+snippet unssse "subsubsection" A
+\subsubsection{$1}$0
+% `xclip -o`
+$0
+endsnippet
+
+# unnumbered headings
+
+snippet se "heading" 
+\section*{$1}
+endsnippet
+
+snippet sse "subsection" 
+\subsection*{$1} 
+endsnippet
+
+snippet ssse "subsubsection" A
+\subsubsection*{$1}$0
+endsnippet
+
+snippet para "paragraph" Ab
+\paragraph{$1}$0
+endsnippet
+
+snippet asse "Advanced subsection" i
+\subsection*{${VISUAL:}$1} 
+% https://en.wikipedia.org/?curid=`!p
+snip.rv = wiki.page(snip.v.text).pageid
+`
+
+`!p
+import wikipedia as wiki
+def wikiSum():
+    return wiki.summary(snip.v.text,sentences=4)
+snip.rv = wikiSum()
+`
+endsnippet
+
+snippet assse "Advanced subsection" i
+\subsection*{${VISUAL:}$0} 
+% https://en.wikipedia.org/?curid=`!p
+snip.rv = wiki.page(snip.v.text).pageid
+`
+
+`!p
+import wikipedia as wiki
+def wikiSum():
+    return wiki.summary(snip.v.text,sentences=4)
+snip.rv = wikiSum()
+`
+endsnippet
+
+snippet apara "Advanced subsection" Ab
+\paragraph*{${VISUAL:}$0} 
+% https://en.wikipedia.org/?curid=`!p
+snip.rv = wiki.page(snip.v.text).pageid
+`
+
+`!p
+import wikipedia as wiki
+def wikiSum():
+    return wiki.summary(snip.v.text,sentences=4)
+snip.rv = wikiSum()
+`
+endsnippet
+
+snippet ase "Advanced subsection" i
+\section*{${VISUAL:}$0} 
+% https://en.wikipedia.org/?curid=`!p
+snip.rv = wiki.page(snip.).pageid
+`
+
+`!p
+import wikipedia as wiki
+def wikiSum():
+    return wiki.summary(snip.v.text,sentences=4)
+snip.rv = wikiSum()
+`
+endsnippet
+
+snippet ttt "Description" i
+% https://en.wikipedia.org/?curid=`!p
+snip.rv = wiki.page('ananans').pageid`
+endsnippet
+snippet ep "epsion" i
+\epsilon$0
+endsnippet
+
+snippet intab "integral" i
+\int_{a}^{b}\;
+endsnippet
+
+snippet iint "integral dx" iA
+\int $2 \:$1 $0
+endsnippet
+
+snippet "inft?int" "integral dx" irA
+\int_{-\infty}^{\infty} $2 \:$1 $0
+endsnippet
+
+snippet integ "integral dx" i
+\int_{$1}^{$2} $3 \: $0
+endsnippet
+
+snippet usr "f:U\rightarrow\R^{$1}$0" i
+U\rightarrow\R^{$1}$0
+endsnippet
+# Memory safety
+
 snippet com "" i
 \begin{comment}
 $0
 \end{comment}
 endsnippet
-
 
 snippet lrb "\left(\right)" iA
 \left( $1 \right)$0
@@ -17,7 +391,6 @@ snippet lrsb "\left[ \right]" iA
 \left[ $1 \right]$0
 endsnippet
 
-
 snippet be "begin end block" i
 \begin{$1}
 	$2
@@ -25,7 +398,6 @@ snippet be "begin end block" i
 endsnippet
 
 # requires a custom command 
-
 
 snippet array "\begin{array}{c|c} ... \end{array}" i
 \begin{array}{${1:c|c}}
@@ -51,13 +423,11 @@ snippet "eq|wq" "equation begin/end" ir
 \end{equation*}
 endsnippet
 
-
 snippet salgo "insert algorithm pseudocode template" i
 \begin{algorithmic}[1]
 	$0
 \end{algorithmic}
 endsnippet
-
 
 snippet for "\for block" i
 \For{$1}
@@ -79,7 +449,6 @@ endsnippet
 snippet mtt "" iA
 \mathtt{$1}$0
 endsnippet
-
 
 snippet inR "element of the real numbers" A
 \in \mathbb{R} $0
@@ -117,7 +486,6 @@ snippet truthtable "Insert truth table"
 	\end{displaymath}
 endsnippet
 
-
 snippet ^ "^{$1}" iA
 ^{$1}$0
 endsnippet
@@ -149,7 +517,6 @@ endsnippet
 snippet log "\log{}" i
 \log \left( $1 \right)$0
 endsnippet
-
 
 snippet sqrt "\sqrt{}" iA
 \sqrt{$1}$0
@@ -197,7 +564,6 @@ endsnippet
 snippet mbf "\mathbf{}" iA
 \mathbf{$1}$0
 endsnippet
-
 
 snippet mtn "m x n matrix" iA
 m \times n
@@ -321,7 +687,6 @@ snippet al "" i
 \alpha$0
 endsnippet
 
-
 snippet letenum "" iA
 \begin{enumerate}[label=\alph*)]
 		\item $0
@@ -372,7 +737,6 @@ snippet rar "rightarrow" i
 \rightarrow$0
 endsnippet
 
-
 snippet rrarr "\R\rightarrow\R" options
 \R\rightarrow\R$0
 endsnippet
@@ -405,8 +769,6 @@ snippet lrab "" iA
 \langle $1 \rangle $0
 endsnippet
 
-
-
 snippet graphics "" i
 \includegraphics[$1]{$2} $0
 endsnippet
@@ -433,7 +795,6 @@ $3
 \end{lstlisting} $0
 endsnippet
 
-
 snippet sql "" b
 \begin{lstlisting}[language=sql,caption=]
 $1
@@ -446,29 +807,19 @@ $1
 \end{lstlisting} $0
 endsnippet
 
-
 snippet pcode "Paste code from clipboard" ib
 \begin{lstlisting}[language=$1,caption=]
 `xclip -o`
 \end{lstlisting} $0
 endsnippet
 
-
-
-
-
-
-
 snippet tcol "" i
 \textcolor{${1:\defcolor}}{$2}$0
 endsnippet
 
-
-
 snippet pterm "Description" 
 \term{`xclip -o`}$0
 endsnippet
-
 
 snippet cases "cases" i
 \begin{cases}
@@ -481,13 +832,11 @@ snippet om "omega" i
 \omega$0
 endsnippet
 
-
 snippet bsp "Beispiel" i
 \begin{bsp}
 $2
 \end{bsp} $0
 endsnippet
-
 
 snippet align "align block" i
 \begin{align*}
@@ -501,7 +850,6 @@ $0
 \end{prooftree}
 endsnippet
 
-
 snippet unary "Unary inference rule" i
 \AxiomC{$1}
 \RightLabel{$3}
@@ -514,7 +862,6 @@ snippet binary "Binary inference rule"
 \RightLabel{$4}
 \BinaryInfC{$3}$0
 endsnippet
-
 
 snippet Ternary "trinary inference rule" 
 \AxiomC{$1}
@@ -553,7 +900,6 @@ snippet "url|src|link" "% src" rAb
 % `xclip -o`
 endsnippet
 
-
 snippet pterm "" iA
 \term{`xclip -o`}$0
 endsnippet
@@ -562,7 +908,6 @@ snippet fold "Add fold" i
 %}}}
 % {{{
 endsnippet
-
 
 snippet txcol "\textcolor" A
 \textcolor{$1}{$2}$0
@@ -584,7 +929,6 @@ snippet cterm "\cterm{\?color}" iA
 \cterm{\\$1color}{$2}$0
 endsnippet
 
-
 snippet dose "Do subsection" i
 \subsection{$1}
 % TODO: this subsection
@@ -598,7 +942,6 @@ endsnippet
 snippet x1inw1 "Description" iA
 $1_{1}\in $2_{1},...,$1_{n}\in $2_{n}$0
 endsnippet
-
 
 snippet satz "" ib
 \begin{txbox}{\satzcolor}{}
@@ -615,7 +958,6 @@ endsnippet
 snippet ctod "" iA
 cdot
 endsnippet
-
 
 snippet ctods "" iA
 cdots
@@ -637,7 +979,6 @@ snippet rstopped "" ibA
 % STOPPED: reading further and taking notes here on `date +"%a %d.%m %H:%M"` $0
 endsnippet
 
-
 snippet unaryptree "Description" ibA
 \begin{prooftree}
     \RightLabel{$1}
@@ -645,7 +986,6 @@ snippet unaryptree "Description" ibA
     \UnaryInfC{$$3$}
 \end{prooftree}$0
 endsnippet
-
 
 snippet binaryptree "Description" ibA
 \begin{prooftree}
@@ -670,10 +1010,6 @@ snippet mt "maps to" i
 \mapsto$0
 endsnippet
 
-
-
-
-
 # snippet "rec?o?r?d?i?n?g?|lec" "Description" ibr
 # % LECTURE: [vlc --rate=1.35 --start-time=$1 &>/dev/null &]$0
 # endsnippet
@@ -681,7 +1017,6 @@ endsnippet
 snippet "tran?s?i?t?i?o?n?" "Transition" ri
 \langle ${1:s},${2:\sigma}\rangle\rightarrow${3:\sigma'}$0
 endsnippet
-
 
 snippet funcde "" i
 \alpha\rightarrow\beta
@@ -691,12 +1026,10 @@ snippet "sostran?s?i?t?i?o?n?" "Transition" ri
 \langle ${1:s},${2:\sigma}\rangle\rightarrow_{1}${3:\gamma}$0
 endsnippet
 
-
 snippet var "" i
 \mathbb{V}[$1]$0
 endsnippet
 # `ls -t ./figures | head -n1 | rev | cut -d.-f2 | rev`
-
 
 snippet tex "" bA
 [latex]$0[/latex]
@@ -705,3 +1038,125 @@ endsnippet
 snippet tester "Description" i
 ${VISUAL:} hello
 endsnippet
+snippet latex "[latex] box for anki" b
+[latex]$0[/latex]
+endsnippet
+
+global p!
+from helpers.py import *
+endglobal
+
+snippet "arec|alec" "Description" brA
+% LECTURE: [vlc --rate=1.35 --start-time=`xclip -o -selection clipboard` `cat ~/.cache/vlc/last-video` $1 &>/dev/null &]$0
+endsnippet
+
+snippet "rec|lec" "Description" brA
+% LECTURE: [vlc --rate=1.35 --start-time=$1 &>/dev/null &]$0
+endsnippet
+
+snippet "anki" "anki shortcut" A
+[$]$1[\\\$]$0
+endsnippet
+snippet tbf "the \textbb{} command for italic font" iA
+\textbf{${VISUAL:}$1}$0
+endsnippet
+
+snippet tit "the \textbb{} command for italic font" i
+\textit{${VISUAL}$1}$0
+endsnippet
+
+snippet txx "\text{}" iA
+\text{$1}$0
+endsnippet
+
+snippet v "\verb!$1!$0" i
+\verb!${VISUAL:}$1!$0
+endsnippet
+
+snippet verb "" bA
+\begin{verbatim}
+	${VISUAL:}$1
+\end{verbatim}
+$0
+endsnippet
+
+global p!
+from helpers.py import *
+endglobal
+
+snippet vwiki "" i
+`!p
+import wikipedia as wiki
+def wikiSum():
+    return wiki.summary(snip.v.text,sentences=5)
+snip.rv = wikiSum()
+`
+endsnippet
+
+snippet twiki "" i
+`!p
+import wikipedia as wiki
+def wikiSum():
+    return wiki.summary('Ananas fruit')
+snip.rv = wikiSum()
+`
+endsnippet
+
+snippet "hello there this is another one" "Description" 
+THIS IS THE INPUT
+endsnippet
+
+snippet defn "\begin{defn}[] ... \end{defn} block" 
+\begin{defn}[]
+	$2
+\end{defn} $0
+endsnippet
+
+snippet rem "\begin{rem}[] ... \end{rem} block"  
+\begin{rem}[]
+	$2
+\end{rem} $0
+endsnippet
+
+snippet thm "\begin{thm}[] ... \end{thm} block" b
+\begin{thm}[]
+	$2
+\end{thm} $0
+endsnippet
+
+snippet conv "\begin{conv}[] ... \end{thm} block" 
+\begin{conv}[]
+	$2
+\end{conv} $0
+endsnippet
+
+snippet lem "\begin{lem}[] ... \end{thm} block" 
+\begin{lem}[]
+	$2
+\end{lem} $0
+endsnippet
+
+snippet exmp "\begin{exmp}[] ... \end{thm} block" 
+\begin{exmp}[]
+	$2
+\end{exmp} $0
+endsnippet
+
+snippet claim "\begin{claim}[] ... \end{claim} block" bA
+\begin{claim}[]
+	$2
+\end{claim} $0
+endsnippet
+
+#███╗   ███╗ █████╗ ████████╗██╗  ██╗███████╗
+#████╗ ████║██╔══██╗╚══██╔══╝██║  ██║██╔════╝
+#██╔████╔██║███████║   ██║   ███████║███████╗
+#██║╚██╔╝██║██╔══██║   ██║   ██╔══██║╚════██║
+#██║ ╚═╝ ██║██║  ██║   ██║   ██║  ██║███████║
+#╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝
+#                                            
+
+snippet abint "integral" 
+\int_{{a}}^{{b}} {$1} \: {d$0}
+endsnippet
+

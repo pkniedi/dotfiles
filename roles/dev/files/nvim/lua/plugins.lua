@@ -285,7 +285,7 @@ require("lazy").setup({
         --  \___\___/| .__/|_|_|\___/ \__|
         --           |_|
 
-        "github/copilot.vim",
+        -- "github/copilot.vim",
         --- dashboard:    https://github.com/MeanderingProgrammer/dashboard.nvim
         --- ascii:    https://github.com/MaximilianLloyd/ascii.nvim?tab=readme-ov-file
         {

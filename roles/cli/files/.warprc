@@ -6,12 +6,13 @@ ana2:~/resources/school/analysis-II
 ana:~/resources/school/analysis-II
 anaII:~/resources/school/analysis-II
 analysis:~/notes/analysis
+arkenfox:~/repos/user.js/arkenfox
 ass7:~/notes/spca/exercises/spca2024-jniederer-hand-in/assignment7/target82
 autodotfs:~/projects/autodotfs
 b:~/bin
 bin:~/.local/bin
 cd:~/notes/compiler-design
-cheat:~/projects/eth-cheatsheets/analysis-II
+cheat:~/projects/cheatsheets
 chrome:~/.mozilla/firefox/w197tuwx.default-release-1714597885033/chrome
 cn:~/notes/cn
 compd:~/notes/compiler-design
@@ -32,8 +33,9 @@ ehas:~/notes/fmfp/exercises/haskell
 ehaskell:~/notes/fmfp/exercises/haskell
 eprog:~/notes/eprog
 eprogrepo:~/notes/eprog/exercises/jniederer
-firefox:~/.mozilla/firefox/w197tuwx.default-release-1714597885033/chrome
+firefox:~/.mozilla/firefox/w197tuwx.default-release-1714597885033
 fmfp:~/notes/fmfp
+fprofile:~/.mozilla/firefox/w197tuwx.default-release-1714597885033
 handin:~/notes/spca/exercises/spca2024-jniederer-hand-in/assignment1
 handing:~/notes/spca/exercises/spca2024-jniederer-hand-in/assignment1
 hw2:~/notes/compiler-design/exercises/hw2
@@ -60,7 +62,7 @@ m:~/resources/mathematics
 n:~/notes/zettelkasten
 nad:~/notes/ad/notes
 nafter:~/.config/nvim/after/ftplugin
-numcs:~/notes/numcs
+numcs:~/resources/school/numcs
 nv:~/.config/nvim/lua
 nvim:~/.config/nvim/lua
 nws:~/notes/ws/notes
@@ -84,7 +86,7 @@ repo:~/notes/eprog/exercises/jniederer
 rhaskell:~/resources/computer-science/programming-languages/haskell
 rlina:~/resources/mathematics/linear-algebra
 rmaths:~/resources/mathematics
-rnumcs:~/resources/computer-science/numcs
+rnumcs:~/resources/school/numcs
 roles:~/projects/jniedi-dotfiles/roles
 rschool:~/resources/school
 rws:~/resources/mathematics/probability-and-statistics

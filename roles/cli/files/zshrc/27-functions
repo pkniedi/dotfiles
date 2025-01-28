@@ -9,6 +9,10 @@
 # ----------------------------------------------------------------------
 # ----------------------------------------------------------------------
 
+local function die(){
+        echo "Something went wrong"
+        return 1
+}
 
 
 function resource_aliases() {
@@ -661,17 +665,53 @@ function editconfig(){
 }
 
 
-# Create a new zsh script with a suffix if the name already exists
-# Enter it after creation
-
-
-# TODO
-# function newscript() {}
-
-function gen_colors(){
-        wal -i $1
+function rem(){
+        local sel=$(gum choose "specific time" "relative time" "time and date" --no-show-help)
+        case $sel in
+                "specific time")
+                        t=$(gum input --placeholder "20:00"  --no-show-help)
+                        remind $(gum input --placeholder "Hello there" --no-show-help) at $t
+                        ;;
+                "relative time")
+                        s=$(gum choose "in 1 hour" "in 2 hours")
+                        remind $(gum input --placeholder "Hello there" --no-show-help) $s
+                        ;;
+        esac
 }
 
+function nvpn(){
+        [[ $1 != "" ]] && gum log --structured --level info $1
+        local sel=$(gum choose --header "Action:" --no-show-help --limit 1 "status"  "connect" "disconnect" "logout" "login")
+        case $sel in
+                "connect")
+                        local country=$(gum choose --header "Select country:" --no-show-help --limit 1 "United_States" "Switzerland" "Germany" "other")
+                        if [[ $country == "other" ]];then
+                                country=$(gum input --placeholder "Sweden" --no-show-help)
+                                while not nordvpn $sel $country;do
+                                        country=$(gum input --placeholder "Sweden" --no-show-help)
+                                done
+                        else
+                                if [[ $country == "" ]];then
+                                        gum log --structured --level error "Nothing selected..."
+                                else
+                                        nordvpn $sel $country || nvpn "Trying again"
+                                fi
+                        fi
+                        ;;
+                "logout")
+                        gum confirm "Are you sure you want to log out?" --no-show-help --affirmative "Logout" --negative "Stay logged in" && nordvpn $sel
+                        ;;
+                "status" || "disconnect" || "login")
+                        nordvpn $sel
+                        ;;
+                *)
+                        gum log --structured --level error "Nothing selected..."
+                        ;;
+        esac
+}
+
+function dotzsh(){
+        gum choose --no-show-help "Resource alias functions"
+}
 
 # vim: set ft=zsh:
-
