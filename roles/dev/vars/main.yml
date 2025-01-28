@@ -1,2 +1,13 @@
+# https://wiki.archlinux.org/title/Language_Server_Protocol
 arch_apps:
   - nvim
+  - cmake
+  - texlab
+  - deno
+  - diagnostic-languageserver
+  - lua-language-server
+  - python-lsp-server
+  - bash-language-server
+  - clang
+  - rust-analyzer
+  - vscode-html-languageserver

@@ -5,6 +5,13 @@ default:
 symlink:
 	@ansible-playbook -t symlink  -i inventory.yml playbook.yml -t symlink
 
+symlink:
+	@ansible-playbook -t symlink  -i inventory.yml playbook.yml -t gui
+
+dev:
+	@ansible-playbook -t symlink  -i inventory.yml playbook.yml -t dev
+
+
 #  TODO: --vault-password-file=$HOME/.vault_pass
 
 # ------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 # Install
 
-Follow the instructions in [./docs/INSTALL.md](./docs/INSTALL.md) to install the system.
+Follow the instructions in [./wiki/INSTALL.md](./wiki/INSTALL.md) to install the system.
 
 
 # Roles

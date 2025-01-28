@@ -13,7 +13,6 @@ local vim = vim
 local lspconfig = require("lspconfig")
 
 -- github repository:    https://github.com/latex-lsp/texlab
---
 
 
 lspconfig.texlab.setup({})
@@ -47,7 +46,7 @@ lspconfig.lua_ls.setup({
 	},
 })
 
-require("lspconfig").pylsp.setup({
+lspconfig.pylsp.setup({
 	settings = {
 		pylsp = {
 			plugins = {
@@ -74,7 +73,7 @@ require("lspconfig").pylsp.setup({
 -- 	),
 -- })
 --
-lspconfig.jdtls.setup({})
+-- lspconfig.jdtls.setup({})
 lspconfig.bashls.setup({})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

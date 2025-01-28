@@ -9,6 +9,10 @@ sudo pacman --needed -S base-devel git
 The `base-devel` package contains tools like `make` and `makepkg`.
 
 
+```bash
+git clone https://github.com/pkniedi/dotfiles.git
+```
+
 
 # Manuel
 ## Install yay

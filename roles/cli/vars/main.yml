@@ -19,3 +19,4 @@ arch_apps:
   - fastfetch
   - yazi
   - eza
+  - fzf

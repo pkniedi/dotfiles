@@ -7,7 +7,6 @@
   loop: "{{ arch_apps }}"
   loop_control:
     loop_var: app
-  when: ansible_os_family == 'Archlinux'
 
 
 # Symllinking config files ------------------------------
