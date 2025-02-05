@@ -1,7 +1,14 @@
+nerf
+
+
+
+Urls
+
+
+
 
 
 Nerd-fonts cheatsheet
-Urls
 
 
 
@@ -23,7 +30,6 @@ dashboar
 
 
 
-nerf
 
 
 

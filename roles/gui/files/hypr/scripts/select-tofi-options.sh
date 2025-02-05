@@ -9,7 +9,6 @@
 #
 
 
-
 HELPERFILES=~/.config/hypr/helpers
 TMPFILE=/tmp/tofi-helper-temp-selection
 
