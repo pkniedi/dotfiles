@@ -3,7 +3,6 @@
 # -----------------------------------------------------
 alias salias='source /home/jaron/.config/zshrc/25-aliases'
 alias wifi='hotspot'
-alias c='clear'
 alias ll='eza -lagoMF --icons -s modified --hyperlink --group-directories-first  --git --git-repos --time-style long-iso'
 alias llt='eza -alM --icons --tree -s modified --hyperlink --group-directories-first  --git --git-repos'
 alias shutdown='systemctl poweroff'
@@ -344,4 +343,16 @@ fi
 
 alias opdf='open_pdfs'
 
+# ----------------------------------------------
+# Suffix
+
+
+alias -s tex=nvim
+alias -s md=nvim
+alias -s pdf=zathura
+
+
+
+
 # vim: set ft=zsh:
+

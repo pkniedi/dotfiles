@@ -1,0 +1,274 @@
+@define-color rosewater #f4dbd6;
+@define-color flamingo #f0c6c6;
+@define-color pink #f5bde6;
+@define-color mauve #c6a0f6;
+@define-color red #ed8796;
+@define-color maroon #ee99a0;
+@define-color peach #f5a97f;
+@define-color yellow #eed49f;
+@define-color green #a6da95;
+@define-color teal #8bd5ca;
+@define-color sky #91d7e3;
+@define-color sapphire #7dc4e4;
+@define-color blue #8aadf4;
+@define-color lavender #b7bdf8;
+@define-color text #cad3f5;
+@define-color subtext1 #b8c0e0;
+@define-color subtext0 #a5adcb;
+@define-color overlay2 #939ab7;
+@define-color overlay1 #8087a2;
+@define-color overlay0 #6e738d;
+@define-color surface2 #5b6078;
+@define-color surface1 #494d64;
+@define-color surface0 #363a4f;
+@define-color base #24273a;
+@define-color mantle #1e2030;
+@define-color crust #181926;
+
+
+* {
+    font-size: 19px;
+    font-family: "Hack Nerd Font";
+}
+
+window.DP-2 * { font-size: 25px; }
+window.DP-3 * { font-size: 25px; }
+
+tooltip {
+    background: @base;
+    color: @color7;
+}
+
+
+
+window#waybar {
+    all: unset;
+    background: rgba(0,0,0, 0);
+    /* background: @base; */
+    color: #cdd6f4;
+}
+
+tooltip {
+    background: @base;
+    border-radius: 10px;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color: #11111b;
+    transition: 0.3s;
+}
+
+
+#custom-select-url,
+#custom-refresh,
+#custom-capture-screen,
+#custom-wallpaper,
+#custom-nerdfont-selection,
+#custom-power_profile,
+#custom-weather,
+#custom-kill-firefox,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#temperature,
+#workspaces,
+#tray,
+#backlight {
+    background: @base;
+    /* background: #1e1e2e; */
+    color: @text;
+    opacity: 0.8;
+
+    /* top right bottom left */
+    padding: 0px 15px 0px 15px; 
+    /* margin: 0px; */
+    /* margin-right: px; */
+    margin-top: 5px;
+    /* margin-right: 5px; */
+    border: 1px solid #181825;
+}
+
+
+
+/* -------------------------------------- */
+/* custom section */
+
+
+/* leftmost */
+#custom-nerdfont-selection {
+        margin-left: 5px;
+        padding-right: 5px;
+        border-radius: 20px 0px 0px 20px;
+}
+
+/* all */
+#custom-select-url,
+#custom-nerdfont-selection, 
+#custom-refresh,
+#custom-capture-screen,
+#custom-wallpaper,
+#custom-power_profile,
+#custom-kill-firefox,
+#custom-weather {
+    padding-right: 5px;
+}
+
+
+#custom-select-url:hover,
+#custom-kill-firefox:hover,
+#custom-nerdfont-selection:hover, 
+#custom-refresh:hover,
+#custom-capture-screen:hover,
+#custom-wallpaper:hover,
+#custom-power_profile:hover,
+#custom-weather:hover {
+    color: @red;
+    /* text-shadow: 0px 0px 1px rgba(0, 0, 0, .7); */
+    /* transition: all 0s ease; */
+}
+
+
+
+/* rightmost */
+#custom-kill-firefox {
+        margin-right: 5px;
+        padding-right: 5px;
+        border-radius: 0px 20px 20px 0px;
+}
+
+/* -------------------------------------- */
+/* custom section */
+
+#temperature {
+    border-radius: 20px 0px 0px 20px;
+}
+
+#tray {
+    /* padding: 0px 11px 0px 11px; */
+    border-radius: 20px;
+}
+
+
+
+#temperature.critical {
+    color: @red;
+}
+
+#backlight {
+    border-radius: 20px 20px 20px 20px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+
+#custom-power_profile {
+    color: @green;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#window {
+    border-radius: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#clock {
+    color: @peach;
+    border-radius: 20px;
+    margin-right: 5px;
+    transition: 0.3s;
+}
+
+#network {
+    color: @yellow;
+    border-radius: 20px 20px 20px 20px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-right: 10px;
+}
+
+#bluetooth {
+    color: @blue;
+    border-radius: 20px;
+    margin-right: 10px
+}
+
+#pulseaudio {
+    color: @blue;
+    border-radius: 20px 0px 0px 20px;
+    margin-right: 0px;
+
+}
+
+#pulseaudio.microphone {
+    color: @mauve;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 0px 20px 20px 0px;
+    margin-right: 5px;
+}
+
+#battery {
+    color: @green;
+    /* border-radius: 0 20px 20px 0; */
+    margin-right: 5px;
+    border-left: 0px;
+    border-radius: 20px 20px 20px 20px;
+}
+
+
+#workspaces {
+    border-radius: 20px;
+    padding: 0px 5px 0px 5px; 
+    margin-left: 5px;
+    /* top right bottom left */
+    /* padding: 8px 8px 8px 8px;  */
+    /* border: none; */
+    
+}
+
+#workspaces button {
+    all: unset;
+    color: @text;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, .4);
+}
+
+#workspaces button:hover {
+    color: @red;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, .7);
+    transition: all 0s ease;
+}
+
+#workspaces button.active {
+    color: @yellow;
+    border: none;
+    /* transition: all 1s ease; */
+}
+
+#workspaces button.active:hover {
+    color: @red;
+    border: none;
+    /* transition: all 1s ease; */
+}
+
+#workspaces button.empty {
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+
+#workspaces button.empty:hover {
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+
+#workspaces button.empty.active {
+    color: @red;
+    border: none;
+    transition: all 1s ease;
+}

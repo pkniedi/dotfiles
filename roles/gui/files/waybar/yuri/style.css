@@ -1,0 +1,322 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@import "machiatto.css";
+
+/*
+ Polar Night
+ nord0  #2e3440
+ nord1  #3b4252
+ nord2  #434c5e
+ nord3  #4c566a
+ Snow Storm
+ nord4  #d8dee9
+ nord5  #e5e9f0
+ nord6  #eceff4
+ Frost
+ nord7  #8fbcbb
+ nord8  #88c0d0
+ nord9  #81a1c1
+ nord10 #5e81ac
+ Aurora
+ nord11 #bf616a
+ nord12 #d08770
+ nord13 #ebcb8b
+ nord14 #a3be8c
+ nord15 #b48ead
+ */
+
+/* -----------------------------------------------------------------------------
+  * Base styles
+  * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+
+
+
+
+
+window.leftbar#waybar * {
+        color: @white;
+        background-color: @base;
+        /* background-color: transparent; */
+        border: 0;
+        font-family: "Hack Nerd Font";
+        /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+        /* font-family: "Hack Nerd Font"; */
+        font-size: 16px;
+        font-weight: bold;
+        font-family: "Hack Nerd Font";
+        padding-left: 0px;
+        padding-right: 0px;
+}
+
+
+window#waybar.left label#custom-reload {
+    background-color: @mauve;
+    color: @base;
+    border-radius: 5px;
+    padding: 6px 6px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+
+
+
+window.topbar#waybar * {
+        color: @lavender;
+        background-color: @base;
+        border: 0;
+        padding: 0 0;
+        font-family: "Hack Nerd Font";
+        /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+        /* font-family: "Hack Nerd Font"; */
+        font-size: 16px;
+        font-weight: bold;
+        font-family: "Hack Nerd Font";
+        padding-left: 0px;
+        padding-right: 0px;
+
+}
+
+window.topbar#waybar.kitty * {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+window#waybar.chromium {
+    background-color: #eeeeee;
+    color: #000000;
+}
+
+/* make window module transparent when no windows present */
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+window#waybar.top #workspaces button {
+    /* all: unset; */
+    color: @base;
+    border-radius: 50%;
+    /* background-color: @base; */
+    margin: 0px 3px;
+    padding: 4px 6px 2px 0px;
+}
+
+window#waybar.top #workspaces button:hover {
+    color: @mauve;
+    box-shadow: none;
+    /* Remove predefined box-shadow */
+    text-shadow: none;
+    /* Remove predefined text-shadow */
+    border: 0px;
+    background: none;
+}
+
+#workspaces button:hover * {
+    color: @mauve;
+    background-color: @base;
+}
+
+
+window#waybar.top #workspaces {
+    border-style: solid;
+    background-color: @base;
+    opacity: 1;
+    border-radius: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+
+#workspaces button.focused *{
+    color: @yellow;
+}
+
+#workspaces button.active * {
+    color: @yellow;
+}
+
+
+
+#mode {
+    color: #ebcb8b;
+}
+
+#clock,
+#custom-swap,
+#custom-cava-internal,
+#battery,
+#cpu,
+#memory,
+#idle_inhibitor,
+#temperature,
+#custom-keyboard-layout,
+#backlight,
+#network,
+#pulseaudio,
+#mode,
+#tray,
+#custom-power,
+#custom-pacman,
+#custom-reload,
+#mpd {
+    padding: 5px 8px;
+    border-style: solid;
+    background-color: shade(@base, 1);
+    opacity: 1;
+    margin: 8px 0;
+}
+
+/* -----------------------------------------------------------------------------
+  * Module styles
+  * -------------------------------------------------------------------------- */
+
+#clock {
+    background-color: @base;
+    color: @sky;
+    border-radius: 10px;
+    margin: 5px 10px;
+}
+
+#backlight {
+    color: @yellow;
+    /* border-bottom: 2px solid @yellow; */
+    border-radius: 10px 0 0 10px;
+}
+
+#battery {
+    color: #d8dee9;
+    /* border-bottom: 2px solid #d8dee9; */
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
+}
+
+#battery.charging {
+    color: #81a1c1;
+    /* border-bottom: 2px solid #81a1c1; */
+}
+
+@keyframes blink {
+    to {
+        color: @red;
+        /* border-bottom: 2px solid @red; */
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: #bf616a;
+    /* border-bottom: 2px solid #bf616a; */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+    color: @sky;
+    /* border-bottom: 2px solid @sky; */
+}
+
+#cpu #cpu-icon {
+    color: @sky;
+}
+
+#memory {
+    color: @sky;
+}
+
+#network.disabled {
+    color: #bf616a;
+    /* border-bottom: 2px solid #bf616a; */
+}
+
+#network {
+    color: @green;
+    /* border-bottom: 2px solid @green; */
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+#network.disconnected {
+    color: #bf616a;
+    /* border-bottom: 2px solid #bf616a; */
+}
+
+#pulseaudio {
+    color: @flamingo;
+    /* border-bottom: 2px solid @flamingo; */
+}
+
+#pulseaudio.muted {
+    color: #3b4252;
+    /* border-bottom: 2px solid #3b4252; */
+}
+
+#temperature {
+    color: @teal;
+    /* border-bottom: 2px solid @teal; */
+    border-radius: 10px 0 0 10px;
+}
+
+#temperature.critical {
+    color: @red;
+    /* border-bottom: 2px solid @red; */
+}
+
+#idle_inhibitor {
+    background-color: #ebcb8b;
+    color: @base;
+}
+
+#tray {
+    /* background-color: @base; */
+    margin: 5px 6px;
+    border-radius: 10px;
+}
+
+
+
+#custom-reload {
+    background-color: @mauve;
+    color: @base;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#custom-power {
+    color: @base;
+    background-color: @red;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 15px;
+    padding: 5px 10px;
+}
+
+#window {
+    border-style: hidden;
+    margin-left: 10px;
+    /* margin-top:1px;  
+     padding: 8px 1rem; */
+    margin-right: 10px;
+    color: #eceff4;
+}
+
+#custom-keyboard-layout {
+    color: @peach;
+    /* border-bottom: 2px solid @peach; */
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
+}

@@ -36,6 +36,7 @@ eprogrepo:~/notes/eprog/exercises/jniederer
 firefox:~/.mozilla/firefox
 fmfp:~/notes/fmfp
 fprofile:~/.mozilla/firefox/w197tuwx.default-release-1714597885033
+gui:~/projects/jniedi-dotfiles/roles/gui
 handin:~/notes/spca/exercises/spca2024-jniederer-hand-in/assignment1
 handing:~/notes/spca/exercises/spca2024-jniederer-hand-in/assignment1
 hw2:~/notes/compiler-design/exercises/hw2
@@ -82,7 +83,8 @@ rcs:~/resources/computer-science
 rdm:~/resources/mathematics/discrete-mathematics
 real:~/notes/analysis
 recipes:~/Documents/recipes
-repo:~/notes/eprog/exercises/jniederer
+repo:~/repos
+repos:~/repos
 rhaskell:~/resources/computer-science/programming-languages/haskell
 rlina:~/resources/mathematics/linear-algebra
 rmaths:~/resources/mathematics
@@ -109,7 +111,7 @@ ulti:~/.config/nvim/UltiSnips
 ultitex:~/.config/nvim/UltiSnips/tex
 utex:~/.config/nvim/UltiSnips/tex
 wall:~/wallpapers
-waybar:~/.config/waybar
+waybar:~/projects/jniedi-dotfiles/roles/gui/files/waybar
 ws:~/notes/ws
 z:~/notes/zettelkasten
 zcon:~/.config/zsh

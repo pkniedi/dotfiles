@@ -3,9 +3,11 @@
         "position": "top",
         "reload_style_on_change": true,
         // "modules-left": ["custom/notification", "custom/waypaper" ,"custom/pacman","tray"],
-        "modules-left": [ "custom/wallpaper","custom/capture-screen" ,"custom/colorpicker","pulseaudio", "custom/refresh"  , "group/expand-nvpn",  "tray" ],
+        // "modules-left": [ "custom/wallpaper","custom/capture-screen" ,"custom/colorpicker","pulseaudio", "custom/refresh"  ,  "custom/nvpn-CH" , "custom/nvpn-GE",  "tray" ],
+        "modules-left": [ "custom/wallpaper","custom/capture-screen" ,"custom/colorpicker","pulseaudio", "custom/refresh"  ,    "tray" ],
         "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["group/expand","bluetooth","network","battery", "clock"],
+        // "modules-right": ["group/expand","bluetooth","network","battery", "clock"],
+        "modules-right": [ "network","battery", "clock"],
 
 
         "hyprland/workspaces": {

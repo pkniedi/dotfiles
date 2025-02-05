@@ -714,4 +714,13 @@ function dotzsh(){
         gum choose --no-show-help "Resource alias functions"
 }
 
+
+# Clones the repo 
+function clone_repo(){
+        name=$(wl-paste | rev | cut -d / -f2 |rev)
+        git clone --depth=1 $(wl-paste) $name
+        cd $name
+}
+
+
 # vim: set ft=zsh:

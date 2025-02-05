@@ -394,16 +394,6 @@ require("lazy").setup({
 
 	--    https://github.com/rose-pine/neovim
 
-	{
-		"mbrea-c/wal-colors.nvim",
-
-		config = function()
-			vim.cmd([[colorscheme mbc]]) -- activate the colorscheme
-		end,
-		priority = 1000, -- recommended to ensure the colorscheme
-		-- is loaded before other plugins
-	},
-
 	{ "rose-pine/neovim", name = "rose-pine" },
 	"tanvirtin/monokai.nvim",
 	{ "navarasu/onedark.nvim", lazy = true, priority = 1000 },
@@ -441,7 +431,6 @@ require("lazy").setup({
 		"Wansmer/symbol-usage.nvim",
 		event = "BufReadPre", -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
 	},
-
 
 	-- ansible
 

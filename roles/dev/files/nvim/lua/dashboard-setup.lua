@@ -3,11 +3,23 @@ local user_functions = require("user-functions")
 
 local M = {}
 
+local notes_header = {
+	"       ████ ██████       ████                              ",
+	"      ███████████        ████                              ",
+	"      █████████ ███ ████████ ████████ ██████████   ",
+	"     █████████ █████ ██████  ███     ███           ",
+	"    █████████ ██ ██  ████  ████████ ██████████     ",
+	"  ██████████████ ███ ████   ███           ███      ",
+	" ██████  ███ █████████ ████ ██████████████████       ",
+}
+
 M.get_header = function()
 	local pwd = vim.fn.getcwd()
 	local home = vim.fn.expand("$HOME")
 	if pwd:find("zettelkasten") then
-		return user_functions.get_dashboard_figlet("NOTES")
+		return notes_header
+
+		-- return user_functions.get_dashboard_figlet("NOTES")
 	elseif pwd:find(".config") then
 		local loc = ""
 		if pwd:find("nvim") then
@@ -52,7 +64,7 @@ end
 M.get_local_files = function()
 	local cwd = vim.fn.getcwd()
 	local files = vim.fn.system("find . -maxdepth 1 -type d")
-        local home = vim.fn.expand("$HOME")
+	local home = vim.fn.expand("$HOME")
 	local lines = { ".", ".." }
 
 	local count = 0

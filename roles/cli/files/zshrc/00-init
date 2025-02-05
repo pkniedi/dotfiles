@@ -6,6 +6,7 @@
 
 
 source ~/.config/DOTFILES_ENV_VARS # shared with other shells
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # If on a pi, print help message
 
